@@ -97,7 +97,7 @@ export const TistoryLayout: React.FC<TistoryLayoutProps> = ({
                   )}
                 </>
               )}
-              <div style={{ textAlign: 'center' }}>KDONG's Portfolio</div>
+              <div style={{ textAlign: 'center' }}>KDONG&apos;s Portfolio</div>
               <Switch
                 checkedChildren={<div className="mode-icon dark" />}
                 unCheckedChildren={<div className="mode-icon light" />}
