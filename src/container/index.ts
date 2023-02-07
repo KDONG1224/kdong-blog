@@ -7,6 +7,9 @@ export * from './MobileMainLists';
 // about
 export * from './About';
 
+export * from './Portfolio';
+export * from './Instagram';
+
 // reference
 export * from './Reference';
 export * from './ReferenceCreate';

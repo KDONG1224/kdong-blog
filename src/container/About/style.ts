@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 interface StyledAboutProps {
   ismobile: string;
+  isDarkMode: boolean;
 }
 
 export const StyledAbout = styled.div<StyledAboutProps>`
   font-family: 'Chosunilbo_myungjo';
   padding: 40px;
-  background-color: #f0eeeb;
+  background-color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#f0eeeb')};
+  color: ${({ isDarkMode }) => (isDarkMode ? '#f0eeeb' : '#333')};
 
   .about-wrapper {
     &-title {
@@ -17,11 +19,12 @@ export const StyledAbout = styled.div<StyledAboutProps>`
       h2 {
         font-family: 'Saol';
         font-size: ${({ ismobile }) =>
-          ismobile === 'true' ? '6rem;' : '145px;'}
+          ismobile === 'true' ? '6rem;' : '145px;'};
         display: block;
         padding-top: 10px;
         font-weight: 400;
         line-height: 0.8;
+        color: ${({ isDarkMode }) => (isDarkMode ? '#f0eeeb' : '#333')};
       }
     }
 
@@ -38,15 +41,16 @@ export const StyledAbout = styled.div<StyledAboutProps>`
         flex-wrap: wrap;
         justify-content: space-between;
         padding-bottom: 280px;
+        color: ${({ isDarkMode }) => (isDarkMode ? '#f0eeeb' : '#333')};
 
         &-img {
           flex: ${({ ismobile }) =>
-            ismobile === 'true' ? '0 0 54%;' : '0 0 64%;'}
+            ismobile === 'true' ? '0 0 54%;' : '0 0 64%;'};
         }
 
         &-desc {
           flex: ${({ ismobile }) =>
-            ismobile === 'true' ? '0 0 40%;' : '0 0 30%;'}
+            ismobile === 'true' ? '0 0 40%;' : '0 0 30%;'};
         }
       }
 

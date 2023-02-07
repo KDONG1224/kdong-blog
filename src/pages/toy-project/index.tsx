@@ -3,7 +3,7 @@ import React from 'react';
 import { GetStaticProps } from 'next';
 
 // layouts
-import { MainLayout } from 'layouts';
+import { TistoryLayout } from 'layouts';
 
 // container
 import { ToyProject } from 'container';
@@ -17,9 +17,9 @@ interface ToyProjectPageProps {
 
 const ToyProjectPage: React.FC<ToyProjectPageProps> = ({ toyprojectLists }) => {
   return (
-    <MainLayout>
+    <TistoryLayout>
       <ToyProject datas={toyprojectLists} />
-    </MainLayout>
+    </TistoryLayout>
   );
 };
 

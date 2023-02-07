@@ -107,7 +107,7 @@ export const PaginationTable = <T extends {}>(
 
   return (
     <>
-      {pagination.total !== null && (
+      {/* {pagination.total !== null && (
         <div
           style={{
             borderBottom: '1px solid #666',
@@ -116,7 +116,7 @@ export const PaginationTable = <T extends {}>(
         >
           <span>검색결과 총 {pagination.total} 건</span>
         </div>
-      )}
+      )} */}
       <Row style={{ marginBottom: 10 }} justify="space-between">
         <Col>
           <Space size={5}>

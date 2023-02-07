@@ -6,7 +6,7 @@ import type { GetServerSideProps } from 'next';
 import { ReferenceDetail } from 'container';
 
 // layouts
-import { MainLayout } from 'layouts';
+import { TistoryLayout } from 'layouts';
 
 // modules
 import { ReferApi } from 'modules';
@@ -19,9 +19,9 @@ const ReferenceDetailPage: React.FC<ReferenceDetailPageProps> = ({
   reference
 }) => {
   return (
-    <MainLayout>
+    <TistoryLayout>
       <ReferenceDetail data={reference} />
-    </MainLayout>
+    </TistoryLayout>
   );
 };
 

@@ -6,6 +6,7 @@ export const StyledMobileHeader = styled.div`
   position: fixed;
   width: 100%;
   z-index: 9999;
+  background: transparent;
 
   .adm-nav-bar {
     height: 100%;
@@ -95,117 +96,160 @@ export const StyledHeaderRight = styled.div`
     left: -10px;
   }
 
-  .adm-nav-bar-back {
-    margin-left: 50px;
+  // sidebar icons
+  .ant-menu-submenu-title,
+  .ant-menu-item {
+    .ant-menu-item-icon {
+      width: 30px;
+      height: 30px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
   }
 
-  .adm-nav-bar-back-arrow {
-    font-size: 26px;
-  }
-
-  .bm-burger-button {
-    position: fixed;
-    width: 40px;
-    height: 34px;
-    right: 40px;
-    top: 36px;
-  }
-
-  .bm-burger-bars {
-    background: #373a47;
-    height: 13% !important;
-  }
-
-  .bm-burger-bars-hover {
-    background: #a90000;
-  }
-
-  .bm-cross-button {
-    height: 24px;
-    width: 24px;
-  }
-
-  .bm-cross {
-    background: #000;
-  }
-
-  .bm-menu-wrap {
-    position: fixed;
-    height: 100%;
-    top: 0;
-    width: 400px !important;
-  }
-
-  .bm-menu {
-    width: 400px;
-    background: #fff;
-    padding: 50px 0px 36px;
-    font-size: 1.15em;
-  }
-
-  .bm-morph-shape {
-    fill: #373a47;
-  }
-
-  .bm-item-list {
-    /* color: #b8b7ad;
-    padding: 0.8em; */
-
-    /* display: grid;
-    grid-template-rows: repeat(15, 1fr);
-    grid-template-columns: repeat(4, 1fr); */
-  }
-
-  .bm-item {
-    /* display: inline-block; */
-  }
-
-  .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
-    left: 0;
-    top: 0;
-  }
-
-  .bm-item {
-    /* display: inline-block;
-
-    color: #d1d1d1;
-    margin-bottom: 20px;
-    text-align: left;
-    text-decoration: none;
-    transition: color 0.2s;
-
-    display: flex !important;
-    align-items: center;
-    justify-content: center; */
-  }
-
-  .bm-item:hover {
-    /* color: #ffffff; */
-  }
-
-  .navi-icon {
-    width: 50px;
-    height: 50px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    border: 1px solid red;
-    border-radius: 10px;
-  }
-
-  .home-icon {
+  // 홈 아이콘
+  .ant-menu-item .home-icon,
+  .ant-menu-submenu-title .home-icon {
     background-image: url(${menuIcons.HOME_ICON});
   }
 
-  .html-icon {
+  .ant-menu-item-selected .home-icon {
+    background-image: url(${menuIcons.HOME_ICON});
+  }
+
+  /* .ant-menu-submenu-open .home-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .home-icon {
+    background-image: url(${menuIcons.HOME_ICON});
+  } */
+
+  // 어바웃 아이콘
+  .ant-menu-item .about-icon,
+  .ant-menu-submenu-title .about-icon {
+    background-image: url(${menuIcons.ABOUT_ICON});
+  }
+
+  .ant-menu-item-selected .about-icon {
+    background-image: url(${menuIcons.ABOUT_ICON});
+  }
+
+  /* .ant-menu-submenu-open .about-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .about-icon {
+    background-image: url(../../assets/icon/store_active.svg);
+  } */
+
+  // reference icons
+  .ant-menu-item .reference-icon,
+  .ant-menu-submenu-title .reference-icon {
+    background-image: url(${menuIcons.REFERENCE_ICON});
+  }
+
+  .ant-menu-item-selected .reference-icon {
+    background-image: url(${menuIcons.REFERENCE_ICON});
+  }
+
+  .ant-menu-submenu-open .reference-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .reference-icon {
+    background-image: url(${menuIcons.REFERENCE_ICON});
+  }
+
+  // html icons
+  .ant-menu-item .html-icon,
+  .ant-menu-submenu-title .html-icon {
     background-image: url(${menuIcons.HTML_ICON});
   }
 
-  .javascript-icon {
+  .ant-menu-item-selected .html-icon {
+    background-image: url(${menuIcons.HTML_ICON});
+  }
+
+  .ant-menu-submenu-open .html-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .html-icon {
+    background-image: url(${menuIcons.HTML_ICON});
+  }
+
+  // css icons
+  .ant-menu-item .css-icon,
+  .ant-menu-submenu-title .css-icon {
+    background-image: url(${menuIcons.CSS_ICON});
+  }
+
+  .ant-menu-item-selected .css-icon {
+    background-image: url(${menuIcons.CSS_ICON});
+  }
+
+  .ant-menu-submenu-open .css-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .css-icon {
+    background-image: url(${menuIcons.CSS_ICON});
+  }
+
+  // javscript icons
+  .ant-menu-item .javascript-icon,
+  .ant-menu-submenu-title .javascript-icon {
     background-image: url(${menuIcons.JS_ICON});
   }
 
-  .figma-icon {
+  .ant-menu-item-selected .javascript-icon {
+    background-image: url(${menuIcons.JS_ICON});
+  }
+
+  .ant-menu-submenu-open .javascript-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .javascript-icon {
+    background-image: url(${menuIcons.JS_ICON});
+  }
+
+  // algorithm icons
+  .ant-menu-item .algorithm-icon {
+    background-image: url(${menuIcons.ALGORITHM_ICON});
+  }
+
+  .ant-menu-item-selected .algorithm-icon {
+    background-image: url(${menuIcons.ALGORITHM_ICON});
+  }
+
+  /* .ant-menu-submenu-open .algorithm-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .algorithm-icon {
+    background-image: url(${menuIcons.ALGORITHM_ICON});
+  } */
+
+  // react icons
+  .ant-menu-item .notion-icon {
+    background-image: url(${menuIcons.NOTION_ICON});
+  }
+
+  .ant-menu-item-selected .notion-icon {
+    background-image: url(${menuIcons.NOTION_ICON});
+  }
+
+  /* .ant-menu-submenu-open .notion-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .notion-icon {
+    background-image: url(${menuIcons.NOTION_ICON});
+  } */
+
+  // figma icons
+  .ant-menu-item .figma-icon {
     background-image: url(${menuIcons.FIGMA_ICON});
   }
+
+  .ant-menu-item-selected .figma-icon {
+    background-image: url(${menuIcons.FIGMA_ICON});
+  }
+
+  /* .ant-menu-submenu-open .figma-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .figma-icon {
+    background-image: url(${menuIcons.FIGMA_ICON});
+  } */
+
+  // alchol
+  .ant-menu-item .alchol-icon {
+    background-image: url(${menuIcons.ALCHOL_ICON});
+  }
+
+  .ant-menu-item-selected .alchol-icon {
+    background-image: url(${menuIcons.ALCHOL_ICON});
+  }
+
+  /* .ant-menu-submenu-open .alchol-icon,
+  .ant-menu-submenu-vertical.ant-menu-submenu-active .alchol-icon {
+    background-image: url(${menuIcons.ALCHOL_ICON});
+  } */
 `;

@@ -77,7 +77,7 @@ export const MainBoard: React.FC<MainBoardProps> = ({ datas }) => {
         <div className="board-wrapper-body">
           {boardLists &&
             boardLists
-              .sort((a: any, b: any) => b.index - a.index)
+              // .sort((a: any, b: any) => b.index - a.index)
               .map((data: any) => (
                 <HomeBoard key={data.id} data={data.readOnlyData} />
               ))}

@@ -28,12 +28,6 @@ const nextConfig = {
     styledComponents: true
   },
   reactStrictMode: false,
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')]
-  },
-  compiler: {
-    styledComponents: true
-  },
   experimental: {
     reactMode: 'concurrent'
   }
