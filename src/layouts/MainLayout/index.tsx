@@ -28,9 +28,10 @@ import { useAppDispatch, useAppSelector } from 'modules/hooks';
 import { sideMenuCollapsedAction, touchSideMenuCollapsed } from 'modules';
 
 // components
-import { MainHeader, MobileHeader } from 'components';
+import { IconBox, MainHeader, MobileHeader } from 'components';
 import { useMedia, useMobileScroll } from 'hooks';
 import { STORAGE_LOCAL_COLLAPSED } from 'services';
+import { MainMenu } from 'container/MainMenu';
 
 interface MainLayoutProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -81,59 +82,6 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
     router.push(url);
   };
 
-  const MenuItems: MenuItem[] = [
-    getMenuItem('홈', ROUTE_ROOT, <div className="home-icon navi-icon" />),
-    getMenuItem(
-      '어바웃',
-      ROUTE_ABOUT,
-      <div className="about-icon navi-icon" />
-    ),
-    getMenuItem(
-      '레퍼런스',
-      'reference',
-      <div className="reference-icon navi-icon" />,
-      [
-        getMenuItem(
-          '레퍼런스 목록',
-          ROUTE_REFERNCE,
-          <div className="html-icon navi-icon" />
-        ),
-        getMenuItem(
-          'JAVASCRIPT',
-          ROUTE_REFERNCE_JS,
-          <div className="javascript-icon navi-icon" />
-        )
-      ]
-    ),
-    getMenuItem(
-      '알고리즘',
-      'algorithm',
-      <div className="javascript-icon navi-icon" />,
-      [
-        getMenuItem(
-          '알고리즘 목록',
-          ROUTE_ALGORITHM,
-          <div className="algorithm-icon navi-icon" />
-        )
-      ]
-    ),
-    getMenuItem(
-      '피그마',
-      ROUTE_FIGMA,
-      <div className="figma-icon navi-icon" />
-    ),
-    getMenuItem(
-      '노션',
-      ROUTE_NOTION,
-      <div className="notion-icon navi-icon" />
-    ),
-    getMenuItem(
-      '토이프로젝트',
-      ROUTE_TOY_PROJECT,
-      <div className="alchol-icon navi-icon" />
-    )
-  ];
-
   useEffect(() => {
     handleOpen();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -170,16 +118,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
             collapsed={isSideMenuCollapsed}
             onCollapse={(value) => onCollapse(value)}
           >
-            <Menu
-              mode="inline"
-              items={MenuItems}
-              onClick={({ key }) => onClick(key)}
-              onOpenChange={(openKeys) => onOpenChange(openKeys)}
-              activeKey={activeKey}
-              openKeys={openKeys}
-              selectedKeys={selectedKeys}
-              defaultSelectedKeys={['home']}
-            />
+            <MainMenu />
           </Layout.Sider>
         )}
         <Layout.Content
@@ -199,3 +138,56 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
     </StyledMainLayout>
   );
 };
+
+export const MenuItems: MenuItem[] = [
+  getMenuItem('홈', ROUTE_ROOT, <IconBox className="home-icon navi-icon" />),
+  getMenuItem(
+    '어바웃',
+    ROUTE_ABOUT,
+    <IconBox className="about-icon navi-icon" />
+  ),
+  getMenuItem(
+    '레퍼런스',
+    'reference',
+    <IconBox className="reference-icon navi-icon" />,
+    [
+      getMenuItem(
+        '레퍼런스 목록',
+        ROUTE_REFERNCE,
+        <IconBox className="html-icon navi-icon" />
+      ),
+      getMenuItem(
+        'JAVASCRIPT',
+        ROUTE_REFERNCE_JS,
+        <IconBox className="javascript-icon navi-icon" />
+      )
+    ]
+  ),
+  getMenuItem(
+    '알고리즘',
+    'algorithm',
+    <IconBox className="javascript-icon navi-icon" />,
+    [
+      getMenuItem(
+        '알고리즘 목록',
+        ROUTE_ALGORITHM,
+        <IconBox className="algorithm-icon navi-icon" />
+      )
+    ]
+  ),
+  getMenuItem(
+    '피그마',
+    ROUTE_FIGMA,
+    <IconBox className="figma-icon navi-icon" />
+  ),
+  getMenuItem(
+    '노션',
+    ROUTE_NOTION,
+    <IconBox className="notion-icon navi-icon" />
+  ),
+  getMenuItem(
+    '토이프로젝트',
+    ROUTE_TOY_PROJECT,
+    <IconBox className="alchol-icon navi-icon" />
+  )
+];

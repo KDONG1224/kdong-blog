@@ -8,6 +8,7 @@ import { MainLayout } from 'layouts';
 // container
 import { Algorithm } from 'container';
 import { AlgorithmApi } from 'modules/algorithm';
+import { TistoryLayout } from 'layouts/TistoryLayout';
 
 interface AlgorithmPageProps {
   algorithmLists: any[];
@@ -15,9 +16,11 @@ interface AlgorithmPageProps {
 
 const AlgorithmPage: React.FC<AlgorithmPageProps> = ({ algorithmLists }) => {
   return (
-    <MainLayout>
+    // <MainLayout>
+    <TistoryLayout>
       <Algorithm algorithmLists={algorithmLists} />
-    </MainLayout>
+      {/* </MainLayout> */}
+    </TistoryLayout>
   );
 };
 

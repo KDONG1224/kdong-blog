@@ -8,9 +8,15 @@ import { BlurImage } from 'components';
 // style
 import { StyledReferenceDetail } from './style';
 
+// hooks
+import { useMedia } from 'hooks';
+
+// modules
+import { darkModeState } from 'modules';
+
 // libraries
 import { Rate } from 'antd';
-import { useMedia } from 'hooks';
+import { useRecoilValue } from 'recoil';
 
 interface ReferenceDetailProps {
   data: any;
@@ -18,6 +24,7 @@ interface ReferenceDetailProps {
 
 export const ReferenceDetail: React.FC<ReferenceDetailProps> = ({ data }) => {
   const { isMobile } = useMedia();
+  const isDarkMode = useRecoilValue(darkModeState);
 
   const {
     id,
@@ -35,7 +42,7 @@ export const ReferenceDetail: React.FC<ReferenceDetailProps> = ({ data }) => {
   } = data;
 
   return (
-    <StyledReferenceDetail>
+    <StyledReferenceDetail isDarkMode={isDarkMode}>
       <main id="main">
         <section id="explanation">
           <div className="container">
@@ -46,8 +53,6 @@ export const ReferenceDetail: React.FC<ReferenceDetailProps> = ({ data }) => {
                   alt={title}
                   width={200}
                   height={200}
-                  placeholder="blur"
-                  blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
                 />
               </div>
               <div className="title-header">

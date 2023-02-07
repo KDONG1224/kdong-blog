@@ -36,3 +36,5 @@ export * from './Board';
 export * from './Drawer';
 
 export * from './Modal';
+
+export * from './Box';

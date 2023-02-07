@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 interface StyledReferenceListsProps {
   ismobile: boolean;
+  isDarkMode: boolean;
 }
 
 export const StyledReferenceLists = styled.div<StyledReferenceListsProps>`
-  background: #fff;
+  background: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#f0eeeb')};
   padding: 36px;
   .ant-table-tbody > tr > td {
     vertical-align: middle !important;

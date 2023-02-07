@@ -3,7 +3,7 @@ import React from 'react';
 import type { GetServerSideProps } from 'next';
 
 // layouts
-import { MainLayout } from 'layouts';
+import { TistoryLayout } from 'layouts';
 
 // container
 import { ReferenceLists } from 'container';
@@ -17,9 +17,9 @@ interface ReferencePageProps {
 
 const ReferencePage: React.FC<ReferencePageProps> = ({ referenceLists }) => {
   return (
-    <MainLayout>
+    <TistoryLayout>
       <ReferenceLists referenceLists={referenceLists} />
-    </MainLayout>
+    </TistoryLayout>
   );
 };
 

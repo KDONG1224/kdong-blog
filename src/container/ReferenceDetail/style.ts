@@ -1,10 +1,14 @@
 import { browserIcons } from 'consts';
 import styled from 'styled-components';
 
-export const StyledReferenceDetail = styled.div`
-  color: #000;
-  background: #fff;
+interface StyledReferenceDetailProps {
+  isDarkMode: boolean;
+}
+
+export const StyledReferenceDetail = styled.div<StyledReferenceDetailProps>`
   padding: 15px 36px;
+  background-color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#f0eeeb')};
+  color: ${({ isDarkMode }) => (isDarkMode ? '#fff' : '#000')};
 
   .title-wrapper {
     display: flex;
@@ -35,11 +39,12 @@ export const StyledReferenceDetail = styled.div`
     margin-bottom: 20px;
     font-weight: 300;
     position: relative;
-    color: #000;
+    color: ${({ isDarkMode }) => (isDarkMode ? '#fff' : '#000')};
   }
   #explanation a:hover {
-    border-bottom: 1px dotted #000;
-    color: #000;
+    border-bottom: ${({ isDarkMode }) =>
+      isDarkMode ? '1px dotted #fff' : '1px dotted #000'};
+    color: ${({ isDarkMode }) => (isDarkMode ? '#fff' : '#000')};
   }
   #explanation pre {
     margin-top: 0;
@@ -47,7 +52,7 @@ export const StyledReferenceDetail = styled.div`
   #explanation p code {
     font-size: 0.9em;
     background: #433992;
-    color: #fff;
+    color: ${({ isDarkMode }) => (isDarkMode ? '#000' : '#fff')};
     padding: 5px 4px 4px 4px;
     vertical-align: 2px;
     border-radius: 5px;
