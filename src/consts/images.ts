@@ -3,6 +3,8 @@ const ICON_PATH = '/images/icons';
 const BANNER_PATH = '/images/main';
 const BROWSER_PATH = '/images/browser';
 const ABOUT_PATH = '/images/about';
+const GIF_PATH = '/images/gif';
+const KDONG_PATH = '/images/kdong';
 
 // example
 export const EX_NUM_01 = `${EX_PATH}/ex01.jpg`;
@@ -137,9 +139,11 @@ export const browserIcons = {
 
 // icons
 export const RIGHT_TOP_ARROW_ICON = `${ICON_PATH}/icon-right-top-arrow.png`;
+export const HEADER_RIGHT_ICON = `${ICON_PATH}/header_menu.png`;
 
 export const arrowIcons = {
-  RIGHT_TOP_ARROW_ICON
+  RIGHT_TOP_ARROW_ICON,
+  HEADER_RIGHT_ICON
 };
 
 // about
@@ -151,4 +155,31 @@ export const aboutImg = {
   ABOUT_IMAGE_ONE,
   ABOUT_IMAGE_SECOND,
   ABOUT_IMAGE_THIRD
+};
+
+// gif
+export const KDONG_GIF_ICON = `${GIF_PATH}/kdongIcon.gif`;
+
+export const gifIcons = {
+  KDONG_GIF_ICON
+};
+
+// dark mode
+export const DARK_MODE_ICON = `${ICON_PATH}/dark-mode-icon.png`;
+export const LIGHT_MODE_ICON = `${ICON_PATH}/light-mode-icon.png`;
+
+export const darkModeIcon = {
+  DARK_MODE_ICON,
+  LIGHT_MODE_ICON
+};
+
+// insta
+export const INSTA_INFO_1 = `${KDONG_PATH}/insta-info-1.png`;
+export const INSTA_INFO_2 = `${KDONG_PATH}/insta-info-2.png`;
+export const INSTA_INFO_3 = `${KDONG_PATH}/insta-info-3.png`;
+
+export const instaImages = {
+  INSTA_INFO_1,
+  INSTA_INFO_2,
+  INSTA_INFO_3
 };

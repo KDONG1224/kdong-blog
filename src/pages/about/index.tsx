@@ -2,16 +2,16 @@
 import React from 'react';
 
 // layouts
-import { MainLayout } from 'layouts';
+import { TistoryLayout } from 'layouts';
 
 // container
 import { About } from 'container';
 
 const AboutPage = () => {
   return (
-    <MainLayout>
+    <TistoryLayout>
       <About />
-    </MainLayout>
+    </TistoryLayout>
   );
 };
 

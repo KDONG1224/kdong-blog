@@ -14,7 +14,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { BlurImage, PaginationTable } from 'components';
 
 // momdules
-import { ReferApi } from 'modules';
+import { darkModeState, ReferApi } from 'modules';
 
 // hooks
 import { useMedia, usePagination } from 'hooks';
@@ -30,8 +30,9 @@ import {
   ROUTE_REFERNCE_DETAIL_WITH_ID,
   ROUTE_REFERNCE_EDIT_WITH_ID
 } from 'consts/route';
-import Image from 'next/image';
+
 import { MobileMainLists } from 'container/MobileMainLists';
+import { useRecoilValue } from 'recoil';
 
 interface TableDataType {
   id: number;
@@ -59,6 +60,7 @@ export const ReferenceLists: React.FC<ReferenceListsProps> = ({
 
   const router = useRouter();
   const { isMobile } = useMedia();
+  const isDarkMode = useRecoilValue(darkModeState);
 
   const referenceApi = useMemo(() => {
     return new ReferApi();
@@ -183,7 +185,7 @@ export const ReferenceLists: React.FC<ReferenceListsProps> = ({
       render: (_, record) => (
         <>
           <Button
-            className="btn-28 btn-primary color-white"
+            className="btn-28 btn-primary"
             type="primary"
             disabled
             onClick={() => {
@@ -206,16 +208,12 @@ export const ReferenceLists: React.FC<ReferenceListsProps> = ({
   }, [updateFilter]);
 
   return (
-    <StyledReferenceLists ismobile={isMobile}>
-      <div className="refer-head">
-        {isMobile ? (
-          <>
-            레퍼런스 모음<p>HTML, CSS, Js에 관한 레퍼런스 모음집 입니다.</p>
-          </>
-        ) : (
-          '레퍼런스'
-        )}
-      </div>
+    <StyledReferenceLists ismobile={isMobile} isDarkMode={isDarkMode}>
+      {isMobile && (
+        <div className="refer-head">
+          레퍼런스 모음<p>HTML, CSS, Js에 관한 레퍼런스 모음집 입니다.</p>
+        </div>
+      )}
       <div className="refer-body">
         {/* <div className="refer-body-button">
           <Button onClick={() => onChange('table')}>테이블</Button>

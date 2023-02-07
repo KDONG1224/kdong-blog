@@ -3,7 +3,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 
 // layouts
-import { MainLayout } from 'layouts';
+import { TistoryLayout } from 'layouts';
 
 // modules
 import { ToyApi } from 'modules/toyproject';
@@ -17,9 +17,9 @@ const ToyProjectDetailPage: React.FC<ToyProjectDetailPageProps> = ({
   toyproject
 }) => {
   return (
-    <MainLayout>
+    <TistoryLayout>
       <ToyProjectDetail data={toyproject} />
-    </MainLayout>
+    </TistoryLayout>
   );
 };
 

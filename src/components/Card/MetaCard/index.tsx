@@ -5,7 +5,7 @@ import React from 'react';
 import { StyledMetaCard } from './style';
 
 // libraries
-import { Divider, PageHeader, Tag } from 'antd';
+import { Divider, Tag } from 'antd';
 
 interface Props {
   title?: string | React.ReactNode;
@@ -44,7 +44,7 @@ export const MetaCard = ({
         visibility
       }}
     >
-      <PageHeader
+      {/* <PageHeader
         avatar={{ shape: 'square', size: 'large', icon }}
         title={
           <>
@@ -73,7 +73,7 @@ export const MetaCard = ({
         }
         style={{ padding: 0 }}
         extra={rightExtra}
-      />
+      /> */}
       {title && children && <Divider className="metaCard-divider" />}
       <div>{children}</div>
     </StyledMetaCard>

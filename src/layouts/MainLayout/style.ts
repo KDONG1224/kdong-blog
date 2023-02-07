@@ -30,8 +30,9 @@ export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
       position: fixed;
       top: -120px;
       z-index: 999;
-      background-color: #fff;
+      /* background-color: rgba(255, 255, 255, 0.4); */
       transition: 0.35s;
+      backdrop-filter: blur(10px);
 
       &.find {
         top: 0;

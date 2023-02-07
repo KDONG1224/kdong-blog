@@ -1,17 +1,30 @@
 // base
-import { BlurImage } from 'components';
-import { aboutImg } from 'consts';
-import { useMedia } from 'hooks';
 import React from 'react';
 
 // style
 import { StyledAbout } from './style';
 
+// components
+import { BlurImage } from 'components';
+
+// hooks
+import { useMedia } from 'hooks';
+
+// modules
+import { darkModeState } from 'modules';
+
+// consts
+import { aboutImg } from 'consts';
+
+// libraries
+import { useRecoilValue } from 'recoil';
+
 export const About = () => {
   const { isMobile } = useMedia();
+  const isDarkMode = useRecoilValue(darkModeState);
 
   return (
-    <StyledAbout ismobile={isMobile ? 'true' : 'false'}>
+    <StyledAbout ismobile={isMobile ? 'true' : 'false'} isDarkMode={isDarkMode}>
       <div className="about-wrapper">
         <div className="about-wrapper-title">
           <h2>
