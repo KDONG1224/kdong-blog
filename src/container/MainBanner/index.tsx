@@ -71,6 +71,9 @@ export const MainBanner: React.FC<MainBannerProps> = ({}) => {
       return window.open('https://www.instagram.com/noyclah_jdk/');
   };
 
+  const fileDropzoneLength = Array.from({ length: 10 }, (_, i) => i + 1);
+  console.log(fileDropzoneLength);
+
   return (
     <>
       {!isMobile && (
@@ -104,7 +107,3 @@ export const MainBanner: React.FC<MainBannerProps> = ({}) => {
     </>
   );
 };
-
-// 직원들의 창의성을 위해 다양한 위치에서 업무를 할 수 있게 수시로 자리를 변경하여 창의성을 지원합니다.
-
-// 매일
