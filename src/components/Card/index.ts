@@ -4,3 +4,5 @@ export * from './MetaCard';
 export * from './GuestbookCard';
 export * from './BasicCard';
 export * from './ProjectCard';
+
+export * from './ImageCard';

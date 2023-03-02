@@ -40,3 +40,6 @@ export * from './ToyProject';
 export * from './ToyProjectDetail';
 
 export * from './Guestbook';
+
+export * from './Canvas';
+export * from './CanvaView';

@@ -22,9 +22,12 @@ import { useMedia } from 'hooks';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-interface TistoryLayoutProps extends HTMLAttributes<HTMLDivElement> {}
+interface TistoryLayoutProps extends HTMLAttributes<HTMLDivElement> {
+  noPadding?: boolean;
+}
 
 export const TistoryLayout: React.FC<TistoryLayoutProps> = ({
+  noPadding = false,
   children,
   ...props
 }) => {
@@ -118,7 +121,8 @@ export const TistoryLayout: React.FC<TistoryLayoutProps> = ({
                     : 'site-layout-background'
                 }
                 style={{
-                  padding: 16,
+                  padding: noPadding ? '0' : '16px',
+                  overflow: noPadding ? 'hidden' : '',
                   minHeight: '100%',
                   maxHeight: '100%',
                   overflowY: 'scroll',

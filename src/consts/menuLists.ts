@@ -15,6 +15,12 @@ export const menuLists = [
     tabs: [{ key: '', name: '알고리즘 목록' }]
   },
   {
+    root: 'canvas',
+    key: 'canvas',
+    name: '애니메이션',
+    tabs: [{ key: '', name: 'CANVAS 목록' }]
+  },
+  {
     root: 'toy-project',
     key: 'toy-project',
     name: '토이프로젝트',
