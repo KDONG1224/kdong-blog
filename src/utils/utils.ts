@@ -13,6 +13,21 @@ export const randomNumber = (max: number, min: number) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
+export function randomNumBetween(min: number, max: number) {
+  return Math.random() * (max - min + 1) + min;
+}
+
+export function hexToRgb(hex: string) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  var rgb: { r: number; g: number; b: number } | null = result && {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  };
+
+  return result ? `${rgb?.r}, ${rgb?.g}, ${rgb?.b}` : null;
+}
+
 export const browserNameChange = (name: string) => {
   let count = 1;
 

@@ -5,6 +5,7 @@ const BROWSER_PATH = '/images/browser';
 const ABOUT_PATH = '/images/about';
 const GIF_PATH = '/images/gif';
 const KDONG_PATH = '/images/kdong';
+const CANVAS_PATH = '/images/canvas';
 
 // example
 export const EX_NUM_01 = `${EX_PATH}/ex01.jpg`;
@@ -184,4 +185,10 @@ export const instaImages = {
   INSTA_INFO_2,
   INSTA_INFO_3,
   NOISE_BG
+};
+
+export const CANVAS_CONFETTI = `${CANVAS_PATH}/canvas-confetti.png`;
+
+export const canvasThumbs = {
+  CANVAS_CONFETTI
 };
