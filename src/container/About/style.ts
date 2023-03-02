@@ -59,7 +59,7 @@ export const StyledAbout = styled.div<StyledAboutProps>`
         flex-wrap: wrap;
         flex-direction: row-reverse;
         justify-content: space-between;
-        padding-bottom: 250px;
+        padding-bottom: 100px;
 
         &-img {
           flex: 0 0 54%;
@@ -69,6 +69,57 @@ export const StyledAbout = styled.div<StyledAboutProps>`
           flex: 0 0 40%;
         }
       }
+    }
+
+    &-youtube {
+      padding-bottom: 200px;
+      height: 100%;
+      &-top {
+        border-bottom: ${({ isDarkMode }) =>
+          isDarkMode ? '1px solid #f0eeeb' : '1px solid #333'};
+      }
+
+      &-content {
+        margin-top: 20px;
+        padding-bottom: 20px;
+        height: ${({ ismobile }) => (ismobile === 'true' ? '400px' : '320px')};
+        border-bottom: ${({ isDarkMode }) =>
+          isDarkMode ? '1px solid #f0eeeb' : '1px solid #333'};
+
+        &-box {
+          /* width: 460px; */
+        }
+
+        .swiper-slide {
+          /* width: 460px !important; */
+          /* width: 100%; */
+        }
+      }
+    }
+
+    .swiper {
+      height: 100%;
+      .swiper-wrapper {
+        width: 100%;
+
+        .swiper-slide {
+          /* width: 460px !important; */
+        }
+      }
+    }
+
+    .swiper-button-next {
+      right: -20px;
+    }
+
+    .swiper-button-prev {
+      left: -30px;
+    }
+
+    .swiper-horizontal > .swiper-scrollbar,
+    .swiper-scrollbar.swiper-scrollbar-horizontal {
+      /* bottom: -3px; */
+      z-index: 99;
     }
 
     .sub-title {

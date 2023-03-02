@@ -71,7 +71,10 @@ export const TistoryLayout: React.FC<TistoryLayoutProps> = ({
               </div>
             </Sider>
           )}
-          <Layout className="site-layout">
+          <Layout
+            className="site-layout"
+            style={{ minHeight: '100vh', maxHeight: '100vh' }}
+          >
             <Header
               className={isDarkMode ? 'dark-mode' : 'site-layout-background'}
               style={

@@ -20,12 +20,15 @@ import { MainBoard } from 'container/MainBoard';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 import moment from 'moment';
+import { useRouter } from 'next/router';
 
 interface InstagramProps {
   onClick: () => void;
 }
 
 export const Instagram: React.FC<InstagramProps> = ({ onClick }) => {
+  const router = useRouter();
+
   const collapsed = useRecoilValue(collapsedState);
   const isDarkMode = useRecoilValue(darkModeState);
   const guestbookLists = useRecoilValue(guestbookListsState);
@@ -35,6 +38,10 @@ export const Instagram: React.FC<InstagramProps> = ({ onClick }) => {
     instaImages.INSTA_INFO_2,
     instaImages.INSTA_INFO_3
   ];
+
+  const handleGuestbook = () => {
+    router.replace('/guestbook');
+  };
 
   return (
     <StyledInstargram isDarkMode={isDarkMode}>
@@ -68,7 +75,9 @@ export const Instagram: React.FC<InstagramProps> = ({ onClick }) => {
             </div>
 
             <div className="insta-wrapper-body-box-middle">
-              <h2>방명록</h2>
+              <h2 onClick={handleGuestbook} style={{ cursor: 'pointer' }}>
+                방명록
+              </h2>
               {guestbookLists &&
                 [...guestbookLists]
                   .sort((a, b) => b.index - a.index)
