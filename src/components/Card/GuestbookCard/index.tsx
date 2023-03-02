@@ -47,15 +47,8 @@ export const GuestbookCard: React.FC<GuestbookCardProps> = ({ guestbook }) => {
   if (!guestbook) return <div />;
 
   return (
-    <StyledGuestbookCard ismobile={ismobile}>
-      <div
-        className="card-wrapper"
-        style={{
-          background: `${bgColor}`,
-          borderRadius: 16,
-          overflow: 'hidden'
-        }}
-      >
+    <StyledGuestbookCard ismobile={ismobile} bgColor={bgColor}>
+      <div className="card-wrapper">
         <div className="card-wrapper-content">
           <h2>{name === 'undefined' ? '익명의 게스트' : name}</h2>
           <p>{moment(createdAt).format('YYYY-MM-DD, HH:mm')}</p>

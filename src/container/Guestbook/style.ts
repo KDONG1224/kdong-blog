@@ -19,13 +19,30 @@ export const StyledGuestbook = styled.div<StyledGuestbookProps>`
       }
     }
 
+    &-write {
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
     &-content {
-      display: grid;
+      ${({ ismobile }) =>
+        ismobile
+          ? ''
+          : `display: flex;
+          align-items: top;
+          justify-content: space-between;
+          gap: 36px;`}
+
+      &-cards {
+        width: 42%;
+      }
+      /* display: grid;
       flex-wrap: wrap;
       grid-template-columns: ${({ ismobile }) =>
         ismobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)'};
       gap: 40px;
-      height: 100%;
+      height: 100%; */
       /* aspect-ratio: auto 1 / 1;  */
     }
   }

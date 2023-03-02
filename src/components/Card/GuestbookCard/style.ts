@@ -3,15 +3,20 @@ import styled from 'styled-components';
 
 interface StyledGuestbookCardProps {
   ismobile: boolean;
+  bgColor: string;
 }
 
 export const StyledGuestbookCard = styled.div<StyledGuestbookCardProps>`
   .card-wrapper {
     width: 100%;
-    /* height: 100%; */
-    background: url(${instaImages.NOISE_BG}) center top / cover no-repeat;
+    background: ${({ bgColor }) =>
+      bgColor
+        ? `url(${instaImages.NOISE_BG}) ${bgColor} center top / cover no-repeat;`
+        : '#fff'};
     backdrop-filter: blur(50px);
     border-radius: 16px;
+    margin-bottom: 40px;
+    overflow: hidden;
 
     &-content {
       padding: 20px;
