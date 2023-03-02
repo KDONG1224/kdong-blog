@@ -177,9 +177,11 @@ export const darkModeIcon = {
 export const INSTA_INFO_1 = `${KDONG_PATH}/insta-info-1.png`;
 export const INSTA_INFO_2 = `${KDONG_PATH}/insta-info-2.png`;
 export const INSTA_INFO_3 = `${KDONG_PATH}/insta-info-3.png`;
+export const NOISE_BG = `${KDONG_PATH}/noise.png`;
 
 export const instaImages = {
   INSTA_INFO_1,
   INSTA_INFO_2,
-  INSTA_INFO_3
+  INSTA_INFO_3,
+  NOISE_BG
 };

@@ -41,10 +41,12 @@ export const StyledTistoryLayout = styled.div<StyledTistoryLayoutProps>`
 
   .site-layout-background {
     background: #f0eeeb;
+    /* transition: background 500ms; */
   }
 
   .site-layout-background-dark {
     background: #000;
+    /* transition: background 500ms; */
   }
 
   .ant-layout-sider {

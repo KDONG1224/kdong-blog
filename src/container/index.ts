@@ -38,3 +38,5 @@ export * from './AlcholCupGame';
 
 export * from './ToyProject';
 export * from './ToyProjectDetail';
+
+export * from './Guestbook';

@@ -14,10 +14,16 @@ import { useMedia } from 'hooks';
 import { darkModeState } from 'modules';
 
 // consts
-import { aboutImg } from 'consts';
+import { aboutImg, youtubeKeyLists, youtubeOptions } from 'consts';
 
 // libraries
 import { useRecoilValue } from 'recoil';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { A11y, Autoplay, Navigation, Scrollbar } from 'swiper';
+import YouTube from 'react-youtube';
+import { YoutubeSlider } from 'components/Youtube';
+
+SwiperCore.use([Autoplay]);
 
 export const About = () => {
   const { isMobile } = useMedia();
@@ -99,6 +105,14 @@ export const About = () => {
                 자신한테 더 정직해야 한다.
               </p>
             </div>
+          </div>
+        </div>
+        <div className="about-wrapper-youtube">
+          <div className="about-wrapper-youtube-top">
+            <h2 className="sub-title">영상 속 KDONG 확인하기</h2>
+          </div>
+          <div className="about-wrapper-youtube-content">
+            <YoutubeSlider />
           </div>
         </div>
       </div>
