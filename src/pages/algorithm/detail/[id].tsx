@@ -3,7 +3,7 @@ import React from 'react';
 import type { GetServerSideProps } from 'next';
 
 // layouts
-import { MainLayout } from 'layouts';
+import { TistoryLayout } from 'layouts';
 
 // container
 import { AlgorithmDetails } from 'container';
@@ -17,9 +17,9 @@ const AlgorithmDetailPage: React.FC<AlgorithmDetailPageProps> = ({
   algorithm
 }) => {
   return (
-    <MainLayout>
+    <TistoryLayout>
       <AlgorithmDetails data={algorithm} />
-    </MainLayout>
+    </TistoryLayout>
   );
 };
 

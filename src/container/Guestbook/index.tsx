@@ -120,6 +120,7 @@ export const Guestbook: React.FC<GuestbookProps> = ({ guestbookLists }) => {
 
           <div className="guest-wrapper-content">
             {ismobile &&
+              datas &&
               datas
                 .sort((a, b) => b.index - a.index)
                 .map((guestbook) => (

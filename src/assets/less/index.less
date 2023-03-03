@@ -76,6 +76,28 @@ code {
   // transition: background 500ms;
 }
 
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 18px;
+  cursor: pointer;
+
+  .bar {
+    width: 24px;
+    height: 2px;
+    background-color: #000;
+  }
+
+  &.dark {
+    .bar {
+      width: 24px;
+      height: 2px;
+      background-color: #fff;
+    }
+  }
+}
+
 .nav-text {
   font-size: 1rem;
   font-family: 'GmarketSans-Medium';
@@ -166,6 +188,14 @@ code {
 }
 .ant-menu-title-content .menu-icon.canvas {
   background: url('/images/icons/api.png') center center / cover no-repeat;
+}
+
+.mobile-menu-drawer {
+  background: #f0eeeb !important;
+
+  &.dark {
+    background: #000 !important;
+  }
 }
 
 // .ant-form-item-label
