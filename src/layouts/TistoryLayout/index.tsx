@@ -5,7 +5,7 @@ import React, { HTMLAttributes, useState } from 'react';
 import { StyledTistoryLayout } from './style';
 
 // components
-import { LogoBox } from 'components';
+import { CommonDrawer, LogoBox } from 'components';
 
 // modules
 import { collapsedState, darkModeState } from 'modules';
@@ -19,6 +19,7 @@ import { Instagram } from 'container';
 import { menuLists } from 'consts/menuLists';
 import { MainMenu } from 'container/MainMenu';
 import { useMedia } from 'hooks';
+import { arrowIcons } from 'consts';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -34,6 +35,7 @@ export const TistoryLayout: React.FC<TistoryLayoutProps> = ({
   const [collapsed, setCollapsed] = useRecoilState(collapsedState);
   const [isDarkMode, setIsDarkMode] = useRecoilState(darkModeState);
   const [isInsta, setIsInsta] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const { isMobile } = useMedia();
 
@@ -45,6 +47,10 @@ export const TistoryLayout: React.FC<TistoryLayoutProps> = ({
 
   const onClickKdong = () => {
     setIsInsta((prev) => !prev);
+  };
+
+  const onClickMobileMenu = () => {
+    setMobileMenu((prev) => !prev);
   };
 
   return (
@@ -103,6 +109,25 @@ export const TistoryLayout: React.FC<TistoryLayoutProps> = ({
                   )}
                 </>
               )}
+              {isMobile && (
+                // <div
+                //   onClick={onClickMobileMenu}
+                //   style={{
+                //     width: 25,
+                //     height: 25,
+                //     background: `url(${arrowIcons.HEADER_RIGHT_ICON})center center / contain no-repeat`,
+                //     cursor: 'pointer'
+                //   }}
+                // />
+                <div
+                  className={`hamburger-menu ${isDarkMode ? 'dark' : ''}`}
+                  onClick={onClickMobileMenu}
+                >
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                </div>
+              )}
               <div style={{ textAlign: 'center' }}>KDONG&apos;s Portfolio</div>
               <Switch
                 checkedChildren={<div className="mode-icon dark" />}
@@ -156,6 +181,18 @@ export const TistoryLayout: React.FC<TistoryLayoutProps> = ({
         </Layout>
       </StyledTistoryLayout>
       {isInsta && <Instagram onClick={onClickKdong} />}
+      <CommonDrawer
+        open={mobileMenu}
+        width="50%"
+        placement="left"
+        onClose={onClickMobileMenu}
+        closable={false}
+        className={`mobile-menu-drawer ${isDarkMode ? 'dark' : ''}`}
+      >
+        <div className="mobile-menu-item">
+          <MainMenu />
+        </div>
+      </CommonDrawer>
     </ConfigProvider>
   );
 };
