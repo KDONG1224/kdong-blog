@@ -1,9 +1,4 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios';
-import qs from 'qs';
-
-// service
-import { STORAGE_SESSION_ICT } from './storage';
-import { cookieStorage, COOKIE_ACCESS_TOKEN } from './cookie';
 
 export const extractErrorMsgV3 = (error: AxiosError<any>) => {
   if (!error.response) {
@@ -19,9 +14,9 @@ class AxiosServerInstanceCreator {
   constructor(config?: AxiosRequestConfig) {
     this.#instance = axios.create(config);
     this.#instance.defaults.params = {};
-    this.#instance.defaults.paramsSerializer = (params = {}) => {
-      return qs.stringify(params, { encode: true });
-    };
+    // this.#instance.defaults.paramsSerializer = (params = {}) => {
+    //   return qs.stringify(params, { encode: true });
+    // };
 
     this.interceptors();
   }

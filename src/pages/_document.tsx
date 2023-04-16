@@ -1,96 +1,37 @@
-/* eslint-disable @next/next/no-sync-scripts */
-import Document, { DocumentContext } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import { Html, Head, Main, NextScript } from 'next/document';
 
-export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head>
+        <meta name="theme-color" content="#000000" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/favicon/76.png" />
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />)
-        });
-
-      const initialProps = await Document.getInitialProps(ctx);
-      return {
-        ...initialProps,
-        styles: [
-          <>
-            <meta charSet="utf-8" />
-            <meta name="author" content="imform" />
-            <meta name="copyright" content="imform" />
-            <meta property="og:locale" content="ko_KR" />
-            <meta name="robots" content="all" />
-            <meta name="Googlebot" content="index, follow" />
-            <meta name="title" content="동재의 포트폴리오" />
-            <meta name="description" content="밥 --- 값하는 개발자 강동재" />
-            <meta name="keywords" content="강동재, 밥값, 프론트엔드, KDONG" />
-            <meta name="og:site_name" content="동재의 포트폴리오" />
-            <meta name="og:title" content="동재의 포트폴리오" />
-            <meta name="og:description" content="밥 --- 값하는 개발자 강동재" />
-            <meta name="og:type" content="website" />
-            <meta
-              httpEquiv="Content-Security-Policy"
-              content="upgrade-insecure-requests"
-            />
-            {/* <meta name="og:url" content={`${process.env.NEXT_PUBLIC_URL}`} /> */}
-            <meta
-              name="og:image"
-              content="https://avatars.githubusercontent.com/u/87642774?v=4"
-            />
-            <meta name="twitter:card" content="summary" />
-            <meta name="twitter:title" content="동재의 포트폴리오" />
-            <meta
-              name="twitter:description"
-              content="밥 --- 값하는 개발자 강동재"
-            />
-            <meta
-              name="twitter:image"
-              content="https://avatars.githubusercontent.com/u/87642774?v=4"
-            />
-            <title>KDONG 포트폴리오</title>
-
-            {/* 추후 적용 */}
-            {/* <meta name="google-site-verification" content="" />
-            <meta name="Naverbot" content="noindex, nofollow, noarchive" />
-            <meta name="Yeti" content="noindex, nofollow, noarchive" />
-            <meta name="Daumoa" content="noindex, nofollow, noarchive" />
-            <meta name="Zumbot" content="noindex, nofollow, noarchive" />
-            <meta name="Bingbot" content="noindex, nofollow, noarchive" />
-            <meta name="Yandex" content="noindex, nofollow, noarchive" />
-            <meta name="DuckDuckBot" content="noindex, nofollow, noarchive" />
-            <meta name="Baiduspider" content="noindex, nofollow, noarchive" />
-            <meta name="Slurp" content="noindex, nofollow, noarchive" />
-            <meta name="msnbot" content="noindex, nofollow, noarchive" /> */}
-            {/* 페이지별 head로 정의 */}
-            {/* <meta name="title" content="KDONG" />
-            <meta name="description" content="oasis" />
-            <meta name="keywords" content="oasis" />
-            <meta name="og:site_name" content="" />
-            <meta name="og:title" content="" />
-            <meta name="og:description" content="" />
-            <meta name="og:type" content="" />
-            <meta name="og:url" content="" />
-            <meta name="og:image" content="" />
-            <meta name="twitter:card" content="" />
-            <meta name="twitter:title" content="" />
-            <meta name="twitter:description" content="" />
-            <meta name="twitter:image" content="" />
-            <meta name="twitter:domain" content="" />
-            <meta name="twitter:site" content="@OfficialSpemer" />
-            <meta name="twitter:creator" content="@OfficialSpemer" />
-            <meta name="canonical" content="" /> */}
-
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ]
-      };
-    } finally {
-      sheet.seal();
-    }
-  }
+        {/* <link rel="apple-touch-icon" sizes="57x57" href="./icons/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="./icons/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="./icons/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="./icons/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="./icons/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="./icons/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="./icons/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="./icons/apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="./icons/favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="./icons/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="./icons/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="./icons/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="./icons/favicon-128.png" sizes="128x128" />
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="mstile-310x310.png" /> */}
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
 }

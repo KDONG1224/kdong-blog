@@ -1,6 +1,6 @@
 // base
-import { ImageProps } from 'next/image';
 import React from 'react';
+import { ImageProps } from 'next/image';
 
 // style
 import { StyledBlurImage } from './style';
@@ -15,8 +15,9 @@ export const BlurImage: React.FC<BlurImageProps> = ({
 }) => {
   return (
     <StyledBlurImage
-      style={round ? { borderRadius: 100 } : {}}
+      style={round ? { borderRadius: '50%' } : {}}
       placeholder="blur"
+      quality={100}
       // blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       {...props}

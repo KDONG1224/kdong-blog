@@ -1,39 +1,43 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
-const withLess = require('next-with-less');
 const withImages = require('next-images');
 const withFonts = require('next-fonts');
-const withAntdMobile = require('next-transpile-modules')(['antd-mobile']);
+const withPWA = require('next-pwa');
 const withPlugins = require('next-compose-plugins');
 
-module.exports = withFonts();
-
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  images: {
-    disableStaticImages: true,
-    domains: [
-      's3.ap-northeast-2.amazonaws.com',
-      'kdong-portfolio.s3.amazonaws.com',
-      'oasis-1302397712.cos.ap-seoul.myqcloud.com',
-      'gw.alipayobjects.com',
-      'kdong-portfolio.s3.ap-northeast-2.amazonaws.com'
-    ]
-  },
+  reactStrictModem: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   },
-  compiler: {
-    styledComponents: true
-  },
-  reactStrictMode: false,
+  // compiler: {
+  //   styledComponents: true
+  // },
   experimental: {
-    reactMode: 'concurrent'
+    forceSwcTransforms: true
+  },
+  images: {
+    disableStaticImages: true,
+    domains: [
+      'kdong-portfolio.s3.amazonaws.com',
+      'kdong-portfolio.s3.ap-northeast-2.amazonaws.com',
+      'img.youtube.com'
+    ]
   }
 };
 
+const withPWACustom = withPWA({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV !== 'production',
+  runtimeCaching: [],
+  buildExcludes: [/app-build-manifest.json$/]
+})(nextConfig);
+
+module.exports = withPWACustom;
+
 module.exports = withPlugins(
-  [withImages, withFonts, withLess, withAntdMobile],
+  [withPWACustom, withFonts, withImages],
   nextConfig
 );

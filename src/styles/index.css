@@ -1,0 +1,36 @@
+@import './reset.css';
+@import './fonts.css';
+@import './loading.css';
+
+html {
+  font-size: 10px;
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+body {
+  font-family: 'theJamsil-400';
+}
+
+/* 1줄 */
+.line-one {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  white-space: break-spaces !important;
+}
+
+/* 2줄 */
+.line-two {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  white-space: break-spaces !important;
+}
