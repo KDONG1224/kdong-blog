@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios';
-import qs from 'qs';
 
 // service
 import { STORAGE_SESSION_ICT } from './storage';
@@ -19,22 +18,24 @@ class AxiosInstanceCreator {
 
   constructor(config?: AxiosRequestConfig) {
     this.#instance = axios.create(config);
-    this.#instance.defaults.paramsSerializer = (params = {}) => {
-      if (params.filter) {
-        params.filter = `${encodeURIComponent(JSON.stringify(params.filter))}`;
-      }
+    // this.#instance.defaults.paramsSerializer = (
+    //   params: ParamsSerializerOptions | any
+    // ) => {
+    //   if (params.filter) {
+    //     params.filter = `${encodeURIComponent(JSON.stringify(params.filter))}`;
+    //   }
 
-      if (params.where) {
-        params.where = `${encodeURIComponent(JSON.stringify(params.where))}`;
-      }
+    //   if (params.where) {
+    //     params.where = `${encodeURIComponent(JSON.stringify(params.where))}`;
+    //   }
 
-      return qs.stringify(params, { encode: false });
-    };
+    //   return qs.stringify(params, { encode: false });
+    // };
 
     this.interceptors();
   }
   interceptors() {
-    this.#instance.interceptors.request.use((config) => {
+    this.#instance.interceptors.request.use((config: any) => {
       if (!config.headers) return;
 
       if (typeof window === 'object') {

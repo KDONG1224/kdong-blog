@@ -1,0 +1,54 @@
+/* 더 잠실체 */
+@font-face {
+  font-family: 'theJamsil-100';
+  src: url('/fonts/theJamsil/TheJamsilOTF1Thin.woff2') format('woff2'),
+    url('/fonts/theJamsil/TheJamsilOTF1Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'theJamsil-200';
+  src: url('/fonts/theJamsil/TheJamsilOTF2Light.woff2') format('woff2'),
+    url('/fonts/theJamsil/TheJamsilOTF2Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'theJamsil-300';
+  src: url('/fonts/theJamsil/TheJamsilOTF3Regular.woff2') format('woff2'),
+    url('/fonts/theJamsil/TheJamsilOTF3Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'theJamsil-400';
+  src: url('/fonts/theJamsil/TheJamsilOTF4Medium.woff2') format('woff2'),
+    url('/fonts/theJamsil/TheJamsilOTF4Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'theJamsil-500';
+  src: url('/fonts/theJamsil/TheJamsilOTF5Bold.woff2') format('woff2'),
+    url('/fonts/theJamsil/TheJamsilOTF5Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'theJamsil-600';
+  src: url('/fonts/theJamsil/TheJamsilOTF6ExtraBold.woff2') format('woff2'),
+    url('/fonts/theJamsil/TheJamsilOTF6ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}

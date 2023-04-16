@@ -1,9 +1,9 @@
 export const makeid = (length: number) => {
-  var result = '';
-  var characters =
+  let result = '';
+  const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
@@ -18,8 +18,8 @@ export function randomNumBetween(min: number, max: number) {
 }
 
 export function hexToRgb(hex: string) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  var rgb: { r: number; g: number; b: number } | null = result && {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const rgb: { r: number; g: number; b: number } | null = result && {
     r: parseInt(result[1], 16),
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16)
@@ -29,7 +29,7 @@ export function hexToRgb(hex: string) {
 }
 
 export const browserNameChange = (name: string) => {
-  let count = 1;
+  const count = 1;
 
   console.log(name);
 
