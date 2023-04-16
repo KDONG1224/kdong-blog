@@ -9,20 +9,23 @@ import { BlurImage } from 'components';
 // hooks
 import { useInterval } from 'hooks';
 
-// const
-import { mainBanner } from 'consts';
+// constㄴ
+import { backgroundImages } from 'consts';
 
 const ErrorPage: NextPage = () => {
   const router = useRouter();
+
   const [state, setState] = useState(5);
   const [isRunning, setIsRunning] = useState(true);
 
   useEffect(() => {
     if (state < 1) {
       setIsRunning(false);
-      const prevPath = globalThis.sessionStorage.getItem('prevPath');
-      if (prevPath) router.back();
-      else router.push('/');
+      // const prevPath = globalThis.sessionStorage.getItem('prevPath');
+      // if (prevPath) router.back();
+      // else router.push('/')
+
+      router.push('/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
@@ -43,17 +46,16 @@ const ErrorPage: NextPage = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        fontFamily: 'Pretendard-Bold',
-        fontSize: 28,
+        fontSize: '2rem',
         textAlign: 'center'
       }}
     >
       <div>
         <div>
           <BlurImage
-            src={mainBanner.NOT_IMAGE}
-            width={540}
-            height={540}
+            src={backgroundImages.MY_IMAGE}
+            width={250}
+            height={250}
             alt=""
           />
         </div>
@@ -65,7 +67,7 @@ const ErrorPage: NextPage = () => {
         >
           <div>불편을 드려 죄송합니다.</div>
           <div>잠시 후 다시 시도해주세요.</div>
-          <div>{state}초 뒤 이전 페이지로 돌아갑니다</div>
+          <div>{state}초 뒤 메인 페이지로 돌아갑니다</div>
         </div>
       </div>
     </div>

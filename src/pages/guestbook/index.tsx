@@ -2,42 +2,17 @@
 import React from 'react';
 
 // layouts
-import { TistoryLayout } from 'layouts';
+import { MainLayout } from 'layouts';
 
-// container
-import { Guestbook } from 'container';
-import { GetServerSideProps } from 'next';
-import { GuestbookApi } from 'modules/guestbook';
+// containers
+import { Guestbook } from 'containers';
 
-interface GuestbookPageProps {
-  guestbookLists: any[];
-}
-
-const GuestbookPage: React.FC<GuestbookPageProps> = ({ guestbookLists }) => {
+const GuestbookPage = () => {
   return (
-    <TistoryLayout>
-      <Guestbook guestbookLists={guestbookLists} />
-    </TistoryLayout>
+    <MainLayout>
+      <Guestbook />
+    </MainLayout>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const guestbookApi = new GuestbookApi();
-    const allGuestbookLists = await guestbookApi.getAllGuestbook();
-
-    return {
-      props: {
-        guestbookLists: allGuestbookLists || []
-      }
-    };
-  } catch (error) {
-    console.error(error);
-
-    return {
-      notFound: true
-    };
-  }
 };
 
 export default GuestbookPage;
