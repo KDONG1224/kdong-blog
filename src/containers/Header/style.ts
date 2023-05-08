@@ -52,6 +52,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
           display: grid;
           place-items: center;
           padding: 0.2rem 0.6rem;
+          background-color: #fff;
         }
       }
 

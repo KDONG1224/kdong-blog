@@ -47,7 +47,7 @@ export const Footer = () => {
             <li>밥값하는 개발자</li>
             <li>대표자. 강동재</li>
             <li>경기도 안산시 거주중</li>
-            <li>© 2021. KDONG. All rights reserved.</li>
+            <li>© 2023. KDONG. All rights reserved.</li>
           </ul>
         </div>
         <div className="footer-wrapper-right">

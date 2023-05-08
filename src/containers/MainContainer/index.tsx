@@ -11,6 +11,7 @@ import { BasicImage, BlurImage, FaqList, HomBanner, ListBox } from 'components';
 // consts
 import {
   ROUTE_WANTED,
+  algorithmList,
   bannerImages,
   commonIcons,
   faqList,
@@ -31,6 +32,8 @@ export const MainContainer = () => {
     router.push(path);
   };
 
+  console.log(algorithmList.filter((item) => item.recommand));
+
   return (
     <StyledMain ismobile={isMobile}>
       <div className="main-wrapper">
@@ -44,7 +47,7 @@ export const MainContainer = () => {
               subHeaderTitle="KDONG이 추천하는 글을 둘러보세요 :)"
               lists={[...recommandList, ...recommandList]}
               type="check"
-              delay={5000}
+              delay={4400}
             />
           </div>
         </div>
@@ -82,7 +85,7 @@ export const MainContainer = () => {
             <ListBox
               headerTitle="알고리즘 문제풀이"
               subHeaderTitle="다양한 알고리즘 문제를 풀어보았어요 :)"
-              lists={[...recommandList, ...recommandList]}
+              lists={algorithmList.filter((item) => item.recommand)}
               type="image"
             />
           </div>

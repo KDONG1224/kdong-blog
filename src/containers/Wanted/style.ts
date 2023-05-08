@@ -55,9 +55,17 @@ export const StyledWanted = styled.div<StyledWantedFormProps>`
         }
 
         ol {
+          list-style-type: decimal;
+          list-style-position: inside;
+
           > li {
             line-height: 1.5;
-            margin-left: 15px;
+            text-indent: -15px;
+            padding-left: 15px;
+
+            &::marker {
+              font-size: 14px;
+            }
           }
         }
       }
