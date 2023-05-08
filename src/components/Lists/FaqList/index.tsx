@@ -1,5 +1,5 @@
 // base
-import React, { useId } from 'react';
+import React, { useId, useState } from 'react';
 
 // style
 import { StyledFaqList } from './style';
@@ -9,23 +9,52 @@ import { ResponseFaqListProps } from 'consts';
 
 // hooks
 import { useMedia } from 'hooks';
+import {
+  Accordion,
+  AccordionSummary,
+  Typography,
+  AccordionDetails
+} from '@mui/material';
 
 interface FaqListProps {
   faqList: ResponseFaqListProps[];
 }
 
 export const FaqList: React.FC<FaqListProps> = ({ faqList }) => {
+  const [isExpanded, setIsExpanded] = useState<string | false>(false);
+
   const id = useId();
   const { isMobile } = useMedia();
+
+  const handleChange =
+    (panel: string) => (e: React.SyntheticEvent, newExpanded: boolean) => {
+      setIsExpanded(newExpanded ? panel : false);
+    };
 
   return (
     <StyledFaqList ismobile={isMobile}>
       <div className="faq-wrapper">
-        {faqList?.map(({ key, title }) => (
-          <div className="faq-wrapper-content" key={id + key}>
-            <div className="faq-wrapper-content-title">Q. {title}</div>
-            <div className="faq-wrapper-content-btn" />
-          </div>
+        {faqList?.map(({ key, title, desc }) => (
+          <Accordion
+            key={id}
+            expanded={isExpanded === key.toString()}
+            onChange={handleChange(key.toString())}
+            className="faq-wrapper-content"
+          >
+            <AccordionSummary
+              id={`${key}-header`}
+              aria-controls={`${key}-content`}
+              expandIcon={<div className="faq-wrapper-content-btn" />}
+              className="faq-wrapper-content-summary"
+            >
+              <div className="faq-wrapper-content-summary-title">
+                Q. {title}
+              </div>
+            </AccordionSummary>
+            <AccordionDetails className="faq-wrapper-content-details">
+              <div className="faq-wrapper-content-details-desc">A. {desc}</div>
+            </AccordionDetails>
+          </Accordion>
         ))}
       </div>
     </StyledFaqList>

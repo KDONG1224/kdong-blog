@@ -10,16 +10,39 @@ export const StyledFaqList = styled.div<StyledFaqListProps>`
   .faq-wrapper {
     width: ${({ ismobile }) => (ismobile ? '100%' : '1000px')};
 
+    & .MuiAccordionSummary-content {
+      margin: ${({ ismobile }) => (ismobile ? '18px 0' : '22px 0')} !important;
+    }
+
     &-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 10px;
+      box-shadow: none !important;
       border-bottom: 2px solid #000;
 
-      &-title {
-        font-family: Pretendard-Medium;
-        font-size: ${({ ismobile }) => (ismobile ? '14px' : '22px')};
+      &.Mui-expanded {
+        margin: 0 !important;
+      }
+
+      &-summary {
+        min-height: auto !important;
+        border-top: 0 !important;
+
+        &-title {
+          font-family: Pretendard-Medium;
+          font-size: ${({ ismobile }) => (ismobile ? '14px' : '22px')};
+        }
+      }
+
+      &-details {
+        margin-left: ${({ ismobile }) => (ismobile ? '20px' : '28px')};
+        margin-top: ${({ ismobile }) => ismobile && '-10px'};
+
+        &-desc {
+          font-family: Pretendard-Regular;
+          font-size: ${({ ismobile }) => (ismobile ? '14px' : '22px')};
+          text-indent: ${({ ismobile }) => ismobile && '-17px'};
+          padding-left: ${({ ismobile }) => ismobile && '17px'};
+          line-height: 1.3;
+        }
       }
 
       &-btn {

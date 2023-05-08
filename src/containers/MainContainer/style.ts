@@ -150,7 +150,7 @@ export const StyledMain = styled.div<StyledMainProps>`
 
       &-left {
         font-family: Pretendard-Bold;
-        font-size: ${({ ismobile }) => (ismobile ? '20px' : '23px')};
+        font-size: ${({ ismobile }) => (ismobile ? '20px' : '26px')};
         line-height: 1.3;
         color: #f43f00;
         margin-bottom: ${({ ismobile }) => ismobile && '10px'};

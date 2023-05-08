@@ -8,13 +8,13 @@ import { StyledCheckCard } from './style';
 import { BasicImage } from 'components';
 
 // consts
-import { RecommandListProps } from 'consts';
+import { AlgorithmListProps, RecommandListProps } from 'consts';
 
 // hooks
 import { useMedia } from 'hooks';
 
 interface CheckCardProps {
-  data: RecommandListProps;
+  data: RecommandListProps | AlgorithmListProps;
   type?: 'check' | 'polygon' | 'image';
 }
 
