@@ -18,6 +18,8 @@ export const BlurImage: React.FC<BlurImageProps> = ({
       style={round ? { borderRadius: '50%' } : {}}
       placeholder="blur"
       quality={100}
+      fill
+      sizes="100vw"
       // blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       {...props}

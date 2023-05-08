@@ -1,67 +1,110 @@
 // base
-import React, { useMemo } from 'react';
+import React from 'react';
+import { useRouter } from 'next/router';
 
 // style
-import { StyledMainContainer } from './style';
+import { StyledMain } from './style';
 
 // components
-import { MainBanner, TistoryCard } from 'components';
-
-// modules
-import { selectThemeState } from 'modules';
-import { EverythingApi, ResponseEverything } from 'modules/everything';
+import { BasicImage, BlurImage, FaqList, HomBanner, ListBox } from 'components';
 
 // consts
-import { QUERY_EVERYTHING } from 'consts';
+import {
+  ROUTE_WANTED,
+  bannerImages,
+  commonIcons,
+  faqList,
+  recommandList
+} from 'consts';
 
-// libraries
-import { Button } from '@mui/material';
-import { useRecoilValue } from 'recoil';
-import { useQuery } from '@tanstack/react-query';
-import nProgress from 'nprogress';
+// hooks
+import { useMedia } from 'hooks';
 
 export const MainContainer = () => {
-  const selectTheme = useRecoilValue(selectThemeState);
+  const { isMobile } = useMedia();
+  const router = useRouter();
 
-  const everythingApi = useMemo(() => {
-    return new EverythingApi();
-  }, []);
-
-  const getFilterEverything = (number: number) => {
-    if (!everythingApi) return Promise.reject([]);
-
-    return everythingApi.getFilterEverything(number);
+  const handleMove = (path: string) => {
+    router.push(path);
   };
 
-  const { data } = useQuery<ResponseEverything[]>(
-    [QUERY_EVERYTHING, nProgress],
-    () => getFilterEverything(5),
-    { select: (data) => data }
-  );
-
   return (
-    <StyledMainContainer isDarkMode={selectTheme}>
+    <StyledMain ismobile={isMobile}>
       <div className="main-wrapper">
-        <div className="main-wrapper-top">
-          <MainBanner />
+        <div className="main-wrapper-banner container">
+          <HomBanner />
         </div>
-
-        {data &&
-          data.length > 0 &&
-          data.map((list) => (
-            <div
-              key={list.id}
-              data-aos="fade-up"
-              className="main-wrapper-middle"
-            >
-              <TistoryCard data={list} />
+        <div className="main-wrapper-recommand">
+          <div className="main-wrapper-recommand-box container">
+            <ListBox
+              headerTitle="지금 주목할 만한 추천글"
+              subHeaderTitle="KDONG이 추천하는 글을 둘러보세요 :)"
+              lists={[...recommandList, ...recommandList]}
+              type="check"
+            />
+          </div>
+        </div>
+        <div className="main-wrapper-subBanner container">
+          <div className="main-wrapper-subBanner-left">
+            <div>
+              <BlurImage src={bannerImages.IMAGE_BANNER_INSTAGRAM} alt="" />
             </div>
-          ))}
-
-        <div className="main-wrapper-bottom">
-          <Button>더 보기</Button>
+          </div>
+          <div className="main-wrapper-subBanner-right">
+            <div>
+              <BlurImage src={bannerImages.IMAGE_BANNER_GITHUB} alt="" />
+            </div>
+          </div>
+        </div>
+        <div className="main-wrapper-project">
+          <div className="main-wrapper-project-box container">
+            <ListBox
+              headerTitle="지금까지 PROJECT"
+              subHeaderTitle="지금까지 진행했던 프로젝트를 구경해보세요 :)"
+              lists={[...recommandList, ...recommandList]}
+              type="polygon"
+            />
+          </div>
+        </div>
+        <div className="main-wrapper-algorithm">
+          <div className="main-wrapper-algorithm-box container">
+            <ListBox
+              headerTitle="알고리즘 문제풀이"
+              subHeaderTitle="다양한 알고리즘 문제를 풀어보았어요 :)"
+              lists={[...recommandList, ...recommandList]}
+              type="image"
+            />
+          </div>
+        </div>
+        <div className="main-wrapper-bottomBanner container">
+          <div className="main-wrapper-bottomBanner-left">
+            <span>WANTED</span>
+          </div>
+          <div className="main-wrapper-bottomBanner-center">
+            <p>새로운 개발 인재를 찾고 있다면</p>
+            <p>KDONG은 후회없는 선택입니다.</p>
+          </div>
+          <div
+            className="main-wrapper-bottomBanner-right"
+            onClick={() => handleMove(ROUTE_WANTED)}
+          >
+            <div className="main-wrapper-bottomBanner-right-box">
+              <BasicImage
+                src={commonIcons.ICON_RIGHT_ARROW}
+                alt="오른쪽 화살표 아이콘"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="main-wrapper-faq container">
+          <div className="main-wrapper-faq-left">
+            <span>FAQ</span>
+          </div>
+          <div className="main-wrapper-faq-right">
+            <FaqList faqList={faqList} />
+          </div>
         </div>
       </div>
-    </StyledMainContainer>
+    </StyledMain>
   );
 };

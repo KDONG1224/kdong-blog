@@ -6,3 +6,7 @@ export * from './Cards';
 export * from './Texts';
 export * from './Banners';
 export * from './Tabs';
+export * from './Boxes';
+export * from './Swipers';
+export * from './Lists';
+export * from './Forms';

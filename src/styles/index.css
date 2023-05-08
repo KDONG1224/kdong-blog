@@ -4,13 +4,19 @@
 
 html {
   font-size: 10px;
-  max-width: 750px;
   width: 100%;
   margin: 0 auto;
 }
 
 body {
-  font-family: 'theJamsil-400';
+  font-family: Pretendard-Regular;
+}
+
+.container {
+  max-width: 1480px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 /* 1줄 */
@@ -33,4 +39,10 @@ body {
   -webkit-box-orient: vertical;
   word-break: break-all;
   white-space: break-spaces !important;
+}
+
+@media (max-width: 1500px) {
+  .container {
+    max-width: 96vw;
+  }
 }

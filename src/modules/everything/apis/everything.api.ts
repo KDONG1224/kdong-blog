@@ -7,7 +7,7 @@ export class EverythingApi {
 
   constructor() {
     this.Axios = new AxiosInstanceCreator({
-      baseURL: 'http://localhost:80' + '/everything'
+      baseURL: process.env.NEXT_PUBLIC_KDONG_API_URL + '/everything'
     }).create();
   }
 
