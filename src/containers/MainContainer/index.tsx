@@ -20,6 +20,9 @@ import {
 // hooks
 import { useMedia } from 'hooks';
 
+// libs
+import { windowLocation } from 'libs';
+
 export const MainContainer = () => {
   const { isMobile } = useMedia();
   const router = useRouter();
@@ -41,16 +44,23 @@ export const MainContainer = () => {
               subHeaderTitle="KDONG이 추천하는 글을 둘러보세요 :)"
               lists={[...recommandList, ...recommandList]}
               type="check"
+              delay={5000}
             />
           </div>
         </div>
         <div className="main-wrapper-subBanner container">
-          <div className="main-wrapper-subBanner-left">
+          <div
+            className="main-wrapper-subBanner-left"
+            onClick={() => windowLocation('instagram')}
+          >
             <div>
               <BlurImage src={bannerImages.IMAGE_BANNER_INSTAGRAM} alt="" />
             </div>
           </div>
-          <div className="main-wrapper-subBanner-right">
+          <div
+            className="main-wrapper-subBanner-right"
+            onClick={() => windowLocation('github')}
+          >
             <div>
               <BlurImage src={bannerImages.IMAGE_BANNER_GITHUB} alt="" />
             </div>
@@ -63,6 +73,7 @@ export const MainContainer = () => {
               subHeaderTitle="지금까지 진행했던 프로젝트를 구경해보세요 :)"
               lists={[...recommandList, ...recommandList]}
               type="polygon"
+              delay={3000}
             />
           </div>
         </div>
