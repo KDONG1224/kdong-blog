@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unknown-property */
+
 import { Html, Head, Main, NextScript } from 'next/document';
 import loader from '../../public/js/splashStyle';
 
