@@ -22,7 +22,8 @@
     "global.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/pages"
+    "src/pages",
+    "public/js/splashStyle.js"
   ],
   "exclude": ["node_modules"]
 }
