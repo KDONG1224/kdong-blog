@@ -7,6 +7,10 @@ import { Router } from 'next/router';
 import '../styles/index.css';
 import 'nprogress/nprogress.css';
 import '../../node_modules/highlight.js/styles/qtcreator_dark.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 // libraries
 import NProgress from 'nprogress';
@@ -50,8 +54,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
-        <meta name="viewport" content="width=750, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* <meta name="viewport" content="width=750, user-scalable=no" /> */}
         <link rel="shortcut icon" sizes="192x192" href="/favicon.ico" />
         <title>KDONG 포트폴리오</title>
       </Head>

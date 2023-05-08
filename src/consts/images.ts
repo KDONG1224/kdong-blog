@@ -1,4 +1,19 @@
 const IMAGE_PATH = '/images';
+const ICON_PATH = '/icons';
+
+const LOGO_K = `${IMAGE_PATH}/logo-k.svg`;
+const LOGO_D = `${IMAGE_PATH}/logo-d.svg`;
+const LOGO_O = `${IMAGE_PATH}/logo-o.svg`;
+const LOGO_N = `${IMAGE_PATH}/logo-n.svg`;
+const LOGO_G = `${IMAGE_PATH}/logo-g.svg`;
+
+export const logoIcons = {
+  LOGO_K,
+  LOGO_D,
+  LOGO_O,
+  LOGO_N,
+  LOGO_G
+};
 
 const ABOUT_IMG_01 = `${IMAGE_PATH}/about01.jpg`;
 const ABOUT_IMG_02 = `${IMAGE_PATH}/about02.jpg`;
@@ -38,4 +53,20 @@ export const projectImages = {
   PROJECT_DMS,
   PROJECT_CATALOG,
   PROJECT_LOTTE
+};
+
+export const ICON_MENU_CLOSE = `${ICON_PATH}/icon-menu-close.svg`;
+export const ICON_RIGHT_ARROW = `${ICON_PATH}/icon-right-arrow.svg`;
+
+export const commonIcons = {
+  ICON_MENU_CLOSE,
+  ICON_RIGHT_ARROW
+};
+
+export const IMAGE_BANNER_INSTAGRAM = `${IMAGE_PATH}/image-banner-instagram.png`;
+export const IMAGE_BANNER_GITHUB = `${IMAGE_PATH}/image-banner-github.png`;
+
+export const bannerImages = {
+  IMAGE_BANNER_INSTAGRAM,
+  IMAGE_BANNER_GITHUB
 };

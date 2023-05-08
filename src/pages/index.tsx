@@ -1,5 +1,8 @@
-import { MainContainer } from 'containers';
+// layouts
 import { MainLayout } from 'layouts';
+
+// containers
+import { MainContainer } from 'containers';
 
 const Homepage = () => {
   return (
