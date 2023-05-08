@@ -59,7 +59,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
         margin-bottom: ${({ ismobile }) => (ismobile ? '20px' : '30px')};
 
         &.rotate {
-          margin-top: ${({ ismobile }) => (ismobile ? '20px' : '30px')};
+          margin-top: ${({ ismobile }) => (ismobile ? '26px' : '30px')};
           transform: rotate(180deg);
         }
       }

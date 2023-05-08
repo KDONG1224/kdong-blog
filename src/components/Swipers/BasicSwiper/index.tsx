@@ -27,9 +27,10 @@ export const BasicSwiper: React.FC<BasicSwiperProps> = ({
       ismobile={isMobile}
       className={className}
       modules={[Autoplay, Pagination, A11y]}
-      spaceBetween={isMobile ? 30 : 20}
+      spaceBetween={isMobile ? 40 : 20}
       slidesPerView={'auto'}
       pagination={{ clickable: false }}
+      loop={true}
       {...props}
     >
       {children}

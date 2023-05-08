@@ -21,13 +21,15 @@ interface ListBoxProps {
   subHeaderTitle: string;
   lists: RecommandListProps[];
   type?: 'check' | 'polygon' | 'image';
+  delay?: number;
 }
 
 export const ListBox: React.FC<ListBoxProps> = ({
   headerTitle,
   subHeaderTitle,
   lists,
-  type = 'check'
+  type = 'check',
+  delay = 2500
 }) => {
   const { isMobile } = useMedia();
   return (
@@ -44,7 +46,7 @@ export const ListBox: React.FC<ListBoxProps> = ({
           <BasicSwiper
             className="list-wrapper-contents-swiper"
             autoplay={{
-              delay: 2500,
+              delay: delay,
               disableOnInteraction: false
             }}
           >
