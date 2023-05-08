@@ -42,6 +42,18 @@ export default function App({ Component, pageProps }: AppProps) {
   });
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const loader = document.getElementById('globalLoader');
+
+      setTimeout(() => {
+        if (loader) loader.style.display = 'none';
+      }, 2000);
+    }
+
+    console.clear();
+  }, []);
+
+  useEffect(() => {
     AOS.init({
       easing: 'ease-out-cubic',
       anchorPlacement: 'top-center',
