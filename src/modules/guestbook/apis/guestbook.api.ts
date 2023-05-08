@@ -11,8 +11,7 @@ export class GuestbookApi {
     }).create();
 
     this.AxiosClient = new AxiosServerInstanceCreator({
-      // baseURL: process.env.NEXT_PUBLIC_KDONG_API_URL + '/guestbook'
-      baseURL: 'http://localhost:80' + '/guestbook'
+      baseURL: process.env.NEXT_PUBLIC_KDONG_API_URL + '/guestbook'
     }).create();
   }
 

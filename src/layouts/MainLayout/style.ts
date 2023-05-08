@@ -1,21 +1,22 @@
-// consts
-import { gifIcons } from 'consts';
-
 // libraries
 import styled from '@emotion/styled';
 
 export const StyledMainLayout = styled.div`
-  position: relative;
+  header {
+    z-index: 99;
+  }
 
-  .kdong-icon {
-    cursor: pointer;
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 10rem;
-    height: 10rem;
-    z-index: 10000;
-    background: url(${gifIcons.KDONG_GIF_ICON}) center center / contain
-      no-repeat;
+  .layout-main {
+    margin-top: 100px;
+  }
+
+  footer {
+    margin-top: 100px;
+  }
+
+  @media (max-width: 1500px) {
+    .layout-main {
+      margin-top: 40px;
+    }
   }
 `;
