@@ -36,6 +36,13 @@ export const StyledHomBanner = styled.div<StyledHomBannerProps>`
 
       .swiper-slide {
         height: ${({ ismobile }) => (ismobile ? '300px' : '500px')};
+
+        .grayscale {
+          position: relative;
+          z-index: 2;
+          background-color: rgba(0, 0, 0, 0.25);
+          height: ${({ ismobile }) => (ismobile ? '300px' : '500px')};
+        }
       }
 
       .swiper-pagination {

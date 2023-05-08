@@ -8,10 +8,11 @@ import { StyledWantedForm } from './style';
 import { FormControl, Input } from '@mui/material';
 
 interface WantedFormProps {
+  id: string;
   onChange: (value: string) => void;
 }
 
-export const WantedForm: React.FC<WantedFormProps> = ({ onChange }) => {
+export const WantedForm: React.FC<WantedFormProps> = ({ id, onChange }) => {
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!onChange) return;
 
@@ -24,8 +25,7 @@ export const WantedForm: React.FC<WantedFormProps> = ({ onChange }) => {
         <FormControl className="wform-wrapper-form">
           <Input
             className="wform-wrapper-form-input"
-            id="subscribeEmail"
-            placeholder="이메일 주소를 입력해주세요."
+            id={id}
             onChange={handleOnChange}
           />
         </FormControl>

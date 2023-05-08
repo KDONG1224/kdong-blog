@@ -24,6 +24,12 @@ export const Wanted = () => {
     if (email !== '') setIsEmail(true);
   };
 
+  // const handlePhone = (phone: string) => {
+  //   console.log(phone);
+
+  //   if (phone !== '') setIsEmail(true);
+  // };
+
   const onSubmit = () => {
     console.log(isEmail);
   };
@@ -53,7 +59,7 @@ export const Wanted = () => {
             </ol>
           </div>
           <div className="wanted-wrapper-content-form">
-            <WantedForm onChange={handleEmail} />
+            <WantedForm id="subscribeEmail" onChange={handleEmail} />
             <div className="wanted-wrapper-content-form-btn">
               <Button onClick={onSubmit}>전송하기</Button>
             </div>

@@ -77,7 +77,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            border: ${({ badgeBg }) => badgeBg && `1px solid ${badgeBg}`};
+            /* border: ${({ badgeBg }) => badgeBg && `1px solid ${badgeBg}`}; */
             box-sizing: border-box;
           }
 

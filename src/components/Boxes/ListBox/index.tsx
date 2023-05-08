@@ -1,5 +1,5 @@
 // base
-import React from 'react';
+import React, { useId } from 'react';
 
 // style
 import { StyledListBox } from './style';
@@ -8,7 +8,7 @@ import { StyledListBox } from './style';
 import { BasicSwiper, CheckCard } from 'components';
 
 // consts
-import { RecommandListProps } from 'consts';
+import { AlgorithmListProps, RecommandListProps } from 'consts';
 
 // hooks
 import { useMedia } from 'hooks';
@@ -19,7 +19,7 @@ import { SwiperSlide } from 'swiper/react';
 interface ListBoxProps {
   headerTitle: string;
   subHeaderTitle: string;
-  lists: RecommandListProps[];
+  lists: RecommandListProps[] | AlgorithmListProps[];
   type?: 'check' | 'polygon' | 'image';
   delay?: number;
 }
@@ -31,6 +31,7 @@ export const ListBox: React.FC<ListBoxProps> = ({
   type = 'check',
   delay = 2500
 }) => {
+  const id = useId();
   const { isMobile } = useMedia();
   return (
     <StyledListBox ismobile={isMobile}>
@@ -51,7 +52,7 @@ export const ListBox: React.FC<ListBoxProps> = ({
             }}
           >
             {lists?.map((data) => (
-              <SwiperSlide key={data.key}>
+              <SwiperSlide key={id}>
                 <CheckCard data={data} type={type} />
               </SwiperSlide>
             ))}

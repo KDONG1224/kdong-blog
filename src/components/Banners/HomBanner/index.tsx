@@ -5,7 +5,7 @@ import React, { useId } from 'react';
 import { StyledHomBanner } from './style';
 
 // components
-import { BasicImage, BasicSwiper, TypingText } from 'components';
+import { BasicSwiper, BlurImage, TypingText } from 'components';
 
 // consts
 import { aboutImages } from 'consts';
@@ -21,9 +21,11 @@ export const HomBanner = () => {
   const { isMobile } = useMedia();
 
   const bannerImage = [
+    aboutImages.ABOUT_IMG_01,
     'https://kdong-portfolio.s3.amazonaws.com/guestbook/1670325828599_IMG_6709.JPG',
+    aboutImages.ABOUT_IMG_02,
     'https://kdong-portfolio.s3.amazonaws.com/guestbook/1670325774131_IMG_6875.jpeg',
-    aboutImages.ABOUT_IMG_02
+    aboutImages.ABOUT_IMG_03
   ];
   return (
     <StyledHomBanner ismobile={isMobile}>
@@ -61,7 +63,8 @@ export const HomBanner = () => {
         >
           {bannerImage.map((image) => (
             <SwiperSlide key={id}>
-              <BasicImage
+              <div className="grayscale" />
+              <BlurImage
                 src={image}
                 alt="배너이미지"
                 style={{ objectPosition: 'center 70%' }}
