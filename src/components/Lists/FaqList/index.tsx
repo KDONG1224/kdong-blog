@@ -9,12 +9,7 @@ import { ResponseFaqListProps } from 'consts';
 
 // hooks
 import { useMedia } from 'hooks';
-import {
-  Accordion,
-  AccordionSummary,
-  Typography,
-  AccordionDetails
-} from '@mui/material';
+import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 
 interface FaqListProps {
   faqList: ResponseFaqListProps[];
