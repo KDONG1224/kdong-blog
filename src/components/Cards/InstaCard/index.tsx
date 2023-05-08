@@ -28,7 +28,6 @@ export const InstaCard: React.FC<InstaCardProps> = ({ data }) => {
               alt={data.name}
               width={30}
               height={30}
-              round
             />
           </div>
           <div className="insta-wrapper-body-box-middle-top-header-text">
