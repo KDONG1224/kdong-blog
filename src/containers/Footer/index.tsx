@@ -13,6 +13,9 @@ import { menuIcons } from 'consts';
 // hooks
 import { useMedia } from 'hooks';
 
+// utils
+import { windowLocation } from 'libs';
+
 export const Footer = () => {
   const { isMobile } = useMedia();
 
@@ -22,13 +25,19 @@ export const Footer = () => {
         <div className="footer-wrapper-left">
           <div className="footer-wrapper-left-logo">KDONG</div>
           <div className="footer-wrapper-left-sns">
-            <div className="footer-wrapper-left-sns-instagram">
+            <div
+              className="footer-wrapper-left-sns-instagram"
+              onClick={() => windowLocation('instagram')}
+            >
               <BasicImage
                 src={menuIcons.INSTAGRAM_ICON}
                 alt="인스타그램 아이콘"
               />
             </div>
-            <div className="footer-wrapper-left-sns-github">
+            <div
+              className="footer-wrapper-left-sns-github"
+              onClick={() => windowLocation('github')}
+            >
               <BasicImage src={menuIcons.GITHUB_ICON} alt="인스타그램 아이콘" />
             </div>
           </div>
