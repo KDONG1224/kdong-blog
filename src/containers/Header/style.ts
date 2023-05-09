@@ -62,7 +62,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
         transition: 0.6s all cubic-bezier(0.5, 0, 0.5, 1);
 
         &.short {
-          margin-top: -58px;
+          margin-top: -40px;
         }
       }
     }

@@ -66,7 +66,7 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
               ? `
               display: grid;
               grid-template-columns: repeat(2, 1fr);
-              gap: 12px;
+              gap: 14px;
 
               .check-wrapper {
                 width: 177px;
@@ -89,6 +89,12 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
                 width: 350px;
               }
           `}
+
+          > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
       }
     }
