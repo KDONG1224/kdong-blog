@@ -25,6 +25,7 @@ export const StyledFooter = styled.footer<StyledFooterProps>`
         display: flex;
         margin-top: 4px;
         margin-left: -4px;
+        gap: 4px;
 
         > div {
           width: 30px;

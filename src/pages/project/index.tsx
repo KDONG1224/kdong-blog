@@ -5,16 +5,16 @@ import React from 'react';
 import { MainLayout, PageLayout } from 'layouts';
 
 // containers
-import { Algorithm } from 'containers';
+import { Project } from 'containers';
 
-const AlgorithmPage = () => {
+const ProjectPage = () => {
   return (
     <MainLayout>
-      <PageLayout title="알고리즘">
-        <Algorithm />
+      <PageLayout title="프로젝트">
+        <Project />
       </PageLayout>
     </MainLayout>
   );
 };
 
-export default AlgorithmPage;
+export default ProjectPage;

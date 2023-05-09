@@ -2,7 +2,11 @@
 import styled from '@emotion/styled';
 import { commonIcons } from 'consts';
 
-export const StyledMainLayout = styled.div`
+interface StyledMainLayoutProps {
+  ismobile: boolean;
+}
+
+export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
   position: relative;
 
   header {
@@ -22,8 +26,8 @@ export const StyledMainLayout = styled.div`
     z-index: 99;
     bottom: 150px;
     right: 20px;
-    width: 50px;
-    height: 50px;
+    width: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
+    height: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
     background-color: rgba(240, 240, 240, 0.5);
     border-radius: 50%;
     overflow: hidden;
@@ -43,15 +47,17 @@ export const StyledMainLayout = styled.div`
 
     &::before {
       content: '';
-      width: 50px;
-      height: 50px;
+      width: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
+      height: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
       position: absolute;
       left: 50%;
       top: 50%;
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      background: url(${commonIcons.ICON_TOP_ARROW}) center center / 26px
-        no-repeat;
+      background-image: url(${commonIcons.ICON_TOP_ARROW});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: ${({ ismobile }) => (ismobile ? '26px' : '40px')};
     }
   }
 

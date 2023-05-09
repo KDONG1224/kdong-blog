@@ -52,12 +52,7 @@ const ErrorPage: NextPage = () => {
     >
       <div>
         <div>
-          <BlurImage
-            src={backgroundImages.MY_IMAGE}
-            width={250}
-            height={250}
-            alt=""
-          />
+          <BlurImage src={backgroundImages.MY_IMAGE} alt="" />
         </div>
         <div
           style={{

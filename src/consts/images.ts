@@ -58,11 +58,13 @@ export const projectImages = {
 export const ICON_MENU_CLOSE = `${ICON_PATH}/icon-menu-close.svg`;
 export const ICON_RIGHT_ARROW = `${ICON_PATH}/icon-right-arrow.svg`;
 export const ICON_TOP_ARROW = `${ICON_PATH}/icon-top-arrow.svg`;
+export const ICON_BOTTOM_ARROW = `${ICON_PATH}/icon-bottom-arrow.svg`;
 
 export const commonIcons = {
   ICON_MENU_CLOSE,
   ICON_RIGHT_ARROW,
-  ICON_TOP_ARROW
+  ICON_TOP_ARROW,
+  ICON_BOTTOM_ARROW
 };
 
 export const IMAGE_BANNER_INSTAGRAM = `${IMAGE_PATH}/image-banner-instagram.png`;
