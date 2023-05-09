@@ -47,6 +47,20 @@ body {
   padding: 5px !important;
 }
 
+.basic-select-wrapper-paper {
+  border-radius: 0 !important;
+}
+
+.basic-select-wrapper-paper.mobile.type,
+.basic-select-wrapper-paper.mobile.meeting {
+  left: 8px !important;
+}
+
+.basic-select-wrapper-paper.mobile.genre,
+.basic-select-wrapper-paper.mobile.order {
+  left: 201px !important;
+}
+
 @media (max-width: 1500px) {
   .container {
     max-width: 96vw;
