@@ -8,7 +8,7 @@ import { StyledFooter } from './style';
 import { BasicImage } from 'components';
 
 // consts
-import { menuIcons } from 'consts';
+import { socialList } from 'consts';
 
 // hooks
 import { useMedia } from 'hooks';
@@ -25,21 +25,15 @@ export const Footer = () => {
         <div className="footer-wrapper-left">
           <div className="footer-wrapper-left-logo">KDONG</div>
           <div className="footer-wrapper-left-sns">
-            <div
-              className="footer-wrapper-left-sns-instagram"
-              onClick={() => windowLocation('instagram')}
-            >
-              <BasicImage
-                src={menuIcons.INSTAGRAM_ICON}
-                alt="인스타그램 아이콘"
-              />
-            </div>
-            <div
-              className="footer-wrapper-left-sns-github"
-              onClick={() => windowLocation('github')}
-            >
-              <BasicImage src={menuIcons.GITHUB_ICON} alt="인스타그램 아이콘" />
-            </div>
+            {socialList.map(({ id, name, url, icon }) => (
+              <div
+                key={id}
+                className={`footer-wrapper-left-sns-${id}`}
+                onClick={() => windowLocation(url)}
+              >
+                <BasicImage src={icon} alt={`${name} 아이콘`} />
+              </div>
+            ))}
           </div>
         </div>
         <div className="footer-wrapper-center">

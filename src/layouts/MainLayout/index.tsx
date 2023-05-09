@@ -8,7 +8,7 @@ import { StyledMainLayout } from './style';
 import { Footer, Header } from 'containers';
 
 // hooks
-import { useScroll, useScrollToNode } from 'hooks';
+import { useMedia, useScroll, useScrollToNode } from 'hooks';
 
 type MainLayoutProps = HTMLAttributes<HTMLDivElement>;
 
@@ -16,11 +16,12 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   children,
   ...props
 }) => {
+  const { isMobile } = useMedia();
   const { scrollY } = useScroll();
   const { scrollTo } = useScrollToNode('body');
 
   return (
-    <StyledMainLayout {...props}>
+    <StyledMainLayout ismobile={isMobile} {...props}>
       <Header />
       <main className="layout-main">{children}</main>
       <div
