@@ -42,13 +42,13 @@ export const StyledMain = styled.div<StyledMainProps>`
 
       > div {
         width: 100%;
-        height: ${({ ismobile }) => (ismobile ? '100px' : '100%')};
+        height: ${({ ismobile }) => (ismobile ? '93px' : '100%')};
         position: relative;
         margin-bottom: ${({ ismobile }) => ismobile && '20px'};
 
         > div {
           width: 100%;
-          height: ${({ ismobile }) => (ismobile ? '100px' : '100%')};
+          height: ${({ ismobile }) => (ismobile ? '93px' : '100%')};
           position: relative;
         }
       }
@@ -156,5 +156,20 @@ export const StyledMain = styled.div<StyledMainProps>`
         margin-bottom: ${({ ismobile }) => ismobile && '10px'};
       }
     }
+  }
+
+  @media (max-width: 1500px) {
+    /* .main-wrapper-subBanner {
+      display: block;
+      height: 360px;
+
+      > div {
+        height: 180px;
+        margin-bottom: 20px;
+        > div {
+          height: 180px;
+        }
+      }
+    } */
   }
 `;

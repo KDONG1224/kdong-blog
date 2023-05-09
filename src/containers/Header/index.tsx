@@ -1,17 +1,19 @@
 // base
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 // style
 import { StyledHeader } from './style';
+
+// components
+import { BasicDrawer, BasicImage } from 'components';
 
 // consts
 import { MainHeaderMenus, ROUTE_ROOT, commonIcons, logoIcons } from 'consts';
 
 // hooks
 import { useMedia, useScroll } from 'hooks';
-import { useRouter } from 'next/router';
-import { BasicDrawer, BasicImage } from 'components';
 
 export const Header = () => {
   const [isHoverName, setIsHoverName] = useState<string>('');
@@ -28,7 +30,7 @@ export const Header = () => {
   };
 
   const onClickMenu = (path: string) => {
-    console.log('onClickMenu : ', path);
+    router.push(path);
   };
 
   const onMouseOver = (name: string, type: 'hover' | 'none') => {
@@ -106,12 +108,16 @@ export const Header = () => {
         anchor="left"
         open={isMenu}
         onClose={onClickMobileMenu}
-        width={200}
+        width={240}
         transitionDuration={500}
       >
         <div className="mobile-menu-wrapper">
-          {MainHeaderMenus.map(({ index, name, nameKr }) => (
-            <div key={name + index} className="mobile-menu-wrapper-list">
+          {MainHeaderMenus.map(({ index, name, nameKr, path }) => (
+            <div
+              key={name + index}
+              className="mobile-menu-wrapper-list"
+              onClick={() => onClickMenu(path)}
+            >
               <div className="mobile-menu-wrapper-list-eng">
                 {name.toLocaleUpperCase()}
               </div>

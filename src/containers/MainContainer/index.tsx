@@ -10,6 +10,8 @@ import { BasicImage, BlurImage, FaqList, HomBanner, ListBox } from 'components';
 
 // consts
 import {
+  ROUTE_ALGORITHM,
+  ROUTE_PROJECT,
   ROUTE_WANTED,
   algorithmList,
   bannerImages,
@@ -32,8 +34,6 @@ export const MainContainer = () => {
     router.push(path);
   };
 
-  console.log(algorithmList.filter((item) => item.recommand));
-
   return (
     <StyledMain ismobile={isMobile}>
       <div className="main-wrapper">
@@ -48,6 +48,7 @@ export const MainContainer = () => {
               lists={[...recommandList, ...recommandList]}
               type="check"
               delay={4400}
+              onClickMore={() => handleMove(ROUTE_ALGORITHM)}
             />
           </div>
         </div>
@@ -77,6 +78,7 @@ export const MainContainer = () => {
               lists={[...recommandList, ...recommandList]}
               type="polygon"
               delay={3000}
+              onClickMore={() => handleMove(ROUTE_PROJECT)}
             />
           </div>
         </div>
@@ -87,10 +89,14 @@ export const MainContainer = () => {
               subHeaderTitle="다양한 알고리즘 문제를 풀어보았어요 :)"
               lists={algorithmList.filter((item) => item.recommand)}
               type="image"
+              onClickMore={() => handleMove(ROUTE_ALGORITHM)}
             />
           </div>
         </div>
-        <div className="main-wrapper-bottomBanner container">
+        <div
+          className="main-wrapper-bottomBanner container"
+          onClick={() => handleMove(ROUTE_WANTED)}
+        >
           <div className="main-wrapper-bottomBanner-left">
             <span>WANTED</span>
           </div>
@@ -98,10 +104,7 @@ export const MainContainer = () => {
             <p>새로운 개발 인재를 찾고 있다면</p>
             <p>KDONG은 후회없는 선택입니다.</p>
           </div>
-          <div
-            className="main-wrapper-bottomBanner-right"
-            onClick={() => handleMove(ROUTE_WANTED)}
-          >
+          <div className="main-wrapper-bottomBanner-right">
             <div className="main-wrapper-bottomBanner-right-box">
               <BasicImage
                 src={commonIcons.ICON_RIGHT_ARROW}

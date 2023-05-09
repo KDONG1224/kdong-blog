@@ -5,7 +5,7 @@ import React from 'react';
 import { StyledCheckCard } from './style';
 
 // components
-import { BasicImage } from 'components';
+import { BlurImage } from 'components';
 
 // consts
 import { AlgorithmListProps, RecommandListProps } from 'consts';
@@ -32,7 +32,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
               <div className="check-wrapper-top-line" />
               <div className="check-wrapper-top-img">
                 <div className={`check-wrapper-top-img-box ${type}`}>
-                  <BasicImage src={thumbnail} alt={`${title} 이미지`} />
+                  <BlurImage src={thumbnail} alt={`${title} 이미지`} />
                 </div>
               </div>
               <div className="check-wrapper-top-line rotate" />
@@ -41,14 +41,14 @@ export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
           {type === 'polygon' && (
             <div className="check-wrapper-top-img">
               <div className={`check-wrapper-top-img-box ${type}`}>
-                <BasicImage src={thumbnail} alt={`${title} 이미지`} />
+                <BlurImage src={thumbnail} alt={`${title} 이미지`} />
               </div>
             </div>
           )}
           {type === 'image' && (
             <div className="check-wrapper-top-img">
               <div className={`check-wrapper-top-img-box ${type}`}>
-                <BasicImage src={thumbnail} alt={`${title} 이미지`} />
+                <BlurImage src={thumbnail} alt={`${title} 이미지`} />
               </div>
             </div>
           )}

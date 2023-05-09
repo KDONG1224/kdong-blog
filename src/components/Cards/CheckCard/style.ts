@@ -143,7 +143,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
         &.check {
           left: 0;
         }
-        
+
         &.polygon {
           right: 0;
           width: ${({ ismobile }) => (ismobile ? '16px' : '24px')} !important;
@@ -181,7 +181,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
       }
 
       > p {
-        height: ${({ ismobile }) => (ismobile ? '26px' : '46px')}
+        height: ${({ ismobile }) => (ismobile ? '26px' : '46px')};
         font-family: Pretendard-Medium;
         font-size: ${({ ismobile }) => (ismobile ? '12px' : '14.4px')};
         line-height: 1.5;

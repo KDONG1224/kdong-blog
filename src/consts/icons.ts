@@ -43,6 +43,7 @@ const REACT_ICON = `${MENU_PATH}/react.png`;
 const REFERENCE_ICON = `${MENU_PATH}/reference.png`;
 const TISTORY_ICON = `${MENU_PATH}/tistory.png`;
 const TOYPROJECT_ICON = `${MENU_PATH}/toyproject.png`;
+const KAKAOTALK_ICON = `${MENU_PATH}/kakaotalk.png`;
 
 export const menuIcons = {
   ABOUT_ICON,
@@ -60,5 +61,6 @@ export const menuIcons = {
   REACT_ICON,
   REFERENCE_ICON,
   TISTORY_ICON,
-  TOYPROJECT_ICON
+  TOYPROJECT_ICON,
+  KAKAOTALK_ICON
 };
