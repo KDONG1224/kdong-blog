@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { StyledMain } from './style';
 
 // components
-import { BasicImage, BlurImage, FaqList, HomBanner, ListBox } from 'components';
+import { BasicImage, FaqList, HomBanner, ListBox } from 'components';
 
 // consts
 import {
@@ -14,7 +14,6 @@ import {
   ROUTE_PROJECT,
   ROUTE_WANTED,
   algorithmList,
-  bannerImages,
   commonIcons,
   faqList,
   recommandList
@@ -56,19 +55,11 @@ export const MainContainer = () => {
           <div
             className="main-wrapper-subBanner-left"
             onClick={() => windowLocation('instagram')}
-          >
-            <div>
-              <BlurImage src={bannerImages.IMAGE_BANNER_INSTAGRAM} alt="" />
-            </div>
-          </div>
+          />
           <div
             className="main-wrapper-subBanner-right"
             onClick={() => windowLocation('github')}
-          >
-            <div>
-              <BlurImage src={bannerImages.IMAGE_BANNER_GITHUB} alt="" />
-            </div>
-          </div>
+          />
         </div>
         <div className="main-wrapper-project">
           <div className="main-wrapper-project-box container">

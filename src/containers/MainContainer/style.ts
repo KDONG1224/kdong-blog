@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { bannerImages } from 'consts';
 
 interface StyledMainProps {
   ismobile: boolean;
@@ -32,25 +33,28 @@ export const StyledMain = styled.div<StyledMainProps>`
 
     &-subBanner {
       width: 100%;
-      height: ${({ ismobile }) => (ismobile ? '100%' : '180px')};
-      display: ${({ ismobile }) => (ismobile ? 'block' : 'flex')};
+      height: ${({ ismobile }) => (ismobile ? '240px' : '180px')};
+      display: ${({ ismobile }) => (ismobile ? 'grid' : 'grid')};
+      grid-template-columns: ${({ ismobile }) =>
+        ismobile ? 'repeat(1, 1fr)' : 'repeat(2, 1fr)'};
+      grid-template-rows: ${({ ismobile }) =>
+        ismobile ? 'repeat(2, 1ft)' : 'repeat(1, 1fr)'};
       align-items: center;
       justify-content: space-between;
-      gap: 34px;
+      gap: ${({ ismobile }) => (ismobile ? '0px' : '34px  ')};
       margin: ${({ ismobile }) =>
-        ismobile ? '0px auto 40px' : '100px auto 80px'};
+        ismobile ? '40px auto 40px' : '100px auto 80px'};
 
-      > div {
-        width: 100%;
-        height: ${({ ismobile }) => (ismobile ? '93px' : '100%')};
-        position: relative;
-        margin-bottom: ${({ ismobile }) => ismobile && '20px'};
+      &-left {
+        height: 100%;
+        background: url(${bannerImages.IMAGE_BANNER_INSTAGRAM}) center center /
+          contain no-repeat;
+      }
 
-        > div {
-          width: 100%;
-          height: ${({ ismobile }) => (ismobile ? '93px' : '100%')};
-          position: relative;
-        }
+      &-right {
+        height: 100%;
+        background: url(${bannerImages.IMAGE_BANNER_GITHUB}) center center /
+          contain no-repeat;
       }
     }
 
