@@ -1,7 +1,4 @@
-/* eslint-disable react/no-unknown-property */
-
 import { Html, Head, Main, NextScript } from 'next/document';
-import loader from '../../public/js/splashStyle';
 
 export default function Document() {
   return (
@@ -10,6 +7,9 @@ export default function Document() {
         <meta name="theme-color" content="#ffffff" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/favicon/76.png" />
+
+        <meta property="og:title" content="KDONG 포트폴리오" />
+        <meta property="og:description" content="KDONG 포트폴리오" />
 
         {/* <link rel="apple-touch-icon" sizes="57x57" href="./icons/apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="114x114" href="./icons/apple-touch-icon-114x114.png" />
@@ -30,66 +30,9 @@ export default function Document() {
         <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
         <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
         <meta name="msapplication-square310x310logo" content="mstile-310x310.png" /> */}
-
-        <script src="/js/gsap.min.js" defer></script>
-        <script src="/js/splashScreen.js" defer></script>
-
-        <style>{loader}</style>
       </Head>
 
       <body>
-        <div id={'globalLoader'}>
-          <div id="splash" className="splash-screen">
-            <svg
-              id="demo"
-              xmlns="http://www.w3.org/2000/svg"
-              width="1000"
-              height="1000"
-              viewBox="0 0 100 100"
-            >
-              <defs>
-                <clipPath id="theClipPath">
-                  <rect
-                    id="theSquare"
-                    x="0"
-                    y="50"
-                    width="100"
-                    height="0"
-                    fill="red"
-                  />
-                </clipPath>
-              </defs>
-              <line
-                id="target1"
-                x1="0"
-                y1="50"
-                x2="0"
-                y2="50"
-                stroke-width="1"
-                stroke="#fff"
-              />
-              <line
-                id="target2"
-                x1="0"
-                y1="50"
-                x2="0"
-                y2="50"
-                stroke-width="1"
-                stroke="#fff"
-              />
-              <g id="clipPathReveal" clip-path="url(#theClipPath)">
-                <text
-                  transform="translate(50 55)"
-                  text-anchor="middle"
-                  font-size="18"
-                  fill="#fff"
-                >
-                  KDONG
-                </text>
-              </g>
-            </svg>
-          </div>
-        </div>
         <Main />
         <NextScript />
       </body>

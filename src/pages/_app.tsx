@@ -1,4 +1,5 @@
 // base
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
@@ -7,20 +8,22 @@ import { Router } from 'next/router';
 import '../styles/index.css';
 import 'nprogress/nprogress.css';
 import '../../node_modules/highlight.js/styles/qtcreator_dark.css';
+import 'aos/dist/aos.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+// components
+import { SplashScreen } from 'components';
+
 // libraries
+import AOS from 'aos';
 import NProgress from 'nprogress';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
-
+// nprogress setting
 NProgress.configure({
   template: `
   <div class="bar" role="bar">
@@ -35,6 +38,8 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [isLoading, setIsLoading] = useState(true);
+
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: { staleTime: Infinity }
@@ -43,11 +48,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const loader = document.getElementById('globalLoader');
-
       setTimeout(() => {
-        if (loader) loader.style.display = 'none';
-      }, 2000);
+        setIsLoading(false);
+      }, 3000);
     }
 
     console.clear();
@@ -62,6 +65,8 @@ export default function App({ Component, pageProps }: AppProps) {
       delay: 300
     });
   }, []);
+
+  if (isLoading) return <SplashScreen />;
 
   return (
     <>

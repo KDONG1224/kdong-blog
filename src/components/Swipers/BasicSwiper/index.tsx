@@ -22,9 +22,9 @@ export const BasicSwiper: React.FC<BasicSwiperProps> = ({
   ...props
 }) => {
   const { isMobile } = useMedia();
+
   return (
     <StyledBasicSwiper
-      ismobile={isMobile}
       className={className}
       modules={[Autoplay, Pagination, A11y]}
       spaceBetween={isMobile ? 40 : 20}

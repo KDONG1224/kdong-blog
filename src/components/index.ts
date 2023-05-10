@@ -9,3 +9,4 @@ export * from './Swipers';
 export * from './Lists';
 export * from './Forms';
 export * from './Selects';
+export * from './Loading';
