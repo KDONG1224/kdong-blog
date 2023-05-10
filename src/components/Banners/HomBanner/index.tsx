@@ -1,5 +1,5 @@
 // base
-import React, { useId } from 'react';
+import React from 'react';
 
 // styles
 import { StyledHomBanner } from './style';
@@ -17,7 +17,6 @@ import { useMedia } from 'hooks';
 import { SwiperSlide } from 'swiper/react';
 
 export const HomBanner = () => {
-  const id = useId();
   const { isMobile } = useMedia();
 
   const bannerImage = [
@@ -63,8 +62,8 @@ export const HomBanner = () => {
             disableOnInteraction: false
           }}
         >
-          {bannerImage.map((image) => (
-            <SwiperSlide key={id}>
+          {bannerImage.map((image, idx) => (
+            <SwiperSlide key={idx}>
               <div className="grayscale" />
               <BlurImage
                 src={image}

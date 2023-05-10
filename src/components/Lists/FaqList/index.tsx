@@ -1,5 +1,5 @@
 // base
-import React, { useId, useState } from 'react';
+import React, { useState } from 'react';
 
 // style
 import { StyledFaqList } from './style';
@@ -18,7 +18,6 @@ interface FaqListProps {
 export const FaqList: React.FC<FaqListProps> = ({ faqList }) => {
   const [isExpanded, setIsExpanded] = useState<string | false>(false);
 
-  const id = useId();
   const { isMobile } = useMedia();
 
   const handleChange =
@@ -31,7 +30,7 @@ export const FaqList: React.FC<FaqListProps> = ({ faqList }) => {
       <div className="faq-wrapper">
         {faqList?.map(({ key, title, desc }) => (
           <Accordion
-            key={id}
+            key={key}
             expanded={isExpanded === key.toString()}
             onChange={handleChange(key.toString())}
             className="faq-wrapper-content"
