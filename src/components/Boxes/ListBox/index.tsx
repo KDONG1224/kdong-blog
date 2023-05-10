@@ -1,5 +1,5 @@
 // base
-import React, { useId } from 'react';
+import React from 'react';
 
 // style
 import { StyledListBox } from './style';
@@ -33,7 +33,6 @@ export const ListBox: React.FC<ListBoxProps> = ({
   delay = 2500,
   onClickMore
 }) => {
-  const id = useId();
   const { isMobile } = useMedia();
 
   const handleClickMore = () => {
@@ -62,8 +61,8 @@ export const ListBox: React.FC<ListBoxProps> = ({
               disableOnInteraction: false
             }}
           >
-            {lists?.map((data) => (
-              <SwiperSlide key={id}>
+            {lists?.map((data, idx) => (
+              <SwiperSlide key={idx}>
                 <CheckCard data={data} type={type} />
               </SwiperSlide>
             ))}

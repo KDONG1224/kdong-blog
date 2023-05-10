@@ -31,7 +31,8 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
           ? `
               display: grid;
               grid-template-columns: repeat(2, 1fr);
-              gap: 12px;
+              gap: 14px;
+              place-items: center;
 
               .basic-select-wrapper {
                 width: 177px;
@@ -72,16 +73,21 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
               display: grid;
               grid-template-columns: repeat(2, 1fr);
               gap: 14px;
+              place-items: center;
 
               .refer-wrapper {                
                 &-box {
-                  wwidth: 177px;
+                  width: 177px;
                   height: 177px;
                 }
               }
 
               .check-wrapper {
                 width: 177px;
+
+                &-top {
+                  height: 177px;
+                }
 
                 &-middle {
                   > p {
