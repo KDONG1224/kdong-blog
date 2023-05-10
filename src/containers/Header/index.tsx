@@ -52,13 +52,16 @@ export const Header = () => {
                 MainHeaderMenus.map(({ index, name, nameKr, path }) => (
                   <React.Fragment key={name + index}>
                     <div
+                      className={`header-wrapper-top-left-list ${name}`}
                       onClick={() => onClickMenu(path)}
                       onMouseOver={() => onMouseOver(name, 'hover')}
                       onMouseOut={() => onMouseOver(name, 'none')}
                     >
-                      {isHover === 'hover' && isHoverName === name
-                        ? nameKr
-                        : name.toLocaleUpperCase()}
+                      {isHover === 'hover' && isHoverName === name ? (
+                        <span>{nameKr}</span>
+                      ) : (
+                        <span>{name.toLocaleUpperCase()}</span>
+                      )}
                     </div>
                   </React.Fragment>
                 ))}

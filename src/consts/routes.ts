@@ -11,3 +11,6 @@ export const ROUTE_PROJECT = '/project';
 
 // algorithm
 export const ROUTE_ALGORITHM = '/algorithm';
+
+// reference
+export const ROUTE_REFERENCE = '/reference';

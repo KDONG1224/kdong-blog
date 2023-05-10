@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { StyledInstargram } from './style';
 
 // components
-import { BlurImage, InstaCard } from 'components';
+import { BlurImage } from 'components';
 
 // consts
 import { instaImages } from 'consts';
@@ -98,13 +98,13 @@ export const Instagram: React.FC<InstagramProps> = ({ onClick }) => {
               <h2 onClick={handleGuestbook} style={{ cursor: 'pointer' }}>
                 방명록
               </h2>
-              {data &&
+              {/* {data &&
                 [...data]
                   .filter((guestbook) => guestbook.images)
                   .sort((a, b) => b.index - a.index)
                   .map((guestbook) => (
                     <InstaCard key={guestbook.id} data={guestbook} />
-                  ))}
+                  ))} */}
             </div>
           </div>
         </div>

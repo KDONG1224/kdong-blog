@@ -3,7 +3,7 @@ import { Select } from '@mui/material';
 import { commonIcons } from 'consts';
 
 export const StyledBasicSelect = styled(Select)`
-  width: 350px;
+  width: 100%;
   font-family: Pretendard-Bold;
   font-size: 16px;
 
