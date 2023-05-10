@@ -9,7 +9,7 @@ import { About } from 'containers';
 
 const AboutPage = () => {
   return (
-    <MainLayout>
+    <MainLayout noMargin>
       <About />
     </MainLayout>
   );

@@ -64,8 +64,8 @@ export const MainContainer = () => {
         <div className="main-wrapper-project">
           <div className="main-wrapper-project-box container">
             <ListBox
-              headerTitle="지금까지 PROJECT"
-              subHeaderTitle="지금까지 진행했던 프로젝트를 구경해보세요 :)"
+              headerTitle="다양한 PROJECT"
+              subHeaderTitle="다양한 프로젝트를 구경해보세요 :)"
               lists={[...recommandList, ...recommandList]}
               type="polygon"
               delay={3000}

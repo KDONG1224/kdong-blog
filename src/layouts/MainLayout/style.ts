@@ -4,6 +4,7 @@ import { commonIcons } from 'consts';
 
 interface StyledMainLayoutProps {
   ismobile: boolean;
+  nomargin: boolean;
 }
 
 export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
@@ -18,7 +19,7 @@ export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
   }
 
   footer {
-    margin-top: 100px;
+    margin-top: ${({ nomargin }) => (nomargin ? '0' : '100px')};
   }
 
   .scroll-top {
@@ -26,8 +27,8 @@ export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
     z-index: 99;
     bottom: 150px;
     right: 20px;
-    width: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
-    height: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
+    width: 50px;
+    height: 50px;
     background-color: rgba(240, 240, 240, 0.5);
     border-radius: 50%;
     overflow: hidden;
@@ -47,8 +48,8 @@ export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
 
     &::before {
       content: '';
-      width: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
-      height: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
+      width: 50px;
+      height: 50px;
       position: absolute;
       left: 50%;
       top: 50%;

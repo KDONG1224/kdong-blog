@@ -2,7 +2,7 @@ import {
   ROUTE_ABOUT,
   ROUTE_ALGORITHM,
   ROUTE_PROJECT,
-  ROUTE_WANTED
+  ROUTE_REFERENCE
 } from './routes';
 
 export const MainHeaderMenus = [
@@ -20,14 +20,14 @@ export const MainHeaderMenus = [
   },
   {
     index: 3,
-    name: 'algorithm',
-    nameKr: '알고리즘',
-    path: ROUTE_ALGORITHM
+    name: 'references',
+    nameKr: '레퍼런스',
+    path: ROUTE_REFERENCE
   },
   {
     index: 4,
-    name: 'concat',
-    nameKr: '연락처',
-    path: ROUTE_WANTED
+    name: 'gestbook',
+    nameKr: '방명록',
+    path: ROUTE_ALGORITHM
   }
 ];
