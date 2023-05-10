@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // base
 import React, { useState } from 'react';
 
 // style
 import { StyledGuestbook } from './style';
-import { BasicTab } from 'components';
 
 export const Guestbook = () => {
   const [isCurrentTab, setIsCurrentTab] = useState('best');
@@ -16,17 +16,7 @@ export const Guestbook = () => {
     <StyledGuestbook>
       <div className="guest-wrapper">
         <div className="guest-wrapper-write"></div>
-        <div className="guest-wrapper-tabs">
-          <BasicTab
-            value={isCurrentTab}
-            tabItems={[
-              { label: '베스트', value: 'best' },
-              { label: '최신순', value: 'new' },
-              { label: '오래된순', value: 'old' }
-            ]}
-            onChange={onChangeTab}
-          />
-        </div>
+        <div className="guest-wrapper-tabs"></div>
       </div>
     </StyledGuestbook>
   );

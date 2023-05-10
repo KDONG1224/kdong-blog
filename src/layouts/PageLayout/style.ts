@@ -41,7 +41,12 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
               display: flex;
               align-items: center;
               justify-content: space-between;
+              flex: 1;
           `}
+
+      > div {
+        width: calc(25% - 20px);
+      }
 
       .basic-select-wrapper {
         border-radius: 0 !important;
@@ -68,6 +73,13 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
               grid-template-columns: repeat(2, 1fr);
               gap: 14px;
 
+              .refer-wrapper {                
+                &-box {
+                  wwidth: 177px;
+                  height: 177px;
+                }
+              }
+
               .check-wrapper {
                 width: 177px;
 
@@ -85,8 +97,19 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
               flex-wrap: wrap;
               gap: 20px;
 
+              .refer-wrapper {                
+                &-box {
+                  width: 350px;
+                  height: 350px;
+                }
+              }
+
               .check-wrapper {
                 width: 350px;
+                
+                &-top {
+                  height: 350px;
+                }
               }
           `}
 

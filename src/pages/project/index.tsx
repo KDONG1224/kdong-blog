@@ -10,7 +10,7 @@ import { Project } from 'containers';
 const ProjectPage = () => {
   return (
     <MainLayout>
-      <PageLayout title="프로젝트">
+      <PageLayout title="프로젝트" optionKey="project">
         <Project />
       </PageLayout>
     </MainLayout>

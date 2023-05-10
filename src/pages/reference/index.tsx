@@ -5,16 +5,16 @@ import React from 'react';
 import { MainLayout, PageLayout } from 'layouts';
 
 // containers
-import { Algorithm } from 'containers';
+import { Reference } from 'containers';
 
-const AlgorithmPage = () => {
+const ReferencePage = () => {
   return (
     <MainLayout>
-      <PageLayout title="알고리즘" optionKey="algorithm">
-        <Algorithm />
+      <PageLayout title="레퍼런스" optionKey="reference">
+        <Reference />
       </PageLayout>
     </MainLayout>
   );
 };
 
-export default AlgorithmPage;
+export default ReferencePage;

@@ -61,7 +61,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
         </div>
 
         <div className={`check-wrapper-middle ${type}`}>
-          <h2>{title}</h2>
+          <h2 className="line-one">{title}</h2>
           <p className="line-two">{desc}</p>
         </div>
 

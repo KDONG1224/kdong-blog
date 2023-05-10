@@ -39,8 +39,31 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
         justify-content: space-between;
         gap: 20px;
 
-        > div {
+        &-list {
+          width: auto;
           cursor: pointer;
+          text-align: center;
+
+          &.about {
+            width: 90px;
+          }
+
+          &.projects {
+            width: 133px;
+          }
+
+          &.gestbook {
+            width: 140px;
+          }
+
+          &.references {
+            width: 162px;
+          }
+
+          > span {
+            width: auto;
+            display: inline-block;
+          }
         }
 
         &-menu {

@@ -10,9 +10,14 @@ import { Footer, Header } from 'containers';
 // hooks
 import { useMedia, useScroll, useScrollToNode } from 'hooks';
 
-type MainLayoutProps = HTMLAttributes<HTMLDivElement>;
+interface MainLayoutProps extends HTMLAttributes<HTMLDivElement> {
+  noFooter?: boolean;
+  noMargin?: boolean;
+}
 
 export const MainLayout: React.FC<MainLayoutProps> = ({
+  noFooter = false,
+  noMargin = false,
   children,
   ...props
 }) => {
@@ -21,14 +26,14 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   const { scrollTo } = useScrollToNode('body');
 
   return (
-    <StyledMainLayout ismobile={isMobile} {...props}>
+    <StyledMainLayout ismobile={isMobile} nomargin={noMargin} {...props}>
       <Header />
       <main className="layout-main">{children}</main>
       <div
         className={`scroll-top ${scrollY > 600 ? 'show' : 'hide'}`}
         onClick={() => scrollTo()}
       />
-      <Footer />
+      {!noFooter && <Footer />}
     </StyledMainLayout>
   );
 };

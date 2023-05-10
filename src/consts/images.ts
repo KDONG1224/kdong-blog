@@ -18,11 +18,13 @@ export const logoIcons = {
 const ABOUT_IMG_01 = `${IMAGE_PATH}/about01.jpg`;
 const ABOUT_IMG_02 = `${IMAGE_PATH}/about02.jpg`;
 const ABOUT_IMG_03 = `${IMAGE_PATH}/about03.jpg`;
+const ABOUT_LOGO = `${IMAGE_PATH}/image-about-logo.png`;
 
 export const aboutImages = {
   ABOUT_IMG_01,
   ABOUT_IMG_02,
-  ABOUT_IMG_03
+  ABOUT_IMG_03,
+  ABOUT_LOGO
 };
 
 const INSTA_INFO_IMG_01 = `${IMAGE_PATH}/insta-info-1.png`;
@@ -73,4 +75,18 @@ export const IMAGE_BANNER_GITHUB = `${IMAGE_PATH}/image-banner-github.png`;
 export const bannerImages = {
   IMAGE_BANNER_INSTAGRAM,
   IMAGE_BANNER_GITHUB
+};
+
+// referenceImages
+const REFERENCE_PATH = `${IMAGE_PATH}/reference`;
+export const REFERENCE_JAVSCRIPT = `${REFERENCE_PATH}/reference-javascript.png`;
+export const REFERENCE_JQUERY = `${REFERENCE_PATH}/reference-jquery.png`;
+export const REFERENCE_REACT = `${REFERENCE_PATH}/reference-react.png`;
+export const REFERENCE_ALGORITHM = `${REFERENCE_PATH}/reference-algorithm.png`;
+
+export const referenceImages = {
+  REFERENCE_JAVSCRIPT,
+  REFERENCE_JQUERY,
+  REFERENCE_REACT,
+  REFERENCE_ALGORITHM
 };

@@ -1,4 +1,4 @@
-import { aboutImages } from './images';
+import { aboutImages, referenceImages } from './images';
 
 export interface RecommandListProps {
   key: number;
@@ -465,6 +465,49 @@ export const algorithmList: AlgorithmListProps[] = [
     created: '2022-12-17T14:09:02.175Z',
     bgColor: '',
     badgeColor: ''
+  }
+];
+
+export const referenceList: RecommandListProps[] = [
+  {
+    key: 1,
+    title: '자바스크립트란?',
+    desc: '자바스크립트는 ‘웹페이지에 생동감을 불어넣기 위해’ 만들어진 프로그래밍 언어입니다. 자바스크립트로 작성한 프로그램을 스크립트(script) 라고 부릅니다. 스크립트는 웹페이지의 HTML 안에 작성할 수 있는데, 웹페이지를 불러올 때 스크립트가 자동으로 실행됩니다.',
+    tag: 'JAVASCRIPT',
+    created: '2023-05-04',
+    thumbnail: referenceImages.REFERENCE_JAVSCRIPT,
+    bgColor: '#5c00ef',
+    badgeColor: '#ff5821'
+  },
+  {
+    key: 2,
+    title: '리액트란?',
+    desc: '리액트는 자바스크립트 라이브러리의 하나로서 사용자 인터페이스를 만들기 위해 사용된다. 페이스북과 개별 개발자 및 기업들 공동체에 의해 유지보수된다. 리액트는 싱글 페이지 애플리케이션이나 모바일 애플리케이션 개발에 사용될 수 있다.',
+    tag: 'REACT',
+    created: '2023-05-04',
+    thumbnail: referenceImages.REFERENCE_REACT,
+    bgColor: '#ff5821',
+    badgeColor: '#5c00ef'
+  },
+  {
+    key: 3,
+    title: '제이쿼리란?',
+    desc: 'jQuery는 HTML의 클라이언트 사이드 조작을 단순화 하도록 설계된 크로스 플랫폼의 자바스크립트 라이브러리다. 거의 모든 웹 브라우저에 대응할 정도로 브라우저 호환성이 있으며, 존 레식이 2006년 뉴욕 시 바캠프에서 공식적으로 소개하였다.',
+    tag: 'JQUERY',
+    created: '2023-05-04',
+    thumbnail: referenceImages.REFERENCE_JQUERY,
+    bgColor: '#484508',
+    badgeColor: '#000000'
+  },
+  {
+    key: 4,
+    title: '알고리즘이란?',
+    desc: '알고리즘, 셈법은 수학과 컴퓨터과학, 언어학 또는 엮인 분야에서 어떠한 문제를 해결하기 위해 정해진 일련의 절차이다. 계산을 실행하기 위한 단계적 절차를 의미하기도 한다. 즉, 문제 풀이에 필요한 계산절차 또는 처리과정의 순서를 뜻한다. 프로그램명령어의 집합을 의미하기도 한다.',
+    tag: 'ALGORITHM',
+    created: '2023-05-04',
+    thumbnail: referenceImages.REFERENCE_ALGORITHM,
+    bgColor: '#484508',
+    badgeColor: '#000000'
   }
 ];
 
