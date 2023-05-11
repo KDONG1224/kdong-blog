@@ -1,11 +1,12 @@
 import {
   ROUTE_ABOUT,
+  ROUTE_ADMIN,
   ROUTE_ALGORITHM,
   ROUTE_PROJECT,
   ROUTE_REFERENCE
 } from './routes';
 
-export const MainHeaderMenus = [
+export const headerMenus = [
   {
     index: 1,
     name: 'about',
@@ -29,5 +30,11 @@ export const MainHeaderMenus = [
     name: 'gestbook',
     nameKr: '방명록',
     path: ROUTE_ALGORITHM
+  },
+  {
+    index: 5,
+    name: 'admin',
+    nameKr: '관리자',
+    path: ROUTE_ADMIN
   }
 ];

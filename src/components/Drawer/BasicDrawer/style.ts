@@ -32,9 +32,9 @@ export const StyledBasicDrawer = styled(Drawer)<StyledBasicDrawerProps>`
 
       &-kor {
         font-family: 'Pretendard-Medium';
-        font-size: 1.4rem;
+        font-size: 1rem;
         margin-top: 0.3rem;
-        margin-left: 0.3rem;
+        margin-left: 1rem;
         color: #a6a6a6;
       }
     }

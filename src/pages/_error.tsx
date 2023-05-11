@@ -9,7 +9,7 @@ import { BlurImage } from 'components';
 // hooks
 import { useInterval } from 'hooks';
 
-// constㄴ
+// consts
 import { backgroundImages } from 'consts';
 
 const ErrorPage: NextPage = () => {
@@ -51,13 +51,15 @@ const ErrorPage: NextPage = () => {
       }}
     >
       <div>
-        <div>
+        <div style={{ width: 300, height: 300, position: 'relative' }}>
           <BlurImage src={backgroundImages.MY_IMAGE} alt="" />
         </div>
         <div
           style={{
             padding: '36px 0px',
-            lineHeight: 1.5
+            lineHeight: 1.5,
+            fontSize: 25,
+            fontFamily: 'Pretendard-Bold'
           }}
         >
           <div>불편을 드려 죄송합니다.</div>
