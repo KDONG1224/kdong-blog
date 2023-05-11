@@ -60,6 +60,10 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
             width: 162px;
           }
 
+          &.admin {
+            width: 103px;
+          }
+
           > span {
             width: auto;
             display: inline-block;

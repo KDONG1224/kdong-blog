@@ -9,6 +9,7 @@ import '../styles/index.css';
 import 'nprogress/nprogress.css';
 import '../../node_modules/highlight.js/styles/qtcreator_dark.css';
 import 'aos/dist/aos.css';
+import 'antd/dist/reset.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -22,6 +23,8 @@ import AOS from 'aos';
 import NProgress from 'nprogress';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
+import { ConfigProvider } from 'antd';
+import ko_KR from 'antd/lib/locale/ko_KR';
 
 // nprogress setting
 NProgress.configure({
@@ -47,7 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
   });
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof globalThis.window !== 'undefined') {
       setTimeout(() => {
         setIsLoading(false);
       }, 3000);
@@ -75,11 +78,20 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" sizes="192x192" href="/favicon.ico" />
         <title>KDONG 포트폴리오</title>
       </Head>
-      <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <Component {...pageProps} />
-        </RecoilRoot>
-      </QueryClientProvider>
+      <ConfigProvider
+        locale={ko_KR}
+        theme={{
+          token: {
+            colorPrimary: '#f43f00'
+          }
+        }}
+      >
+        <QueryClientProvider client={queryClient}>
+          <RecoilRoot>
+            <Component {...pageProps} />
+          </RecoilRoot>
+        </QueryClientProvider>
+      </ConfigProvider>
     </>
   );
 }

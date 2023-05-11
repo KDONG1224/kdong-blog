@@ -10,7 +10,7 @@ import { StyledHeader } from './style';
 import { BasicDrawer, BasicImage } from 'components';
 
 // consts
-import { MainHeaderMenus, ROUTE_ROOT, commonIcons, logoIcons } from 'consts';
+import { headerMenus, ROUTE_ROOT, commonIcons, logoIcons } from 'consts';
 
 // hooks
 import { useMedia, useScroll } from 'hooks';
@@ -49,22 +49,26 @@ export const Header = () => {
           <div className="header-wrapper-top">
             <div className="header-wrapper-top-left">
               {!isMobile &&
-                MainHeaderMenus.map(({ index, name, nameKr, path }) => (
-                  <React.Fragment key={name + index}>
-                    <div
-                      className={`header-wrapper-top-left-list ${name}`}
-                      onClick={() => onClickMenu(path)}
-                      onMouseOver={() => onMouseOver(name, 'hover')}
-                      onMouseOut={() => onMouseOver(name, 'none')}
-                    >
-                      {isHover === 'hover' && isHoverName === name ? (
-                        <span>{nameKr}</span>
-                      ) : (
-                        <span>{name.toLocaleUpperCase()}</span>
-                      )}
-                    </div>
-                  </React.Fragment>
-                ))}
+                headerMenus.map(({ index, name, nameKr, path }) => {
+                  if (name === 'projects') return null;
+
+                  return (
+                    <React.Fragment key={name + index}>
+                      <div
+                        className={`header-wrapper-top-left-list ${name}`}
+                        onClick={() => onClickMenu(path)}
+                        onMouseOver={() => onMouseOver(name, 'hover')}
+                        onMouseOut={() => onMouseOver(name, 'none')}
+                      >
+                        {isHover === 'hover' && isHoverName === name ? (
+                          <span>{nameKr}</span>
+                        ) : (
+                          <span>{name.toLocaleUpperCase()}</span>
+                        )}
+                      </div>
+                    </React.Fragment>
+                  );
+                })}
               {isMobile && (
                 <div
                   className="header-wrapper-top-left-menu"
@@ -115,18 +119,22 @@ export const Header = () => {
         transitionDuration={500}
       >
         <div className="mobile-menu-wrapper">
-          {MainHeaderMenus.map(({ index, name, nameKr, path }) => (
-            <div
-              key={name + index}
-              className="mobile-menu-wrapper-list"
-              onClick={() => onClickMenu(path)}
-            >
-              <div className="mobile-menu-wrapper-list-eng">
-                {name.toLocaleUpperCase()}
+          {headerMenus.map(({ index, name, nameKr, path }) => {
+            if (name === 'admin') return null;
+
+            return (
+              <div
+                key={name + index}
+                className="mobile-menu-wrapper-list"
+                onClick={() => onClickMenu(path)}
+              >
+                <div className="mobile-menu-wrapper-list-eng">
+                  {name.toLocaleUpperCase()}
+                </div>
+                <div className="mobile-menu-wrapper-list-kor">{nameKr}</div>
               </div>
-              <div className="mobile-menu-wrapper-list-kor">{nameKr}</div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <div
           className={`mobile-menu-close ${!isMenu ? 'hidden' : 'show'}`}
