@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { StyledLectureForm, StyledRequiredLabel } from './style';
 
 // components
-import { BlurImage, DragAndDrop, EditorTest, TextEditor } from 'components';
+import { BlurImage, DragAndDrop, TextEditor } from 'components';
 
 // modules
 import {

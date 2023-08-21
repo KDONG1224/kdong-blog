@@ -9,7 +9,7 @@ import { StyledImageBankListTable } from './style';
 import { BlurImage } from 'components';
 
 // modules
-import { ImageBankListProps } from 'modules';
+// import { ImageBankListProps } from 'modules';
 
 // consts
 import { DEFAULT_DATE_FORMAT } from 'consts';
@@ -22,13 +22,13 @@ import { TableRowSelection } from 'antd/lib/table/interface';
 import { ColumnProps } from 'antd/lib/table';
 import { useTableScroll } from 'hooks';
 
-interface ImagebankTableDatasource extends ImageBankListProps {
+interface ImagebankTableDatasource {
   rowKey: string;
 }
 
 interface ImageBankListTableProps {
   selectButton: boolean;
-  imageList: ImageBankListProps[];
+  imageList: any[];
   selectKey: string[] | number[];
   onSelectKey: (selectedRowKeys: string[]) => void;
   onDownload: (url: string) => void;
@@ -42,7 +42,7 @@ export const ImageBankListTable: React.FC<ImageBankListTableProps> = ({
 }) => {
   // const { scrollX, scrollY } = useTableScroll({ x: 300, y: 320 });
 
-  const columns = useMemo<ColumnProps<ImagebankTableDatasource>[]>(
+  const columns = useMemo<ColumnProps<any>[]>(
     () => [
       {
         title: '썸네일',
@@ -115,7 +115,7 @@ export const ImageBankListTable: React.FC<ImageBankListTableProps> = ({
     [onDownload]
   );
 
-  const rowSelection: TableRowSelection<ImagebankTableDatasource> = {
+  const rowSelection: TableRowSelection<any> = {
     selectedRowKeys: selectKey,
     onChange: (selectedRowKeys) => {
       onSelectKey(selectedRowKeys as string[]);
