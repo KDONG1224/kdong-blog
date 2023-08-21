@@ -23,12 +23,20 @@ class AxiosServerInstanceCreator {
   interceptors() {
     this.#instance.interceptors.request.use((config) => {
       if (!config.headers) return config;
-      if (!config.headers['x-access-token']) {
+
+      if (!config.headers['ownerId']) {
         Object.assign(config.headers, {
-          Accept: 'application/json'
-          // 'x-access-token': process.env.OASIS_MASTER_ACCESS_TOKEN!
+          Accept: 'application/json',
+          ownerId: process.env.NEXT_PUBLIC_KDONG_OWNER_ID
         });
       }
+
+      // if (!config.headers['x-access-token']) {
+      //   Object.assign(config.headers, {
+      //     Accept: 'application/json',
+      //     ownerId: process.env.KDONG_OWNER_ID
+      //   });
+      // }
 
       Object.assign(config.headers, {
         Pragma: 'no-cache',

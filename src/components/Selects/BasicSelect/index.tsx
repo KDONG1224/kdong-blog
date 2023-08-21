@@ -22,6 +22,7 @@ export const BasicSelect: React.FC<BasicSelectProps> = ({
   ...props
 }) => {
   const { isMobile } = useMedia();
+
   return (
     <StyledBasicSelect
       className="basic-select-wrapper"
@@ -39,10 +40,11 @@ export const BasicSelect: React.FC<BasicSelectProps> = ({
       }}
       {...props}
     >
-      {listItems.map(({ label, value }) => (
+      {listItems.map(({ key, label, value }) => (
         <MenuItem
           key={value}
           value={value}
+          id={key}
           className="basic-select-wrapper-item"
         >
           {label}

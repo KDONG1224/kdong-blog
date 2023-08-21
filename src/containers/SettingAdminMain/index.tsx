@@ -7,7 +7,9 @@ import { StyledSettingAdminMain } from './style';
 export const SettingAdminMain = () => {
   return (
     <StyledSettingAdminMain>
-      <div className="sam-wrapper"></div>
+      <div className="sam-wrapper">
+        <h2>관리자 페이지 설명</h2>
+      </div>
     </StyledSettingAdminMain>
   );
 };

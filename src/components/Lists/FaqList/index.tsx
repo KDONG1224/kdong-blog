@@ -4,15 +4,17 @@ import React, { useState } from 'react';
 // style
 import { StyledFaqList } from './style';
 
-// consts
-import { ResponseFaqListProps } from 'consts';
+// modules
+import { MainFaqProps } from 'modules';
 
 // hooks
 import { useMedia } from 'hooks';
+
+// libraries
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 
 interface FaqListProps {
-  faqList: ResponseFaqListProps[];
+  faqList: MainFaqProps[];
 }
 
 export const FaqList: React.FC<FaqListProps> = ({ faqList }) => {
@@ -28,25 +30,27 @@ export const FaqList: React.FC<FaqListProps> = ({ faqList }) => {
   return (
     <StyledFaqList ismobile={isMobile}>
       <div className="faq-wrapper">
-        {faqList?.map(({ key, title, desc }) => (
+        {faqList?.map(({ seq, question, answer }) => (
           <Accordion
-            key={key}
-            expanded={isExpanded === key.toString()}
-            onChange={handleChange(key.toString())}
+            key={seq}
+            expanded={isExpanded === seq.toString()}
+            onChange={handleChange(seq.toString())}
             className="faq-wrapper-content"
           >
             <AccordionSummary
-              id={`${key}-header`}
-              aria-controls={`${key}-content`}
+              id={`${seq}-header`}
+              aria-controls={`${seq}-content`}
               expandIcon={<div className="faq-wrapper-content-btn" />}
               className="faq-wrapper-content-summary"
             >
               <div className="faq-wrapper-content-summary-title">
-                Q. {title}
+                Q. {question}
               </div>
             </AccordionSummary>
             <AccordionDetails className="faq-wrapper-content-details">
-              <div className="faq-wrapper-content-details-desc">A. {desc}</div>
+              <div className="faq-wrapper-content-details-desc">
+                A. {answer}
+              </div>
             </AccordionDetails>
           </Accordion>
         ))}

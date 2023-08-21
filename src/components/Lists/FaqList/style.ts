@@ -20,6 +20,12 @@ export const StyledFaqList = styled.div<StyledFaqListProps>`
 
       &.Mui-expanded {
         margin: 0 !important;
+
+        .faq-wrapper-content-btn {
+          &::before {
+            top: 45%;
+          }
+        }
       }
 
       &-summary {
@@ -61,7 +67,7 @@ export const StyledFaqList = styled.div<StyledFaqListProps>`
           content: '+';
           position: absolute;
           top: 50%;
-          left: 54%;
+          left: 50%;
           font-size: 12px;
           transform: translate(-50%, -50%);
         }

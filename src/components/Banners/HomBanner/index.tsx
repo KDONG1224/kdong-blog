@@ -1,5 +1,5 @@
 // base
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 // styles
 import { StyledHomBanner } from './style';
@@ -7,72 +7,90 @@ import { StyledHomBanner } from './style';
 // components
 import { BasicSwiper, BlurImage, TypingText } from 'components';
 
-// consts
-import { aboutImages } from 'consts';
+// modules
+import { MainBannerProps, kdongProfileState } from 'modules';
 
 // hooks
 import { useMedia } from 'hooks';
 
 // libraries
 import { SwiperSlide } from 'swiper/react';
+import { useRecoilValue } from 'recoil';
 
 export const HomBanner = () => {
+  const [isBanner, setIsBanner] = useState<MainBannerProps>();
+
+  const isProfile = useRecoilValue(kdongProfileState);
+
   const { isMobile } = useMedia();
 
-  const bannerImage = [
-    aboutImages.ABOUT_IMG_01,
-    'https://kdong-portfolio.s3.amazonaws.com/guestbook/1670325828599_IMG_6709.JPG',
-    aboutImages.ABOUT_IMG_02,
-    'https://kdong-portfolio.s3.amazonaws.com/guestbook/1670325774131_IMG_6875.jpeg',
-    aboutImages.ABOUT_IMG_03
-  ];
+  const bannerTitle = useMemo(() => {
+    if (!isBanner) return;
+
+    const result: Array<string | number> = [];
+
+    isBanner.titleLists.map(({ title, playSpeed }) => {
+      const arr: Array<string | number> = [];
+
+      arr.push(title);
+      arr.push(playSpeed * 1000);
+
+      result.push(...arr);
+    });
+
+    return result;
+  }, [isBanner]);
+
+  useEffect(() => {
+    if (!isProfile) return;
+
+    setIsBanner(isProfile.mainBanner);
+  }, [isProfile]);
+
   return (
     <StyledHomBanner ismobile={isMobile}>
       <div className="banner-wrapper">
         <div className="banner-wrapper-text">
           <p>안녕하세요.</p>
-          <TypingText
-            sequence={[
-              '동료들과 협업하는',
-              4800,
-              '클린 코드를 지향하는',
-              4800,
-              '비지니스 성장에 기여하는',
-              4800,
-              '회사와 같이 성장하는',
-              4800,
-              '새로운것을 탐구하는',
-              4800
-            ]}
-            wrapper="p"
-            speed={50}
-            repeat={Infinity}
-          />
+          {bannerTitle && (
+            <TypingText
+              sequence={bannerTitle}
+              wrapper="p"
+              speed={50}
+              repeat={Infinity}
+            />
+          )}
           <p>
             밥값하는 개발자 <strong>KDONG</strong> 입니다.
           </p>
         </div>
-        <BasicSwiper
-          className="banner-wrapper-swiper"
-          spaceBetween={0}
-          slidesPerView={1}
-          loop={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false
-          }}
-        >
-          {bannerImage.map((image, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="grayscale" />
-              <BlurImage
-                src={image}
-                alt="배너이미지"
-                style={{ objectPosition: 'center 70%' }}
-              />
-            </SwiperSlide>
-          ))}
-        </BasicSwiper>
+        {isBanner && (
+          <BasicSwiper
+            className="banner-wrapper-swiper"
+            spaceBetween={0}
+            slidesPerView={1}
+            loop={true}
+            autoplay={
+              isBanner.autoPlay
+                ? {
+                    delay: isBanner.playSpeed * 1000,
+                    disableOnInteraction: false
+                  }
+                : false
+            }
+          >
+            {isBanner?.fileList.map(({ url }, idx) => (
+              <SwiperSlide key={idx}>
+                <div className="grayscale" />
+                <BlurImage
+                  src={url}
+                  alt="배너이미지"
+                  style={{ objectPosition: 'center 70%' }}
+                />
+              </SwiperSlide>
+            ))}
+          </BasicSwiper>
+        )}
       </div>
     </StyledHomBanner>
   );

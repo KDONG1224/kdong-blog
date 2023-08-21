@@ -9,7 +9,7 @@ import { SettingLectureList } from 'containers';
 
 const AdminSettingLectureList = () => {
   return (
-    <AdminLayout title="게시글 관리">
+    <AdminLayout title="게시글 관리" noSaveBtn>
       <SettingLectureList />
     </AdminLayout>
   );

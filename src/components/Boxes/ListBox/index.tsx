@@ -7,8 +7,8 @@ import { StyledListBox } from './style';
 // components
 import { BasicSwiper, CheckCard } from 'components';
 
-// consts
-import { AlgorithmListProps, RecommandListProps } from 'consts';
+// modules
+import { ResponseLecture } from 'modules';
 
 // hooks
 import { useMedia } from 'hooks';
@@ -19,7 +19,7 @@ import { SwiperSlide } from 'swiper/react';
 interface ListBoxProps {
   headerTitle: string;
   subHeaderTitle: string;
-  lists: RecommandListProps[] | AlgorithmListProps[];
+  lists: ResponseLecture[];
   type?: 'check' | 'polygon' | 'image';
   delay?: number;
   onClickMore: () => void;

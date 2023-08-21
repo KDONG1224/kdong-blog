@@ -111,6 +111,29 @@ export const PaginationTable = <T extends {}>(
 
   return (
     <StyledPaginationTable>
+      {pagination.total !== null && (
+        <div
+          style={{
+            borderBottom: '1px solid #666',
+            margin: '15px 0 30px 0'
+          }}
+        >
+          <span>
+            * 총{' '}
+            <span
+              style={{
+                fontSize: 18,
+                color: 'red',
+                fontFamily: 'Pretendard-Bold',
+                paddingRight: 4
+              }}
+            >
+              {pagination.total || dataSource.length}
+            </span>
+            건의 게시물이 등록되어 있습니다.
+          </span>{' '}
+        </div>
+      )}
       <Row style={{ marginBottom: 10 }} justify="space-between">
         <Col>
           <Space size={5}>
@@ -133,18 +156,7 @@ export const PaginationTable = <T extends {}>(
                 </Button>
               </>
             )}
-            {pagination.total !== null && (
-              <div
-                style={{
-                  borderBottom: '1px solid #666',
-                  margin: '15px 0 10px 0'
-                }}
-              >
-                <span>
-                  * 총 {pagination.total}건의 게시물이 등록되어 있습니다.
-                </span>{' '}
-              </div>
-            )}
+
             {customLeft}
           </Space>
         </Col>
