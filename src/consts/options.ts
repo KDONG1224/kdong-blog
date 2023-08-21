@@ -5,20 +5,24 @@ export interface PageOptionsProps {
 }
 
 export interface SelectListItemProps {
+  key: string;
   label: string;
   value: string;
 }
 
 export const selectTypeOption: SelectListItemProps[] = [
   {
+    key: 'type',
     label: '종류',
     value: 'type'
   },
   {
+    key: 'type',
     label: '온라인',
     value: 'online'
   },
   {
+    key: 'type',
     label: '오프라인',
     value: 'offline'
   }
@@ -26,14 +30,17 @@ export const selectTypeOption: SelectListItemProps[] = [
 
 export const selectGenreOption: SelectListItemProps[] = [
   {
+    key: 'category',
     label: '장르',
     value: 'genre'
   },
   {
+    key: 'category',
     label: '문학',
     value: 'literature'
   },
   {
+    key: 'category',
     label: '커뮤니티',
     value: 'community'
   }
@@ -41,14 +48,17 @@ export const selectGenreOption: SelectListItemProps[] = [
 
 export const selectMeetingOption: SelectListItemProps[] = [
   {
+    key: 'category',
     label: '모임 유형',
     value: 'meeting'
   },
   {
+    key: 'category',
     label: '스터디',
     value: 'study'
   },
   {
+    key: 'category',
     label: '강연',
     value: 'lecture'
   }
@@ -56,25 +66,30 @@ export const selectMeetingOption: SelectListItemProps[] = [
 
 export const selectOrderOption: SelectListItemProps[] = [
   {
+    key: 'order',
     label: '최근 등록순',
-    value: 'order'
+    value: 'descend'
   },
   {
+    key: 'order',
     label: '오래된순',
-    value: 'online'
+    value: 'ascend'
   }
 ];
 
 export const selectProjectTypeOption: SelectListItemProps[] = [
   {
+    key: 'projectType',
     label: '종류',
-    value: 'type'
+    value: 'all'
   },
   {
+    key: 'projectType',
     label: '프로젝트',
     value: 'real'
   },
   {
+    key: 'projectType',
     label: '사이드 프로젝트',
     value: 'side'
   }
@@ -82,14 +97,17 @@ export const selectProjectTypeOption: SelectListItemProps[] = [
 
 export const selectProjectDivisionOption: SelectListItemProps[] = [
   {
+    key: 'positionType',
     label: '구분',
-    value: 'division'
+    value: 'all'
   },
   {
+    key: 'positionType',
     label: '프론트',
     value: 'front'
   },
   {
+    key: 'positionType',
     label: '백',
     value: 'back'
   }
@@ -97,18 +115,22 @@ export const selectProjectDivisionOption: SelectListItemProps[] = [
 
 export const selectProjectSkillOption: SelectListItemProps[] = [
   {
+    key: 'skillType',
     label: '스킬',
-    value: 'skill'
+    value: 'all'
   },
   {
+    key: 'skillType',
     label: 'javascript',
     value: 'javascript'
   },
   {
+    key: 'skillType',
     label: 'react',
     value: 'react'
   },
   {
+    key: 'skillType',
     label: 'nestjs',
     value: 'nestjs'
   }

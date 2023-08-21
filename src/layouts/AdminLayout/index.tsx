@@ -18,6 +18,9 @@ import { authRoleState, collapsedState } from 'modules';
 import {
   ROUTE_ADMIN_GUEST,
   ROUTE_ADMIN_GUEST_BOOK,
+  ROUTE_ADMIN_IMAGEBANK,
+  ROUTE_ADMIN_IMAGEBANK_LIST,
+  ROUTE_ADMIN_IMAGEBANK_UPLOAD,
   ROUTE_ADMIN_LECTURE,
   ROUTE_ADMIN_LECTURE_LIST,
   ROUTE_ADMIN_MYINFO,
@@ -41,8 +44,10 @@ import {
   MessageOutlined,
   ReadOutlined,
   ShopOutlined,
-  HomeOutlined
+  HomeOutlined,
+  FileImageOutlined
 } from '@ant-design/icons';
+import { useMedia } from 'hooks';
 
 interface AdminLayoutProps extends LayoutProps {
   title: string;
@@ -63,14 +68,19 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   const isAdminRole = useRecoilValue(authRoleState);
   const [collapsed, setCollapsed] = useRecoilState(collapsedState);
 
+  const { isTablet } = useMedia();
   const router = useRouter();
   const pathname = router.pathname;
 
   const adminMenuItems: MenuItemProps[] = [
     collapsed &&
       (getItem('로그인', ROUTE_ADMIN_SIGNIN, <LogoutOutlined />) as ItemType),
-    getItem('홈', ROUTE_ROOT, <HomeOutlined />),
+    getItem('메인 홈', ROUTE_ROOT, <HomeOutlined />),
     getItem('내 정보', ROUTE_ADMIN_MYINFO, <UserOutlined />),
+    getItem('이미지 관리', ROUTE_ADMIN_IMAGEBANK, <FileImageOutlined />, [
+      getItem('이미지 목록', ROUTE_ADMIN_IMAGEBANK_LIST),
+      getItem('이미지 업로드', ROUTE_ADMIN_IMAGEBANK_UPLOAD)
+    ]),
     getItem('페이지 관리', ROUTE_ADMIN_PAGE, <ShopOutlined />, [
       getItem('메인페이지 관리', ROUTE_ADMIN_PAGE_MAIN),
       getItem('팝업 관리', ROUTE_ADMIN_PAGE_POPUP)
@@ -94,6 +104,13 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   useEffect(() => {
     setIsSelectMenu([pathname]);
   }, [pathname]);
+
+  useEffect(() => {
+    if (isTablet) {
+      setCollapsed(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTablet]);
 
   return (
     <StyledAdminLayout {...props}>

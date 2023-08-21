@@ -22,18 +22,28 @@ export const SettingMyInfo = () => {
       <div className="smi-wrapper">
         <Form form={form}>
           <Descriptions column={24} bordered style={{ marginBottom: '30px' }}>
-            <Descriptions.Item span={10} label="이름">
+            {/* 이름 */}
+            <Descriptions.Item span={12} label="이름">
               KDONG
             </Descriptions.Item>
 
-            <Descriptions.Item label="권한" span={14}>
+            {/* 권한 */}
+            <Descriptions.Item label="권한" span={12}>
               {isAdminRole === 'isSuperuser' ? '최고 관리자' : '게스트'}
             </Descriptions.Item>
-            <Descriptions.Item label="이메일" span={14}>
+
+            {/* 타이틀 */}
+            <Descriptions.Item label="타이틀" span={12}>
+              밥값하는 개발자
+            </Descriptions.Item>
+
+            {/* 이메일 */}
+            <Descriptions.Item label="이메일" span={12}>
               gkfl8809@naver.com
             </Descriptions.Item>
 
-            <Descriptions.Item label="비고" span={8}>
+            {/* 비고 */}
+            <Descriptions.Item label="비고" span={24}>
               <Form.Item name="recommender">
                 <Radio.Group>
                   <Radio value>활성화</Radio>

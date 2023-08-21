@@ -129,12 +129,16 @@ export const StyledMain = styled.div<StyledMainProps>`
         font-size: ${({ ismobile }) => (ismobile ? '14px' : '19px')};
         color: #fff;
         line-height: ${({ ismobile }) => ismobile && '1.3'};
+
+        > p {
+          margin: 0;
+        }
       }
 
       &-right {
         width: ${({ ismobile }) => (ismobile ? '10px' : '24px')};
         height: ${({ ismobile }) => (ismobile ? '20px' : '42px')};
-        padding-right: ${({ ismobile }) => (ismobile ? '10px' : '20px')};
+        margin-right: ${({ ismobile }) => (ismobile ? '10px' : '20px')};
         cursor: pointer;
 
         &-box {

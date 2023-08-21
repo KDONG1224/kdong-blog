@@ -531,3 +531,57 @@ export const faqList: ResponseFaqListProps[] = [
     desc: 'gkfl8809@naver.com 으로 연락주세요.'
   }
 ];
+
+export const homeBannerList = {
+  fileList: [
+    {
+      tags: [],
+      url: 'https://kdong-portfolio.s3.ap-northeast-2.amazonaws.com/guestbook/1670244423257_IMG_6875.jpeg',
+      link: '',
+      expose: false,
+      title: '',
+      contents: ''
+    },
+    {
+      tags: [],
+      url: 'https://kdong-portfolio.s3.ap-northeast-2.amazonaws.com/guestbook/1670244537958_IMG_6709.JPG',
+      link: '',
+      expose: false,
+      title: '',
+      contents: ''
+    },
+    {
+      tags: [],
+      url: 'https://kdong-portfolio.s3.ap-northeast-2.amazonaws.com/guestbook/1675326330958_baron009.jpg',
+      link: '',
+      expose: false,
+      title: '',
+      contents: ''
+    },
+    {
+      tags: [],
+      url: 'https://kdong-portfolio.s3.ap-northeast-2.amazonaws.com/guestbook/1677742713565_ex04.jpg',
+      link: '',
+      expose: false,
+      title: '',
+      contents: ''
+    },
+    {
+      tags: [],
+      url: 'https://kdong-portfolio.s3.ap-northeast-2.amazonaws.com/guestbook/1677750019365_ex07.jpg',
+      link: '',
+      expose: false,
+      title: '',
+      contents: ''
+    }
+  ],
+  playSpeed: 5,
+  autoPlay: true,
+  titleLists: [
+    { title: '동료들과 협업하는', playSpeed: 4 },
+    { title: '클린 코드를 지향하는', playSpeed: 8 },
+    { title: '비지니스 성장에 기여하는', playSpeed: 3 },
+    { title: '회사와 같이 성장하는', playSpeed: 2 },
+    { title: '새로운것을 탐구하는', playSpeed: 6 }
+  ]
+};

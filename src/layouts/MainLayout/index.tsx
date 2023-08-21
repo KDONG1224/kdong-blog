@@ -9,6 +9,7 @@ import { Footer, Header } from 'containers';
 
 // hooks
 import { useMedia, useScroll, useScrollToNode } from 'hooks';
+import { HeaderSvg } from 'components';
 
 interface MainLayoutProps extends HTMLAttributes<HTMLDivElement> {
   noFooter?: boolean;
@@ -27,6 +28,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
 
   return (
     <StyledMainLayout ismobile={isMobile} nomargin={noMargin} {...props}>
+      <HeaderSvg />
       <Header />
       <main className="layout-main">{children}</main>
       <div

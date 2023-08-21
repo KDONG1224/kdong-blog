@@ -17,12 +17,14 @@ interface PageLayoutProps {
   title?: string;
   optionKey: string;
   children: React.ReactNode;
+  onChangeOption?: (key: string, value: string) => void;
 }
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
   title = '타이틀',
   optionKey,
-  children
+  children,
+  onChangeOption
 }) => {
   const { isMobile } = useMedia();
 
@@ -34,6 +36,17 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
     return option;
   }, [optionKey]);
 
+  const selectedOption = (value: React.ReactNode) => {
+    if (!React.isValidElement(value)) return;
+
+    const key = value.props.id;
+    const select = value.props.value;
+
+    if (onChangeOption) {
+      onChangeOption(key, select);
+    }
+  };
+
   return (
     <StyledPageLayout className="container" ismobile={isMobile}>
       <div className="page-wrapper">
@@ -44,7 +57,13 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
           {selectOption.map(({ key, options }) => (
             <React.Fragment key={key}>
               {options.map((option, idx) => (
-                <BasicSelect key={idx} listItems={option} />
+                <BasicSelect
+                  key={idx}
+                  listItems={option}
+                  onChange={(_, child: React.ReactNode) =>
+                    selectedOption(child)
+                  }
+                />
               ))}
             </React.Fragment>
           ))}

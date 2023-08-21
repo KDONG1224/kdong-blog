@@ -73,7 +73,7 @@ export const StyledAdminLayout = styled(Layout)`
       overflow: scroll;
 
       .admin-content-top {
-        margin-bottom: 40px;
+        margin-bottom: 0px;
 
         .admin-content-title {
           > h2 {

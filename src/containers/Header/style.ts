@@ -23,7 +23,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
 
     &-top {
       position: fixed;
-      top: ${({ ismobile }) => (ismobile ? '44px' : '10px')};
+      top: ${({ ismobile }) => (ismobile ? '44px' : '86px')};
       width: 100%;
       display: flex;
       align-items: center;
@@ -89,7 +89,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
         transition: 0.6s all cubic-bezier(0.5, 0, 0.5, 1);
 
         &.short {
-          margin-top: -40px;
+          margin-top: ${({ ismobile }) => (ismobile ? '-40px' : '-10rem')};
         }
       }
     }
@@ -104,7 +104,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
       justify-content: space-between;
       align-items: baseline;
       transition: 0.6s all cubic-bezier(0.5, 0, 0.5, 1);
-      top: ${({ ismobile }) => (ismobile ? '10px' : '44px')};
+      top: 10px;
       cursor: pointer;
       z-index: 99;
 
