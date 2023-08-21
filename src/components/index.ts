@@ -11,3 +11,5 @@ export * from './Forms';
 export * from './Selects';
 export * from './Loading';
 export * from './Tables';
+export * from './Svgs';
+export * from './Uploads';

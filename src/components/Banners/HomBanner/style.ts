@@ -25,6 +25,7 @@ export const StyledHomBanner = styled.div<StyledHomBannerProps>`
 
       > p {
         color: #fff !important;
+        margin-bottom: 0;
         &:nth-of-type(2) {
           margin: 1rem 0;
         }

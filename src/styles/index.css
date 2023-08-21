@@ -1,6 +1,7 @@
 @import './reset.css';
 @import './fonts.css';
 @import './loading.css';
+/* @import '~@ckeditor/ckeditor5-build-classic/build/ckeditor.css'; */
 
 html {
   font-size: 10px;
@@ -11,6 +12,11 @@ html {
 
 body {
   font-family: Pretendard-Regular;
+}
+
+::selection {
+  background: #000000;
+  color: #f43f00;
 }
 
 .container {
@@ -53,6 +59,12 @@ body {
 
 .basic-select-wrapper-paper {
   border-radius: 0 !important;
+}
+
+.ck-content {
+  min-height: 300px !important;
+  max-height: 300px !important;
+  overflow-y: scroll;
 }
 
 @media (max-width: 1500px) {

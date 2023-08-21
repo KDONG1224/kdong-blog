@@ -107,6 +107,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
               0% 90%,
               0% 10%
             )`};
+            background-color: #fff;
 
             &:before {
               content: '';

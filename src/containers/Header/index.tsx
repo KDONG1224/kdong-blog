@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // base
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -13,7 +14,7 @@ import { BasicDrawer, BasicImage } from 'components';
 import { headerMenus, ROUTE_ROOT, commonIcons, logoIcons } from 'consts';
 
 // hooks
-import { useMedia, useScroll } from 'hooks';
+import { useMedia, useOverlay, useScroll } from 'hooks';
 
 export const Header = () => {
   const [isHoverName, setIsHoverName] = useState<string>('');
@@ -24,22 +25,30 @@ export const Header = () => {
 
   const { isMobile } = useMedia();
   const { scrollY } = useScroll();
+  const { visible, hidden } = useOverlay('.overlay-path');
 
   const onClickLogo = () => {
+    onClickMobileMenu();
     router.push(ROUTE_ROOT);
   };
 
   const onClickMenu = (path: string) => {
+    onClickMobileMenu();
     router.push(path);
   };
 
-  const onMouseOver = (name: string, type: 'hover' | 'none') => {
-    setIsHoverName(name);
-    setIsHover(type);
-  };
+  // const onMouseOver = (name: string, type: 'hover' | 'none') => {
+  //   setIsHoverName(name);
+  //   setIsHover(type);
+  // };
 
   const onClickMobileMenu = () => {
     setIsMenu((prev) => !prev);
+    visible();
+    setTimeout(() => {
+      setIsMenu((prev) => !prev);
+      hidden();
+    }, 1200);
   };
 
   return (
@@ -48,7 +57,7 @@ export const Header = () => {
         <div className="header-wrapper">
           <div className="header-wrapper-top">
             <div className="header-wrapper-top-left">
-              {!isMobile &&
+              {/* {(!isMobile || scrollY <= 10) &&
                 headerMenus.map(({ index, name, nameKr, path }) => {
                   if (name === 'projects') return null;
 
@@ -68,19 +77,18 @@ export const Header = () => {
                       </div>
                     </React.Fragment>
                   );
-                })}
-              {isMobile && (
-                <div
-                  className="header-wrapper-top-left-menu"
-                  onClick={onClickMobileMenu}
-                >
-                  <span>MENU</span>
-                </div>
-              )}
+                })} */}
+              {/* {(isMobile || scrollY > 10) && ( */}
+              <div
+                className="header-wrapper-top-left-menu"
+                onClick={onClickMobileMenu}
+              >
+                <span>MENU</span>
+              </div>
             </div>
             <div
               className={`header-wrapper-top-right ${
-                scrollY > 10 && isMobile ? 'short' : ''
+                scrollY > 10 ? 'short' : ''
               }`}
               onClick={onClickLogo}
             >

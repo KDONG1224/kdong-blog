@@ -1,1 +1,3 @@
 export const QUERY_EVERYTHING = 'QUERY_EVERYTHING';
+
+export const GET_LECTURE_LIST = 'GET_LECTURE_LIST';

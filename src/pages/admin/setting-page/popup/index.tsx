@@ -5,12 +5,12 @@ import React from 'react';
 import { AdminLayout } from 'layouts';
 
 // containers
-import { SettingPageMain } from 'containers';
+import { SettingPagePopup } from 'containers';
 
 const AdminSettingPagePopup = () => {
   return (
     <AdminLayout title="팝업 관리">
-      <SettingPageMain />
+      <SettingPagePopup />
     </AdminLayout>
   );
 };

@@ -105,8 +105,8 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
 
               .refer-wrapper {                
                 &-box {
-                  width: 350px;
-                  height: 350px;
+                  width: 320px;
+                  height: 320px;
                 }
               }
 
