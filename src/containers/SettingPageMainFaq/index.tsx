@@ -69,7 +69,7 @@ export const SettingPageMainFaq = () => {
 
       nProgress.done();
     },
-    onError: (_, __, context) => {
+    onError: (_, __, context: any) => {
       queryClient.setQueryData(['QUERY_KDONG_PROFILE_CREATE'], context.prev);
     }
   });

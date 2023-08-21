@@ -6,7 +6,7 @@ import React from 'react';
 import { StyledImageBankListThumb } from './style';
 import { DownloadOutlined } from '@ant-design/icons';
 import { Row, Col, Card, Checkbox, Tag, Button } from 'antd';
-import { ImageBankListProps } from 'modules';
+// import { ImageBankListProps } from 'modules';
 import { DEFAULT_DATE_FORMAT } from 'consts';
 import { format } from 'path';
 import dayjs from 'dayjs';
@@ -14,7 +14,7 @@ import { BlurImage } from 'components';
 
 interface ImageBankListThumbProps {
   selectButton: boolean;
-  imageList: ImageBankListProps[];
+  imageList: any[];
   selectKey: string[] | number[];
   onSelectKey: (selectedRowKeys: string[]) => void;
   onDownload: (url: string) => void;
@@ -25,8 +25,8 @@ export const ImageBankListThumb: React.FC<ImageBankListThumbProps> = ({
   selectButton,
   selectKey,
   onSelectKey,
-  onDownload,
-  onChange
+  onDownload
+  // onChange
 }) => {
   return (
     <StyledImageBankListThumb>
@@ -97,7 +97,7 @@ export const ImageBankListThumb: React.FC<ImageBankListThumbProps> = ({
                               cursor: 'pointer',
                               color: '#fff'
                             }}
-                            onClick={() => onDownload(img?.url || '')}
+                            // onClick={() => onDownload(img?.url || '')}
                           />
                         </div>
                       </div>

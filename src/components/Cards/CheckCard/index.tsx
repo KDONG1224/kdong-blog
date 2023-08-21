@@ -17,7 +17,7 @@ import { useMedia } from 'hooks';
 import dayjs from 'dayjs';
 
 interface CheckCardProps {
-  data: ResponseLecture;
+  data: ResponseLecture | any;
   type?: 'check' | 'polygon' | 'image';
 }
 
@@ -69,7 +69,9 @@ export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
           {type !== 'image' && (
             <div className={`check-wrapper-top-badge ${type}`}>
               {tags.length > 0 ? (
-                tags.map((tag, idx) => <span key={idx}>{tag}</span>)
+                tags.map((tag: any, idx: number) => (
+                  <span key={idx}>{tag}</span>
+                ))
               ) : (
                 <span></span>
               )}
