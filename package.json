@@ -6,8 +6,8 @@
     "dev": "env-cmd -f ./config/.env.development next dev -p 8888",
     "build": "next build",
     "build:prod": "env-cmd -f ./config/.env.production next build",
-    "start": "env-cmd -f ./config/.env.production next start -p 8888",
-    "start:prod": "env-cmd -f ./config/.env.production pm2 delete 'kdong-dev' && pm2 start npm --name 'kdong-dev' -- run prod",
+    "start": "env-cmd -f ./config/.env.production next start",
+    "start:prod": "env-cmd -f ./config/.env.production pm2 delete 'kdong-dev' && pm2 start npm --name 'kdong-dev' -- run start",
     "pwa": "npm run build:prod && npm run start:prod",
     "lint": "next lint"
   },
