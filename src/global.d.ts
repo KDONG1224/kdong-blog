@@ -1,6 +1,6 @@
 declare module 'react-highlight';
-declare module '@ckeditor/ckeditor5-react';
-declare module 'ckeditor5-custom-build/build/ckeditor';
+// declare module '@ckeditor/ckeditor5-react';
+// declare module 'ckeditor5-custom-build/build/ckeditor';
 
 // declare module '@ckeditor/ckeditor5-react' {
 //   import { ComponentType } from 'react';
