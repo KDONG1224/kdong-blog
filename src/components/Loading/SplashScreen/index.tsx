@@ -2,8 +2,12 @@ import React from 'react';
 import { StyledSplashScreen } from './style';
 import Head from 'next/head';
 
-import Lottie from 'react-lottie-player';
+// import Lottie from 'react-lottie-player';
 import loadingFlip from '../../../loadingFlip.json';
+
+const DynamicLottie = dynamic(() => import('react-lottie-player'), {
+  ssr: false
+});
 
 export const SplashScreen = () => {
   return (
@@ -13,7 +17,7 @@ export const SplashScreen = () => {
       </Head>
       <StyledSplashScreen>
         <div className="splash-wrapper">
-          <Lottie loop animationData={loadingFlip} play />;
+          <DynamicLottie loop animationData={loadingFlip} play />;
           <div className="title">KDONG's Portfolio</div>
         </div>
       </StyledSplashScreen>

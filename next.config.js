@@ -33,7 +33,8 @@ const withPWACustom = withPWA({
   skipWaiting: true,
   disable: process.env.NODE_ENV !== 'production',
   runtimeCaching: [],
-  buildExcludes: [/app-build-manifest.json$/]
+  buildExcludes: [/app-build-manifest.json$/],
+  maximumFileSizeToCacheInBytes: 5000000 // 5MB로 설정
 })(nextConfig);
 
 module.exports = withPlugins(
