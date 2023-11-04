@@ -10,6 +10,8 @@ import { BlurImage } from 'components';
 // consts
 import { DEFAULT_LIMIT, DEFAULT_SKIP } from 'consts';
 import { useLectureList } from 'queries';
+import { useRecoilValue } from 'recoil';
+import { loadingState } from 'modules';
 
 interface ReferenceProps {
   option: {
@@ -21,12 +23,16 @@ interface ReferenceProps {
 }
 
 export const Reference: React.FC<ReferenceProps> = ({ option }) => {
+  const loading = useRecoilValue(loadingState);
+
   const { data: dataSource } = useLectureList({
     skip: DEFAULT_SKIP,
     limit: DEFAULT_LIMIT,
     type: 'reference',
     where: option
   });
+
+  console.log('-- loading -- : ', loading);
 
   return (
     <StyledReference>
