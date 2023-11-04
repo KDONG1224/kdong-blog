@@ -1,16 +1,22 @@
 // base
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 // modules
-import { LectureApi, ResponseLecture, UpdateLectureProps } from 'modules';
+import {
+  LectureApi,
+  ResponseLecture,
+  UpdateLectureProps,
+  loadingState
+} from 'modules';
 
 // consts
 import { GET_LECTURE_LIST } from 'consts';
 
 // libraries
-import nProgress from 'nprogress';
+
 import { AxiosError } from 'axios';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useSetRecoilState } from 'recoil';
 
 interface UseLectureListProps {
   skip: number;
@@ -25,6 +31,8 @@ export const useLectureList = ({
   type,
   where
 }: UseLectureListProps) => {
+  const setLoading = useSetRecoilState(loadingState);
+
   const queryClient = useQueryClient();
 
   const lectureApi = useMemo(() => {
@@ -32,8 +40,6 @@ export const useLectureList = ({
   }, []);
 
   const getLectureList = async () => {
-    nProgress.start();
-
     const filter = {
       skip,
       limit,
@@ -41,7 +47,6 @@ export const useLectureList = ({
       where
     };
 
-    nProgress.done();
     return await lectureApi.getLecture(filter);
   };
 
@@ -53,8 +58,8 @@ export const useLectureList = ({
     return await lectureApi.deleteLectureClient(id);
   };
 
-  const { data } = useQuery<ResponseLecture[], AxiosError>(
-    [GET_LECTURE_LIST, nProgress, where],
+  const { data, isLoading } = useQuery<ResponseLecture[], AxiosError>(
+    [GET_LECTURE_LIST, where],
     getLectureList,
     {
       select: (data) => data
@@ -67,24 +72,16 @@ export const useLectureList = ({
     ResponseLecture
   >((values) => updateLecture(values), {
     onSuccess: () => {
-      nProgress.done();
-
-      return queryClient.invalidateQueries([GET_LECTURE_LIST, nProgress]);
+      return queryClient.invalidateQueries([GET_LECTURE_LIST]);
     },
     onError: (_, __, context) => {
-      nProgress.done();
-
       return queryClient.setQueryData([GET_LECTURE_LIST], context);
     },
     onMutate: async () => {
-      nProgress.start();
-
       return await queryClient.cancelQueries([GET_LECTURE_LIST]);
     },
     onSettled: () => {
-      nProgress.done();
-
-      return queryClient.invalidateQueries([GET_LECTURE_LIST, nProgress]);
+      return queryClient.invalidateQueries([GET_LECTURE_LIST]);
     }
   });
 
@@ -94,26 +91,28 @@ export const useLectureList = ({
     string
   >((id) => deleteLecture(id), {
     onSuccess: () => {
-      nProgress.done();
-
-      return queryClient.invalidateQueries([GET_LECTURE_LIST, nProgress]);
+      return queryClient.invalidateQueries([GET_LECTURE_LIST]);
     },
     onError: (_, __, context) => {
-      nProgress.done();
-
       return queryClient.setQueryData([GET_LECTURE_LIST], context);
     },
     onMutate: async () => {
-      nProgress.start();
-
       return await queryClient.cancelQueries([GET_LECTURE_LIST]);
     },
     onSettled: () => {
-      nProgress.done();
-
-      return queryClient.invalidateQueries([GET_LECTURE_LIST, nProgress]);
+      return queryClient.invalidateQueries([GET_LECTURE_LIST]);
     }
   });
+
+  useEffect(() => {
+    if (isLoading) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
   return { data, update, deleteLectureId };
 };

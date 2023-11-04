@@ -21,7 +21,8 @@ const nextConfig = {
     domains: [
       'kdong-portfolio.s3.amazonaws.com',
       'kdong-portfolio.s3.ap-northeast-2.amazonaws.com',
-      'img.youtube.com'
+      'img.youtube.com',
+      'kdong-dev.s3.amazonaws.com'
     ]
   }
 };

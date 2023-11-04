@@ -44,11 +44,11 @@ export const Header = () => {
 
   const onClickMobileMenu = () => {
     setIsMenu((prev) => !prev);
-    visible();
-    setTimeout(() => {
-      setIsMenu((prev) => !prev);
-      hidden();
-    }, 1200);
+    // visible();
+    // setTimeout(() => {
+    //   setIsMenu((prev) => !prev);
+    //   hidden();
+    // }, 1200);
   };
 
   return (
