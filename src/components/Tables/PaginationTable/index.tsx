@@ -183,7 +183,7 @@ export const PaginationTable = <T extends {}>(
       <Table
         {...tableOptions}
         pagination={pagination}
-        rowSelection={rowSelection}
+        // rowSelection={rowSelection}
         columns={
           noIndex
             ? columns
