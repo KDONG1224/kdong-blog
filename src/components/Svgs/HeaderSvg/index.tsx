@@ -20,7 +20,7 @@ export const HeaderSvg = () => {
       >
         <path
           className="overlay-path"
-          vector-effect="non-scaling-stroke"
+          vectorEffect="non-scaling-stroke"
           fill="#222"
           d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
         ></path>
