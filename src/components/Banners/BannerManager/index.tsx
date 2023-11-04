@@ -36,6 +36,10 @@
 //   onSubmit: (values: CreateMainBannerProps) => void;
 // }
 
+export const BannerManager = () => {
+  return <div></div>;
+};
+
 // export const BannerManager: React.FC<BannerManagerProps> = ({
 //   bannerData,
 //   onSubmit
