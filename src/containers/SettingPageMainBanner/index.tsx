@@ -84,10 +84,10 @@ export const SettingPageMainBanner = () => {
   return (
     <StyledSettingPageMainBanner>
       <div className="spmb-wrapper">
-        <BannerManager
+        {/* <BannerManager
           bannerData={kdongProfile?.mainBanner as MainBannerProps}
           onSubmit={onSubmit}
-        />
+        /> */}
       </div>
     </StyledSettingPageMainBanner>
   );
