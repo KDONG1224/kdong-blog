@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable prefer-const */
 // base
 import React, { useCallback, useEffect, useState } from 'react';
@@ -187,6 +188,7 @@ export const BannerManager: React.FC<BannerManagerProps> = ({
                             <div className="minus-icon">
                               <MinusCircleOutlined
                                 onClick={() => handleRemoveTitle(name, remove)}
+                                // @ts-ignore
                               />
                             </div>
                           </Col>
