@@ -6,7 +6,7 @@ const withPWA = require('next-pwa');
 const withPlugins = require('next-compose-plugins');
 
 const nextConfig = {
-  reactStrictModem: true,
+  reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   },
@@ -35,8 +35,6 @@ const withPWACustom = withPWA({
   runtimeCaching: [],
   buildExcludes: [/app-build-manifest.json$/]
 })(nextConfig);
-
-module.exports = withPWACustom;
 
 module.exports = withPlugins(
   [withPWACustom, withFonts, withImages],
