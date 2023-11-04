@@ -4,6 +4,7 @@ import Head from 'next/head';
 
 // import Lottie from 'react-lottie-player';
 import loadingFlip from '../../../loadingFlip.json';
+import dynamic from 'next/dynamic';
 
 const DynamicLottie = dynamic(() => import('react-lottie-player'), {
   ssr: false
