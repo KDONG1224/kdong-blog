@@ -10,12 +10,12 @@ export class ProfileApi {
     // server
     this.Axios = new AxiosServerInstanceCreator({
       // baseURL: process.env.KDONG_API_URL + "/profile",
-      baseURL: 'http://localhost:24189'
+      baseURL: 'http://localhost:24181'
     }).create();
 
     // client
     this.AxiosClient = new AxiosInstanceCreator({
-      baseURL: 'http://localhost:24189'
+      baseURL: 'http://localhost:24181'
     }).create();
   }
 
