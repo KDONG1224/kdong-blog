@@ -1,8 +1,10 @@
-// libraries
+// base
 import { atom } from 'recoil';
-import { ResponseProfile } from '../models/auth.model';
 
-export const kdongProfileState = atom<ResponseProfile>({
+// modules
+import { ResponseMainProfileProps } from 'modules/profile';
+
+export const kdongProfileState = atom<ResponseMainProfileProps>({
   key: 'kdongProfileState',
   default: undefined
 });

@@ -92,7 +92,7 @@ export const Header = () => {
               }`}
               onClick={onClickLogo}
             >
-              PORTFOLIO
+              BLOG
             </div>
           </div>
           <div

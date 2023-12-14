@@ -22,7 +22,8 @@ const nextConfig = {
       'kdong-portfolio.s3.amazonaws.com',
       'kdong-portfolio.s3.ap-northeast-2.amazonaws.com',
       'img.youtube.com',
-      'kdong-dev.s3.amazonaws.com'
+      'kdong-dev.s3.amazonaws.com',
+      'kdong.s3.amazonaws.com'
     ]
   }
 };

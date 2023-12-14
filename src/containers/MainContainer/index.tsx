@@ -10,7 +10,11 @@ import { StyledMain } from './style';
 import { BasicImage, FaqList, HomBanner, ListBox } from 'components';
 
 // modules
-import { ResponseProfile, kdongProfileState } from 'modules';
+import {
+  ResponseMainProfileProps,
+  ResponseProfile,
+  kdongProfileState
+} from 'modules';
 
 // consts
 import {
@@ -35,7 +39,7 @@ import { useSetRecoilState } from 'recoil';
 import { useLectureList } from 'queries';
 
 interface MainContainerProps {
-  profile: ResponseProfile;
+  profile: ResponseMainProfileProps;
 }
 
 export const MainContainer: React.FC<MainContainerProps> = ({ profile }) => {
@@ -61,6 +65,8 @@ export const MainContainer: React.FC<MainContainerProps> = ({ profile }) => {
   };
 
   useEffect(() => {
+    console.log('== profile == : ', profile);
+
     setIsProfile(profile);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
@@ -164,7 +170,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({ profile }) => {
             <span>FAQ</span>
           </div>
           <div className="main-wrapper-faq-right">
-            <FaqList faqList={profile.faq} />
+            <FaqList faqList={profile.result.faqLists} />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 // base
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 // styles
 import { StyledHomBanner } from './style';
@@ -8,28 +8,28 @@ import { StyledHomBanner } from './style';
 import { BasicSwiper, BlurImage, TypingText } from 'components';
 
 // modules
-import { MainBannerProps, kdongProfileState } from 'modules';
+import { BannerListsProps, kdongProfileState } from 'modules';
 
 // hooks
 import { useMedia } from 'hooks';
 
 // libraries
-import { SwiperSlide } from 'swiper/react';
 import { useRecoilValue } from 'recoil';
+import { SwiperSlide } from 'swiper/react';
 
 export const HomBanner = () => {
-  const [isBanner, setIsBanner] = useState<MainBannerProps>();
+  const [bannerLists, setBannerLists] = useState<BannerListsProps>();
 
   const isProfile = useRecoilValue(kdongProfileState);
 
   const { isMobile } = useMedia();
 
   const bannerTitle = useMemo(() => {
-    if (!isBanner) return;
+    if (!bannerLists) return;
 
     const result: Array<string | number> = [];
 
-    isBanner.titleLists.map(({ title, playSpeed }) => {
+    bannerLists.bannerTitles.map(({ title, playSpeed }) => {
       const arr: Array<string | number> = [];
 
       arr.push(title);
@@ -39,13 +39,19 @@ export const HomBanner = () => {
     });
 
     return result;
-  }, [isBanner]);
+  }, [bannerLists]);
 
-  useEffect(() => {
+  const initValues = useCallback(() => {
     if (!isProfile) return;
 
-    setIsBanner(isProfile.mainBanner);
+    const { bannerLists } = isProfile.result;
+
+    setBannerLists(bannerLists);
   }, [isProfile]);
+
+  useEffect(() => {
+    initValues();
+  }, [initValues]);
 
   return (
     <StyledHomBanner ismobile={isMobile}>
@@ -64,26 +70,26 @@ export const HomBanner = () => {
             밥값하는 개발자 <strong>KDONG</strong> 입니다.
           </p>
         </div>
-        {isBanner && (
+        {bannerLists && bannerLists.bannerImages.length > 0 && (
           <BasicSwiper
             className="banner-wrapper-swiper"
             spaceBetween={0}
             slidesPerView={1}
             loop={true}
             autoplay={
-              isBanner.autoPlay
+              bannerLists.autoPlay
                 ? {
-                    delay: isBanner.playSpeed * 1000,
+                    delay: bannerLists.playSpeed * 1000,
                     disableOnInteraction: false
                   }
                 : false
             }
           >
-            {isBanner?.fileList.map(({ url }, idx) => (
-              <SwiperSlide key={idx}>
+            {bannerLists.bannerImages.map(({ id, location }) => (
+              <SwiperSlide key={id}>
                 <div className="grayscale" />
                 <BlurImage
-                  src={url}
+                  src={location}
                   alt="배너이미지"
                   style={{ objectPosition: 'center 70%' }}
                 />

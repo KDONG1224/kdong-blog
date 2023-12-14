@@ -8,10 +8,10 @@ import { MainLayout } from 'layouts';
 import { MainContainer } from 'containers';
 
 // modules
-import { AuthApi, ResponseProfile } from 'modules';
+import { ProfileApi, ResponseMainProfileProps } from 'modules';
 
 interface HomepageProsp {
-  profile: ResponseProfile;
+  profile: ResponseMainProfileProps;
 }
 
 const Homepage: React.FC<HomepageProsp> = ({ profile }) => {
@@ -24,12 +24,18 @@ const Homepage: React.FC<HomepageProsp> = ({ profile }) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const authApi = new AuthApi();
-    const profile = await authApi.getKdongProfile();
+    const profileApi = new ProfileApi();
+    const profile = await profileApi.getMainProfile();
 
     return {
       props: {
-        profile
+        profile: {
+          ...profile,
+          result: {
+            ...profile.result,
+            bannerLists: profile.result.bannerLists[0]
+          }
+        }
       }
     };
   } catch (error) {
