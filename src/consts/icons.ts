@@ -64,3 +64,15 @@ export const menuIcons = {
   TOYPROJECT_ICON,
   KAKAOTALK_ICON
 };
+
+export const aboutIcons = {
+  ABSTRACT: `${ICON_PATH}/about/icon-abstract.png`,
+  HANDHELD: `${ICON_PATH}/about/icon-console-handheld.png`,
+  BSOD: `${ICON_PATH}/about/icon-crt-bsod.png`,
+  DIAMOND: `${ICON_PATH}/about/icon-diamond-red.png`,
+  DICTIONART: `${ICON_PATH}/about/icon-dictionary.png`,
+  DNA: `${ICON_PATH}/about/icon-dna.png`,
+  RAINBOW: `${ICON_PATH}/about/icon-rainbow.png`,
+  RGB: `${ICON_PATH}/about/icon-rgb.png`,
+  GIF: `${ICON_PATH}/about/gif-kdong.GIF`
+};

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-types */
 // base
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 
@@ -184,7 +182,7 @@ export const PaginationTable = <T extends {}>(
       <Table
         {...tableOptions}
         pagination={pagination}
-        // rowSelection={rowSelection}
+        rowSelection={rowSelection}
         columns={
           noIndex
             ? columns

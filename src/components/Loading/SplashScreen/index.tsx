@@ -19,7 +19,7 @@ export const SplashScreen = () => {
       <StyledSplashScreen>
         <div className="splash-wrapper">
           <DynamicLottie loop animationData={loadingFlip} play />;
-          <div className="title">KDONG's Portfolio</div>
+          <div className="title">KDONG BLOG</div>
         </div>
       </StyledSplashScreen>
     </>

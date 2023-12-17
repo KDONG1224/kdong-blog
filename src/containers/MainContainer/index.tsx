@@ -52,28 +52,6 @@ export const MainContainer: React.FC<MainContainerProps> = ({
   const { isMobile } = useMedia();
   const router = useRouter();
 
-  const { data: articleData } = useQuery(
-    [QUERY_GET_ALL_ARTICLES],
-    async () => {
-      console.log('========');
-    },
-    {
-      select: (data) => data
-    }
-  );
-
-  const { data: referenceData } = useLectureList({
-    skip: DEFAULT_SKIP,
-    limit: 8,
-    type: 'reference',
-    where: {
-      projectType: 'all',
-      positionType: 'all',
-      skillType: 'all',
-      order: 'descend'
-    }
-  });
-
   const handleMove = (path: string) => {
     router.push(path);
   };
@@ -82,11 +60,11 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     id: string,
     type: 'recommand' | 'reference' | 'algorithm'
   ) => {
-    console.log('== id == : ', id);
+    router.push(`${ROUTE_REFERENCE}/${id}`);
 
-    if (type === 'reference') {
-      router.push(`${ROUTE_REFERENCE}/${id}`);
-    }
+    // if (type === 'reference') {
+    //   router.push(`${ROUTE_REFERENCE}/${id}`);
+    // }
   };
 
   useEffect(() => {

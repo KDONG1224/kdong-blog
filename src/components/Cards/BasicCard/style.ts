@@ -13,7 +13,6 @@ export const StyledBasicCard = styled.div<StyledBasicCardProps>`
       height: ${({ ismobile }) => (ismobile ? '80px' : '100px')};
       margin: 0 auto;
       position: relative;
-      background-color: #fff;
     }
 
     &-title {
