@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "env-cmd -f ./config/.env.development next dev -p 8888",
     "build": "next build",
+    "build:dev": "env-cmd -f ./config/.env.development next build",
     "build:prod": "env-cmd -f ./config/.env.production next build",
-    "start": "env-cmd -f ./config/.env.production next start",
-    "prod": "env-cmd -f ./config/.env.production next start -p 2418",
-    "start:prod": "env-cmd -f ./config/.env.production sh -c 'next build && pm2 delete \"kdong-web-next\" && pm2 start npm --name \"kdong-web-next\" -- run prod'",
-    "start:prod1": "env-cmd -f ./config/.env.production pm2 start npm --name 'kdong-web-next' -- run prod",
-    "pwa": "npm run build:prod && npm run start:prod",
+    "start": "env-cmd -f ./config/.env.production next start -p 8888",
+    "prod": "env-cmd -f ./config/.env.production next start -p 8888",
+    "start:dev": "env-cmd -f ./config/.env.development pm2 delete 'kdong-blog' && pm2 start npm --name 'kdong-blog' -- run start",
+    "start:prod": "env-cmd -f ./config/.env.production pm2 delete 'kdong-blog' && pm2 start npm --name 'kdong-blog' -- run prod",
+    "pwa": "npm run build:dev && npm run start:dev",
     "lint": "next lint"
   },
   "dependencies": {
