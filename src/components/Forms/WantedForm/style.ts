@@ -11,6 +11,7 @@ export const StyledWantedForm = styled.div`
         font-family: Pretendard-Bold;
         padding: 4px 10px;
         border: 1px solid #000;
+        margin-bottom: 10px;
 
         &::before {
           border-bottom: 0 !important;

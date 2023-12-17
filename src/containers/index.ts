@@ -10,6 +10,7 @@ export * from './MainContainer';
 export * from './Algorithm';
 export * from './Project';
 export * from './Reference';
+export * from './SearchBox';
 
 // admin
 export * from './SignIn';

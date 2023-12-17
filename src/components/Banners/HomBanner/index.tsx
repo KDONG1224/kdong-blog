@@ -42,7 +42,7 @@ export const HomBanner = () => {
   }, [bannerLists]);
 
   const initValues = useCallback(() => {
-    if (!isProfile) return;
+    if (!isProfile || !isProfile.result) return;
 
     const { bannerLists } = isProfile.result;
 

@@ -9,14 +9,25 @@ import { FormControl, Input } from '@mui/material';
 
 interface WantedFormProps {
   id: string;
-  onChange: (value: string) => void;
+  onChangeEmail: (value: string) => void;
+  onChangeName: (value: string) => void;
 }
 
-export const WantedForm: React.FC<WantedFormProps> = ({ id, onChange }) => {
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!onChange) return;
+export const WantedForm: React.FC<WantedFormProps> = ({
+  id,
+  onChangeEmail,
+  onChangeName
+}) => {
+  const handleOnChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!onChangeEmail) return;
 
-    onChange(e.currentTarget.value);
+    onChangeEmail(e.currentTarget.value);
+  };
+
+  const handleOnChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!onChangeName) return;
+
+    onChangeName(e.currentTarget.value);
   };
 
   return (
@@ -26,7 +37,15 @@ export const WantedForm: React.FC<WantedFormProps> = ({ id, onChange }) => {
           <Input
             className="wform-wrapper-form-input"
             id={id}
-            onChange={handleOnChange}
+            onChange={handleOnChangeName}
+            placeholder="이름 및 회사명을 입력해주세요."
+          />
+
+          <Input
+            className="wform-wrapper-form-input"
+            id={id}
+            onChange={handleOnChangeEmail}
+            placeholder="이메일을 입력해주세요."
           />
         </FormControl>
       </div>

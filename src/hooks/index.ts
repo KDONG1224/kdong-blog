@@ -6,3 +6,4 @@ export * from './useScrollToNode';
 export * from './useInfiniteScroll';
 export * from './useOverlay';
 export * from './useTableScroll';
+export * from './usePagination';

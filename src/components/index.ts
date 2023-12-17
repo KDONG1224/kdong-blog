@@ -13,3 +13,4 @@ export * from './Loading';
 export * from './Tables';
 export * from './Svgs';
 export * from './Uploads';
+export * from './TextEditors';

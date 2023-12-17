@@ -8,7 +8,7 @@ import { StyledCheckCard } from './style';
 import { BlurImage } from 'components';
 
 // modules
-import { ResponseLecture } from 'modules';
+import { ArticleListsProps } from 'modules/article';
 
 // hooks
 import { useMedia } from 'hooks';
@@ -17,19 +17,36 @@ import { useMedia } from 'hooks';
 import dayjs from 'dayjs';
 
 interface CheckCardProps {
-  data: ResponseLecture | any;
+  data: ArticleListsProps;
   type?: 'check' | 'polygon' | 'image';
+  onClick: (id: string) => void;
 }
 
-export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
-  const { title, subtitle, tags, createdAt, thumbnail, colors, badgeColor } =
-    data;
+export const CheckCard: React.FC<CheckCardProps> = ({
+  data,
+  type,
+  onClick
+}) => {
+  const {
+    id,
+    title,
+    content,
+    tags,
+    createdAt,
+    thumbnails,
+    mainColor,
+    subColor
+  } = data;
 
   const { isMobile } = useMedia();
 
+  const handleClickCard = () => {
+    onClick(id);
+  };
+
   return (
-    <StyledCheckCard lineBg={colors} badgeBg={badgeColor} ismobile={isMobile}>
-      <div className={`check-wrapper ${type}`}>
+    <StyledCheckCard lineBg={mainColor} badgeBg={subColor} ismobile={isMobile}>
+      <div className={`check-wrapper ${type}`} onClick={handleClickCard}>
         <div className={`check-wrapper-top ${type}`}>
           {type === 'check' && (
             <>
@@ -37,7 +54,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
               <div className="check-wrapper-top-img">
                 <div className={`check-wrapper-top-img-box ${type}`}>
                   <BlurImage
-                    src={thumbnail?.thumbUrl as string}
+                    src={thumbnails[0].location as string}
                     alt={`${title} 이미지`}
                   />
                 </div>
@@ -49,7 +66,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
             <div className="check-wrapper-top-img">
               <div className={`check-wrapper-top-img-box ${type}`}>
                 <BlurImage
-                  src={thumbnail?.thumbUrl as string}
+                  src={thumbnails[0].location as string}
                   alt={`${title} 이미지`}
                 />
               </div>
@@ -59,19 +76,23 @@ export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
             <div className="check-wrapper-top-img">
               <div className={`check-wrapper-top-img-box ${type}`}>
                 <BlurImage
-                  src={thumbnail?.thumbUrl as string}
+                  src={thumbnails[0].location as string}
                   alt={`${title} 이미지`}
                 />
               </div>
             </div>
           )}
 
-          {type !== 'image' && (
+          {type === 'check' && (
+            <div className={`check-wrapper-top-badge ${type}`}>
+              {tags.length > 0 ? <span>{tags[1].name}</span> : <span></span>}
+            </div>
+          )}
+
+          {type === 'polygon' && (
             <div className={`check-wrapper-top-badge ${type}`}>
               {tags.length > 0 ? (
-                tags.map((tag: any, idx: number) => (
-                  <span key={idx}>{tag}</span>
-                ))
+                tags.map(({ id, name }) => <span key={id}>{name}</span>)
               ) : (
                 <span></span>
               )}
@@ -81,7 +102,10 @@ export const CheckCard: React.FC<CheckCardProps> = ({ data, type }) => {
 
         <div className={`check-wrapper-middle ${type}`}>
           <h2 className="line-one">{title}</h2>
-          <p className="line-two">{subtitle}</p>
+          <p
+            className="line-two"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </div>
 
         {type !== 'image' && !isMobile && (

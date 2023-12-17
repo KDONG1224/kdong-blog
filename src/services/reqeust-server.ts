@@ -41,10 +41,10 @@ class AxiosServerInstanceCreator {
       Object.assign(config.headers, {
         Pragma: 'no-cache',
         'Cache-Control': 'no-cache',
-        Expires: '-1',
-        Authorization: `Basic ${Buffer.from('kdong1224:1224').toString(
-          'base64'
-        )}`
+        Expires: '-1'
+        // Authorization: `Basic ${Buffer.from('kdong1224:1224').toString(
+        //   'base64'
+        // )}`
       });
 
       return config;

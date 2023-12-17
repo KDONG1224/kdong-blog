@@ -1,5 +1,6 @@
 // base
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { debounce } from 'lodash';
 
 // style
 import { StyledWanted } from './style';
@@ -12,27 +13,77 @@ import { useMedia } from 'hooks';
 
 // libraries
 import { Button } from '@mui/material';
+import {
+  QUERY_POST_WANTED,
+  RequestWantedProps,
+  WantedApi
+} from 'modules/wanted';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
 
 export const Wanted = () => {
+  const [clientEmail, setClientEmail] = useState('');
+  const [clientName, setClientName] = useState('');
   const [isEmail, setIsEmail] = useState(false);
+  const [isName, setIsName] = useState(false);
 
   const { isMobile } = useMedia();
 
+  const router = useRouter();
+
+  const wantedApi = useMemo(() => {
+    return new WantedApi();
+  }, []);
+
+  const { mutateAsync: sendEmail } = useMutation(
+    [QUERY_POST_WANTED],
+    async (data: RequestWantedProps) => {
+      return await wantedApi.postMailer(data);
+    },
+    {
+      onSuccess: () => {
+        setClientEmail('');
+        setClientName('');
+        setIsEmail(false);
+        setIsName(false);
+
+        router.back();
+      },
+      onError: () => {
+        setClientEmail('');
+        setClientName('');
+        setIsEmail(false);
+        setIsName(false);
+      }
+    }
+  );
+
   const handleEmail = (email: string) => {
-    console.log(email);
+    setClientEmail(email);
 
-    if (email !== '') setIsEmail(true);
+    if (email !== '') {
+      setIsEmail(true);
+    }
   };
 
-  // const handlePhone = (phone: string) => {
-  //   console.log(phone);
+  const handleName = (name: string) => {
+    setClientName(name);
 
-  //   if (phone !== '') setIsEmail(true);
-  // };
-
-  const onSubmit = () => {
-    console.log(isEmail);
+    if (name !== '') {
+      setIsEmail(true);
+    }
   };
+
+  const onSubmit = debounce(() => {
+    if (!clientEmail || !clientName) return;
+
+    const data = {
+      clientEmail,
+      clientName
+    };
+
+    sendEmail(data);
+  }, 1000);
 
   return (
     <StyledWanted ismobile={isMobile}>
@@ -59,7 +110,11 @@ export const Wanted = () => {
             </ol>
           </div>
           <div className="wanted-wrapper-content-form">
-            <WantedForm id="subscribeEmail" onChange={handleEmail} />
+            <WantedForm
+              id="subscribeEmail"
+              onChangeEmail={handleEmail}
+              onChangeName={handleName}
+            />
             <div className="wanted-wrapper-content-form-btn">
               <Button onClick={onSubmit}>전송하기</Button>
             </div>

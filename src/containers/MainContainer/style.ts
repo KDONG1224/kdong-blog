@@ -169,18 +169,13 @@ export const StyledMain = styled.div<StyledMainProps>`
     }
   }
 
-  @media (max-width: 1500px) {
-    /* .main-wrapper-subBanner {
-      display: block;
-      height: 360px;
+  @media (max-width: 750px) {
+    .main-wrapper-subBanner {
+      height: 360px !important;
 
       > div {
-        height: 180px;
         margin-bottom: 20px;
-        > div {
-          height: 180px;
-        }
       }
-    } */
+    }
   }
 `;

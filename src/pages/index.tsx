@@ -9,15 +9,19 @@ import { MainContainer } from 'containers';
 
 // modules
 import { ProfileApi, ResponseMainProfileProps } from 'modules';
+import { ResponseArticleListsResultProps, ArticleeApi } from 'modules/article';
 
-interface HomepageProsp {
+export interface HomepageProps {
   profile: ResponseMainProfileProps;
+  articleLists: ResponseArticleListsResultProps;
 }
 
-const Homepage: React.FC<HomepageProsp> = ({ profile }) => {
+const Homepage: React.FC<HomepageProps> = ({ profile, articleLists }) => {
+  console.log('=== Homepage : articleLists === : ', articleLists);
+
   return (
     <MainLayout>
-      <MainContainer profile={profile} />
+      <MainContainer profile={profile} articleLists={articleLists} />
     </MainLayout>
   );
 };
@@ -27,6 +31,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const profileApi = new ProfileApi();
     const profile = await profileApi.getMainProfile();
 
+    const articleApi = new ArticleeApi();
+    const articleLists = await articleApi.getAllArticles();
+
     return {
       props: {
         profile: {
@@ -35,6 +42,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
             ...profile.result,
             bannerLists: profile.result.bannerLists[0]
           }
+        },
+        articleLists: {
+          ...articleLists.result
         }
       }
     };

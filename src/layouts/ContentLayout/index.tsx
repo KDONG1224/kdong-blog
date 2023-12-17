@@ -4,21 +4,68 @@ import React from 'react';
 // style
 import { StyledContentLayout } from './style';
 
+// components
+import { BasicSwiper, BlurImage } from 'components';
+
+// modules
+import { ArticleListsProps } from 'modules/article';
+
+// libraries
+import { SwiperSlide } from 'swiper/react';
+import dayjs from 'dayjs';
+
 interface ContentLayoutProps {
   title?: string;
+  contents?: ArticleListsProps;
   children: React.ReactNode;
 }
 
 export const ContentLayout: React.FC<ContentLayoutProps> = ({
   title,
+  contents,
   children
 }) => {
   return (
     <StyledContentLayout className="container">
       <div className="content-wrapper">
         <div className="content-wrapper-head">
-          <div className="content-wrapper-head-left">{title}</div>
-          <div className="content-wrapper-head-right"></div>
+          <div className="content-wrapper-head-left">
+            <div className="content-wrapper-head-left-top">
+              <h2>{contents?.title}</h2>
+              {contents &&
+                contents.tags.map(({ id, name }) => (
+                  <span key={id}>{`#${name}`}</span>
+                ))}
+            </div>
+            <div className="content-wrapper-head-left-bottom">
+              <p>{contents?.author.username}</p>
+              <p>{dayjs(contents?.createdAt).format('YYYY-MM-DD')}</p>
+            </div>
+          </div>
+          <div className="content-wrapper-head-right">
+            {contents && contents.thumbnails.length > 0 && (
+              <BasicSwiper
+                className="content-wrapper-head-right-swiper"
+                spaceBetween={0}
+                slidesPerView={1}
+                loop={true}
+                autoplay={{
+                  delay: 5 * 1000,
+                  disableOnInteraction: false
+                }}
+              >
+                {contents.thumbnails.map(({ id, filename, location }) => (
+                  <SwiperSlide key={id}>
+                    <BlurImage
+                      src={location}
+                      alt={filename}
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </SwiperSlide>
+                ))}
+              </BasicSwiper>
+            )}
+          </div>
         </div>
         <div className="content-wrapper-children">{children}</div>
       </div>

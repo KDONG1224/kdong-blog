@@ -1,33 +1,25 @@
 import styled from '@emotion/styled';
-import { Select } from '@mui/material';
-import { commonIcons } from 'consts';
 
-export const StyledBasicSelect = styled(Select)`
+export const StyledBasicSelect = styled.div`
   width: 100%;
   font-family: Pretendard-Bold;
   font-size: 16px;
 
-  .MuiSelect-select {
-    padding: 5px 0 !important;
+  &.ant-select-focused {
+    border: none !important;
   }
 
-  .MuiSelect-icon {
-    width: 20px;
-    height: 10px;
-    background-image: url(${commonIcons.ICON_BOTTOM_ARROW});
-    background-size: 26px;
-    cursor: pointer;
-    background-position: calc(100% + 6px) 50%;
-    background-repeat: no-repeat;
-
-    &.MuiSelect-iconOpen {
-      right: 0 !important;
-    }
+  .ant-select-selector {
+    border-color: #000 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid #000 !important;
+    padding: 5px !important;
+    box-shadow: none !important;
+    height: 40px !important;
   }
 
-  .MuiOutlinedInput-notchedOutline {
-    border-color: #000;
-    border: 0;
-    border-bottom: 2px solid #000;
+  .ant-select-arrow {
+    color: #000 !important;
   }
 `;

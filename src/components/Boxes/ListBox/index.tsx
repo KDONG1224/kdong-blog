@@ -15,14 +15,16 @@ import { useMedia } from 'hooks';
 
 // libraries
 import { SwiperSlide } from 'swiper/react';
+import { ArticleListsProps } from 'modules/article';
 
 interface ListBoxProps {
   headerTitle: string;
   subHeaderTitle: string;
-  lists: ResponseLecture[];
+  lists: any[];
   type?: 'check' | 'polygon' | 'image';
   delay?: number;
   onClickMore: () => void;
+  onClickCard: (id: string) => void;
 }
 
 export const ListBox: React.FC<ListBoxProps> = ({
@@ -31,7 +33,8 @@ export const ListBox: React.FC<ListBoxProps> = ({
   lists,
   type = 'check',
   delay = 2500,
-  onClickMore
+  onClickMore,
+  onClickCard
 }) => {
   const { isMobile } = useMedia();
 
@@ -39,6 +42,10 @@ export const ListBox: React.FC<ListBoxProps> = ({
     if (!onClickMore) return;
 
     onClickMore();
+  };
+
+  const handleClickDetail = (id: string) => {
+    onClickCard(id);
   };
 
   return (
@@ -61,9 +68,13 @@ export const ListBox: React.FC<ListBoxProps> = ({
               disableOnInteraction: false
             }}
           >
-            {lists?.map((data, idx) => (
+            {(lists || []).map((data, idx) => (
               <SwiperSlide key={idx}>
-                <CheckCard data={data} type={type} />
+                <CheckCard
+                  data={data}
+                  type={type}
+                  onClick={handleClickDetail}
+                />
               </SwiperSlide>
             ))}
           </BasicSwiper>

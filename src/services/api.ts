@@ -53,9 +53,9 @@ class AxiosInstanceCreator {
 
     this.#instance.interceptors.response.use(
       (res) => {
-        if (res.data.code) {
-          throw new Error(res.data.message).message;
-        }
+        // if (res.data.code) {
+        //   throw new Error(res.data.message).message;
+        // }
 
         return res;
       },

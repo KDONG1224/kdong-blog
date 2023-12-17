@@ -9,6 +9,7 @@ interface StyledCheckCardProps {
 export const StyledCheckCard = styled.div<StyledCheckCardProps>`
   .check-wrapper {
     width: ${({ ismobile }) => (ismobile ? '200px' : '386px')};
+    cursor: pointer;
 
     &.check {
       background-color: ${({ ismobile }) => (ismobile ? '#f8f8f8' : '#ffffff')};

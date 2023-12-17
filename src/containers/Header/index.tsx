@@ -28,12 +28,12 @@ export const Header = () => {
   const { visible, hidden } = useOverlay('.overlay-path');
 
   const onClickLogo = () => {
-    onClickMobileMenu();
+    // onClickMobileMenu();
     router.push(ROUTE_ROOT);
   };
 
   const onClickMenu = (path: string) => {
-    onClickMobileMenu();
+    // onClickMobileMenu();
     router.push(path);
   };
 

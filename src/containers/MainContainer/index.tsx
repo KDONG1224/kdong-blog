@@ -20,7 +20,7 @@ import {
 import {
   DEFAULT_SKIP,
   ROUTE_ALGORITHM,
-  ROUTE_PROJECT,
+  ROUTE_REFERENCE,
   ROUTE_WANTED,
   algorithmList,
   commonIcons,
@@ -37,16 +37,30 @@ import { windowLocation } from 'libs';
 // libraries
 import { useSetRecoilState } from 'recoil';
 import { useLectureList } from 'queries';
+import { HomepageProps } from 'pages';
+import { useQuery } from '@tanstack/react-query';
+import { QUERY_GET_ALL_ARTICLES } from 'modules/article';
 
-interface MainContainerProps {
-  profile: ResponseMainProfileProps;
-}
+interface MainContainerProps extends HomepageProps {}
 
-export const MainContainer: React.FC<MainContainerProps> = ({ profile }) => {
+export const MainContainer: React.FC<MainContainerProps> = ({
+  profile,
+  articleLists
+}) => {
   const setIsProfile = useSetRecoilState(kdongProfileState);
 
   const { isMobile } = useMedia();
   const router = useRouter();
+
+  const { data: articleData } = useQuery(
+    [QUERY_GET_ALL_ARTICLES],
+    async () => {
+      console.log('========');
+    },
+    {
+      select: (data) => data
+    }
+  );
 
   const { data: referenceData } = useLectureList({
     skip: DEFAULT_SKIP,
@@ -64,14 +78,23 @@ export const MainContainer: React.FC<MainContainerProps> = ({ profile }) => {
     router.push(path);
   };
 
-  useEffect(() => {
-    console.log('== profile == : ', profile);
+  const onClickCard = (
+    id: string,
+    type: 'recommand' | 'reference' | 'algorithm'
+  ) => {
+    console.log('== id == : ', id);
 
+    if (type === 'reference') {
+      router.push(`${ROUTE_REFERENCE}/${id}`);
+    }
+  };
+
+  useEffect(() => {
     setIsProfile(profile);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
 
-  console.log('==referenceData == : ', referenceData);
+  console.log('== articleLists == : ', articleLists);
 
   return (
     <StyledMain ismobile={isMobile}>
@@ -81,22 +104,15 @@ export const MainContainer: React.FC<MainContainerProps> = ({ profile }) => {
         </div>
         <div className="main-wrapper-recommand">
           <div className="main-wrapper-recommand-box container">
-            {/* <ListBox
-              headerTitle="지금 주목할 만한 추천글"
-              subHeaderTitle="KDONG이 추천하는 글을 둘러보세요 :)"
-              lists={[...recommandList, ...recommandList]}
-              type="check"
-              delay={4400}
-              onClickMore={() => handleMove(ROUTE_ALGORITHM)}
-            /> */}
-            {referenceData && (
+            {articleLists && (
               <ListBox
                 headerTitle="지금 주목할 만한 추천글"
                 subHeaderTitle="KDONG이 추천하는 글을 둘러보세요 :)"
-                lists={referenceData}
+                lists={articleLists.articles}
                 type="check"
                 delay={4400}
                 onClickMore={() => handleMove(ROUTE_ALGORITHM)}
+                onClickCard={(id: string) => onClickCard(id, 'recommand')}
               />
             )}
           </div>
@@ -113,36 +129,31 @@ export const MainContainer: React.FC<MainContainerProps> = ({ profile }) => {
         </div>
         <div className="main-wrapper-project">
           <div className="main-wrapper-project-box container">
-            {referenceData && (
+            {articleLists && (
               <ListBox
-                headerTitle="다양한 PROJECT"
-                subHeaderTitle="다양한 프로젝트를 구경해보세요 :)"
-                lists={referenceData}
+                headerTitle="다양한 Reference"
+                subHeaderTitle="다양한 레퍼런스 구경해보세요 :)"
+                lists={articleLists.articles}
                 type="polygon"
                 delay={3000}
-                onClickMore={() => handleMove(ROUTE_PROJECT)}
+                onClickMore={() => handleMove(ROUTE_REFERENCE)}
+                onClickCard={(id: string) => onClickCard(id, 'reference')}
               />
             )}
           </div>
         </div>
         <div className="main-wrapper-algorithm">
           <div className="main-wrapper-algorithm-box container">
-            {referenceData && (
+            {articleLists && (
               <ListBox
                 headerTitle="알고리즘 문제풀이"
                 subHeaderTitle="다양한 알고리즘 문제를 풀어보았어요 :)"
-                lists={referenceData}
+                lists={articleLists.articles}
                 type="image"
                 onClickMore={() => handleMove(ROUTE_ALGORITHM)}
+                onClickCard={(id: string) => onClickCard(id, 'algorithm')}
               />
             )}
-            {/* <ListBox
-              headerTitle="알고리즘 문제풀이"
-              subHeaderTitle="다양한 알고리즘 문제를 풀어보았어요 :)"
-              lists={algorithmList.filter((item) => item.recommand)}
-              type="image"
-              onClickMore={() => handleMove(ROUTE_ALGORITHM)}
-            /> */}
           </div>
         </div>
         <div

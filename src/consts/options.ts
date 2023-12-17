@@ -66,21 +66,21 @@ export const selectMeetingOption: SelectListItemProps[] = [
 
 export const selectOrderOption: SelectListItemProps[] = [
   {
-    key: 'order',
+    key: 'order__desc',
     label: '최근 등록순',
-    value: 'descend'
+    value: 'DESC'
   },
   {
-    key: 'order',
+    key: 'order__asc',
     label: '오래된순',
-    value: 'ascend'
+    value: 'ASC'
   }
 ];
 
 export const selectProjectTypeOption: SelectListItemProps[] = [
   {
-    key: 'projectType',
-    label: '종류',
+    key: 'category',
+    label: '카테고리',
     value: 'all'
   },
   {
@@ -92,6 +92,29 @@ export const selectProjectTypeOption: SelectListItemProps[] = [
     key: 'projectType',
     label: '사이드 프로젝트',
     value: 'side'
+  }
+];
+
+export const selectReferenceCategoryOption: SelectListItemProps[] = [
+  {
+    key: 'category',
+    label: '카테고리',
+    value: 'all'
+  },
+  {
+    key: 'html',
+    label: 'HTML',
+    value: 'HTML'
+  },
+  {
+    key: 'css',
+    label: 'CSS',
+    value: 'CSS'
+  },
+  {
+    key: 'javascript',
+    label: 'JAVASCRIPT',
+    value: 'JAVASCRIPT'
   }
 ];
 
@@ -150,12 +173,7 @@ export const pageOptions: PageOptionsProps[] = [
   {
     key: 'reference',
     title: '레퍼런스',
-    options: [
-      selectProjectTypeOption,
-      selectProjectDivisionOption,
-      selectProjectSkillOption,
-      selectOrderOption
-    ]
+    options: [selectReferenceCategoryOption, selectOrderOption]
   },
   {
     key: 'algorithm',
