@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { useMemo, useCallback, useRef, useState } from 'react';
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from 'consts';
 

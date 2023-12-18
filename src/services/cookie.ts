@@ -1,15 +1,18 @@
 import Cookies, { CookieAttributes, CookiesStatic } from 'js-cookie';
-// import { isAppIos } from 'utils';
 
 const CookieStorageBuilder = (cookies: CookiesStatic) => ({
   setCookie: (key: string, value: string, options?: CookieAttributes) =>
     cookies.set(key, value, {
       path: '/',
       ...options
-      // domain: isAppIos ? process.env.NEXT_PUBLIC_COOKIE_URL : ''
     }),
   getCookie: (key: string) => cookies.get(key),
   removeCookie: (key: string) => cookies.remove(key),
+  removeCookies: () => {
+    const cookiesKeys = cookies.get();
+
+    Object.keys(cookiesKeys).forEach((key) => cookies.remove(key));
+  },
   dotremoveCookie: (key: string, domain?: string) =>
     cookies.remove(key, { domain: domain ?? '' })
 });

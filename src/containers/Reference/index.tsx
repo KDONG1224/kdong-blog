@@ -1,36 +1,37 @@
 // base
 import React, { useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
 
 // style
 import { StyledReference } from './style';
 
+// containers
+import { SearchBox } from 'containers';
+
 // components
 import { BlurImage } from 'components';
 
-// consts
-import { DEFAULT_LIMIT, DEFAULT_SKIP, ROUTE_REFERENCE } from 'consts';
-import { useLectureList } from 'queries';
-import { useRecoilValue } from 'recoil';
+// modules
 import { loadingState } from 'modules';
-import { useQuery } from '@tanstack/react-query';
-import {
-  ArticleeApi,
-  QUERY_GET_ALL_ARTICLES,
-  ResponseArticleLists
-} from 'modules/article';
-import { AxiosError } from 'axios';
-import { CustomFilterProps, SearchBox } from 'containers';
+import { ArticleeApi, QUERY_GET_ALL_ARTICLES } from 'modules/article';
 import {
   CategoryApi,
   CategoryListsProps,
   QUERY_GET_SUB_CATEGORY,
   ResponseSubCategoryLists
 } from 'modules/category';
-import { useRouter } from 'next/router';
+
+// consts
+import { ROUTE_REFERENCE } from 'consts';
+
+// libraries
+import { AxiosError } from 'axios';
+import { useRecoilValue } from 'recoil';
+import { useQuery } from '@tanstack/react-query';
 
 interface ReferenceProps {}
 
-export const Reference: React.FC<ReferenceProps> = ({}) => {
+export const Reference: React.FC<ReferenceProps> = () => {
   const [searchQuery, setSearchQuery] = useState<any>(undefined);
 
   const loading = useRecoilValue(loadingState);
@@ -78,7 +79,9 @@ export const Reference: React.FC<ReferenceProps> = ({}) => {
   const { data: articles } = useQuery(
     [QUERY_GET_ALL_ARTICLES, searchQuery],
     async ({ queryKey }) => {
-      const [_, searchQuery] = queryKey;
+      const [key, searchQuery] = queryKey;
+
+      console.log('== key == : ', key);
 
       if (searchQuery) {
         return await articleApi.getClientAllArticles(searchQuery);
@@ -114,6 +117,7 @@ export const Reference: React.FC<ReferenceProps> = ({}) => {
   };
 
   const onRouterDetail = (id: string) => {
+    console.log('== loading == : ', loading);
     router.push(`${ROUTE_REFERENCE}/${id}`);
   };
 

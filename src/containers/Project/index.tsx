@@ -3,14 +3,12 @@ import React from 'react';
 
 // style
 import { StyledProject } from './style';
-import { KdongProject, RecommandListProps } from 'consts';
-import { CheckCard } from 'components';
 
 export const Project = () => {
   return (
     <StyledProject>
       <div className="project-wrapper">
-        {KdongProject.map(
+        {/* {KdongProject.map(
           ({ key, projectName, projectDesc, company, date, thumbnail }) => (
             <CheckCard
               key={key}
@@ -28,7 +26,7 @@ export const Project = () => {
               type="image"
             />
           )
-        )}
+        )} */}
       </div>
     </StyledProject>
   );

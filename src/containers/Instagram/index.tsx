@@ -1,5 +1,5 @@
 // base
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 
 // style
@@ -10,11 +10,6 @@ import { BlurImage } from 'components';
 
 // consts
 import { instaImages } from 'consts';
-
-import { useQuery } from '@tanstack/react-query';
-import nProgress from 'nprogress';
-import { GuestbookApi } from 'modules';
-
 // modules
 
 // libraires
@@ -26,31 +21,9 @@ interface InstagramProps {
 export const Instagram: React.FC<InstagramProps> = ({ onClick }) => {
   const router = useRouter();
 
-  const guestbookApi = useMemo(() => {
-    return new GuestbookApi();
-  }, []);
-
-  const getGuestbook = () => {
-    if (!guestbookApi) return Promise.reject();
-
-    return guestbookApi.getAllGuestbookClient();
-  };
-
-  const { data } = useQuery(
-    ['QUERY_GUESTBOOK', nProgress],
-    () => getGuestbook(),
-    {
-      select: (data) => data
-    }
-  );
-
-  console.log(data);
-
   const handleGuestbook = () => {
     router.replace('/guestbook');
   };
-
-  if (!data) return <div>ss</div>;
 
   return (
     <StyledInstargram>

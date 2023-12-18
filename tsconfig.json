@@ -25,5 +25,5 @@
     "src/pages",
     "public/js/splashStyle.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "ckeditor5"]
 }

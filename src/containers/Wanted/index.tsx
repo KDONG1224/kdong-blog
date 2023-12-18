@@ -24,8 +24,6 @@ import { useRouter } from 'next/router';
 export const Wanted = () => {
   const [clientEmail, setClientEmail] = useState('');
   const [clientName, setClientName] = useState('');
-  const [isEmail, setIsEmail] = useState(false);
-  const [isName, setIsName] = useState(false);
 
   const { isMobile } = useMedia();
 
@@ -44,34 +42,22 @@ export const Wanted = () => {
       onSuccess: () => {
         setClientEmail('');
         setClientName('');
-        setIsEmail(false);
-        setIsName(false);
 
         router.back();
       },
       onError: () => {
         setClientEmail('');
         setClientName('');
-        setIsEmail(false);
-        setIsName(false);
       }
     }
   );
 
   const handleEmail = (email: string) => {
     setClientEmail(email);
-
-    if (email !== '') {
-      setIsEmail(true);
-    }
   };
 
   const handleName = (name: string) => {
     setClientName(name);
-
-    if (name !== '') {
-      setIsEmail(true);
-    }
   };
 
   const onSubmit = debounce(() => {

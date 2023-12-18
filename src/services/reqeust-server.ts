@@ -24,27 +24,10 @@ class AxiosServerInstanceCreator {
     this.#instance.interceptors.request.use((config) => {
       if (!config.headers) return config;
 
-      if (!config.headers['ownerId']) {
-        Object.assign(config.headers, {
-          Accept: 'application/json',
-          ownerId: process.env.NEXT_PUBLIC_KDONG_OWNER_ID
-        });
-      }
-
-      // if (!config.headers['x-access-token']) {
-      //   Object.assign(config.headers, {
-      //     Accept: 'application/json',
-      //     ownerId: process.env.KDONG_OWNER_ID
-      //   });
-      // }
-
       Object.assign(config.headers, {
         Pragma: 'no-cache',
         'Cache-Control': 'no-cache',
         Expires: '-1'
-        // Authorization: `Basic ${Buffer.from('kdong1224:1224').toString(
-        //   'base64'
-        // )}`
       });
 
       return config;

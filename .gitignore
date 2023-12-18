@@ -10,6 +10,7 @@ public/workbox-*.js
 
 # testing
 /coverage
+/ckeditor5
 
 # next.js
 /.next/
@@ -17,6 +18,9 @@ public/workbox-*.js
 
 # production
 /build
+/config/
+/config/.env.development
+/config/.env.production
 
 # misc
 .DS_Store
@@ -33,6 +37,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+.env.*
+.env.development
+.env.production
 
 # typescript
 *.tsbuildinfo

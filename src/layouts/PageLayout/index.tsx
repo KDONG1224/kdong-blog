@@ -1,14 +1,8 @@
 // base
-import React, { useMemo } from 'react';
+import React from 'react';
 
 // style
 import { StyledPageLayout } from './style';
-
-// consts
-import { PageOptionsProps, pageOptions } from 'consts';
-
-// libraries
-import { BasicSelect } from 'components';
 
 // hooks
 import { useMedia } from 'hooks';
@@ -28,24 +22,27 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
 }) => {
   const { isMobile } = useMedia();
 
-  const selectOption = useMemo(() => {
-    const option = pageOptions.filter(
-      ({ key }) => key === optionKey
-    ) as PageOptionsProps[];
+  console.log('== optionKey == : ', optionKey);
+  console.log('== onChangeOption == : ', onChangeOption);
 
-    return option;
-  }, [optionKey]);
+  // const selectOption = useMemo(() => {
+  //   const option = pageOptions.filter(
+  //     ({ key }) => key === optionKey
+  //   ) as PageOptionsProps[];
 
-  const selectedOption = (value: React.ReactNode) => {
-    if (!React.isValidElement(value)) return;
+  //   return option;
+  // }, [optionKey]);
 
-    const key = value.props.id;
-    const select = value.props.value;
+  // const selectedOption = (value: React.ReactNode) => {
+  //   if (!React.isValidElement(value)) return;
 
-    if (onChangeOption) {
-      onChangeOption(key, select);
-    }
-  };
+  //   const key = value.props.id;
+  //   const select = value.props.value;
+
+  //   if (onChangeOption) {
+  //     onChangeOption(key, select);
+  //   }
+  // };
 
   return (
     <StyledPageLayout className="container" ismobile={isMobile}>
@@ -54,7 +51,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
           <h1>{title}</h1>
         </div>
         <div className="page-wrapper-select">
-          {selectOption.map(({ key, options }) => (
+          {/* {selectOption.map(({ key, options }) => (
             <React.Fragment key={key}>
               {options.map((option, idx) => (
                 <BasicSelect
@@ -66,7 +63,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
                 />
               ))}
             </React.Fragment>
-          ))}
+          ))} */}
         </div>
         <div className="page-wrapper-children">{children}</div>
       </div>

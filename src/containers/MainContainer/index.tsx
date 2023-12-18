@@ -1,31 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // base
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 
 // style
 import { StyledMain } from './style';
 
+// pages
+import { HomepageProps } from 'pages';
+
 // components
 import { BasicImage, FaqList, HomBanner, ListBox } from 'components';
 
-// modules
-import {
-  ResponseMainProfileProps,
-  ResponseProfile,
-  kdongProfileState
-} from 'modules';
-
 // consts
 import {
-  DEFAULT_SKIP,
   ROUTE_ALGORITHM,
   ROUTE_REFERENCE,
   ROUTE_WANTED,
-  algorithmList,
-  commonIcons,
-  faqList,
-  recommandList
+  commonIcons
 } from 'consts';
 
 // hooks
@@ -34,21 +25,12 @@ import { useMedia } from 'hooks';
 // libs
 import { windowLocation } from 'libs';
 
-// libraries
-import { useSetRecoilState } from 'recoil';
-import { useLectureList } from 'queries';
-import { HomepageProps } from 'pages';
-import { useQuery } from '@tanstack/react-query';
-import { QUERY_GET_ALL_ARTICLES } from 'modules/article';
-
 interface MainContainerProps extends HomepageProps {}
 
 export const MainContainer: React.FC<MainContainerProps> = ({
   profile,
   articleLists
 }) => {
-  const setIsProfile = useSetRecoilState(kdongProfileState);
-
   const { isMobile } = useMedia();
   const router = useRouter();
 
@@ -60,17 +42,13 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     id: string,
     type: 'recommand' | 'reference' | 'algorithm'
   ) => {
+    console.log('== type == : ', type);
     router.push(`${ROUTE_REFERENCE}/${id}`);
 
     // if (type === 'reference') {
     //   router.push(`${ROUTE_REFERENCE}/${id}`);
     // }
   };
-
-  useEffect(() => {
-    setIsProfile(profile);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile]);
 
   console.log('== articleLists == : ', articleLists);
 

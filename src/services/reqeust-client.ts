@@ -38,32 +38,6 @@ class AxiosInstanceCreator {
     this.#instance.interceptors.request.use((config: any) => {
       if (!config.headers) return;
 
-      if (typeof window === 'object') {
-        if (!config.headers['ownerId']) {
-          Object.assign(config.headers, {
-            Accept: 'application/json',
-            ownerId: process.env.NEXT_PUBLIC_KDONG_OWNER_ID
-          });
-        }
-        // if (!config.headers['access-token']) {
-        //   if (accessToken) {
-        //     if (!isTokenExpired(accessToken)) {
-        //       Object.assign(config.headers, {
-        //         Accept: 'application/json',
-        //         'access-token': accessToken
-        //       });
-        //     }
-        //   }
-        // }
-
-        // if (!config.headers['x-access-token']) {
-        //   Object.assign(config.headers, {
-        //     Accept: 'application/json'
-        //     // 'x-access-token': process.env.NEXT_PUBLIC_OASIS_MASTER_ACCESS_TOKEN!
-        //   });
-        // }
-      }
-
       Object.assign(config.headers, {
         Pragma: 'no-cache',
         'Cache-Control': 'no-cache',

@@ -21,7 +21,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { SplashScreen } from 'components';
 
 // modules
-import { AuthApi, kdongProfileState } from 'modules';
+import { kdongProfileState } from 'modules';
 
 // libraries
 import AOS from 'aos';
@@ -126,10 +126,7 @@ App.getInitialProps = async ({ ctx }: AppContext) => {
   try {
     if (!ctx.req) throw new Error('isClient');
 
-    const authApi = new AuthApi();
-    const profile = await authApi.getKdongProfile();
-
-    pageProps = { ...pageProps, profile };
+    pageProps = { ...pageProps, profile: undefined };
 
     return {
       pageProps

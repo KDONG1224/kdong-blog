@@ -7,15 +7,11 @@ import { StyledListBox } from './style';
 // components
 import { BasicSwiper, CheckCard } from 'components';
 
-// modules
-import { ResponseLecture } from 'modules';
-
 // hooks
 import { useMedia } from 'hooks';
 
 // libraries
 import { SwiperSlide } from 'swiper/react';
-import { ArticleListsProps } from 'modules/article';
 
 interface ListBoxProps {
   headerTitle: string;

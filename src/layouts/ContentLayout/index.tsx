@@ -25,6 +25,8 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
   contents,
   children
 }) => {
+  console.log('== title == : ', title);
+
   return (
     <StyledContentLayout className="container">
       <div className="content-wrapper">
