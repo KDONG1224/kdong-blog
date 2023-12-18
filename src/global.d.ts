@@ -1,2 +1,2 @@
 declare module 'react-highlight';
-// declare module 'ck'
+declare module '@ckeditor/ckeditor5-react';
