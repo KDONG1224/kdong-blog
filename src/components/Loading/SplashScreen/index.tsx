@@ -1,10 +1,13 @@
+// base
 import React from 'react';
-import { StyledSplashScreen } from './style';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-// import Lottie from 'react-lottie-player';
+// styles
+import { StyledSplashScreen } from './style';
+
+// json
 import loadingFlip from '../../../loadingFlip.json';
-import dynamic from 'next/dynamic';
 
 const DynamicLottie = dynamic(() => import('react-lottie-player'), {
   ssr: false

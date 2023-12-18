@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 interface StyledListBoxProps {
   ismobile: boolean;
@@ -75,7 +75,7 @@ export const StyledListBox = styled.div<StyledListBoxProps>`
         width: 70px;
         height: 100%;
         z-index: 9;
-        display: ${({ ismobile }) => (ismobile ? 'none' : 'block')};
+        /* display: ${({ ismobile }) => (ismobile ? 'none' : 'block')}; */
       }
     }
   }

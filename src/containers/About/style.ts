@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 interface StyledAboutProps {
   ismobile: boolean;
@@ -41,6 +41,7 @@ export const StyledAbout = styled.div<StyledAboutProps>`
           grid-template-rows: repeat(2, 1fr);
           gap: ${({ ismobile }) => (ismobile ? '40px 0' : '100px')};
           padding: ${({ ismobile }) => (ismobile ? '0 0px' : '0 200px')};
+          font-size: 10px;
         }
 
         &.first {
@@ -104,6 +105,7 @@ export const StyledAbout = styled.div<StyledAboutProps>`
           align-items: center;
           justify-content: space-evenly;
           margin-bottom: 40px;
+          font-size: 10px;
 
           &-item {
             width: 30%;
@@ -170,11 +172,11 @@ export const StyledAbout = styled.div<StyledAboutProps>`
 
               > h3 {
                 font-family: 'UnioneForceStencil';
-                font-size: 50px;
+                font-size: 5em;
               }
 
               > p {
-                font-size: 20px;
+                font-size: 2em;
               }
             }
 
@@ -182,13 +184,13 @@ export const StyledAbout = styled.div<StyledAboutProps>`
               margin-top: 20px;
 
               > p {
-                font-size: 18px;
+                font-size: 1.8em;
                 line-height: 1.2;
                 text-align: center;
               }
 
               > span {
-                font-size: 14px;
+                font-size: 1.4em;
                 color: #f43f00;
               }
             }
@@ -219,9 +221,54 @@ export const StyledAbout = styled.div<StyledAboutProps>`
       }
     }
   }
+
   @media (max-width: 750px) {
     .about-wrapper-body-content-list-item {
       height: 360px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .about-wrapper-body-content-list {
+      font-size: 8px;
+
+      &-item {
+        height: 320px;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-wrapper-body-content-list {
+      display: block;
+      width: 100%;
+      font-size: 12px;
+
+      &-item {
+        width: 60%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    .about-wrapper-body-content-list {
+      font-size: 6px;
+
+      &-item {
+        height: 280px;
+      }
+    }
+
+    .about-wrapper-body-content-box {
+      padding: 0 10px;
+    }
+
+    .card-wrapper-desc {
+      > p {
+        font-size: 10px;
+      }
     }
   }
 `;

@@ -1,19 +1,19 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 interface StyledWantedFormProps {
-  ismobile: boolean;
+  $ismobile: boolean;
 }
 
 export const StyledWanted = styled.div<StyledWantedFormProps>`
-  max-width: ${({ ismobile }) => (ismobile ? '96vw' : '600px')};
+  max-width: ${({ $ismobile }) => ($ismobile ? '96vw' : '600px')};
   margin: 0 auto;
-  padding-bottom: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
+  padding-bottom: ${({ $ismobile }) => ($ismobile ? '50px' : '100px')};
 
   .wanted-wrapper {
-    margin-top: ${({ ismobile }) => (ismobile ? '100px' : '220px')};
+    margin-top: ${({ $ismobile }) => ($ismobile ? '100px' : '220px')};
 
     &-title {
-      margin-bottom: ${({ ismobile }) => (ismobile ? '80px' : '120px')};
+      margin-bottom: ${({ $ismobile }) => ($ismobile ? '80px' : '120px')};
 
       > h1 {
         font-size: 40px;
@@ -66,22 +66,6 @@ export const StyledWanted = styled.div<StyledWantedFormProps>`
             &::marker {
               font-size: 14px;
             }
-          }
-        }
-      }
-
-      &-form {
-        &-btn {
-          margin-top: 40px;
-
-          > button {
-            padding: 10px 22px;
-            width: 100%;
-            height: 100%;
-            font-size: 19px;
-            font-weight: 700;
-            background-color: #f43f00 !important;
-            color: #fff;
           }
         }
       }

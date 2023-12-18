@@ -1,5 +1,6 @@
 // base
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
+import { useRouter } from 'next/router';
 import { debounce } from 'lodash';
 
 // style
@@ -8,23 +9,22 @@ import { StyledWanted } from './style';
 // components
 import { WantedForm } from 'components';
 
-// hooks
-import { useMedia } from 'hooks';
-
-// libraries
-import { Button } from '@mui/material';
+// modules
 import {
   QUERY_POST_WANTED,
   RequestWantedProps,
   WantedApi
 } from 'modules/wanted';
+
+// hooks
+import { useMedia } from 'hooks';
+
+// libraries\
+
 import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
+import nProgress from 'nprogress';
 
 export const Wanted = () => {
-  const [clientEmail, setClientEmail] = useState('');
-  const [clientName, setClientName] = useState('');
-
   const { isMobile } = useMedia();
 
   const router = useRouter();
@@ -40,39 +40,29 @@ export const Wanted = () => {
     },
     {
       onSuccess: () => {
-        setClientEmail('');
-        setClientName('');
-
         router.back();
-      },
-      onError: () => {
-        setClientEmail('');
-        setClientName('');
       }
     }
   );
 
-  const handleEmail = (email: string) => {
-    setClientEmail(email);
-  };
+  const onSubmit = debounce(async (values: RequestWantedProps) => {
+    nProgress.start();
 
-  const handleName = (name: string) => {
-    setClientName(name);
-  };
+    try {
+      if (!values) return;
 
-  const onSubmit = debounce(() => {
-    if (!clientEmail || !clientName) return;
+      await sendEmail(values);
 
-    const data = {
-      clientEmail,
-      clientName
-    };
+      nProgress.done();
+    } catch (e: any) {
+      console.log(e.message);
 
-    sendEmail(data);
+      nProgress.done();
+    }
   }, 1000);
 
   return (
-    <StyledWanted ismobile={isMobile}>
+    <StyledWanted $ismobile={isMobile}>
       <div className="wanted-wrapper">
         <div className="wanted-wrapper-title">
           <h1>KDONG Wanted</h1>
@@ -96,14 +86,7 @@ export const Wanted = () => {
             </ol>
           </div>
           <div className="wanted-wrapper-content-form">
-            <WantedForm
-              id="subscribeEmail"
-              onChangeEmail={handleEmail}
-              onChangeName={handleName}
-            />
-            <div className="wanted-wrapper-content-form-btn">
-              <Button onClick={onSubmit}>전송하기</Button>
-            </div>
+            <WantedForm onSubmit={onSubmit} />
           </div>
         </div>
       </div>

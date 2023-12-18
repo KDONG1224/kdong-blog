@@ -1,5 +1,5 @@
 // base
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 
 // style
@@ -28,11 +28,14 @@ import { ROUTE_REFERENCE } from 'consts';
 import { AxiosError } from 'axios';
 import { useRecoilValue } from 'recoil';
 import { useQuery } from '@tanstack/react-query';
+import nProgress from 'nprogress';
 
 interface ReferenceProps {}
 
 export const Reference: React.FC<ReferenceProps> = () => {
   const [searchQuery, setSearchQuery] = useState<any>(undefined);
+  const [articleLists, setarticleLists] = useState<any[]>([]);
+  const [totalElements, setTotalElements] = useState<number>(0);
 
   const loading = useRecoilValue(loadingState);
 
@@ -76,12 +79,14 @@ export const Reference: React.FC<ReferenceProps> = () => {
     }
   );
 
-  const { data: articles } = useQuery(
+  const { data: resultLists } = useQuery(
     [QUERY_GET_ALL_ARTICLES, searchQuery],
     async ({ queryKey }) => {
       const [key, searchQuery] = queryKey;
 
+      nProgress.start();
       console.log('== key == : ', key);
+      console.log('== totalElements == : ', totalElements);
 
       if (searchQuery) {
         return await articleApi.getClientAllArticles(searchQuery);
@@ -92,20 +97,22 @@ export const Reference: React.FC<ReferenceProps> = () => {
     {
       select: (data) => {
         return data.result;
-      }
+      },
+      onSuccess: () => nProgress.done(),
+      onError: () => nProgress.done()
     }
   );
 
   const dataSource = useMemo(() => {
-    if (!articles) return [];
+    if (!articleLists) return [];
 
-    return articles.articles;
-  }, [articles]);
+    return articleLists;
+  }, [articleLists]);
 
   const onChangeCategory = (value: string) => {
     setSearchQuery({
       ...searchQuery,
-      where__category__id: value
+      where__category__id: value === 'all' ? '' : value
     });
   };
 
@@ -120,6 +127,13 @@ export const Reference: React.FC<ReferenceProps> = () => {
     console.log('== loading == : ', loading);
     router.push(`${ROUTE_REFERENCE}/${id}`);
   };
+
+  useEffect(() => {
+    if (!resultLists) return;
+
+    setarticleLists(resultLists.articles);
+    setTotalElements(resultLists.total);
+  }, [resultLists]);
 
   return (
     <StyledReference>

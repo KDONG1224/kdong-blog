@@ -5,7 +5,7 @@ import type { AppContext, AppProps } from 'next/app';
 import { Router } from 'next/router';
 
 // styles
-import '../styles/index.css';
+import '../assets/scss/index.scss';
 import 'nprogress/nprogress.css';
 import '../../node_modules/highlight.js/styles/qtcreator_dark.css';
 import 'aos/dist/aos.css';
@@ -15,7 +15,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-// import '../../node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor';
 
 // components
 import { SplashScreen } from 'components';
@@ -32,8 +31,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { MutableSnapshot, RecoilRoot } from 'recoil';
 import { ConfigProvider } from 'antd';
 import ko_KR from 'antd/lib/locale/ko_KR';
-// import { faker } from '@faker-js/faker/locale/ko';
-// import { createExcelForm } from 'utils/makeExcel';
 
 // nprogress setting
 NProgress.configure({
@@ -97,7 +94,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" sizes="192x192" href="/favicon.ico" />
-        <title>KDONG 포트폴리오</title>
+        <title>밥값하는 개발자 블로그</title>
       </Head>
       <ConfigProvider
         locale={ko_KR}

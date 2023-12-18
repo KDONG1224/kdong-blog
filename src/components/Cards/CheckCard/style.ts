@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 interface StyledCheckCardProps {
-  lineBg: string;
-  badgeBg: string;
+  linebg: string;
+  badgbg: string;
   ismobile: boolean;
 }
 
@@ -26,7 +26,41 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
       }
 
       &.polygon {
-        background-color: ${({ lineBg }) => lineBg};
+        background-color: ${({ linebg }) => linebg};
+
+        /* background: #36c;
+        background: linear-gradient(
+              115deg,
+              transparent 75%,
+              rgba(255, 255, 255, 0.8) 75%
+            )
+            0 0,
+          linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%)
+            0 0,
+          linear-gradient(115deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%)
+            7px -15px,
+          linear-gradient(245deg, transparent 75%, rgba(255, 255, 255, 0.8) 75%)
+            7px -15px,
+          #36c;
+        background-size: 15px 30px; */
+
+        /* background: linear-gradient(red, transparent),
+          linear-gradient(to top left, lime, transparent),
+          linear-gradient(to top right, blue, transparent);
+        background-blend-mode: screen;
+        background-blend-mode: multiply;
+        background-blend-mode: overlay;
+        background-blend-mode: darken;
+        background-blend-mode: soft-light;
+        background-blend-mode: luminosity; */
+
+        /* background-color: #269;
+        background-image: linear-gradient(white 2px, transparent 2px),
+          linear-gradient(90deg, white 2px, transparent 2px),
+          linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+        background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+        background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px; */
 
         > div {
           height: 100%;
@@ -36,22 +70,23 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
       &-line {
         width: 100%;
         height: ${({ ismobile }) => (ismobile ? '12px' : '24px')};
-        background-image: ${({ lineBg }) =>
-          lineBg &&
+        background-image: ${({ linebg }) =>
+          linebg &&
           `linear-gradient(
             -45deg,
-            ${lineBg} 25%,
+            ${linebg} 25%,
             transparent 25%,
             transparent 75%,
-            ${lineBg} 75%
+            ${linebg} 75%
           ),
           linear-gradient(
             -45deg,
-            ${lineBg} 25%,
+            ${linebg} 25%,
             transparent 25%,
             transparent 75%,
-            ${lineBg} 75%
+            ${linebg} 75%
           )`};
+
         background-repeat: repeat;
         background-position: ${({ ismobile }) =>
           ismobile ? '0 0, 6px 6px' : '0 0, 12px 12px'};
@@ -78,7 +113,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            /* border: ${({ badgeBg }) => badgeBg && `1px solid ${badgeBg}`}; */
+            /* border: ${({ badgbg }) => badgbg && `1px solid ${badgbg}`}; */
             box-sizing: border-box;
           }
 
@@ -117,7 +152,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
               top: 0;
               width: ${({ ismobile }) => (ismobile ? '20px' : '34px')};
               height: ${({ ismobile }) => (ismobile ? '20px' : '34px')};
-              background-color: ${({ lineBg }) => lineBg};
+              background-color: ${({ linebg }) => linebg};
               z-index: 1;
             }
           }
@@ -128,7 +163,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
         position: absolute;
         top: 0;
         height: ${({ ismobile }) => (ismobile ? '12px' : '24px')};
-        background-color: ${({ badgeBg }) => badgeBg};
+        background-color: ${({ badgbg }) => badgbg};
         display: flex;
         align-items: center;
         justify-content: center;

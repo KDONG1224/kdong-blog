@@ -5,6 +5,6 @@ export * from './routes';
 export * from './queryKeys';
 export * from './kdongHistory';
 export * from './headerMenus';
-export * from './dummy';
 export * from './snsList';
 export * from './options';
+export * from './about';

@@ -1,5 +1,5 @@
 // libraries
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { commonIcons } from 'consts';
 
 interface StyledMainLayoutProps {

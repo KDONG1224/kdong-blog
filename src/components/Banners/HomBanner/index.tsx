@@ -54,7 +54,7 @@ export const HomBanner = () => {
   }, [initValues]);
 
   return (
-    <StyledHomBanner ismobile={isMobile}>
+    <StyledHomBanner $ismobile={isMobile}>
       <div className="banner-wrapper">
         <div className="banner-wrapper-text">
           <p>안녕하세요.</p>

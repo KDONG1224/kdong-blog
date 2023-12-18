@@ -45,7 +45,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({
   };
 
   return (
-    <StyledCheckCard lineBg={mainColor} badgeBg={subColor} ismobile={isMobile}>
+    <StyledCheckCard linebg={mainColor} badgbg={subColor} ismobile={isMobile}>
       <div className={`check-wrapper ${type}`} onClick={handleClickCard}>
         <div className={`check-wrapper-top ${type}`}>
           {type === 'check' && (

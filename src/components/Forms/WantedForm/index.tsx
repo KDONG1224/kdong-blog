@@ -4,50 +4,69 @@ import React from 'react';
 // style
 import { StyledWantedForm } from './style';
 
+// components
+import { BasicButton } from 'components';
+
+// modules
+import { RequestWantedProps } from 'modules/wanted';
+
 // libraries
-import { FormControl, Input } from '@mui/material';
+import { Form, Input } from 'antd';
+import { useForm } from 'antd/lib/form/Form';
+
+// libraries
 
 interface WantedFormProps {
-  id: string;
-  onChangeEmail: (value: string) => void;
-  onChangeName: (value: string) => void;
+  onSubmit: (values: RequestWantedProps) => void;
 }
 
-export const WantedForm: React.FC<WantedFormProps> = ({
-  id,
-  onChangeEmail,
-  onChangeName
-}) => {
-  const handleOnChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!onChangeEmail) return;
+export const WantedForm: React.FC<WantedFormProps> = ({ onSubmit }) => {
+  const [form] = useForm();
 
-    onChangeEmail(e.currentTarget.value);
-  };
-
-  const handleOnChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!onChangeName) return;
-
-    onChangeName(e.currentTarget.value);
+  const onFinish = (values: RequestWantedProps) => {
+    onSubmit(values);
   };
 
   return (
     <StyledWantedForm>
       <div className="wform-wrapper">
-        <FormControl className="wform-wrapper-form">
-          <Input
-            className="wform-wrapper-form-input"
-            id={id}
-            onChange={handleOnChangeName}
-            placeholder="이름 및 회사명을 입력해주세요."
-          />
+        <Form className="wform-wrapper-form" form={form} onFinish={onFinish}>
+          <Form.Item
+            name="clientName"
+            rules={[
+              {
+                type: 'string',
+                required: true,
+                message: '이름 및 회사명를 확인해주세요.'
+              }
+            ]}
+          >
+            <Input
+              className="wform-wrapper-form-input"
+              placeholder="이름 및 회사명을 입력해주세요."
+            />
+          </Form.Item>
 
-          <Input
-            className="wform-wrapper-form-input"
-            id={id}
-            onChange={handleOnChangeEmail}
-            placeholder="이메일을 입력해주세요."
-          />
-        </FormControl>
+          <Form.Item
+            name="clientEmail"
+            rules={[
+              {
+                type: 'email',
+                required: true,
+                message: '이메일을 확인 해주세요.'
+              }
+            ]}
+          >
+            <Input
+              className="wform-wrapper-form-input"
+              placeholder="이메일을 입력해주세요."
+            />
+          </Form.Item>
+
+          <div className="wform-wrapper-form-btn">
+            <BasicButton btnText="전송하기" htmlType="submit" />
+          </div>
+        </Form>
       </div>
     </StyledWantedForm>
   );

@@ -36,11 +36,9 @@ export class ArticleeApi {
    */
 
   async getClientAllArticles(query?: any) {
-    console.log(query);
-
     const queryString = qs.stringify(query, { addQueryPrefix: true });
 
-    return await this.Axios.get<ResponseArticleLists>(
+    return await this.AxiosClient.get<ResponseArticleLists>(
       '/posts' + queryString
     ).then((res) => res.data);
   }

@@ -1,3 +1,2 @@
-export * from './BlurImage';
 export * from './BasicImage';
-export * from './ImageBank';
+export * from './BlurImage';

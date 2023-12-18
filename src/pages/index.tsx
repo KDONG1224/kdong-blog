@@ -1,5 +1,6 @@
 // base
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
 // layouts
 import { MainLayout } from 'layouts';
@@ -20,9 +21,14 @@ const Homepage: React.FC<HomepageProps> = ({ profile, articleLists }) => {
   console.log('=== Homepage : articleLists === : ', articleLists);
 
   return (
-    <MainLayout>
-      <MainContainer profile={profile} articleLists={articleLists} />
-    </MainLayout>
+    <>
+      <Head>
+        <title>밥값하는 개발자 블로그 - 메인</title>
+      </Head>
+      <MainLayout>
+        <MainContainer profile={profile} articleLists={articleLists} />
+      </MainLayout>
+    </>
   );
 };
 

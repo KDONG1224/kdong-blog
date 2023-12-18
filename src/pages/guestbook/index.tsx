@@ -1,5 +1,6 @@
 // base
 import React from 'react';
+import Head from 'next/head';
 
 // layouts
 import { MainLayout } from 'layouts';
@@ -9,9 +10,14 @@ import { Guestbook } from 'containers';
 
 const GuestbookPage = () => {
   return (
-    <MainLayout>
-      <Guestbook />
-    </MainLayout>
+    <>
+      <Head>
+        <title>밥값하는 개발자 블로그 - 방명록</title>
+      </Head>
+      <MainLayout>
+        <Guestbook />
+      </MainLayout>
+    </>
   );
 };
 

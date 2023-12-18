@@ -1,5 +1,5 @@
 // base
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 
 // style
@@ -9,7 +9,7 @@ import { StyledMain } from './style';
 import { HomepageProps } from 'pages';
 
 // components
-import { BasicImage, FaqList, HomBanner, ListBox } from 'components';
+import { BasicCollapse, BasicImage, HomBanner, ListBox } from 'components';
 
 // consts
 import {
@@ -31,8 +31,24 @@ export const MainContainer: React.FC<MainContainerProps> = ({
   profile,
   articleLists
 }) => {
+  const [activeFaqKey, setActiveFaqKey] = useState<string[]>([]);
+
   const { isMobile } = useMedia();
   const router = useRouter();
+
+  const faqItems = useMemo(() => {
+    if (!profile || !profile.result || !profile.result.faqLists) return [];
+
+    const items = profile.result.faqLists
+      .filter((x) => x.expose)
+      .map((item) => ({
+        key: item.id,
+        label: item.question,
+        children: <div>{item.answer}</div>
+      }));
+
+    return items;
+  }, [profile]);
 
   const handleMove = (path: string) => {
     router.push(path);
@@ -50,7 +66,9 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     // }
   };
 
-  console.log('== articleLists == : ', articleLists);
+  const onChangeCollapse = (key: string | string[]) => {
+    setActiveFaqKey(key as string[]);
+  };
 
   return (
     <StyledMain ismobile={isMobile}>
@@ -137,7 +155,11 @@ export const MainContainer: React.FC<MainContainerProps> = ({
             <span>FAQ</span>
           </div>
           <div className="main-wrapper-faq-right">
-            <FaqList faqList={profile.result.faqLists} />
+            <BasicCollapse
+              activeKey={activeFaqKey}
+              onChange={onChangeCollapse}
+              items={faqItems}
+            />
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@ export const BasicTextEditor: React.FC<BasicTextEditorProps> = ({
   editorData
 }) => {
   return (
-    <StyledBasicTextEditor scrolly={scrollY}>
+    <StyledBasicTextEditor className="basic-editor" scrolly={scrollY}>
       {isEditorReady && <CKEditorWithCustomEditor data={editorData} />}
     </StyledBasicTextEditor>
   );

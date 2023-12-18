@@ -1,10 +1,19 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 interface StyledBasicTextEditorProps {
   scrolly: number;
 }
 
 export const StyledBasicTextEditor = styled.div<StyledBasicTextEditorProps>`
+  p {
+    margin-bottom: 0 !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
   .ck-toolbar {
     display: none !important;
     border: none !important;
@@ -32,6 +41,7 @@ export const StyledBasicTextEditor = styled.div<StyledBasicTextEditorProps>`
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       box-shadow: none !important;
+      font-size: 20px;
 
       &.ck-focused {
         border: none !important;
@@ -58,23 +68,24 @@ export const StyledBasicTextEditor = styled.div<StyledBasicTextEditorProps>`
       }
 
       > h2 {
-        font-size: 3.62em;
+        font-size: 2.62em;
         line-height: 1.46;
       }
 
       > h3 {
-        font-size: 3.44em;
+        font-size: 2.44em;
         line-height: 1.48;
       }
 
       > h4 {
-        font-size: 3.25em;
+        font-size: 2.25em;
         line-height: 1.55;
       }
 
       > p {
-        font-size: 2.25em;
+        font-size: 1.25em;
         line-height: 1.75;
+        margin-bottom: 0 !important;
       }
 
       > ul {
@@ -82,7 +93,7 @@ export const StyledBasicTextEditor = styled.div<StyledBasicTextEditorProps>`
         line-height: 1.4;
 
         > li {
-          font-size: 1.5em;
+          font-size: 1.2em;
           line-height: 1.4;
           list-style-type: disc;
         }
@@ -90,15 +101,19 @@ export const StyledBasicTextEditor = styled.div<StyledBasicTextEditorProps>`
 
       blockquote {
         background: #f4f8fa;
-        font-size: 2.25em;
+        font-size: 1.25em;
         line-height: 1.75;
         font-weight: 400;
         position: relative;
         color: #575757;
         padding: 22px 20px 18px 20px;
         border-left: 5px solid #ff5821;
-        > p {
-          margin: 0 !important;
+      }
+
+      pre {
+        > code {
+          line-height: 2;
+          font-size: 1.3em;
         }
       }
 
@@ -116,9 +131,26 @@ export const StyledBasicTextEditor = styled.div<StyledBasicTextEditorProps>`
 
       .ck-editor__editable {
         &.ck-editor__nested-editable {
-          font-size: 2.25em;
+          font-size: 1.25em;
           line-height: 1.75;
           padding: 14px 12px 12px 12px;
+        }
+      }
+    }
+
+    @media (max-width: 700px) {
+      .ck-content {
+        font-size: 14px;
+
+        li {
+          line-height: 1.8;
+        }
+
+        pre {
+          > code {
+            line-height: 1.4;
+            font-size: 0.7em;
+          }
         }
       }
     }
