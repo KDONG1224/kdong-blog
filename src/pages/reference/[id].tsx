@@ -55,7 +55,10 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
 
         <meta property="og:title" content={article.title} />
         <meta property="og:description" content={article.content} />
-        <meta property="og:url" content={router.pathname} />
+        <meta
+          property="og:url"
+          content={'https://kdong.dev/' + router.asPath}
+        />
         <meta property="og:image" content={article.thumbnails[0].location} />
       </Head>
       <MainLayout noFooter>
