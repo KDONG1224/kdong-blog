@@ -74,7 +74,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     <StyledMain $ismobile={isMobile}>
       <div className="main-wrapper">
         <div className="main-wrapper-banner container">
-          <HomBanner />
+          <HomBanner bannerLists={profile.result.bannerLists} />
         </div>
         <div className="main-wrapper-recommand">
           <div className="main-wrapper-recommand-box container">

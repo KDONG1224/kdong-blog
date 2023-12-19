@@ -102,3 +102,25 @@ export const htmlToString = (str: string) => {
 
   return doc.body.textContent || '';
 };
+
+export const removeHtmlTags = (str: string) => {
+  return str
+    .replace(/&lt;/g, '<')
+    .replace(/&lt ;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/<[^>]*>/g, '');
+};
+
+export const removeHtmlTagsAndSpace = (str: string) => {
+  return str
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&apos;/g, "'");
+};

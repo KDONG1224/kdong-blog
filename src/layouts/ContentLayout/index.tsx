@@ -25,15 +25,13 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
   contents,
   children
 }) => {
-  console.log('== title == : ', title);
-
   return (
     <StyledContentLayout className="container">
       <div className="content-wrapper">
         <div className="content-wrapper-head">
           <div className="content-wrapper-head-left">
             <div className="content-wrapper-head-left-top">
-              <h2>{contents?.title}</h2>
+              <h2>{contents?.title || title}</h2>
               <div>
                 {contents &&
                   contents.tags.map(({ id, name }) => (
@@ -72,7 +70,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
                   <SwiperSlide key={id}>
                     <BlurImage
                       src={location}
-                      alt={filename}
+                      alt={`${filename}_이미지`}
                       style={{ objectFit: 'contain' }}
                     />
                   </SwiperSlide>

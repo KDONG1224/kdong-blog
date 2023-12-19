@@ -74,140 +74,57 @@ export const StyledContentLayout = styled.div`
     &-children {
       width: 100%;
       padding-bottom: 100px;
-
-      > div {
-        h1,
-      h2,
-      h3,
-      h4 {
-        font-weight: normal;
-        letter-spacing: -1px;
-        color: #000;
-        margin: 1em 0 20px;
-      }
-
-      > h2 {
-        font-size: 2.62em;
-        line-height: 1.46;
-      }
-
-      > h3 {
-        font-size: 2.44em;
-        line-height: 1.48;
-      }
-
-      > h4 {
-        font-size: 2.25em;
-        line-height: 1.55;
-      }
-
-      > p {
-        font-size: 1.25em;
-        line-height: 1.75;
-        margin-bottom: 0 !important;
-      }
-
-      > ul {
-        font-size: 1.2em;
-        line-height: 1.4;
-
-        > li {
-          font-size: 1.2em;
-          line-height: 1.4;
-          list-style-type: disc;
-        }
-      }
-
-      blockquote {
-        background: #f4f8fa;
-        font-size: 1.25em;
-        line-height: 1.75;
-        font-weight: 400;
-        position: relative;
-        color: #575757;
-        padding: 22px 20px 18px 20px;
-        border-left: 5px solid #ff5821;
-      }
-
-      pre {
-        > code {
-          line-height: 2;
-          font-size: 1.3em;
-        }
-      }
-
-      .table {
-        > table {
-          tbody {
-            > tr {
-              &:nth-child(odd) {
-                background-color: #f5f5f5;
-              }
-            }
-          }
-        }
-      }
-
-      .ck-editor__editable {
-        &.ck-editor__nested-editable {
-          font-size: 1.25em;
-          line-height: 1.75;
-          padding: 14px 12px 12px 12px;
-        }
-      }
-    }
-      }
     }
   }
 
   @media (max-width: 1000px) {
     .content-wrapper {
       &-head {
-        height: 100%;
+        height: 100% !important;
         flex-direction: column-reverse;
-        margin-bottom: 2em;
+        margin-bottom: 5em !important;
 
         > div {
-          width: 100%;
+          width: 100% !important;
         }
 
         &-left {
           margin-top: 2.6em;
           border: 2px solid #000;
-          padding: 2em;
+          padding: 2em !important;
 
           &-top {
             text-align: left;
-            padding-bottom: 2em;
-            display: flex;
-            flex-direction: column-reverse;
-            border-bottom: none;
+            padding-bottom: 2em !important;
+            display: flex !important;
+            flex-direction: column-reverse !important;
+            border-bottom: none !important;
 
             > h2 {
-              font-size: 4em;
-              word-break: break-word;
-              margin-bottom: 0.2em;
+              font-size: 4em !important;
+              word-break: break-word !important;
+              margin-bottom: 0.2em !important;
             }
 
             > div {
-              margin-bottom: 1.4em;
+              margin-bottom: 1.4em !important;
 
               > span {
-                font-size: 1.8em;
-                margin-right: 5px;
-                word-break: break-word;
-                line-height: 1.6;
-                border: 1px solid #000;
+                font-size: 1.8em !important;
+                margin-right: 5px !important;
+                word-break: break-word !important;
+                line-height: 1.6 !important;
+                border: 1px solid #000 !important;
                 color: #000;
-                padding: 2px 4px;
-                font-size: 13px;
+                padding: 2px 4px !important;
+                font-size: 13px !important;
               }
             }
           }
 
           &-bottom {
-            position: relative;
-            left: 0;
+            position: relative !important;
+            left: 0 !important;
 
             > p {
               margin-bottom: 0 !important;
@@ -217,7 +134,7 @@ export const StyledContentLayout = styled.div`
 
         &-right {
           &-swiper {
-            height: 30em;
+            height: 30em !important;
           }
         }
       }

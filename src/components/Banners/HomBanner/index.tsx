@@ -1,5 +1,5 @@
 // base
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
 // styles
 import { StyledHomBanner } from './style';
@@ -8,20 +8,19 @@ import { StyledHomBanner } from './style';
 import { BasicSwiper, BlurImage, TypingText } from 'components';
 
 // modules
-import { BannerListsProps, kdongProfileState } from 'modules';
+import { BannerListsProps } from 'modules';
 
 // hooks
 import { useMedia } from 'hooks';
 
 // libraries
-import { useRecoilValue } from 'recoil';
 import { SwiperSlide } from 'swiper/react';
 
-export const HomBanner = () => {
-  const [bannerLists, setBannerLists] = useState<BannerListsProps>();
+interface HomBannerProps {
+  bannerLists: BannerListsProps;
+}
 
-  const isProfile = useRecoilValue(kdongProfileState);
-
+export const HomBanner: React.FC<HomBannerProps> = ({ bannerLists }) => {
   const { isMobile } = useMedia();
 
   const bannerTitle = useMemo(() => {
@@ -40,18 +39,6 @@ export const HomBanner = () => {
 
     return result;
   }, [bannerLists]);
-
-  const initValues = useCallback(() => {
-    if (!isProfile || !isProfile.result) return;
-
-    const { bannerLists } = isProfile.result;
-
-    setBannerLists(bannerLists);
-  }, [isProfile]);
-
-  useEffect(() => {
-    initValues();
-  }, [initValues]);
 
   return (
     <StyledHomBanner $ismobile={isMobile}>

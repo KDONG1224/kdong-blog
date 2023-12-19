@@ -1,6 +1,5 @@
 // base
-import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
+import React from 'react';
 import { GetServerSideProps } from 'next';
 
 // pages
@@ -9,59 +8,41 @@ import CustomSeo from 'pages/seo';
 // layouts
 import { ContentLayout, MainLayout } from 'layouts';
 
+// components
+import { EditorViewText } from 'components';
+
 // modules
 import { ArticleListsProps, ArticleeApi } from 'modules/article';
 
 // utils
-import { htmlToString } from 'utils';
+import { removeHtmlTags } from 'utils';
 
 export interface ReferenceContentPageProps {
   article: ArticleListsProps;
 }
 
-const DynamicEditor = dynamic(
-  () =>
-    import('../../components/TextEditors/BasicTextEditor').then(
-      (mod) => mod.BasicTextEditor
-    ),
-  { ssr: false }
-);
-
 const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
   article
 }) => {
-  const [isEditorReady, setIsEditorReady] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsEditorReady(true);
-    }
-  }, []);
-
   return (
     <>
       <CustomSeo
         title={`KDONG - ${article.title}`}
         og={{
           title: article.title,
-          description: htmlToString(article.content),
+          description: removeHtmlTags(article.content),
           url: `https://kdong.dev/reference/${article.id}`,
           image: article.thumbnails[0].location
         }}
         twitter={{
           title: article.title,
-          description: htmlToString(article.content),
+          description: removeHtmlTags(article.content),
           image: article.thumbnails[0].location
         }}
       />
       <MainLayout noFooter>
         <ContentLayout title="레퍼런스 콘텐츠" contents={article}>
-          {isEditorReady && (
-            <DynamicEditor
-              isEditorReady={isEditorReady}
-              editorData={article.content}
-            />
-          )}
+          <EditorViewText content={article.content} />
         </ContentLayout>
       </MainLayout>
     </>
