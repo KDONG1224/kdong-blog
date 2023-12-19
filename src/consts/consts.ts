@@ -1,4 +1,5 @@
 export const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN;
+export const MetaThumbnail = `https://kdong.s3.ap-northeast-2.amazonaws.com/dev/thumbnail-kdong-blog.png`;
 
 // infinite scroll
 export const DEFAULT_SKIP = 0;

@@ -18,8 +18,6 @@ export interface HomepageProps {
 }
 
 const Homepage: React.FC<HomepageProps> = ({ profile, articleLists }) => {
-  console.log('=== Homepage : articleLists === : ', articleLists);
-
   return (
     <>
       <Head>

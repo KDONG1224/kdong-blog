@@ -1,14 +1,19 @@
 // base
 import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { GetServerSideProps } from 'next';
+
+// pages
+import CustomSeo from 'pages/seo';
 
 // layouts
 import { ContentLayout, MainLayout } from 'layouts';
 
 // modules
 import { ArticleListsProps, ArticleeApi } from 'modules/article';
-import Head from 'next/head';
-import dynamic from 'next/dynamic';
+
+// utils
+import { htmlToString } from 'utils';
 
 export interface ReferenceContentPageProps {
   article: ArticleListsProps;
@@ -35,27 +40,20 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
 
   return (
     <>
-      <Head>
-        {/* 기본 메타 태그 */}
-        <title>KDONG - {article.title}</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-
-        {/* Open Graph / Facebook 메타 태그 */}
-        <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.content} />
-        <meta
-          property="og:url"
-          content={`https://kdong.dev/reference/${article.id}`}
-        />
-        <meta property="og:image" content={article.thumbnails[0].location} />
-
-        {/* Twitter 메타 태그 */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.content} />
-        <meta name="twitter:image" content={article.thumbnails[0].location} />
-      </Head>
+      <CustomSeo
+        title={`KDONG - ${article.title}`}
+        og={{
+          title: article.title,
+          description: htmlToString(article.content),
+          url: `https://kdong.dev/reference/${article.id}`,
+          image: article.thumbnails[0].location
+        }}
+        twitter={{
+          title: article.title,
+          description: htmlToString(article.content),
+          image: article.thumbnails[0].location
+        }}
+      />
       <MainLayout noFooter>
         <ContentLayout title="레퍼런스 콘텐츠" contents={article}>
           {isEditorReady && (

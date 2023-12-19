@@ -32,8 +32,6 @@ export function hexToRgb(hex: string) {
 export const browserNameChange = (name: string) => {
   const count = 1;
 
-  console.log(name);
-
   switch (name) {
     case 'chrome':
       return {
