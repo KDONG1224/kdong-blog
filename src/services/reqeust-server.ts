@@ -24,11 +24,11 @@ class AxiosServerInstanceCreator {
     this.#instance.interceptors.request.use((config) => {
       if (!config.headers) return config;
 
-      Object.assign(config.headers, {
-        Pragma: 'no-cache',
-        'Cache-Control': 'no-cache',
-        Expires: '-1'
-      });
+      // Object.assign(config.headers, {
+      //   Pragma: 'no-cache',
+      //   'Cache-Control': 'no-cache',
+      //   Expires: '-1'
+      // });
 
       return config;
     });

@@ -151,22 +151,22 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 
-App.getInitialProps = async ({ ctx }: AppContext) => {
-  let pageProps = {};
+// App.getInitialProps = async ({ ctx }: AppContext) => {
+//   let pageProps = {};
 
-  try {
-    if (!ctx.req) throw new Error('isClient');
+//   try {
+//     if (!ctx.req) throw new Error('isClient');
 
-    pageProps = { ...pageProps, profile: undefined };
+//     pageProps = { ...pageProps, profile: undefined };
 
-    return {
-      pageProps
-    };
-  } catch (error) {
-    pageProps = { ...pageProps, profile: null };
+//     return {
+//       pageProps
+//     };
+//   } catch (error) {
+//     pageProps = { ...pageProps, profile: null };
 
-    return {
-      pageProps
-    };
-  }
-};
+//     return {
+//       pageProps
+//     };
+//   }
+// };
