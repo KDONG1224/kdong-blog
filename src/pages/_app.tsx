@@ -114,7 +114,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:creator" content="@" />
         <meta
           name="twitter:image"
-          content="https://kdong.s3.ap-northeast-2.amazonaws.com/dev/my-logo.png"
+          content="https://kdong.s3.ap-northeast-2.amazonaws.com/dev/thumbnail-kdong-blog.png"
         />
 
         <meta property="og:title" content="🤖 밥값하는 개발자 블로그" />
@@ -127,7 +127,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://kdong.s3.ap-northeast-2.amazonaws.com/dev/my-logo.png"
+          content="https://kdong.s3.ap-northeast-2.amazonaws.com/dev/thumbnail-kdong-blog.png"
         />
       </Head>
       <ConfigProvider
