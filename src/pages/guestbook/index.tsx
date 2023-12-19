@@ -1,19 +1,17 @@
 // base
 import React from 'react';
-import Head from 'next/head';
 
 // layouts
 import { MainLayout } from 'layouts';
 
 // containers
 import { Guestbook } from 'containers';
+import CustomSeo from 'pages/seo';
 
 const GuestbookPage = () => {
   return (
     <>
-      <Head>
-        <title>밥값하는 개발자 블로그 - 방명록</title>
-      </Head>
+      <CustomSeo title="밥값하는 개발자 블로그 - 방명록" />
       <MainLayout>
         <Guestbook />
       </MainLayout>

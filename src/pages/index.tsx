@@ -1,6 +1,5 @@
 // base
 import { GetServerSideProps } from 'next';
-import Head from 'next/head';
 
 // layouts
 import { MainLayout } from 'layouts';
@@ -11,6 +10,7 @@ import { MainContainer } from 'containers';
 // modules
 import { ProfileApi, ResponseMainProfileProps } from 'modules';
 import { ResponseArticleListsResultProps, ArticleeApi } from 'modules/article';
+import CustomSeo from './seo';
 
 export interface HomepageProps {
   profile: ResponseMainProfileProps;
@@ -20,9 +20,7 @@ export interface HomepageProps {
 const Homepage: React.FC<HomepageProps> = ({ profile, articleLists }) => {
   return (
     <>
-      <Head>
-        <title>밥값하는 개발자 블로그 - 메인</title>
-      </Head>
+      <CustomSeo title="밥값하는 개발자 블로그 - 메인" />
       <MainLayout>
         <MainContainer profile={profile} articleLists={articleLists} />
       </MainLayout>
