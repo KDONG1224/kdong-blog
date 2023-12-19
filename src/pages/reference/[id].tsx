@@ -166,7 +166,7 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
           property="og:description"
           content={htmlToString(article.content)}
         />
-        <meta property="og:url" content={`https://kdong.dev${article.url}`} />
+        <meta property="og:url" content={`https://kdong.dev`} />
         <meta property="og:image" content={article.thumbnails[0].location} />
 
         {/* Twitter Meta Tags */}
