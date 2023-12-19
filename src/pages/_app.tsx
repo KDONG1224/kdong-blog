@@ -93,6 +93,23 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" sizes="192x192" href="/favicon.ico" />
+        <meta name="author" content="KDONG" />
+        <meta
+          name="description"
+          content="밥값하는 프론트엔드 개발자 크동의 블로그 입니다. 공부하고 공유하고 싶은 내용을 작성합니다. 부족하지만, 성장하는 개발자가 되겠습니다."
+        />
+        <meta
+          name="keywords"
+          content="FrontEnd, BackEnd, React.JS, Next.JS, Nest.JS, TypeScript, 블로그, 개발자, 주니어, 주니어 개발자, 시니어, 시니어 개발자, 리액트, 타입스크립트, 개발자, 비전공, 전공"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@" />
+        <meta name="twitter:creator" content="@" />
+
+        <meta property="og:site_name" content="kdong.dev" />
+        <meta property="og:type" content="website" />
+
         <title>밥값하는 개발자 블로그</title>
       </Head>
       <ConfigProvider
