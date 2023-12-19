@@ -53,7 +53,7 @@ export const Header = () => {
 
   return (
     <>
-      <StyledHeader ismobile={isMobile}>
+      <StyledHeader $ismobile={isMobile}>
         <div className="header-wrapper">
           <div className="header-wrapper-top">
             <div className="header-wrapper-top-left">

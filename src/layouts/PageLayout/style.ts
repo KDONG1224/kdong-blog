@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 interface StyledPageLayoutProps {
-  ismobile: boolean;
+  $ismobile: boolean;
 }
 
 export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
-  padding-top: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
+  padding-top: ${({ $ismobile }) => ($ismobile ? '50px' : '100px')};
   padding-bottom: 50px;
 
   .page-wrapper {
     width: 100%;
 
     &-title {
-      padding: ${({ ismobile }) => (ismobile ? '0 0px 20px' : '0 20px 20px')};
+      padding: ${({ $ismobile }) => ($ismobile ? '0 0px 20px' : '0 20px 20px')};
       margin-left: -10px;
       margin-right: -10px;
       width: calc(100% + 20px);
@@ -26,8 +26,8 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
     }
 
     &-select {
-      ${({ ismobile }) =>
-        ismobile
+      ${({ $ismobile }) =>
+        $ismobile
           ? `
               display: grid;
               grid-template-columns: repeat(2, 1fr);
@@ -67,8 +67,8 @@ export const StyledPageLayout = styled.div<StyledPageLayoutProps>`
         > div {
           width: 100%;
 
-          ${({ ismobile }) =>
-            ismobile
+          ${({ $ismobile }) =>
+            $ismobile
               ? `
               display: grid;
               grid-template-columns: repeat(2, 1fr);

@@ -1,6 +1,6 @@
 // base
-import { useEffect, useMemo, useState } from 'react';
-import type { AppContext, AppProps } from 'next/app';
+import React, { useEffect, useMemo } from 'react';
+import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import Head from 'next/head';
 
@@ -14,9 +14,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
-// components
-import { SplashScreen } from 'components';
 
 // modules
 import { kdongProfileState } from 'modules';
@@ -46,33 +43,11 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [isLoading, setIsLoading] = useState(true);
-
   const queryClient = new QueryClient({
     defaultOptions: {
-      queries: { staleTime: Infinity }
+      queries: { suspense: true }
     }
   });
-
-  useEffect(() => {
-    if (typeof globalThis.window !== 'undefined') {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 3000);
-    }
-
-    console.clear();
-  }, []);
-
-  useEffect(() => {
-    AOS.init({
-      easing: 'ease-out-cubic',
-      anchorPlacement: 'top-center',
-      once: false,
-      offset: 50,
-      delay: 300
-    });
-  }, []);
 
   const initializer = useMemo(
     () =>
@@ -86,30 +61,21 @@ export default function App({ Component, pageProps }: AppProps) {
     [pageProps]
   );
 
-  if (isLoading) return <SplashScreen />;
+  useEffect(() => {
+    AOS.init({
+      easing: 'ease-out-cubic',
+      anchorPlacement: 'top-center',
+      once: false,
+      offset: 50,
+      delay: 300
+    });
+  }, []);
 
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" sizes="192x192" href="/favicon.ico" />
-        <meta name="author" content="KDONG" />
-        <meta
-          name="description"
-          content="밥값하는 프론트엔드 개발자 크동의 블로그 입니다. 공부하고 공유하고 싶은 내용을 작성합니다. 부족하지만, 성장하는 개발자가 되겠습니다."
-        />
-        <meta
-          name="keywords"
-          content="FrontEnd, BackEnd, React.JS, Next.JS, Nest.JS, TypeScript, 블로그, 개발자, 주니어, 주니어 개발자, 시니어, 시니어 개발자, 리액트, 타입스크립트, 개발자, 비전공, 전공"
-        />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@" />
-        <meta name="twitter:creator" content="@" />
-
-        <meta property="og:site_name" content="kdong.dev" />
-        <meta property="og:type" content="website" />
-
         <title>밥값하는 개발자 블로그</title>
       </Head>
       <ConfigProvider
@@ -132,23 +98,3 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
-App.getInitialProps = async ({ ctx }: AppContext) => {
-  let pageProps = {};
-
-  try {
-    if (!ctx.req) throw new Error('isClient');
-
-    pageProps = { ...pageProps, profile: undefined };
-
-    return {
-      pageProps
-    };
-  } catch (error) {
-    pageProps = { ...pageProps, profile: null };
-
-    return {
-      pageProps
-    };
-  }
-};

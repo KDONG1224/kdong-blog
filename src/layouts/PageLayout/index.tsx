@@ -45,7 +45,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   // };
 
   return (
-    <StyledPageLayout className="container" ismobile={isMobile}>
+    <StyledPageLayout className="container" $ismobile={isMobile}>
       <div className="page-wrapper">
         <div className="page-wrapper-title">
           <h1>{title}</h1>

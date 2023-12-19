@@ -71,7 +71,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
   };
 
   return (
-    <StyledMain ismobile={isMobile}>
+    <StyledMain $ismobile={isMobile}>
       <div className="main-wrapper">
         <div className="main-wrapper-banner container">
           <HomBanner />

@@ -45,7 +45,7 @@ export const ListBox: React.FC<ListBoxProps> = ({
   };
 
   return (
-    <StyledListBox ismobile={isMobile}>
+    <StyledListBox $ismobile={isMobile}>
       <div className="list-wrapper">
         <div className="list-wrapper-title">
           <div className="list-wrapper-title-left">

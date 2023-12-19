@@ -31,7 +31,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({ title, filters }) => {
   const { isMobile } = useMedia();
 
   return (
-    <StyledSearchBox ismobile={isMobile}>
+    <StyledSearchBox $ismobile={isMobile}>
       <div className="search-wrapper">
         <div className="search-wrapper-top">
           <h1>{title}</h1>

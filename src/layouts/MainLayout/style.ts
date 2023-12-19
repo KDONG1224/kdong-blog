@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { commonIcons } from 'consts';
 
 interface StyledMainLayoutProps {
-  ismobile: boolean;
-  nomargin: boolean;
+  $ismobile: boolean;
+  $nomargin: boolean;
 }
 
 export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
@@ -19,7 +19,7 @@ export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
   }
 
   footer {
-    margin-top: ${({ nomargin }) => (nomargin ? '0' : '100px')};
+    margin-top: ${({ $nomargin }) => ($nomargin ? '0' : '100px')};
   }
 
   .scroll-top {
@@ -58,7 +58,7 @@ export const StyledMainLayout = styled.div<StyledMainLayoutProps>`
       background-image: url(${commonIcons.ICON_TOP_ARROW});
       background-position: center;
       background-repeat: no-repeat;
-      background-size: ${({ ismobile }) => (ismobile ? '26px' : '40px')};
+      background-size: ${({ $ismobile }) => ($ismobile ? '26px' : '40px')};
     }
   }
 

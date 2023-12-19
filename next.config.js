@@ -10,9 +10,9 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   },
-  // compiler: {
-  //   styledComponents: true
-  // },
+  compiler: {
+    styledComponents: true
+  },
   experimental: {
     forceSwcTransforms: true
   },

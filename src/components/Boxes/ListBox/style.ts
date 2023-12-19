@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface StyledListBoxProps {
-  ismobile: boolean;
+  $ismobile: boolean;
 }
 
 export const StyledListBox = styled.div<StyledListBoxProps>`
@@ -12,37 +12,37 @@ export const StyledListBox = styled.div<StyledListBoxProps>`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: ${({ ismobile }) => (ismobile ? '30px' : '70px')};
+      margin-bottom: ${({ $ismobile }) => ($ismobile ? '30px' : '70px')};
 
       &-left {
-        display: ${({ ismobile }) => (ismobile ? 'block' : 'flex')};
+        display: ${({ $ismobile }) => ($ismobile ? 'block' : 'flex')};
         align-items: center;
         gap: 20px;
 
         > h2 {
           font-family: Pretendard-Bold;
-          font-size: ${({ ismobile }) => (ismobile ? '20px' : '26px')};
+          font-size: ${({ $ismobile }) => ($ismobile ? '20px' : '26px')};
           color: #f43f00;
         }
 
         > p {
           font-family: Pretendard-Regular;
-          font-size: ${({ ismobile }) => (ismobile ? '14px' : '18px')};
+          font-size: ${({ $ismobile }) => ($ismobile ? '14px' : '18px')};
           color: #000;
-          margin-top: ${({ ismobile }) => ismobile && '6px'};
+          margin-top: ${({ $ismobile }) => $ismobile && '6px'};
         }
       }
 
       &-right {
         font-family: Pretendard-Regular;
-        font-size: ${({ ismobile }) => (ismobile ? '14px' : '18px')};
+        font-size: ${({ $ismobile }) => ($ismobile ? '14px' : '18px')};
         color: #000;
         cursor: pointer;
       }
     }
 
     &-contents {
-      height: ${({ ismobile }) => (ismobile ? '320px' : '620px')};
+      height: ${({ $ismobile }) => ($ismobile ? '320px' : '620px')};
       margin-top: 20px;
       position: relative;
 
@@ -50,13 +50,13 @@ export const StyledListBox = styled.div<StyledListBoxProps>`
         height: 100%;
 
         .swiper-slide {
-          width: ${({ ismobile }) => (ismobile ? '186px' : '386px')};
+          width: ${({ $ismobile }) => ($ismobile ? '186px' : '386px')};
         }
 
         .swiper-pagination {
           .swiper-pagination-bullet {
-            width: ${({ ismobile }) => (ismobile ? '15px' : '30px')};
-            height: ${({ ismobile }) => (ismobile ? '3px' : '4px')};
+            width: ${({ $ismobile }) => ($ismobile ? '15px' : '30px')};
+            height: ${({ $ismobile }) => ($ismobile ? '3px' : '4px')};
             border-radius: 0 !important;
             background: #b3b3b3 !important;
 
@@ -75,7 +75,7 @@ export const StyledListBox = styled.div<StyledListBoxProps>`
         width: 70px;
         height: 100%;
         z-index: 9;
-        /* display: ${({ ismobile }) => (ismobile ? 'none' : 'block')}; */
+        /* display: ${({ $ismobile }) => ($ismobile ? 'none' : 'block')}; */
       }
     }
   }

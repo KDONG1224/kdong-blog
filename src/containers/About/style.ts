@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface StyledAboutProps {
-  ismobile: boolean;
+  $ismobile: boolean;
 }
 
 export const StyledAbout = styled.div<StyledAboutProps>`
@@ -11,7 +11,7 @@ export const StyledAbout = styled.div<StyledAboutProps>`
     font-family: 'Pretendard-SemiBold';
 
     &-title {
-      padding: ${({ ismobile }) => (ismobile ? '0 0px 20px' : '0 20px 20px')};
+      padding: ${({ $ismobile }) => ($ismobile ? '0 0px 20px' : '0 20px 20px')};
       margin-left: -10px;
       margin-right: -10px;
       width: calc(100% + 20px);
@@ -27,7 +27,7 @@ export const StyledAbout = styled.div<StyledAboutProps>`
     &-body {
       &-content {
         width: 100%;
-        padding: ${({ ismobile }) => (ismobile ? '60px 0' : '100px 0')};
+        padding: ${({ $ismobile }) => ($ismobile ? '60px 0' : '100px 0')};
         text-align: center;
 
         > h2 {
@@ -39,21 +39,21 @@ export const StyledAbout = styled.div<StyledAboutProps>`
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           grid-template-rows: repeat(2, 1fr);
-          gap: ${({ ismobile }) => (ismobile ? '40px 0' : '100px')};
-          padding: ${({ ismobile }) => (ismobile ? '0 0px' : '0 200px')};
+          gap: ${({ $ismobile }) => ($ismobile ? '40px 0' : '100px')};
+          padding: ${({ $ismobile }) => ($ismobile ? '0 0px' : '0 200px')};
           font-size: 10px;
         }
 
         &.first {
           > p {
-            font-size: ${({ ismobile }) => (ismobile ? '20px' : '30px')};
-            padding-bottom: ${({ ismobile }) => (ismobile ? '40px' : '90px')};
+            font-size: ${({ $ismobile }) => ($ismobile ? '20px' : '30px')};
+            padding-bottom: ${({ $ismobile }) => ($ismobile ? '40px' : '90px')};
             line-height: 1.8;
           }
 
           > div {
-            width: ${({ ismobile }) => (ismobile ? '180px' : '220px')};
-            height: ${({ ismobile }) => (ismobile ? '80px' : '100px')};
+            width: ${({ $ismobile }) => ($ismobile ? '180px' : '220px')};
+            height: ${({ $ismobile }) => ($ismobile ? '80px' : '100px')};
             margin: 0 auto;
             position: relative;
           }
@@ -66,7 +66,7 @@ export const StyledAbout = styled.div<StyledAboutProps>`
         }
 
         &.five {
-          padding: ${({ ismobile }) => (ismobile ? '60px' : '100px')};
+          padding: ${({ $ismobile }) => ($ismobile ? '60px' : '100px')};
 
           > div {
             width: 100%;
@@ -90,8 +90,8 @@ export const StyledAbout = styled.div<StyledAboutProps>`
           }
 
           > p {
-            font-size: ${({ ismobile }) => (ismobile ? '20px' : '30px')};
-            padding-top: ${({ ismobile }) => (ismobile ? '40px' : '90px')};
+            font-size: ${({ $ismobile }) => ($ismobile ? '20px' : '30px')};
+            padding-top: ${({ $ismobile }) => ($ismobile ? '40px' : '90px')};
             line-height: 1.8;
           }
         }

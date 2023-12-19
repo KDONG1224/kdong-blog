@@ -1,24 +1,25 @@
 import styled from 'styled-components';
 
 interface StyledCheckCardProps {
-  linebg: string;
-  badgbg: string;
-  ismobile: boolean;
+  $linebg: string;
+  $badgbg: string;
+  $ismobile: boolean;
 }
 
 export const StyledCheckCard = styled.div<StyledCheckCardProps>`
   .check-wrapper {
-    width: ${({ ismobile }) => (ismobile ? '200px' : '386px')};
+    width: ${({ $ismobile }) => ($ismobile ? '200px' : '386px')};
     cursor: pointer;
 
     &.check {
-      background-color: ${({ ismobile }) => (ismobile ? '#f8f8f8' : '#ffffff')};
-      padding-bottom: ${({ ismobile }) => (ismobile ? '0px' : '20px')};
+      background-color: ${({ $ismobile }) =>
+        $ismobile ? '#f8f8f8' : '#ffffff'};
+      padding-bottom: ${({ $ismobile }) => ($ismobile ? '0px' : '20px')};
     }
 
     &-top {
       width: 100%;
-      height: ${({ ismobile }) => (ismobile ? '200px' : '386px')};
+      height: ${({ $ismobile }) => ($ismobile ? '200px' : '386px')};
       position: relative;
 
       &.check {
@@ -26,7 +27,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
       }
 
       &.polygon {
-        background-color: ${({ linebg }) => linebg};
+        background-color: ${({ $linebg }) => $linebg};
 
         /* background: #36c;
         background: linear-gradient(
@@ -69,33 +70,33 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
 
       &-line {
         width: 100%;
-        height: ${({ ismobile }) => (ismobile ? '12px' : '24px')};
-        background-image: ${({ linebg }) =>
-          linebg &&
+        height: ${({ $ismobile }) => ($ismobile ? '12px' : '24px')};
+        background-image: ${({ $linebg }) =>
+          $linebg &&
           `linear-gradient(
             -45deg,
-            ${linebg} 25%,
+            ${$linebg} 25%,
             transparent 25%,
             transparent 75%,
-            ${linebg} 75%
+            ${$linebg} 75%
           ),
           linear-gradient(
             -45deg,
-            ${linebg} 25%,
+            ${$linebg} 25%,
             transparent 25%,
             transparent 75%,
-            ${linebg} 75%
+            ${$linebg} 75%
           )`};
 
         background-repeat: repeat;
-        background-position: ${({ ismobile }) =>
-          ismobile ? '0 0, 6px 6px' : '0 0, 12px 12px'};
-        background-size: ${({ ismobile }) =>
-          ismobile ? '12px 12px' : '24px 24px'};
-        margin-bottom: ${({ ismobile }) => (ismobile ? '20px' : '30px')};
+        background-position: ${({ $ismobile }) =>
+          $ismobile ? '0 0, 6px 6px' : '0 0, 12px 12px'};
+        background-size: ${({ $ismobile }) =>
+          $ismobile ? '12px 12px' : '24px 24px'};
+        margin-bottom: ${({ $ismobile }) => ($ismobile ? '20px' : '30px')};
 
         &.rotate {
-          margin-top: ${({ ismobile }) => (ismobile ? '26px' : '30px')};
+          margin-top: ${({ $ismobile }) => ($ismobile ? '26px' : '30px')};
           transform: rotate(180deg);
         }
       }
@@ -108,21 +109,21 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
 
         &-box {
           &.check {
-            width: ${({ ismobile }) => (ismobile ? '130px' : '277px')};
-            height: ${({ ismobile }) => (ismobile ? '130px' : '277px')};
+            width: ${({ $ismobile }) => ($ismobile ? '130px' : '277px')};
+            height: ${({ $ismobile }) => ($ismobile ? '130px' : '277px')};
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            /* border: ${({ badgbg }) => badgbg && `1px solid ${badgbg}`}; */
+            /* border: ${({ $badgbg }) => $badgbg && `1px solid ${$badgbg}`}; */
             box-sizing: border-box;
           }
 
           &.polygon {
-            width: ${({ ismobile }) => (ismobile ? '166px' : '326px')};
-            height: ${({ ismobile }) => (ismobile ? '166px' : '326px')};
+            width: ${({ $ismobile }) => ($ismobile ? '166px' : '326px')};
+            height: ${({ $ismobile }) => ($ismobile ? '166px' : '326px')};
             position: relative;
-            clip-path: ${({ ismobile }) =>
-              ismobile
+            clip-path: ${({ $ismobile }) =>
+              $ismobile
                 ? `polygon(
               0 0,
               96% 0%,
@@ -150,9 +151,9 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
               position: absolute;
               left: 0;
               top: 0;
-              width: ${({ ismobile }) => (ismobile ? '20px' : '34px')};
-              height: ${({ ismobile }) => (ismobile ? '20px' : '34px')};
-              background-color: ${({ linebg }) => linebg};
+              width: ${({ $ismobile }) => ($ismobile ? '20px' : '34px')};
+              height: ${({ $ismobile }) => ($ismobile ? '20px' : '34px')};
+              background-color: ${({ $linebg }) => $linebg};
               z-index: 1;
             }
           }
@@ -162,18 +163,18 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
       &-badge {
         position: absolute;
         top: 0;
-        height: ${({ ismobile }) => (ismobile ? '12px' : '24px')};
-        background-color: ${({ badgbg }) => badgbg};
+        height: ${({ $ismobile }) => ($ismobile ? '12px' : '24px')};
+        background-color: ${({ $badgbg }) => $badgbg};
         display: flex;
         align-items: center;
         justify-content: center;
 
         > span {
-          padding: ${({ ismobile }) =>
-            ismobile ? '1rem 0.6rem' : '0.4rem 0.6rem'};
+          padding: ${({ $ismobile }) =>
+            $ismobile ? '1rem 0.6rem' : '0.4rem 0.6rem'};
           color: #fff;
           font-family: Pretendard-Medium;
-          font-size: ${({ ismobile }) => (ismobile ? '8px' : '14px')};
+          font-size: ${({ $ismobile }) => ($ismobile ? '8px' : '14px')};
           line-height: 1.86;
         }
 
@@ -183,8 +184,9 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
 
         &.polygon {
           right: 0;
-          width: ${({ ismobile }) => (ismobile ? '16px' : '24px')} !important;
-          height: ${({ ismobile }) => (ismobile ? '16px' : '24px')} !important;
+          width: ${({ $ismobile }) => ($ismobile ? '16px' : '24px')} !important;
+          height: ${({ $ismobile }) =>
+            $ismobile ? '16px' : '24px'} !important;
           background-color: #dddddd;
 
           > span {
@@ -207,20 +209,20 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
       border-bottom: 2px solid #d9d9d9;
 
       &.check {
-        margin: ${({ ismobile }) => (ismobile ? '10px 0' : '20px 0')};
+        margin: ${({ $ismobile }) => ($ismobile ? '10px 0' : '20px 0')};
         padding: 0 20px;
       }
 
       > h2 {
         font-family: Pretendard-Bold;
-        font-size: ${({ ismobile }) => (ismobile ? '16px' : '26px')};
+        font-size: ${({ $ismobile }) => ($ismobile ? '16px' : '26px')};
         color: #000;
       }
 
       > p {
-        height: ${({ ismobile }) => (ismobile ? '34px' : '46px')};
+        height: ${({ $ismobile }) => ($ismobile ? '34px' : '46px')};
         font-family: Pretendard-Medium;
-        font-size: ${({ ismobile }) => (ismobile ? '12px' : '14.4px')};
+        font-size: ${({ $ismobile }) => ($ismobile ? '12px' : '14.4px')};
         line-height: 1.5;
         color: #000;
         margin: 13px 0;

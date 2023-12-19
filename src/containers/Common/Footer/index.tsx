@@ -20,7 +20,7 @@ export const Footer = () => {
   const { isMobile } = useMedia();
 
   return (
-    <StyledFooter ismobile={isMobile}>
+    <StyledFooter $ismobile={isMobile}>
       <div className="footer-wrapper">
         <div className="footer-wrapper-left">
           <div className="footer-wrapper-left-logo">KDONG</div>

@@ -30,7 +30,7 @@ export const About = () => {
   }, []);
 
   return (
-    <StyledAbout ismobile={isMobile}>
+    <StyledAbout $ismobile={isMobile}>
       <div className="about-wrapper">
         <div className="about-wrapper-title">
           <h1>About</h1>

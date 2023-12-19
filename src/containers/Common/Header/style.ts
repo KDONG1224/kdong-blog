@@ -2,14 +2,14 @@
 import styled from 'styled-components';
 
 interface StyledHeaderProps {
-  ismobile: boolean;
+  $ismobile: boolean;
 }
 
 export const StyledHeader = styled.header<StyledHeaderProps>`
   backdrop-filter: blur(10px);
 
   ${(props) =>
-    props.ismobile
+    props.$ismobile
       ? `
   position: fixed;
   top: 0;
@@ -24,7 +24,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
 
     &-top {
       position: fixed;
-      top: ${({ ismobile }) => (ismobile ? '44px' : '86px')};
+      top: ${({ $ismobile }) => ($ismobile ? '44px' : '86px')};
       width: 100%;
       display: flex;
       align-items: center;
@@ -32,7 +32,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
       font-size: 2.6rem;
       font-family: Pretendard-Bold;
       z-index: 99;
-      left: ${({ ismobile }) => ismobile && '8px'};
+      left: ${({ $ismobile }) => $ismobile && '8px'};
 
       &-left {
         display: flex;
@@ -86,21 +86,21 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
 
       &-right {
         cursor: pointer;
-        margin-right: ${({ ismobile }) => (ismobile ? '1.6rem' : '5.9rem')};
+        margin-right: ${({ $ismobile }) => ($ismobile ? '1.6rem' : '5.9rem')};
         transition: 0.6s all cubic-bezier(0.5, 0, 0.5, 1);
 
         &.short {
-          margin-top: ${({ ismobile }) => (ismobile ? '-40px' : '-10rem')};
+          margin-top: ${({ $ismobile }) => ($ismobile ? '-40px' : '-10rem')};
         }
       }
     }
 
     &-bottom {
       position: fixed;
-      width: ${({ ismobile }) =>
-        ismobile ? 'calc(100% - 0px * 2)' : 'calc(100% - 30px * 2)'};
-      height: ${({ ismobile }) => (ismobile ? '28px' : '68px')};
-      left: ${({ ismobile }) => (ismobile ? '-2px' : '30px')};
+      width: ${({ $ismobile }) =>
+        $ismobile ? 'calc(100% - 0px * 2)' : 'calc(100% - 30px * 2)'};
+      height: ${({ $ismobile }) => ($ismobile ? '28px' : '68px')};
+      left: ${({ $ismobile }) => ($ismobile ? '-2px' : '30px')};
       display: flex;
       justify-content: space-between;
       align-items: baseline;
@@ -111,8 +111,8 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
 
       &.short {
         width: 100px;
-        margin-left: ${({ ismobile }) => ismobile && '4px'};
-        left: ${({ ismobile }) => ismobile && '4px'};
+        margin-left: ${({ $ismobile }) => $ismobile && '4px'};
+        left: ${({ $ismobile }) => $ismobile && '4px'};
       }
 
       > img {
@@ -133,8 +133,8 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
           background-color: black;
           position: absolute;
           width: 100%;
-          height: ${({ ismobile }) => (ismobile ? '5px' : '12px')};
-          bottom: ${({ ismobile }) => (ismobile ? '0.2px' : '5.4px')};
+          height: ${({ $ismobile }) => ($ismobile ? '5px' : '12px')};
+          bottom: ${({ $ismobile }) => ($ismobile ? '0.2px' : '5.4px')};
           left: -14px;
           border-left: 26px solid #000;
           border-right: 2px solid black;

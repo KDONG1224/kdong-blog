@@ -18,7 +18,7 @@ export const BasicCollapse: React.FC<BasicCollapseProps> = ({ ...props }) => {
 
   return (
     <StyledBasicCollapse
-      ismobile={isMobile}
+      $ismobile={isMobile}
       {...props}
       expandIconPosition="end"
       expandIcon={({ isActive }) =>

@@ -13,7 +13,7 @@ export const BlurImage: React.FC<BlurImageProps> = ({ ...props }) => {
       placeholder="blur"
       fill
       style={{ objectFit: 'cover' }}
-      sizes="100vw"
+      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
       blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       quality={100}
       {...props}

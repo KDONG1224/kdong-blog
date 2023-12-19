@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 interface StyledSearchBoxProps {
-  ismobile: boolean;
+  $ismobile: boolean;
 }
 
 export const StyledSearchBox = styled.div<StyledSearchBoxProps>`
-  padding-top: ${({ ismobile }) => (ismobile ? '50px' : '100px')};
+  padding-top: ${({ $ismobile }) => ($ismobile ? '50px' : '100px')};
   padding-bottom: 50px;
 
   .search-wrapper {
     width: 100%;
 
     &-top {
-      padding: ${({ ismobile }) => (ismobile ? '0 0px 20px' : '0 20px 20px')};
+      padding: ${({ $ismobile }) => ($ismobile ? '0 0px 20px' : '0 20px 20px')};
       margin-left: -10px;
       margin-right: -10px;
       width: calc(100% + 20px);
@@ -26,8 +26,8 @@ export const StyledSearchBox = styled.div<StyledSearchBoxProps>`
     }
 
     &-select {
-      ${({ ismobile }) =>
-        ismobile
+      ${({ $ismobile }) =>
+        $ismobile
           ? `
               display: grid;
               grid-template-columns: repeat(2, 1fr);

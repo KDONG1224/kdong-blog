@@ -27,7 +27,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   const { scrollTo } = useScrollToNode('body');
 
   return (
-    <StyledMainLayout ismobile={isMobile} nomargin={noMargin} {...props}>
+    <StyledMainLayout $ismobile={isMobile} $nomargin={noMargin} {...props}>
       <HeaderSvg />
       <Header />
       <main className="layout-main">{children}</main>

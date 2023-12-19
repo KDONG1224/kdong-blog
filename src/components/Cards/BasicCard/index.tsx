@@ -1,5 +1,5 @@
 // base
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // style
 import { StyledBasicCard } from './style';
@@ -20,12 +20,20 @@ interface BasicCardProps {
 }
 
 export const BasicCard: React.FC<BasicCardProps> = ({ data }) => {
-  const { title, desc, img, aosVisible } = data;
+  const { title, img, aosVisible } = data;
+
+  const [isDesc, setIsDesc] = useState('');
 
   const { isMobile } = useMedia();
 
+  useEffect(() => {
+    if (!data || !data.desc) return;
+
+    setIsDesc(data.desc);
+  }, [data]);
+
   return (
-    <StyledBasicCard ismobile={isMobile}>
+    <StyledBasicCard $ismobile={isMobile}>
       <div className="card-wrapper" data-aos={aosVisible}>
         <div className="card-wrapper-img">
           <BlurImage src={img} alt="이미지" />
@@ -34,7 +42,7 @@ export const BasicCard: React.FC<BasicCardProps> = ({ data }) => {
           <p>{title}</p>
         </div>
         <div className="card-wrapper-desc">
-          <p dangerouslySetInnerHTML={{ __html: desc }} />
+          <p dangerouslySetInnerHTML={{ __html: isDesc }} />
         </div>
       </div>
     </StyledBasicCard>

@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 interface StyledFooterProps {
-  ismobile: boolean;
+  $ismobile: boolean;
 }
 
 export const StyledFooter = styled.footer<StyledFooterProps>`
@@ -13,12 +13,12 @@ export const StyledFooter = styled.footer<StyledFooterProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: ${({ ismobile }) => (ismobile ? '30px 20px' : '50px 30px')};
+    padding: ${({ $ismobile }) => ($ismobile ? '30px 20px' : '50px 30px')};
 
     &-left {
       &-logo {
         font-family: Pretendard-Bold;
-        font-size: ${({ ismobile }) => (ismobile ? '18px' : '34px')};
+        font-size: ${({ $ismobile }) => ($ismobile ? '18px' : '34px')};
       }
 
       &-sns {
@@ -37,12 +37,12 @@ export const StyledFooter = styled.footer<StyledFooterProps>`
     }
 
     &-right {
-      display: ${({ ismobile }) => (ismobile ? 'none' : 'block')};
+      display: ${({ $ismobile }) => ($ismobile ? 'none' : 'block')};
     }
 
     ul {
       li {
-        font-size: ${({ ismobile }) => (ismobile ? '14px' : '18px')};
+        font-size: ${({ $ismobile }) => ($ismobile ? '14px' : '18px')};
         padding: 6px 0;
       }
     }

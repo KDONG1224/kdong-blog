@@ -1,5 +1,5 @@
 // base
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // style
 import { StyledCheckCard } from './style';
@@ -27,16 +27,9 @@ export const CheckCard: React.FC<CheckCardProps> = ({
   type,
   onClick
 }) => {
-  const {
-    id,
-    title,
-    content,
-    tags,
-    createdAt,
-    thumbnails,
-    mainColor,
-    subColor
-  } = data;
+  const { id, title, tags, createdAt, thumbnails, mainColor, subColor } = data;
+
+  const [isContent, setIsContent] = useState('');
 
   const { isMobile } = useMedia();
 
@@ -44,8 +37,18 @@ export const CheckCard: React.FC<CheckCardProps> = ({
     onClick(id);
   };
 
+  useEffect(() => {
+    if (!data || !data.content) return;
+
+    setIsContent(data.content);
+  }, [data]);
+
   return (
-    <StyledCheckCard linebg={mainColor} badgbg={subColor} ismobile={isMobile}>
+    <StyledCheckCard
+      $linebg={mainColor}
+      $badgbg={subColor}
+      $ismobile={isMobile}
+    >
       <div className={`check-wrapper ${type}`} onClick={handleClickCard}>
         <div className={`check-wrapper-top ${type}`}>
           {type === 'check' && (
@@ -104,7 +107,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({
           <h2 className="line-one">{title}</h2>
           <p
             className="line-two"
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: isContent }}
           />
         </div>
 
