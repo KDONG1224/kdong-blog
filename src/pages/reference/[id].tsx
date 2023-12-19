@@ -10,6 +10,7 @@ import { ContentLayout, MainLayout } from 'layouts';
 // modules
 import { ArticleListsProps, ArticleeApi } from 'modules/article';
 import Head from 'next/head';
+import { htmlToString } from 'utils';
 
 const DynamicEditor = dynamic(
   () =>
@@ -43,12 +44,18 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
       <Head>
         {/* twitter */}
         <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.content} />
+        <meta
+          name="twitter:description"
+          content={htmlToString(article.content)}
+        />
         <meta name="twitter:image" content={article.thumbnails[0].location} />
 
         {/* og */}
         <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.content} />
+        <meta
+          property="og:description"
+          content={htmlToString(article.content)}
+        />
         <meta
           property="og:url"
           content={process.env.NEXT_PUBLIC_DOMAIN + router.asPath}
@@ -73,8 +80,6 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  console.log('=== query === : ', query);
-
   const { id } = query;
   if (!id || typeof id !== 'string') {
     return {

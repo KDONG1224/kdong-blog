@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-interface StyledBasicTextEditorProps {
-  scrolly: number;
-}
-
-export const StyledBasicTextEditor = styled.div<StyledBasicTextEditorProps>`
+export const StyledBasicTextEditor = styled.div`
   p {
     margin-bottom: 0 !important;
   }
