@@ -1,6 +1,7 @@
 // base
 import { useEffect, useMemo, useState } from 'react';
-import type { AppContext, AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
+// AppContext
 import { Router } from 'next/router';
 import Head from 'next/head';
 
