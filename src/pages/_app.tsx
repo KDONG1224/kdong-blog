@@ -14,7 +14,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 // components
 import { SplashScreen } from 'components';
@@ -26,11 +25,11 @@ import { kdongProfileState } from 'modules';
 import AOS from 'aos';
 
 import NProgress from 'nprogress';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { MutableSnapshot, RecoilRoot } from 'recoil';
 import { ConfigProvider } from 'antd';
 import ko_KR from 'antd/lib/locale/ko_KR';
+import { MutableSnapshot, RecoilRoot } from 'recoil';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 // nprogress setting
 NProgress.configure({

@@ -32,10 +32,12 @@ export const StyledContentLayout = styled.div`
             white-space: break-spaces !important;
           }
 
-          > span {
-            font-size: 2.2em;
-            margin-right: 10px;
-            color: #989898;
+          > div {
+            > span {
+              font-size: 2.2em;
+              margin-right: 10px;
+              color: #989898;
+            }
           }
         }
 
@@ -50,6 +52,10 @@ export const StyledContentLayout = styled.div`
           > p {
             font-size: 1.6em;
             line-height: 1.5;
+
+            > span {
+              text-decoration: underline;
+            }
           }
         }
       }
@@ -71,13 +77,11 @@ export const StyledContentLayout = styled.div`
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000px) {
     .content-wrapper {
-      font-size: 9px;
-
       &-head {
-        flex-direction: column-reverse;
         height: 100%;
+        flex-direction: column-reverse;
         margin-bottom: 2em;
 
         > div {
@@ -85,29 +89,46 @@ export const StyledContentLayout = styled.div`
         }
 
         &-left {
-          padding: 2em 2em;
+          margin-top: 2.6em;
+          border: 2px solid #000;
+          padding: 2em;
 
           &-top {
-            text-align: center;
-            padding-bottom: 5em;
+            text-align: left;
+            padding-bottom: 2em;
+            display: flex;
+            flex-direction: column-reverse;
+            border-bottom: none;
 
             > h2 {
               font-size: 4em;
               word-break: break-word;
-              margin-bottom: 0.6em;
+              margin-bottom: 0.2em;
             }
 
-            > span {
-              font-size: 1.8em;
-              margin-right: 5px;
-              word-break: break-word;
-              line-height: 1.6;
+            > div {
+              margin-bottom: 1.4em;
+
+              > span {
+                font-size: 1.8em;
+                margin-right: 5px;
+                word-break: break-word;
+                line-height: 1.6;
+                border: 1px solid #000;
+                color: #000;
+                padding: 2px 4px;
+                font-size: 13px;
+              }
             }
           }
 
           &-bottom {
-            left: 20px;
-            bottom: 10px;
+            position: relative;
+            left: 0;
+
+            > p {
+              margin-bottom: 0 !important;
+            }
           }
         }
 
@@ -117,6 +138,12 @@ export const StyledContentLayout = styled.div`
           }
         }
       }
+    }
+  }
+
+  @media (max-width: 700px) {
+    .content-wrapper {
+      font-size: 9px;
     }
   }
 
