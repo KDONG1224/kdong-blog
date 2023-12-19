@@ -1,3 +1,5 @@
+export const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN;
+
 // infinite scroll
 export const DEFAULT_SKIP = 0;
 export const DEFAULT_LIMIT = 30;
