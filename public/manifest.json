@@ -1,7 +1,7 @@
 {
-  "short_name": "KDONG포폴",
-  "name": "KDONG-PWA-PORTFOLIO",
-  "start_url": "https://kdong-portfolio.vercel.app/",
+  "short_name": "KDONG BLOG",
+  "name": "KDONG-BLOG",
+  "start_url": "https://kdong.dev/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
