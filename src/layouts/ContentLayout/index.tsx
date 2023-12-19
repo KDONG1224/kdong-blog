@@ -44,7 +44,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
         <meta
           name="twitter:description"
           key="twitter:description"
-          content={htmlToString(contents?.content)}
+          content={htmlToString(contents?.content || '')}
         />
         <meta
           name="twitter:image"
