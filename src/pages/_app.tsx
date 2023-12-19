@@ -20,7 +20,9 @@ import { kdongProfileState } from 'modules';
 
 // libraries
 import AOS from 'aos';
-
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import NProgress from 'nprogress';
 import { ConfigProvider } from 'antd';
 import ko_KR from 'antd/lib/locale/ko_KR';
@@ -42,10 +44,15 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
+dayjs.locale('ko');
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault('Asia/Seoul');
+
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient({
     defaultOptions: {
-      queries: { suspense: true }
+      queries: { staleTime: Infinity }
     }
   });
 

@@ -1,7 +1,6 @@
 import {
   ROUTE_ABOUT,
-  ROUTE_ADMIN,
-  ROUTE_ALGORITHM,
+  ROUTE_GUESTBOOK,
   ROUTE_PROJECT,
   ROUTE_REFERENCE
 } from './routes';
@@ -29,12 +28,6 @@ export const headerMenus = [
     index: 4,
     name: 'gestbook',
     nameKr: '방명록',
-    path: ROUTE_ALGORITHM
-  },
-  {
-    index: 5,
-    name: 'admin',
-    nameKr: '관리자',
-    path: ROUTE_ADMIN
+    path: ROUTE_GUESTBOOK
   }
 ];

@@ -1,12 +1,14 @@
 // base
 import React from 'react';
 
+// pages
+import CustomSeo from 'pages/seo';
+
 // layouts
 import { MainLayout } from 'layouts';
 
 // containers
 import { Reference } from 'containers';
-import CustomSeo from 'pages/seo';
 
 const ReferencePage = () => {
   return (

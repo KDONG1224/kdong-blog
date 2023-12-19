@@ -75,3 +75,15 @@ body {
     max-width: 96vw;
   }
 }
+
+.ant-btn {
+  border: 1px solid #888;
+  background-color: #fff;
+  color: #000;
+
+  &.cancle {
+    background-color: #888;
+    border: 1px solid #888;
+    color: #fff;
+  }
+}

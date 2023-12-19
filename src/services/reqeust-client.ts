@@ -18,19 +18,6 @@ class AxiosInstanceCreator {
 
   constructor(config?: AxiosRequestConfig) {
     this.#instance = axios.create(config);
-    // this.#instance.defaults.paramsSerializer = (
-    //   params: ParamsSerializerOptions | any
-    // ) => {
-    //   if (params.filter) {
-    //     params.filter = `${encodeURIComponent(JSON.stringify(params.filter))}`;
-    //   }
-
-    //   if (params.where) {
-    //     params.where = `${encodeURIComponent(JSON.stringify(params.where))}`;
-    //   }
-
-    //   return qs.stringify(params, { encode: false });
-    // };
 
     this.interceptors();
   }
@@ -38,11 +25,11 @@ class AxiosInstanceCreator {
     this.#instance.interceptors.request.use((config: any) => {
       if (!config.headers) return;
 
-      // Object.assign(config.headers, {
-      //   Pragma: 'no-cache',
-      //   'Cache-Control': 'no-cache',
-      //   Expires: '-1'
-      // });
+      Object.assign(config.headers, {
+        Pragma: 'no-cache',
+        'Cache-Control': 'no-cache',
+        Expires: '-1'
+      });
 
       return config;
     });
