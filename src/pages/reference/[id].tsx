@@ -42,41 +42,6 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
   return (
     <>
       <Head>
-        {/* twitter */}
-        <meta
-          name="twitter:title"
-          key="twitter:title"
-          content={article.title}
-        />
-        <meta
-          name="twitter:description"
-          key="twitter:description"
-          content={htmlToString(article.content)}
-        />
-        <meta
-          name="twitter:image"
-          key="twitter:image"
-          content={article.thumbnails[0].location}
-        />
-
-        {/* og */}
-        <meta property="og:title" key="og:title" content={article.title} />
-        <meta
-          property="og:description"
-          key="og:description"
-          content={htmlToString(article.content)}
-        />
-        <meta
-          property="og:url"
-          key="og:url"
-          content={process.env.NEXT_PUBLIC_DOMAIN + router.asPath}
-        />
-        <meta
-          property="og:image"
-          key="og:image"
-          content={article.thumbnails[0].location}
-        />
-
         {/* title */}
         <title>KDONG - {article.title}</title>
       </Head>
