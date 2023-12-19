@@ -1,7 +1,6 @@
 // base
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
 
 // layouts
@@ -10,7 +9,6 @@ import { ContentLayout, MainLayout } from 'layouts';
 // modules
 import { ArticleListsProps, ArticleeApi } from 'modules/article';
 import Head from 'next/head';
-import { htmlToString } from 'utils';
 
 const DynamicEditor = dynamic(
   () =>
@@ -28,8 +26,6 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
   article
 }) => {
   const [isEditorReady, setIsEditorReady] = useState(false);
-
-  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
