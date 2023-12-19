@@ -40,25 +40,13 @@ const CustomSeo: React.FC<CustomSeoProps> = ({
 
       {/* twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={twitter?.title || title} />
-      <meta
-        name="twitter:description"
-        content={twitter?.description || description}
-      />
+
       <meta name="twitter:site" content="@" />
       <meta name="twitter:creator" content="@" />
-      <meta name="twitter:image" content={twitter?.image || thumbnail} />
 
       {/* og */}
-      <meta property="og:title" content={og?.title || title} />
-      <meta
-        property="og:description"
-        content={og?.description || description}
-      />
-      <meta property="og:url" content={og?.url || 'https://kdong.dev'} />
       <meta property="og:site_name" content="kdong.dev" />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={og?.image || thumbnail} />
     </Head>
   );
 };

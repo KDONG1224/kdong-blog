@@ -12,6 +12,7 @@ import { ContentLayout, MainLayout } from 'layouts';
 
 // modules
 import { ArticleListsProps, ArticleeApi } from 'modules/article';
+import Head from 'next/head';
 
 const DynamicEditor = dynamic(
   () =>
@@ -38,23 +39,28 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
     }
   }, []);
 
+  console.log('== article == : ', article);
+
   return (
     <>
-      <CustomSeo
-        title={`KDONG - ${article.title}`}
-        description={article.content}
-        keywords={
-          article.tags.map(({ name }) => name).join(', ') +
-          'FrontEnd, BackEnd, React.JS, Next.JS, Nest.JS, TypeScript, 블로그, 개발자, 주니어, 주니어 개발자, 시니어, 시니어 개발자, 리액트, 타입스크립트, 개발자, 비전공, 전공'
-        }
-        twitter={{
-          image: article.thumbnails[0].location
-        }}
-        og={{
-          url: 'https://kdong.dev' + router.asPath,
-          image: article.thumbnails[0].location
-        }}
-      />
+      <Head>
+        {/* twitter */}
+        <meta name="twitter:title" content={article.title} />
+        <meta name="twitter:description" content={article.content} />
+        <meta name="twitter:image" content={article.thumbnails[0].location} />
+
+        {/* og */}
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.content} />
+        <meta
+          property="og:url"
+          content={process.env.NEXT_PUBLIC_DOMAIN + router.asPath}
+        />
+        <meta property="og:image" content={article.thumbnails[0].location} />
+
+        {/* title */}
+        <title>KDONG - {article.title}</title>
+      </Head>
       <MainLayout noFooter>
         <ContentLayout title="레퍼런스 콘텐츠" contents={article}>
           {isEditorReady && (
@@ -82,6 +88,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   try {
     const articleApi = new ArticleeApi();
     const article = await articleApi.getArticleById(id);
+
+    if (!article || !article.result) {
+      return {
+        notFound: true
+      };
+    }
 
     return {
       props: {

@@ -6,6 +6,8 @@ interface StyledHeaderProps {
 }
 
 export const StyledHeader = styled.header<StyledHeaderProps>`
+  backdrop-filter: blur(10px);
+
   ${(props) =>
     props.ismobile
       ? `
@@ -13,7 +15,6 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
   top: 0;
   width: 100%;
   height: 80px;
-  backdrop-filter: blur(10px);
   `
       : `padding: 2.6rem 3rem;
   `}
