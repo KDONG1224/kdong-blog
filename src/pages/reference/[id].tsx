@@ -151,32 +151,31 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
   return (
     <>
       <Head>
-        {/* Basic Meta Tags */}
+        {/* 기본 메타 태그 */}
         <title>KDONG - {article.title}</title>
         <meta charSet="utf-8" />
-        <meta name="author" content="KDONG" />
-        <meta
-          name="description"
-          content="밥값하는 프론트엔드 개발자 크동의 블로그 입니다. 공부하고 공유하고 싶은 내용을 작성합니다. 부족하지만, 성장하는 개발자가 되겠습니다."
-        />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-        {/* Open Graph / Facebook Meta Tags */}
+        {/* Open Graph / Facebook 메타 태그 */}
         <meta property="og:title" content={article.title} />
         <meta
           property="og:description"
           content={htmlToString(article.content)}
         />
-        <meta property="og:url" content={`https://kdong.dev`} />
+        <meta
+          property="og:url"
+          content={`https://kdong.dev/reference/${article.id}`}
+        />
         <meta property="og:image" content={article.thumbnails[0].location} />
 
-        {/* Twitter Meta Tags */}
+        {/* Twitter 메타 태그 */}
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={article.title} />
         <meta
           name="twitter:description"
           content={htmlToString(article.content)}
         />
         <meta name="twitter:image" content={article.thumbnails[0].location} />
-        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <MainLayout noFooter>
         <ContentLayout title="레퍼런스 콘텐츠" contents={article}>
