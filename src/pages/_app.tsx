@@ -29,7 +29,7 @@ import ko_KR from 'antd/lib/locale/ko_KR';
 import { MutableSnapshot, RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { CustomSeo } from './seo';
+import CustomSeo from './seo';
 
 // nprogress setting
 NProgress.configure({

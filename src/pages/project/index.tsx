@@ -1,12 +1,14 @@
 // base
 import React from 'react';
 
+// pages
+import CustomSeo from 'pages/seo';
+
 // layouts
 import { MainLayout, PageLayout } from 'layouts';
 
 // containers
 import { Project } from 'containers';
-import { CustomSeo } from 'pages/seo';
 
 const ProjectPage = () => {
   return (
