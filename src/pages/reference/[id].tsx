@@ -204,6 +204,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       };
     }
 
+    console.log('=== article === : ', article);
+
     return {
       props: {
         article: article.result
