@@ -4,9 +4,6 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
 
-// pages
-import CustomSeo from 'pages/seo';
-
 // layouts
 import { ContentLayout, MainLayout } from 'layouts';
 
