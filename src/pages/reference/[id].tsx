@@ -1,6 +1,6 @@
 // base
-import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
+import React from 'react';
+// import dynamic from 'next/dynamic';
 import { GetServerSideProps } from 'next';
 
 // layouts
@@ -10,13 +10,13 @@ import { ContentLayout, MainLayout } from 'layouts';
 import { ArticleListsProps, ArticleeApi } from 'modules/article';
 import Head from 'next/head';
 
-const DynamicEditor = dynamic(
-  () =>
-    import('../../components/TextEditors/BasicTextEditor').then(
-      (mod) => mod.BasicTextEditor
-    ),
-  { ssr: false }
-);
+// const DynamicEditor = dynamic(
+//   () =>
+//     import('../../components/TextEditors/BasicTextEditor').then(
+//       (mod) => mod.BasicTextEditor
+//     ),
+//   { ssr: false }
+// );
 
 export interface ReferenceContentPageProps {
   article: ArticleListsProps;
@@ -25,13 +25,13 @@ export interface ReferenceContentPageProps {
 const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
   article
 }) => {
-  const [isEditorReady, setIsEditorReady] = useState(false);
+  // const [isEditorReady, setIsEditorReady] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsEditorReady(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     setIsEditorReady(true);
+  //   }
+  // }, []);
 
   console.log('== article == : ', article);
 
@@ -43,12 +43,13 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
       </Head>
       <MainLayout noFooter>
         <ContentLayout title="레퍼런스 콘텐츠" contents={article}>
-          {isEditorReady && (
+          {/* {isEditorReady && (
             <DynamicEditor
               isEditorReady={isEditorReady}
               editorData={article.content}
             />
-          )}
+          )} */}
+          <div>{JSON.stringify(article)}</div>
         </ContentLayout>
       </MainLayout>
     </>
