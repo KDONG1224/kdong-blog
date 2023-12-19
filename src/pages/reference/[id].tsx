@@ -9,6 +9,7 @@ import { ContentLayout, MainLayout } from 'layouts';
 // modules
 import { ArticleListsProps, ArticleeApi } from 'modules/article';
 import Head from 'next/head';
+import { htmlToString } from 'utils';
 
 // const DynamicEditor = dynamic(
 //   () =>
@@ -40,6 +41,44 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
       <Head>
         {/* title */}
         <title>KDONG - {article.title}</title>
+      </Head>
+
+      <Head>
+        {/* twitter */}
+        <meta
+          name="twitter:title"
+          key="twitter:title"
+          content={article.title}
+        />
+        <meta
+          name="twitter:description"
+          key="twitter:description"
+          content={htmlToString(article.content)}
+        />
+        <meta
+          name="twitter:image"
+          key="twitter:image"
+          content={article.thumbnails[0].location}
+        />
+
+        {/* og */}
+        <meta property="og:title" key="og:title" content={article.title} />
+        <meta
+          property="og:description"
+          key="og:description"
+          content={htmlToString(article.content)}
+        />
+        <meta
+          property="og:url"
+          key="og:url"
+          // content={process.env.NEXT_PUBLIC_DOMAIN + router.asPath}
+          content="https://kdong.dev"
+        />
+        <meta
+          property="og:image"
+          key="og:image"
+          content={article.thumbnails[0].location}
+        />
       </Head>
       <MainLayout noFooter>
         <ContentLayout title="레퍼런스 콘텐츠" contents={article}>

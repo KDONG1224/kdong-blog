@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-sync-scripts */
 import React from 'react';
 import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
@@ -20,8 +19,6 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (App) => (props) => {
-        console.log('== props == : ', props);
-
         return (
           <StyleProvider cache={cache}>
             <App {...props} />
@@ -32,8 +29,6 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 
   const initialProps = await Document.getInitialProps(ctx);
   const style = extractStyle(cache, true);
-
-  console.log('== style == : ', style);
 
   return {
     ...initialProps,
@@ -57,6 +52,7 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 
         <meta property="og:site_name" content="kdong.dev" />
         <meta property="og:type" content="website" />
+
         {initialProps.styles}
         <style dangerouslySetInnerHTML={{ __html: style }} />
       </>
