@@ -1,6 +1,5 @@
 // base
 import { useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
 import type { AppContext, AppProps } from 'next/app';
 import { Router } from 'next/router';
 
@@ -30,6 +29,7 @@ import ko_KR from 'antd/lib/locale/ko_KR';
 import { MutableSnapshot, RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { CustomSeo } from './seo';
 
 // nprogress setting
 NProgress.configure({
@@ -90,46 +90,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" sizes="192x192" href="/favicon.ico" />
-        <title>밥값하는 개발자 블로그</title>
-
-        <meta
-          name="description"
-          content="밥값하는 프론트엔드 개발자 크동의 블로그 입니다. 공부하고 공유하고 싶은 내용을 작성합니다. 부족하지만, 성장하는 개발자가 되겠습니다."
-        />
-        <meta
-          name="keywords"
-          content="FrontEnd, BackEnd, React.JS, Next.JS, Nest.JS, TypeScript, 블로그, 개발자, 주니어, 주니어 개발자, 시니어, 시니어 개발자, 리액트, 타입스크립트, 개발자, 비전공, 전공"
-        />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="🤖 밥값하는 개발자 블로그" />
-        <meta
-          name="twitter:description"
-          content="밥값하는 프론트엔드 개발자 크동의 블로그 입니다. 공부하고 공유하고 싶은 내용을 작성합니다. 부족하지만, 성장하는 개발자가 되겠습니다."
-        />
-        <meta name="twitter:site" content="@" />
-        <meta name="twitter:creator" content="@" />
-        <meta
-          name="twitter:image"
-          content="https://kdong.s3.ap-northeast-2.amazonaws.com/dev/thumbnail-kdong-blog.png"
-        />
-
-        <meta property="og:title" content="🤖 밥값하는 개발자 블로그" />
-        <meta
-          property="og:description"
-          content="밥값하는 프론트엔드 개발자 크동의 블로그 입니다. 공부하고 공유하고 싶은 내용을 작성합니다. 부족하지만, 성장하는 개발자가 되겠습니다."
-        />
-        <meta property="og:url" content="https://kdong.dev/" />
-        <meta property="og:site_name" content="kdong.dev" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://kdong.s3.ap-northeast-2.amazonaws.com/dev/thumbnail-kdong-blog.png"
-        />
-      </Head>
+      <CustomSeo />
       <ConfigProvider
         locale={ko_KR}
         theme={{

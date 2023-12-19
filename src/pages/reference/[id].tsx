@@ -1,9 +1,11 @@
 // base
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
+
+// pages
+import { CustomSeo } from 'pages/seo';
 
 // layouts
 import { ContentLayout, MainLayout } from 'layouts';
@@ -38,29 +40,21 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
 
   return (
     <>
-      <Head>
-        <title>KDONG - {article.title}</title>
-        <meta name="description" content={article.content} />
-        <meta
-          name="keywords"
-          content={
-            article.tags.map(({ name }) => name).join(', ') +
-            'FrontEnd, BackEnd, React.JS, Next.JS, Nest.JS, TypeScript, 블로그, 개발자, 주니어, 주니어 개발자, 시니어, 시니어 개발자, 리액트, 타입스크립트, 개발자, 비전공, 전공'
-          }
-        />
-
-        <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.content} />
-        <meta name="twitter:image" content={article.thumbnails[0].location} />
-
-        <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.content} />
-        <meta
-          property="og:url"
-          content={'https://kdong.dev/' + router.asPath}
-        />
-        <meta property="og:image" content={article.thumbnails[0].location} />
-      </Head>
+      <CustomSeo
+        title={`KDONG - ${article.title}`}
+        description={article.content}
+        keywords={
+          article.tags.map(({ name }) => name).join(', ') +
+          'FrontEnd, BackEnd, React.JS, Next.JS, Nest.JS, TypeScript, 블로그, 개발자, 주니어, 주니어 개발자, 시니어, 시니어 개발자, 리액트, 타입스크립트, 개발자, 비전공, 전공'
+        }
+        twitter={{
+          image: article.thumbnails[0].location
+        }}
+        og={{
+          url: 'https://kdong.dev' + router.asPath,
+          image: article.thumbnails[0].location
+        }}
+      />
       <MainLayout noFooter>
         <ContentLayout title="레퍼런스 콘텐츠" contents={article}>
           {isEditorReady && (
