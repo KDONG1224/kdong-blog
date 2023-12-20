@@ -1,6 +1,6 @@
 // base
 import React, { useEffect, useMemo } from 'react';
-import type { AppProps } from 'next/app';
+import type { AppContext, AppProps } from 'next/app';
 import { Router } from 'next/router';
 import Head from 'next/head';
 
@@ -16,7 +16,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 // modules
-import { kdongProfileState } from 'modules';
+import {
+  CategoryApi,
+  ProfileApi,
+  kdongProfileState,
+  mainCategoryState
+} from 'modules';
 
 // libraries
 import AOS from 'aos';
@@ -59,11 +64,17 @@ export default function App({ Component, pageProps }: AppProps) {
   const initializer = useMemo(
     () =>
       ({ set }: MutableSnapshot) => {
-        if (!pageProps.profile) return;
+        if (pageProps.profile) {
+          const profile = pageProps.profile;
 
-        const profile = pageProps.profile;
+          set(kdongProfileState, profile);
+        }
 
-        set(kdongProfileState, profile);
+        if (pageProps.menuLists) {
+          const menuLists = pageProps.menuLists;
+
+          set(mainCategoryState, menuLists);
+        }
       },
     [pageProps]
   );
@@ -104,3 +115,39 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+App.getInitialProps = async ({ ctx }: AppContext) => {
+  let pageProps = {};
+
+  try {
+    if (!ctx.req) throw new Error('isClient');
+
+    const profileApi = new ProfileApi();
+    const profile = await profileApi.getMainProfile();
+
+    const categoryApi = new CategoryApi();
+    const categoryLists = await categoryApi.getMainCategories();
+
+    pageProps = {
+      ...pageProps,
+      profile: {
+        ...profile,
+        result: {
+          ...profile.result,
+          bannerLists: profile.result.bannerLists[0]
+        }
+      },
+      menuLists: categoryLists.result.categories
+    };
+
+    return {
+      pageProps
+    };
+  } catch (error) {
+    pageProps = { ...pageProps, profile: null };
+
+    return {
+      pageProps
+    };
+  }
+};
