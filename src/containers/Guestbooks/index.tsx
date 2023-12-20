@@ -42,7 +42,7 @@ import {
   Upload,
   message
 } from 'antd';
-import nProgress from 'nprogress';
+import nProgress, { set } from 'nprogress';
 import { useMedia, usePagination } from 'hooks';
 
 interface PRcFile extends RcFile {
@@ -100,15 +100,26 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
   const { mutateAsync: createGuestbook } = useMutation(
     [QUERY_GUESTBOOK_CREATE],
     async (data: FormData) => {
+      nProgress.start();
+
       return await guestbookApi.createGuestbook(data);
     },
     {
+      onMutate: () => {
+        setGuestbookLists([]);
+      },
       onSuccess: () => {
         setGuestImageLists([]);
         setIsWriteModal(false);
         form.resetFields();
+        onChangePageSize(0, pagination.pageSize);
+        nProgress.done();
 
         return queryClient.invalidateQueries([QUERY_GUESTBOOK_LISTS]);
+      },
+      onError: (error) => {
+        console.log(error);
+        nProgress.done();
       }
     }
   );
