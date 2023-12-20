@@ -13,7 +13,7 @@ import { Project } from 'containers';
 const ProjectPage = () => {
   return (
     <>
-      <CustomSeo title="밥값하는 개발자 블로그 - 프로젝트" />
+      <CustomSeo title="🤖 밥값하는 개발자 블로그 - 프로젝트" />
       <MainLayout>
         <PageLayout title="프로젝트" optionKey="project">
           <Project />

@@ -10,6 +10,12 @@ export const makeid = (length: number) => {
   return result;
 };
 
+export const addComma = (num: number | string) => {
+  if (!num) return 0;
+
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
 export const randomNumber = (max: number, min: number) => {
   return Math.floor(Math.random() * (max - min) + min);
 };

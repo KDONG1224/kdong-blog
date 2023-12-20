@@ -1,6 +1,9 @@
 import { AxiosInstance } from 'axios';
 import AxiosInstanceCreator from 'services/api';
-import { ResponseSubCategoryLists } from '../models/category.model';
+import {
+  ResponseMainCategoryLists,
+  ResponseSubCategoryLists
+} from '../models/category.model';
 import AxiosServerInstanceCreator from 'services/reqeust-server';
 
 export class CategoryApi {
@@ -22,6 +25,11 @@ export class CategoryApi {
   /**
    * SERVER
    */
+  async getMainCategories() {
+    return await this.Axios.get<ResponseMainCategoryLists>(
+      `/categories/main`
+    ).then((res) => res.data);
+  }
 
   /**
    * CLIENT

@@ -76,3 +76,23 @@ export const aboutIcons = {
   RGB: `${ICON_PATH}/about/icon-rgb.png`,
   GIF: `${ICON_PATH}/about/gif-kdong.GIF`
 };
+
+export const fileIcons: {
+  [key: string]: string;
+} = {
+  avi: `${ICON_PATH}/file/icon-avi.svg`,
+  css: `${ICON_PATH}/file/icon-css.svg`,
+  doc: `${ICON_PATH}/file/icon-doc.svg`,
+  eps: `${ICON_PATH}/file/icon-eps.svg`,
+  jpg: `${ICON_PATH}/file/icon-jpg.svg`,
+  jpeg: `${ICON_PATH}/file/icon-jpg.svg`,
+  mp3: `${ICON_PATH}/file/icon-mp3.svg`,
+  pdf: `${ICON_PATH}/file/icon-pdf.svg`,
+  png: `${ICON_PATH}/file/icon-png.svg`,
+  psd: `${ICON_PATH}/file/icon-psd.svg`,
+  txt: `${ICON_PATH}/file/icon-txt.svg`,
+  xls: `${ICON_PATH}/file/icon-xls.svg`,
+  zip: `${ICON_PATH}/file/icon-zip.svg`,
+  pptx: `${ICON_PATH}/file/icon-pptx.svg`,
+  etc: `${ICON_PATH}/file/icon-etc.svg`
+};

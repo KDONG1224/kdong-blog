@@ -15,11 +15,15 @@ import { headerMenus, ROUTE_ROOT, commonIcons, logoIcons } from 'consts';
 
 // hooks
 import { useMedia, useOverlay, useScroll } from 'hooks';
+import { useRecoilValue } from 'recoil';
+import { mainCategoryState } from 'modules';
 
 export const Header = () => {
   const [isHoverName, setIsHoverName] = useState<string>('');
   const [isHover, setIsHover] = useState<'hover' | 'none'>('none');
   const [isMenu, setIsMenu] = useState(false);
+
+  const menuLists = useRecoilValue(mainCategoryState);
 
   const router = useRouter();
 
@@ -34,7 +38,7 @@ export const Header = () => {
 
   const onClickMenu = (path: string) => {
     // onClickMobileMenu();
-    router.push(path);
+    router.push(path.toLocaleLowerCase());
   };
 
   // const onMouseOver = (name: string, type: 'hover' | 'none') => {
@@ -119,44 +123,48 @@ export const Header = () => {
           </div>
         </div>
       </StyledHeader>
-      <BasicDrawer
-        placement="left"
-        open={isMenu}
-        width={280}
-        onClose={onClickMobileMenu}
-        closable={false}
-        // eslint-disable-next-line react/no-children-prop
-        children={
-          <>
-            <div className="mobile-menu-wrapper">
-              {headerMenus.map(({ index, name, nameKr, path }) => {
-                if (name === 'admin') return null;
 
-                return (
+      {menuLists && menuLists.length > 0 && isMenu && (
+        <BasicDrawer
+          placement="left"
+          open={isMenu}
+          width={280}
+          onClose={onClickMobileMenu}
+          closable={false}
+          // eslint-disable-next-line react/no-children-prop
+          children={
+            <>
+              <div className="mobile-menu-wrapper">
+                {menuLists.map((list) => (
                   <div
-                    key={name + index}
+                    key={list.id}
                     className="mobile-menu-wrapper-list"
-                    onClick={() => onClickMenu(path)}
+                    onClick={() => onClickMenu(list.categoryEngName as string)}
                   >
                     <div className="mobile-menu-wrapper-list-eng">
-                      {name.toLocaleUpperCase()}
+                      {list.categoryEngName?.toLocaleUpperCase()}
                     </div>
-                    <div className="mobile-menu-wrapper-list-kor">{nameKr}</div>
+                    <div className="mobile-menu-wrapper-list-kor">
+                      {list.categoryName}
+                    </div>
                   </div>
-                );
-              })}
-            </div>
-            <div
-              className={`mobile-menu-close ${!isMenu ? 'hidden' : 'show'}`}
-              onClick={onClickMobileMenu}
-            >
-              <div className="mobile-menu-close-img">
-                <BasicImage src={commonIcons.ICON_MENU_CLOSE} alt="close btn" />
+                ))}
               </div>
-            </div>
-          </>
-        }
-      />
+              <div
+                className={`mobile-menu-close ${!isMenu ? 'hidden' : 'show'}`}
+                onClick={onClickMobileMenu}
+              >
+                <div className="mobile-menu-close-img">
+                  <BasicImage
+                    src={commonIcons.ICON_MENU_CLOSE}
+                    alt="close btn"
+                  />
+                </div>
+              </div>
+            </>
+          }
+        />
+      )}
     </>
   );
 };

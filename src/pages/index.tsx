@@ -1,6 +1,9 @@
 // base
 import { GetServerSideProps } from 'next';
 
+// pages
+import CustomSeo from './seo';
+
 // layouts
 import { MainLayout } from 'layouts';
 
@@ -8,19 +11,39 @@ import { MainLayout } from 'layouts';
 import { MainContainer } from 'containers';
 
 // modules
-import { ProfileApi, ResponseMainProfileProps } from 'modules';
+import {
+  CategoryApi,
+  CategoryListsProps,
+  ProfileApi,
+  ResponseMainProfileProps
+} from 'modules';
 import { ResponseArticleListsResultProps, ArticleeApi } from 'modules/article';
-import CustomSeo from './seo';
+import { mainCategoryState } from 'modules/category';
+
+// libraries
+
+import { useSetRecoilState } from 'recoil';
 
 export interface HomepageProps {
   profile: ResponseMainProfileProps;
   articleLists: ResponseArticleListsResultProps;
+  menuLists?: CategoryListsProps[];
 }
 
-const Homepage: React.FC<HomepageProps> = ({ profile, articleLists }) => {
+const Homepage: React.FC<HomepageProps> = ({
+  profile,
+  articleLists,
+  menuLists
+}) => {
+  const setMenuLists = useSetRecoilState(mainCategoryState);
+
+  if (menuLists) {
+    setMenuLists(menuLists);
+  }
+
   return (
     <>
-      <CustomSeo title="밥값하는 개발자 블로그 - 메인" />
+      <CustomSeo title="🤖 밥값하는 개발자 블로그" />
       <MainLayout>
         <MainContainer profile={profile} articleLists={articleLists} />
       </MainLayout>
@@ -36,6 +59,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const articleApi = new ArticleeApi();
     const articleLists = await articleApi.getAllArticles();
 
+    const categoryApi = new CategoryApi();
+    const categoryLists = await categoryApi.getMainCategories();
+
     return {
       props: {
         profile: {
@@ -47,7 +73,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
         },
         articleLists: {
           ...articleLists.result
-        }
+        },
+        menuLists: categoryLists.result.categories
       }
     };
   } catch (error) {

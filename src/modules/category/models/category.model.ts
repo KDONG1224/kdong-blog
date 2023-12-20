@@ -16,6 +16,7 @@ export interface UpdateCategoryProps {
 export interface CategoryListsProps {
   id: string;
   categoryName: string;
+  categoryEngName?: string;
   categoryNumber: number;
   subCategoryNumber: number;
   deleteStatus: 'Y' | 'N';
@@ -26,7 +27,7 @@ export interface CategoryListsProps {
 
 export interface ResponseMainCategoryLists extends BaseResponseProps {
   result: {
-    mainCategories: CategoryListsProps[];
+    categories: CategoryListsProps[];
   };
 }
 

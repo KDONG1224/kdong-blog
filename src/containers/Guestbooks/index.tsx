@@ -25,6 +25,9 @@ import {
   QUERY_GUESTBOOK_LISTS
 } from 'modules/guestbook';
 
+// consts
+import { fileIcons } from 'consts';
+
 // libraries
 import { RcFile } from 'antd/lib/upload';
 import { useForm } from 'antd/lib/form/Form';
@@ -40,7 +43,7 @@ import {
   message
 } from 'antd';
 import nProgress from 'nprogress';
-import { usePagination } from 'hooks';
+import { useMedia, usePagination } from 'hooks';
 
 interface PRcFile extends RcFile {
   sequence: number;
@@ -61,6 +64,7 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
   >([]);
 
   const [form] = useForm();
+  const { isMobile } = useMedia();
   const queryClient = useQueryClient();
 
   const { pagination, onChangePageSize } = usePagination({
@@ -274,10 +278,11 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
       <StyledGuestbookModal
         open={isWriteModal}
         centered
-        width={800}
+        width={isMobile ? 600 : 800}
         title="방명록 작성하기"
         onCancel={onVisibleWriteModal}
         footer={false}
+        $ismobile={isMobile}
       >
         <div className="create-wrapper">
           <Form className="create-wrapper-form" form={form} onFinish={onFinish}>
@@ -313,31 +318,53 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
 
               <Descriptions.Item label="첨부사진" span={1}>
                 <div className="guest-image-box">
+                  {/* {guestImageLists.length < 5 && ( */}
+                  <Upload
+                    disabled={guestImageLists.length >= 5}
+                    listType="text"
+                    showUploadList={false}
+                    maxCount={5}
+                    fileList={guestImageLists as any[]}
+                    beforeUpload={beforeUpload}
+                    onChange={handleUpload}
+                    customRequest={() => true}
+                  >
+                    <StyledAddImageWrap>
+                      <StyledPlusOutlined />
+                    </StyledAddImageWrap>
+                  </Upload>
+                  {/* )} */}
                   <div className="image-lists">
-                    {guestImageLists.map((list, idx) => (
+                    {/* {guestImageLists.map((list, idx) => (
                       <div className="image-lists-box" key={list.sequence}>
                         <BlurImage src={list.location} alt="upload_image" />
                         <StyledCloseOutlined
                           onClick={() => handleRemove(list.id as string, idx)}
                         />
                       </div>
-                    ))}
+                    ))} */}
+                    {guestImageLists.map((list, idx) => {
+                      const ext = list.originalname.split('.').pop() as string;
+                      const icon = fileIcons[ext] || fileIcons['etc'];
+
+                      return (
+                        <div className="image-lists-box" key={list.sequence}>
+                          <div className="image-lists-box-image">
+                            <BlurImage src={icon} alt="upload_image" />
+                          </div>
+                          <p className="line-one">
+                            {list.originalname}
+                            {/* <span>
+                              ({addComma((list.size / 1024).toFixed(2))} KB)
+                            </span> */}
+                          </p>
+                          <StyledCloseOutlined
+                            onClick={() => handleRemove(list.id as string, idx)}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
-                  {guestImageLists.length < 5 && (
-                    <Upload
-                      listType="picture"
-                      showUploadList={false}
-                      maxCount={5}
-                      fileList={guestImageLists as any[]}
-                      beforeUpload={beforeUpload}
-                      onChange={handleUpload}
-                      customRequest={() => true}
-                    >
-                      <StyledAddImageWrap>
-                        <StyledPlusOutlined />
-                      </StyledAddImageWrap>
-                    </Upload>
-                  )}
                 </div>
               </Descriptions.Item>
             </Descriptions>
