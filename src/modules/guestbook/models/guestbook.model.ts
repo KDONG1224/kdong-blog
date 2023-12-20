@@ -36,5 +36,6 @@ export interface GuestbookListProps {
 export interface ResponseGuestbookLists extends BaseResponseProps {
   result: {
     guestbooks: GuestbookListProps[];
+    totalElements: number;
   };
 }

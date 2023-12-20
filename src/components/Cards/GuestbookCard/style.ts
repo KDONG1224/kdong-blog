@@ -97,7 +97,33 @@ export const StyledGuestbookCard = styled.div<StyledGuestbookCardProps>`
 
   @media (max-width: 880px) {
     .book-wrapper {
+      height: 420px;
+
+      &-image {
+        height: 160px;
+
+        &-swiper {
+          height: 160px;
+
+          .swiper-slide {
+            width: 100%;
+            height: 80%;
+          }
+        }
+      }
+
+      &-middle {
+        > p {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 470px) {
+    .book-wrapper {
       max-width: 300px;
+      min-width: 300px;
       height: 420px;
 
       &-image {

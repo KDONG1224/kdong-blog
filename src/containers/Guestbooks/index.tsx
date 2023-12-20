@@ -30,8 +30,17 @@ import { RcFile } from 'antd/lib/upload';
 import { useForm } from 'antd/lib/form/Form';
 import { CommentOutlined } from '@ant-design/icons';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Descriptions, FloatButton, Form, Input, Upload, message } from 'antd';
+import {
+  Button,
+  Descriptions,
+  FloatButton,
+  Form,
+  Input,
+  Upload,
+  message
+} from 'antd';
 import nProgress from 'nprogress';
+import { usePagination } from 'hooks';
 
 interface PRcFile extends RcFile {
   sequence: number;
@@ -46,6 +55,7 @@ interface GuestbooksProps {}
 export const Guestbooks: React.FC<GuestbooksProps> = () => {
   const [isWriteModal, setIsWriteModal] = useState<boolean>(false);
   const [guestbookLists, setGuestbookLists] = useState<any[]>([]);
+  const [totalElements, setTotalElements] = useState<number>(0);
   const [guestImageLists, setGuestImageLists] = useState<
     BannerImageProps[] | PRcFile[]
   >([]);
@@ -53,19 +63,30 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
   const [form] = useForm();
   const queryClient = useQueryClient();
 
+  const { pagination, onChangePageSize } = usePagination({
+    totalElement: totalElements,
+    defaultPage: 0,
+    defaultPageSize: 6
+  });
+
   const guestbookApi = useMemo(() => {
     return new GuestbookApi();
   }, []);
 
   const { data: resultLists } = useQuery(
-    [QUERY_GUESTBOOK_LISTS],
+    [QUERY_GUESTBOOK_LISTS, pagination.current],
     async () => {
       nProgress.start();
-      return await guestbookApi.getClientAllGuestbook();
+
+      const query = {
+        page: pagination.current + 1
+      };
+
+      return await guestbookApi.getClientAllGuestbook(query);
     },
     {
       select: (data) => {
-        return data.result.guestbooks;
+        return data.result;
       },
       onSuccess: () => nProgress.done(),
       onError: () => nProgress.done()
@@ -97,7 +118,8 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
   const onInitValue = useCallback(() => {
     if (!resultLists) return;
 
-    setGuestbookLists(resultLists);
+    setGuestbookLists((prev) => [...prev, ...resultLists.guestbooks]);
+    setTotalElements(resultLists.totalElements);
   }, [resultLists]);
 
   const onVisibleWriteModal = () => {
@@ -113,8 +135,6 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
   };
 
   const handleUpload = (info: any) => {
-    console.log('== info == : ', info);
-
     if (info.file.status === 'error') {
       return false;
     }
@@ -154,6 +174,13 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
     }
 
     return true;
+  };
+
+  const moreGuestbooks = () => {
+    const page = pagination.current + 1;
+    const pageSize = pagination.pageSize;
+
+    onChangePageSize(page, pageSize);
   };
 
   const onFinish = async (values: CreateGuestbookProps) => {
@@ -228,6 +255,12 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
             dataSource.map((item) => (
               <GuestbookCard key={item.id} data={item} />
             ))}
+
+          {dataSource.length < pagination.total && (
+            <div className="books-wrapper-bottom">
+              <Button onClick={moreGuestbooks}>더보기</Button>
+            </div>
+          )}
         </div>
 
         <FloatButton
@@ -237,6 +270,7 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
         />
       </StyledGuestbooks>
 
+      {/* 방명록 생성 모달 */}
       <StyledGuestbookModal
         open={isWriteModal}
         centered

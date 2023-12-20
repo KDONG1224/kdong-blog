@@ -1,5 +1,5 @@
 // base
-import React from 'react';
+import React, { useState } from 'react';
 
 // styles
 import { StyledGuestbookCard } from './style';
@@ -17,12 +17,26 @@ import { useMedia } from 'hooks';
 import dayjs from 'dayjs';
 import { SwiperSlide } from 'swiper/react';
 
+import ImgsViewer from 'react-images-viewer';
+
 interface GuestbookCardProps {
   data: GuestbookListProps;
 }
 
 export const GuestbookCard: React.FC<GuestbookCardProps> = ({ data }) => {
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+
   const { isMobile } = useMedia();
+
+  const onOpenImageViewer = (index: number) => {
+    setCurrentImage(index);
+    setIsImageViewerOpen(true);
+  };
+
+  const onCloseImageViewer = () => {
+    setIsImageViewerOpen(false);
+  };
 
   return (
     <StyledGuestbookCard $ismobile={isMobile}>
@@ -49,9 +63,8 @@ export const GuestbookCard: React.FC<GuestbookCardProps> = ({ data }) => {
                 disableOnInteraction: false
               }}
             >
-              {data.guestbookFiles.map(({ id, location, filename }) => (
-                <SwiperSlide key={id}>
-                  <div className="grayscale" />
+              {data.guestbookFiles.map(({ id, location, filename }, idx) => (
+                <SwiperSlide key={id} onClick={() => onOpenImageViewer(idx)}>
                   <BlurImage
                     src={location}
                     alt={`${filename} 이미지`}
@@ -62,6 +75,20 @@ export const GuestbookCard: React.FC<GuestbookCardProps> = ({ data }) => {
             </BasicSwiper>
           </div>
         )}
+
+        <ImgsViewer
+          imgs={data.guestbookFiles.map(({ location, filename }) => ({
+            src: location,
+            caption: filename
+          }))}
+          isOpen={isImageViewerOpen}
+          onClose={onCloseImageViewer}
+          currImg={currentImage}
+          onClickPrev={() => setCurrentImage(currentImage - 1)}
+          onClickNext={() => setCurrentImage(currentImage + 1)}
+          backdropCloseable
+          spinnerSize={20}
+        />
 
         <div className="book-wrapper-middle">
           <p>{data.content}</p>

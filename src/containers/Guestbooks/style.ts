@@ -14,6 +14,26 @@ export const StyledGuestbooks = styled.div`
     > div {
       margin-bottom: 60px;
     }
+
+    &-bottom {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+
+      .ant-btn {
+        width: 30%;
+        height: 50px;
+
+        background-color: #000;
+        border: 1px solid #000;
+        color: #fff;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
   }
 
   .ant-float-btn {
