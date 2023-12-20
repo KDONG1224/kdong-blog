@@ -7,6 +7,9 @@ import { StyledListBox } from './style';
 // components
 import { BasicSwiper, CheckCard } from 'components';
 
+// modules
+import { ArticleListsProps } from 'modules';
+
 // hooks
 import { useMedia } from 'hooks';
 
@@ -16,7 +19,7 @@ import { SwiperSlide } from 'swiper/react';
 interface ListBoxProps {
   headerTitle: string;
   subHeaderTitle: string;
-  lists: any[];
+  lists: ArticleListsProps[];
   type?: 'check' | 'polygon' | 'image';
   delay?: number;
   onClickMore: () => void;

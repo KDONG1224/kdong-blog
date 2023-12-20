@@ -17,7 +17,11 @@ import {
   ProfileApi,
   ResponseMainProfileProps
 } from 'modules';
-import { ResponseArticleListsResultProps, ArticleeApi } from 'modules/article';
+import {
+  ResponseArticleListsResultProps,
+  ArticleeApi,
+  ResponseRecommendResultProps
+} from 'modules/article';
 import { mainCategoryState } from 'modules/category';
 
 // libraries
@@ -28,12 +32,14 @@ export interface HomepageProps {
   profile: ResponseMainProfileProps;
   articleLists: ResponseArticleListsResultProps;
   menuLists?: CategoryListsProps[];
+  recommendLists: ResponseRecommendResultProps;
 }
 
 const Homepage: React.FC<HomepageProps> = ({
   profile,
   articleLists,
-  menuLists
+  menuLists,
+  recommendLists
 }) => {
   const setMenuLists = useSetRecoilState(mainCategoryState);
 
@@ -45,7 +51,11 @@ const Homepage: React.FC<HomepageProps> = ({
     <>
       <CustomSeo title="🤖 밥값하는 개발자 블로그" />
       <MainLayout>
-        <MainContainer profile={profile} articleLists={articleLists} />
+        <MainContainer
+          profile={profile}
+          articleLists={articleLists}
+          recommendLists={recommendLists}
+        />
       </MainLayout>
     </>
   );
@@ -58,6 +68,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const articleApi = new ArticleeApi();
     const articleLists = await articleApi.getAllArticles();
+    const recommendLists = await articleApi.getRecommendArticles();
 
     const categoryApi = new CategoryApi();
     const categoryLists = await categoryApi.getMainCategories();
@@ -73,6 +84,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
         },
         articleLists: {
           ...articleLists.result
+        },
+        recommendLists: {
+          ...recommendLists.result
         },
         menuLists: categoryLists.result.categories
       }

@@ -7,6 +7,7 @@ export interface ArticleDetailStateProps {
 export interface ArticleTagsProps {
   id: string;
   name: string;
+  sequence: number;
 }
 
 export interface ArticleThumbnaiProps {
@@ -33,11 +34,11 @@ export interface ArticleListsProps {
     username: string;
     email: string;
   };
-  catergoty?: {
+  category: {
     id: string;
-    catergotyName: string;
-    catergotyNumber: number;
-    subCatergotyNumber: number;
+    categoryName: string;
+    categoryNumber: number;
+    subCategoryNumber: number;
   };
   title: string;
   content: string;
@@ -62,4 +63,12 @@ export interface ResponseArticleListsResultProps {
 
 export interface ResponseArticleLists extends BaseResponseProps {
   result: ResponseArticleListsResultProps;
+}
+
+export interface ResponseRecommendResultProps {
+  recommendLists: ArticleListsProps[];
+}
+
+export interface ResponseRecommendLists extends BaseResponseProps {
+  result: ResponseRecommendResultProps;
 }

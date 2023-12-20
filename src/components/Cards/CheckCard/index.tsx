@@ -27,7 +27,17 @@ export const CheckCard: React.FC<CheckCardProps> = ({
   type,
   onClick
 }) => {
-  const { id, title, tags, createdAt, thumbnails, mainColor, subColor } = data;
+  const {
+    id,
+    title,
+    tags,
+    createdAt,
+    thumbnails,
+    mainColor,
+    subColor,
+    category,
+    readCount
+  } = data;
 
   const [isContent, setIsContent] = useState('');
 
@@ -88,14 +98,16 @@ export const CheckCard: React.FC<CheckCardProps> = ({
 
           {type === 'check' && (
             <div className={`check-wrapper-top-badge ${type}`}>
-              {tags.length > 0 ? <span>{tags[1].name}</span> : <span></span>}
+              {category && <span>{category.categoryName}</span>}
             </div>
           )}
 
           {type === 'polygon' && (
             <div className={`check-wrapper-top-badge ${type}`}>
               {tags.length > 0 ? (
-                tags.map(({ id, name }) => <span key={id}>{name}</span>)
+                tags
+                  .sort((a, b) => b.sequence - a.sequence)
+                  .map(({ id, name }) => <span key={id}>{name}</span>)
               ) : (
                 <span></span>
               )}
@@ -113,8 +125,9 @@ export const CheckCard: React.FC<CheckCardProps> = ({
 
         {type !== 'image' && !isMobile && (
           <div className={`check-wrapper-bottom ${type}`}>
-            <div className="check-wrapper-bottom-box">
+            <div className={`check-wrapper-bottom-box ${type}`}>
               <span>{dayjs(createdAt).format('YYYY-MM-DD')}</span>
+              <span>조회수 : {readCount}</span>
             </div>
           </div>
         )}

@@ -28,13 +28,18 @@ export const StyledGuestbooks = styled.div`
       .ant-btn {
         width: 30%;
         height: 50px;
-
-        background-color: #000;
-        border: 1px solid #000;
-        color: #fff;
+        font-size: 2.2rem;
+        border: 4px solid #000;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        padding: 0.2rem 0.6rem;
+        background-color: #fff;
+        border-radius: 0%;
 
         &:hover {
-          color: #fff;
+          color: #000;
+          border: 4px solid #000;
         }
       }
     }

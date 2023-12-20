@@ -29,7 +29,8 @@ interface MainContainerProps extends HomepageProps {}
 
 export const MainContainer: React.FC<MainContainerProps> = ({
   profile,
-  articleLists
+  articleLists,
+  recommendLists
 }) => {
   const [activeFaqKey, setActiveFaqKey] = useState<string[]>([]);
 
@@ -78,11 +79,11 @@ export const MainContainer: React.FC<MainContainerProps> = ({
         </div>
         <div className="main-wrapper-recommand">
           <div className="main-wrapper-recommand-box container">
-            {articleLists && (
+            {recommendLists && (
               <ListBox
-                headerTitle="지금 주목할 만한 추천글"
-                subHeaderTitle="KDONG이 추천하는 글을 둘러보세요 :)"
-                lists={articleLists.articles}
+                headerTitle="지금 주목할 만한 인기글"
+                subHeaderTitle="조회수가 가장 높은 인기글을 둘러보세요 :)"
+                lists={recommendLists.recommendLists}
                 type="check"
                 delay={4400}
                 onClickMore={() => handleMove(ROUTE_ALGORITHM)}

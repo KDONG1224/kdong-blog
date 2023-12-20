@@ -149,7 +149,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
             &:before {
               content: '';
               position: absolute;
-              left: 0;
+              left: -3px;
               top: 0;
               width: ${({ $ismobile }) => ($ismobile ? '20px' : '34px')};
               height: ${({ $ismobile }) => ($ismobile ? '20px' : '34px')};
@@ -173,6 +173,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
           padding: ${({ $ismobile }) =>
             $ismobile ? '1rem 0.6rem' : '0.4rem 0.6rem'};
           color: #fff;
+          /* ${({ $linebg }) => ($linebg ? $linebg : '#fff')}; */
           font-family: Pretendard-Medium;
           font-size: ${({ $ismobile }) => ($ismobile ? '8px' : '14px')};
           line-height: 1.86;
@@ -187,7 +188,7 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
           width: ${({ $ismobile }) => ($ismobile ? '16px' : '24px')} !important;
           height: ${({ $ismobile }) =>
             $ismobile ? '16px' : '24px'} !important;
-          background-color: #dddddd;
+          background-color: ${({ $badgbg }) => $badgbg};
 
           > span {
             color: transparent;
@@ -235,6 +236,20 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
       }
 
       &-box {
+        &.check {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          > span {
+            &:last-of-type {
+              display: block;
+              background-color: transparent !important;
+              color: #000;
+            }
+          }
+        }
+
         > span {
           padding: 0.4rem 0.6rem;
           background-color: #000;

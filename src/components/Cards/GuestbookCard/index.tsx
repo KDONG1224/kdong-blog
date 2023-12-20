@@ -48,7 +48,7 @@ export const GuestbookCard: React.FC<GuestbookCardProps> = ({ data }) => {
               <br />
               {dayjs(data.createdAt).utc().tz('Asia/Seoul').format('A hh:mm')}
             </span>
-            MEMO <span className="right">{data.guestName}</span>
+            MEMO <span className="right line-two">{data.guestName}</span>
           </h2>
           <p>MEMO</p>
           <p>MEMO</p>

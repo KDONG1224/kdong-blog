@@ -124,7 +124,15 @@ export const StyledGuestbookCard = styled.div<StyledGuestbookCardProps>`
     .book-wrapper {
       max-width: 300px;
       min-width: 300px;
-      height: 420px;
+      height: 440px;
+
+      &-top {
+        > h2 {
+          > span {
+            width: 70px;
+          }
+        }
+      }
 
       &-image {
         height: 160px;

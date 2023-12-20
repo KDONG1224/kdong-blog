@@ -31,6 +31,10 @@ export class ArticleeApi {
     return await this.Axios.get(`/posts/${id}`).then((res) => res.data);
   }
 
+  async getRecommendArticles() {
+    return await this.Axios.post('/posts/recommend').then((res) => res.data);
+  }
+
   /**
    * CLIENT
    */

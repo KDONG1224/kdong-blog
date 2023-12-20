@@ -42,7 +42,7 @@ import {
   Upload,
   message
 } from 'antd';
-import nProgress, { set } from 'nprogress';
+import nProgress from 'nprogress';
 import { useMedia, usePagination } from 'hooks';
 
 interface PRcFile extends RcFile {

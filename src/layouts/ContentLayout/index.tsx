@@ -34,9 +34,9 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
               <h2>{contents?.title || title}</h2>
               <div>
                 {contents &&
-                  contents.tags.map(({ id, name }) => (
-                    <span key={id}>{`#${name}`}</span>
-                  ))}
+                  contents.tags
+                    .sort((a, b) => a.sequence - b.sequence)
+                    .map(({ id, name }) => <span key={id}>{`#${name}`}</span>)}
               </div>
             </div>
             <div className="content-wrapper-head-left-bottom">

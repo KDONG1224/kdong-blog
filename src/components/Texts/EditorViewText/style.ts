@@ -15,14 +15,15 @@ export const StyledEditorViewText = styled.div`
   }
 
   .view-wrapper {
-    font-size: 30px;
+    font-size: 22px;
     padding-top: 100px;
     border-top: 2px solid #bfbfbf;
 
     h1,
     h2,
     h3,
-    h4 {
+    h4,
+    h5 {
       font-weight: normal;
       letter-spacing: -1px;
       color: #000;
@@ -41,6 +42,11 @@ export const StyledEditorViewText = styled.div`
     > h4 {
       font-size: 1.575em;
       line-height: 1.55;
+    }
+
+    > h5 {
+      font-size: 1.309em;
+      line-height: 1.65;
     }
 
     > p {
