@@ -8,8 +8,38 @@ const SitemapPage: NextPage = () => {
 };
 
 const insideXMLString = (xmlContent: string): string => {
+  const lastmod = dayjs().format('YYYY-MM-DDTHH:mm:ssZ');
+
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+      <url>
+        <loc>https://kdong.dev</loc>
+        <lastmod>${lastmod}</lastmod>
+      </url>  
+      <url>
+        <loc>https://kdong.dev/about</loc>
+        <lastmod>${lastmod}</lastmod>
+      </url>        
+      <url>
+        <loc>https://kdong.dev/algorithm</loc>
+        <lastmod>${lastmod}</lastmod>
+      </url>        
+      <url>
+        <loc>https://kdong.dev/guestbook</loc>
+        <lastmod>${lastmod}</lastmod>
+      </url>        
+      <url>
+        <loc>https://kdong.dev/project</loc>
+        <lastmod>${lastmod}</lastmod>
+      </url>        
+      <url>
+        <loc>https://kdong.dev/reference</loc>
+        <lastmod>${lastmod}</lastmod>
+      </url>        
+      <url>
+        <loc>https://kdong.dev/wanted</loc>
+        <lastmod>${lastmod}</lastmod>
+      </url>        
       ${xmlContent}
     </urlset>
   `;
