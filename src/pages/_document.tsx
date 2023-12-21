@@ -35,8 +35,13 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
     styles: (
       <>
         <meta charSet="utf-8" />
-
         <meta name="author" content="KDONG" />
+
+        <meta
+          name="google-site-verification"
+          content="R80Rlj6JSLjEpACxZI9NkRxWYfJ2aCVjrzL30kvJPFM"
+        />
+
         <meta
           name="description"
           content="밥값하는 프론트엔드 개발자 크동의 블로그 입니다. 공부하고 공유하고 싶은 내용을 작성합니다. 부족하지만, 성장하는 개발자가 되겠습니다."

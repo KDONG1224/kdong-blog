@@ -31,6 +31,10 @@ export class ArticleeApi {
     return await this.Axios.get('/posts').then((res) => res.data);
   }
 
+  async getAllArticlesXml() {
+    return await this.Axios.get('/posts/xml').then((res) => res.data);
+  }
+
   async getArticleById(id: string) {
     return await this.Axios.get<ResponseArticleDetailProps>(
       `/posts/${id}`
