@@ -67,8 +67,19 @@ export interface ResponseArticleLists extends BaseResponseProps {
 
 export interface ResponseRecommendResultProps {
   recommendLists: ArticleListsProps[];
+  referenceLists: ArticleListsProps[];
 }
 
 export interface ResponseRecommendLists extends BaseResponseProps {
   result: ResponseRecommendResultProps;
+}
+
+export interface ResponseArticleDetailResultProps {
+  currentPost: ArticleListsProps;
+  prevPost?: ArticleListsProps;
+  nextPost?: ArticleListsProps;
+}
+
+export interface ResponseArticleDetailProps extends BaseResponseProps {
+  result: ResponseArticleDetailResultProps;
 }

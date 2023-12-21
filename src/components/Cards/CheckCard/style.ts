@@ -144,12 +144,11 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
               0% 90%,
               0% 10%
             )`};
-            background-color: #fff;
 
             &:before {
               content: '';
               position: absolute;
-              left: -3px;
+              left: 0px;
               top: 0;
               width: ${({ $ismobile }) => ($ismobile ? '20px' : '34px')};
               height: ${({ $ismobile }) => ($ismobile ? '20px' : '34px')};
@@ -198,7 +197,8 @@ export const StyledCheckCard = styled.div<StyledCheckCardProps>`
             width: auto !important;
 
             > span {
-              color: #000;
+              font-family: Pretendard-Bold;
+              color: ${({ $linebg }) => $linebg};
             }
           }
         }

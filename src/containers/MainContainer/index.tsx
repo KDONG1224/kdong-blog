@@ -11,6 +11,12 @@ import { HomepageProps } from 'pages';
 // components
 import { BasicCollapse, BasicImage, HomBanner, ListBox } from 'components';
 
+// modules
+import { kdongProfileState } from 'modules';
+
+// hooks
+import { useMedia } from 'hooks';
+
 // consts
 import {
   ROUTE_ALGORITHM,
@@ -19,20 +25,21 @@ import {
   commonIcons
 } from 'consts';
 
-// hooks
-import { useMedia } from 'hooks';
-
 // libs
 import { windowLocation } from 'libs';
+
+// libraries
+import { useRecoilValue } from 'recoil';
 
 interface MainContainerProps extends HomepageProps {}
 
 export const MainContainer: React.FC<MainContainerProps> = ({
-  profile,
   articleLists,
   recommendLists
 }) => {
   const [activeFaqKey, setActiveFaqKey] = useState<string[]>([]);
+
+  const profile = useRecoilValue(kdongProfileState);
 
   const { isMobile } = useMedia();
   const router = useRouter();
@@ -83,7 +90,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
               <ListBox
                 headerTitle="지금 주목할 만한 인기글"
                 subHeaderTitle="조회수가 가장 높은 인기글을 둘러보세요 :)"
-                lists={recommendLists.recommendLists}
+                lists={recommendLists}
                 type="check"
                 delay={4400}
                 onClickMore={() => handleMove(ROUTE_ALGORITHM)}
@@ -108,7 +115,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
               <ListBox
                 headerTitle="다양한 Reference"
                 subHeaderTitle="다양한 레퍼런스 구경해보세요 :)"
-                lists={articleLists.articles}
+                lists={articleLists}
                 type="polygon"
                 delay={3000}
                 onClickMore={() => handleMove(ROUTE_REFERENCE)}
@@ -123,7 +130,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
               <ListBox
                 headerTitle="알고리즘 문제풀이"
                 subHeaderTitle="다양한 알고리즘 문제를 풀어보았어요 :)"
-                lists={articleLists.articles}
+                lists={articleLists}
                 type="image"
                 onClickMore={() => handleMove(ROUTE_ALGORITHM)}
                 onClickCard={(id: string) => onClickCard(id, 'algorithm')}

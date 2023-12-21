@@ -12,13 +12,13 @@ import { ContentLayout, MainLayout } from 'layouts';
 import { EditorViewText } from 'components';
 
 // modules
-import { ArticleListsProps, ArticleeApi } from 'modules/article';
+import { ResponseArticleDetailResultProps, ArticleeApi } from 'modules/article';
 
 // utils
 import { removeHtmlTags } from 'utils';
 
 export interface ReferenceContentPageProps {
-  article: ArticleListsProps;
+  article: ResponseArticleDetailResultProps;
 }
 
 const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
@@ -27,22 +27,26 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
   return (
     <>
       <CustomSeo
-        title={`KDONG - ${article.title}`}
+        title={`KDONG - ${article.currentPost.title}`}
         og={{
-          title: article.title,
-          description: removeHtmlTags(article.content),
-          url: `https://kdong.dev/reference/${article.id}`,
-          image: article.thumbnails[0].location
+          title: article.currentPost.title,
+          description: removeHtmlTags(article.currentPost.content),
+          url: `https://kdong.dev/reference/${article.currentPost.id}`,
+          image: article.currentPost.thumbnails[0].location
         }}
         twitter={{
-          title: article.title,
-          description: removeHtmlTags(article.content),
-          image: article.thumbnails[0].location
+          title: article.currentPost.title,
+          description: removeHtmlTags(article.currentPost.content),
+          image: article.currentPost.thumbnails[0].location
         }}
       />
       <MainLayout noFooter>
-        <ContentLayout title="레퍼런스 콘텐츠" contents={article}>
-          <EditorViewText content={article.content} />
+        <ContentLayout title="레퍼런스 콘텐츠" contents={article.currentPost}>
+          <EditorViewText
+            content={article.currentPost.content}
+            prevContent={article?.prevPost}
+            nextContent={article?.nextPost}
+          />
         </ContentLayout>
       </MainLayout>
     </>

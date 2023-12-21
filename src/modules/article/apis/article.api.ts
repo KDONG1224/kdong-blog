@@ -2,7 +2,11 @@ import { AxiosInstance } from 'axios';
 import AxiosInstanceCreator from 'services/reqeust-client';
 import AxiosServerInstanceCreator from 'services/reqeust-server';
 import qs from 'qs';
-import { ResponseArticleLists } from '../models/article.model';
+import {
+  ResponseArticleDetailProps,
+  ResponseArticleLists,
+  ResponseRecommendLists
+} from '../models/article.model';
 
 export class ArticleeApi {
   Axios: AxiosInstance;
@@ -28,11 +32,15 @@ export class ArticleeApi {
   }
 
   async getArticleById(id: string) {
-    return await this.Axios.get(`/posts/${id}`).then((res) => res.data);
+    return await this.Axios.get<ResponseArticleDetailProps>(
+      `/posts/${id}`
+    ).then((res) => res.data);
   }
 
   async getRecommendArticles() {
-    return await this.Axios.post('/posts/recommend').then((res) => res.data);
+    return await this.Axios.post<ResponseRecommendLists>(
+      '/posts/recommend'
+    ).then((res) => res.data);
   }
 
   /**

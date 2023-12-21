@@ -114,6 +114,55 @@ export const StyledEditorViewText = styled.div`
     }
   }
 
+  .view-wrapper-bottom {
+    margin-top: 4em;
+    border-top: 2px solid #bfbfbf;
+    padding-top: 4em;
+
+    &-left {
+      display: block;
+
+      &:first-child {
+        margin-bottom: 2em;
+      }
+
+      &-box {
+        border: 1.6px solid #000;
+        padding: 1.6em !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+
+        &-body {
+          width: 80%;
+          &-title {
+            font-size: 1.8em !important;
+            line-height: 1.6 !important;
+            color: #000;
+            padding: 2px 4px 0px !important;
+
+            > span {
+              margin-right: 10px !important;
+            }
+          }
+
+          &-content {
+            margin-top: 0.5em;
+            font-size: 1.4em !important;
+            line-height: 1.75;
+          }
+        }
+
+        &-img {
+          width: 100px;
+          height: 100px;
+          position: relative;
+        }
+      }
+    }
+  }
+
   @media (max-width: 1000px) {
     .view-wrapper {
       padding-top: 50px;
@@ -122,7 +171,7 @@ export const StyledEditorViewText = styled.div`
 
   @media (max-width: 750px) {
     .view-wrapper {
-      font-size: 25px;
+      font-size: 22px;
 
       li {
         line-height: 1.8;

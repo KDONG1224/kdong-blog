@@ -75,6 +75,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({
               <div className="check-wrapper-top-line rotate" />
             </>
           )}
+
           {type === 'polygon' && (
             <div className="check-wrapper-top-img">
               <div className={`check-wrapper-top-img-box ${type}`}>
@@ -85,6 +86,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({
               </div>
             </div>
           )}
+
           {type === 'image' && (
             <div className="check-wrapper-top-img">
               <div className={`check-wrapper-top-img-box ${type}`}>

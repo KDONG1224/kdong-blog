@@ -62,10 +62,7 @@ export const ListBox: React.FC<ListBoxProps> = ({
         <div className="list-wrapper-contents">
           <BasicSwiper
             className="list-wrapper-contents-swiper"
-            autoplay={{
-              delay: delay,
-              disableOnInteraction: false
-            }}
+            autoplay={false}
           >
             {(lists || []).map((data, idx) => (
               <SwiperSlide key={idx}>
