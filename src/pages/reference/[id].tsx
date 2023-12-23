@@ -39,13 +39,13 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
         og={{
           title: article.currentPost.title,
           description: removeHtmlTags(article.currentPost.content),
-          url: `https://kdong.dev/reference/${article.currentPost.id}`
-          // image: article.currentPost.thumbnails[0].location
+          url: `https://kdong.dev/reference/${article.currentPost.id}`,
+          image: article.currentPost.thumbnails[0].location
         }}
         twitter={{
           title: article.currentPost.title,
-          description: removeHtmlTags(article.currentPost.content)
-          // image: article.currentPost.thumbnails[0].location
+          description: removeHtmlTags(article.currentPost.content),
+          image: article.currentPost.thumbnails[0].location
         }}
       />
       <MainLayout noFooter>

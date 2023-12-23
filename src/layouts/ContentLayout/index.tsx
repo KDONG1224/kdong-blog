@@ -25,6 +25,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
   contents,
   children
 }) => {
+  console.log('== contents == : ', contents);
   return (
     <StyledContentLayout className="container">
       <div className="content-wrapper">
@@ -36,7 +37,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
                 {contents &&
                   contents.tags
                     .sort((a, b) => a.sequence - b.sequence)
-                    .map(({ id, tag }) => <span key={id}>{`#${tag}`}</span>)}
+                    .map(({ id, name }) => <span key={id}>{`#${name}`}</span>)}
               </div>
             </div>
             <div className="content-wrapper-head-left-bottom">
