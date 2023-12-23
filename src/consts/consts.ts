@@ -6,7 +6,7 @@ export const DEFAULT_SKIP = 0;
 export const DEFAULT_LIMIT = 30;
 
 export const DEFAULT_PAGE = 0;
-export const DEFAULT_SIZE = 10;
+export const DEFAULT_SIZE = 6;
 
 // data format
 export const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD, HH:mm:ss';

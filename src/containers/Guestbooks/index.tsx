@@ -68,9 +68,7 @@ export const Guestbooks: React.FC<GuestbooksProps> = () => {
   const queryClient = useQueryClient();
 
   const { pagination, onChangePageSize } = usePagination({
-    totalElement: totalElements,
-    defaultPage: 0,
-    defaultPageSize: 6
+    totalElement: totalElements
   });
 
   const guestbookApi = useMemo(() => {

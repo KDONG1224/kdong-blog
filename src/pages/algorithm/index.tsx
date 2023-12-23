@@ -5,7 +5,7 @@ import React from 'react';
 import CustomSeo from 'pages/seo';
 
 // layouts
-import { MainLayout, PageLayout } from 'layouts';
+import { MainLayout } from 'layouts';
 
 // containers
 import { Algorithm } from 'containers';
@@ -15,9 +15,7 @@ const AlgorithmPage = () => {
     <>
       <CustomSeo title="🤖 밥값하는 개발자 블로그 - 알고리즘" />
       <MainLayout>
-        <PageLayout title="알고리즘" optionKey="algorithm">
-          <Algorithm />
-        </PageLayout>
+        <Algorithm />
       </MainLayout>
     </>
   );

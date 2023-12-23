@@ -63,6 +63,41 @@ export const StyledReference = styled.div`
         }
       }
     }
+
+    &-empty {
+      width: 100%;
+      margin-top: 80px;
+      &-text {
+        font-size: 30px;
+        font-family: Pretendard-Medium;
+        text-align: center;
+      }
+    }
+
+    &-bottom {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+
+      .ant-btn {
+        width: 30%;
+        height: 50px;
+        font-size: 2.2rem;
+        border: 4px solid #000;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        padding: 0.2rem 0.6rem;
+        background-color: #fff;
+        border-radius: 0%;
+
+        &:hover {
+          color: #000;
+          border: 4px solid #000;
+        }
+      }
+    }
   }
 
   @media (max-width: 1300px) {
@@ -81,6 +116,13 @@ export const StyledReference = styled.div`
     .refer-wrapper-box {
       width: calc(50% - 10px);
       height: 250px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .refer-wrapper-box {
+      width: calc(50% - 10px);
+      height: 180px;
     }
   }
 `;

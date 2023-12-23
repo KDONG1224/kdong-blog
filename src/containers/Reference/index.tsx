@@ -1,5 +1,5 @@
 // base
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 
 // style
@@ -12,7 +12,6 @@ import { SearchBox } from 'containers';
 import { BlurImage } from 'components';
 
 // modules
-import { loadingState } from 'modules';
 import { ArticleeApi, QUERY_GET_ALL_ARTICLES } from 'modules/article';
 import {
   CategoryApi,
@@ -21,14 +20,17 @@ import {
   ResponseSubCategoryLists
 } from 'modules/category';
 
+// hooks
+import { usePagination } from 'hooks';
+
 // consts
 import { ROUTE_REFERENCE } from 'consts';
 
 // libraries
-import { AxiosError } from 'axios';
-import { useRecoilValue } from 'recoil';
-import { useQuery } from '@tanstack/react-query';
+import { Button } from 'antd';
 import nProgress from 'nprogress';
+import { AxiosError } from 'axios';
+import { useQuery } from '@tanstack/react-query';
 
 interface ReferenceProps {}
 
@@ -37,9 +39,11 @@ export const Reference: React.FC<ReferenceProps> = () => {
   const [articleLists, setarticleLists] = useState<any[]>([]);
   const [totalElements, setTotalElements] = useState<number>(0);
 
-  const loading = useRecoilValue(loadingState);
-
   const router = useRouter();
+
+  const { pagination, onChangePageSize } = usePagination({
+    totalElement: totalElements
+  });
 
   const articleApi = useMemo(() => {
     return new ArticleeApi();
@@ -66,11 +70,13 @@ export const Reference: React.FC<ReferenceProps> = () => {
           value: 'all'
         };
 
-        const result = data.result.subCategories.map((category) => ({
-          ...category,
-          label: category.categoryName,
-          value: category.id
-        }));
+        const result = data.result.subCategories
+          .filter((x) => x.categoryNumber === 2)
+          .map((category) => ({
+            ...category,
+            label: category.categoryName,
+            value: category.id
+          }));
 
         return [all, ...result] as any[];
       },
@@ -80,18 +86,20 @@ export const Reference: React.FC<ReferenceProps> = () => {
   );
 
   const { data: resultLists } = useQuery(
-    [QUERY_GET_ALL_ARTICLES, searchQuery],
+    [QUERY_GET_ALL_ARTICLES, searchQuery, pagination.current],
     async ({ queryKey }) => {
       const [key, searchQuery] = queryKey;
 
       nProgress.start();
       console.log('== key == : ', key);
-      console.log('== totalElements == : ', totalElements);
 
       if (searchQuery) {
         return await articleApi.getClientAllArticles(searchQuery);
       }
 
+      setarticleLists([]);
+      setTotalElements(0);
+      onChangePageSize(0, pagination.pageSize);
       return await articleApi.getClientAllArticles();
     },
     {
@@ -109,17 +117,33 @@ export const Reference: React.FC<ReferenceProps> = () => {
     return articleLists;
   }, [articleLists]);
 
+  const onInitValue = useCallback(() => {
+    if (!resultLists) return;
+
+    const { articles, total, currentTotal } = resultLists;
+
+    if (total === 0 && currentTotal === 0) {
+      setarticleLists([]);
+      setTotalElements(0);
+      return;
+    }
+
+    setarticleLists((prev) => [...prev, ...articles]);
+    setTotalElements(total);
+  }, [resultLists]);
+
   const onChangeCategory = (value: string) => {
-    setSearchQuery((prev: any) => {
-      if (value === 'all') {
-        return { ...prev };
-      } else {
-        return {
-          ...prev,
-          where__category__id: value
-        };
-      }
-    });
+    if (value === 'all') {
+      setSearchQuery(undefined);
+      return;
+    }
+
+    setSearchQuery((prev: any) => ({
+      ...prev,
+      page: 1,
+      where__category__id: value
+    }));
+    onChangePageSize(0, pagination.pageSize);
   };
 
   const onChangeOrder = (value: string) => {
@@ -127,19 +151,29 @@ export const Reference: React.FC<ReferenceProps> = () => {
       ...searchQuery,
       order__createdAt: value
     });
+    setarticleLists([]);
+    setTotalElements(0);
+    onChangePageSize(0, pagination.pageSize);
+  };
+
+  const onClickMore = () => {
+    const page = pagination.current + 2;
+    const pageSize = pagination.pageSize;
+
+    onChangePageSize(page, pageSize);
+    setSearchQuery({
+      ...searchQuery,
+      page
+    });
   };
 
   const onRouterDetail = (id: string) => {
-    console.log('== loading == : ', loading);
     router.push(`${ROUTE_REFERENCE}/${id}`);
   };
 
   useEffect(() => {
-    if (!resultLists) return;
-
-    setarticleLists(resultLists.articles);
-    setTotalElements(resultLists.total);
-  }, [resultLists]);
+    onInitValue();
+  }, [onInitValue]);
 
   return (
     <StyledReference>
@@ -186,6 +220,20 @@ export const Reference: React.FC<ReferenceProps> = () => {
             )}
           </div>
         ))}
+
+        {pagination.total === 0 && dataSource.length === 0 && (
+          <div className="refer-wrapper-empty">
+            <div className="refer-wrapper-empty-text">
+              등록된 레퍼런스가 없습니다.
+            </div>
+          </div>
+        )}
+
+        {dataSource.length < pagination.total && (
+          <div className="refer-wrapper-bottom">
+            <Button onClick={onClickMore}>더보기</Button>
+          </div>
+        )}
       </div>
     </StyledReference>
   );

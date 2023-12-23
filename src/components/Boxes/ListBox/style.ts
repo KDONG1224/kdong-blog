@@ -73,7 +73,7 @@ export const StyledListBox = styled.div<StyledListBoxProps>`
         position: absolute;
         right: 0;
         top: 0;
-        width: 70px;
+        width: ${({ $ismobile }) => ($ismobile ? '20px' : '70px')};
         height: 100%;
         z-index: 9;
         /* display: ${({ $ismobile }) => ($ismobile ? 'none' : 'block')}; */
