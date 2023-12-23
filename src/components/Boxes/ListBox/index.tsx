@@ -55,9 +55,11 @@ export const ListBox: React.FC<ListBoxProps> = ({
             <h2>{headerTitle}</h2>
             <p>{subHeaderTitle}</p>
           </div>
-          <div className="list-wrapper-title-right" onClick={handleClickMore}>
-            더보기 +
-          </div>
+          {type !== 'check' && (
+            <div className="list-wrapper-title-right" onClick={handleClickMore}>
+              더보기 +
+            </div>
+          )}
         </div>
         <div className="list-wrapper-contents">
           <BasicSwiper

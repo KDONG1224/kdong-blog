@@ -6,7 +6,7 @@ export interface ArticleDetailStateProps {
 
 export interface ArticleTagsProps {
   id: string;
-  name: string;
+  tag: string;
   sequence: number;
 }
 

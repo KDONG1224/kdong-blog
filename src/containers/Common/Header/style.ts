@@ -14,7 +14,12 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
   width: 100%;
   height: 80px;
   `
-      : `padding: 2.6rem 3rem;
+      : `
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 120px;
+      padding: 2.6rem 3rem;
   `}
 
   backdrop-filter: blur(10px);
@@ -82,6 +87,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
           place-items: center;
           padding: 0.2rem 0.6rem;
           background-color: #fff;
+          cursor: pointer;
         }
       }
 

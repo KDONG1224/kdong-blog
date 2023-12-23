@@ -44,6 +44,7 @@ export const StyledMain = styled.div<StyledMainProps>`
       gap: ${({ $ismobile }) => ($ismobile ? '0px' : '34px  ')};
       margin: ${({ $ismobile }) =>
         $ismobile ? '40px auto 40px' : '100px auto 80px'};
+      cursor: pointer;
 
       &-left {
         height: 100%;
@@ -112,6 +113,7 @@ export const StyledMain = styled.div<StyledMainProps>`
       color: #fff;
       margin: ${({ $ismobile }) =>
         $ismobile ? '0px auto 40px' : '120px auto'};
+      cursor: pointer;
 
       &-left {
         display: flex;

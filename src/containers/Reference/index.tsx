@@ -110,9 +110,15 @@ export const Reference: React.FC<ReferenceProps> = () => {
   }, [articleLists]);
 
   const onChangeCategory = (value: string) => {
-    setSearchQuery({
-      ...searchQuery,
-      where__category__id: value === 'all' ? '' : value
+    setSearchQuery((prev: any) => {
+      if (value === 'all') {
+        return { ...prev };
+      } else {
+        return {
+          ...prev,
+          where__category__id: value
+        };
+      }
     });
   };
 
@@ -172,6 +178,9 @@ export const Reference: React.FC<ReferenceProps> = () => {
             className="refer-wrapper-box"
             onClick={() => onRouterDetail(id)}
           >
+            <div className="refer-wrapper-box-inner">
+              <div className="refer-wrapper-box-inner-title">{title}</div>
+            </div>
             {thumbnails && thumbnails.length > 0 && (
               <BlurImage src={thumbnails[0].location} alt={`${title} 이미지`} />
             )}

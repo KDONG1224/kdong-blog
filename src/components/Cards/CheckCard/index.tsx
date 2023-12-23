@@ -109,7 +109,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({
               {tags.length > 0 ? (
                 tags
                   .sort((a, b) => b.sequence - a.sequence)
-                  .map(({ id, name }) => <span key={id}>{name}</span>)
+                  .map(({ id, tag }) => <span key={id}>{tag}</span>)
               ) : (
                 <span></span>
               )}

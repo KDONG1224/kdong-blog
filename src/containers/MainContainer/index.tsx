@@ -62,6 +62,14 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     router.push(path);
   };
 
+  const handleLoction = (type: 'instagram' | 'github') => {
+    if (type === 'instagram') {
+      windowLocation('https://www.instagram.com/__kdong');
+    } else {
+      windowLocation('https://github.com/KDONG1224');
+    }
+  };
+
   const onClickCard = (
     id: string,
     type: 'recommand' | 'reference' | 'algorithm'
@@ -102,11 +110,11 @@ export const MainContainer: React.FC<MainContainerProps> = ({
         <div className="main-wrapper-subBanner container">
           <div
             className="main-wrapper-subBanner-left"
-            onClick={() => windowLocation('instagram')}
+            onClick={() => handleLoction('instagram')}
           />
           <div
             className="main-wrapper-subBanner-right"
-            onClick={() => windowLocation('github')}
+            onClick={() => handleLoction('github')}
           />
         </div>
         <div className="main-wrapper-project">

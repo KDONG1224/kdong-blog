@@ -85,7 +85,17 @@ export const StyledGuestbooks = styled.div`
 
 export const StyledGuestbookModal = styled(Modal)<StyledGuestbookModalProps>`
   .ant-modal-title {
-    font-size: 2rem;
+    font-size: 2.3rem;
+    font-family: 'Pretendard-Medium';
+  }
+
+  .ant-modal-content {
+    border-radius: 0px;
+    border: 4px solid #000;
+  }
+
+  .ant-modal-close-x {
+    color: #000;
   }
 
   .create-wrapper {
@@ -108,12 +118,13 @@ export const StyledGuestbookModal = styled(Modal)<StyledGuestbookModalProps>`
       }
 
       .ant-descriptions-view {
-        border: 1px solid #dbdbdb;
+        border: 4px solid #000;
         border-radius: 0 !important;
+        border-bottom: 0px !important;
       }
 
       .ant-descriptions-row {
-        border-bottom: 1px solid #dbdbdb;
+        border-bottom: 4px solid #000 !important;
       }
 
       .ant-descriptions-item-label {
@@ -121,10 +132,17 @@ export const StyledGuestbookModal = styled(Modal)<StyledGuestbookModalProps>`
         font-size: 2rem;
         vertical-align: middle !important;
         width: 10em;
+        border-inline-end: 4px solid #000 !important;
+
+        > span {
+          font-family: 'Pretendard-Bold' !important;
+        }
       }
 
       .ant-input {
         font-size: 2.2rem;
+        border: 4px solid #000;
+        border-radius: 0;
       }
 
       .ant-input-affix-wrapper {
@@ -132,6 +150,8 @@ export const StyledGuestbookModal = styled(Modal)<StyledGuestbookModalProps>`
           resize: none;
           height: 180px;
           font-size: 2.2rem;
+          border: 4px solid #000;
+          border-radius: 0;
         }
       }
 
@@ -142,6 +162,16 @@ export const StyledGuestbookModal = styled(Modal)<StyledGuestbookModalProps>`
         justify-content: flex-end;
         gap: 10px;
         margin-top: 20px;
+
+        .ant-btn {
+          border: 4px solid #000;
+
+          &:hover {
+            color: #fff;
+            background-color: #000;
+            border: 4px solid #000;
+          }
+        }
       }
 
       .guest-image-box {
@@ -153,6 +183,8 @@ export const StyledGuestbookModal = styled(Modal)<StyledGuestbookModalProps>`
 
       .image-lists {
         width: 100%;
+        border: 4px solid #000;
+        padding: 1rem;
 
         &-box {
           width: 100%;
@@ -254,7 +286,7 @@ export const StyledGuestbookModal = styled(Modal)<StyledGuestbookModalProps>`
 export const StyledAddImageWrap = styled.div`
   width: 80px;
   height: 80px;
-  border: 1px dashed #ddd;
+  border: 4px dashed #000;
   background: #fafafa;
   display: inline-flex;
   align-items: center;
@@ -271,15 +303,15 @@ export const StyledAddImageWrap = styled.div`
 
 export const StyledPlusOutlined = styled(PlusOutlined)`
   font-size: 20px;
-  color: #bdbdbd;
+  color: #000;
   line-height: 150px;
   padding: 0 65px 0 65px;
 `;
 
 export const StyledCloseOutlined = styled(CloseOutlined)`
   position: absolute;
-  background-color: #bdbdbd;
-  color: #ffffff;
+  background-color: #000;
+  color: #fafafa;
   cursor: pointer;
   font-size: 16px;
   top: 0;

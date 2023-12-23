@@ -140,6 +140,7 @@ export const Header = () => {
                     key={list.id}
                     className="mobile-menu-wrapper-list"
                     onClick={() => onClickMenu(list.categoryEngName as string)}
+                    style={{ cursor: 'pointer' }}
                   >
                     <div className="mobile-menu-wrapper-list-eng">
                       {list.categoryEngName?.toLocaleUpperCase()}

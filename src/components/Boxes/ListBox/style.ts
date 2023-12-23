@@ -18,6 +18,7 @@ export const StyledListBox = styled.div<StyledListBoxProps>`
         display: ${({ $ismobile }) => ($ismobile ? 'block' : 'flex')};
         align-items: center;
         gap: 20px;
+        cursor: default;
 
         > h2 {
           font-family: Pretendard-Bold;
