@@ -32,6 +32,7 @@
     "env-cmd": "^10.1.0",
     "eslint-config-next": "13.2.3",
     "gsap": "^3.11.5",
+    "highlight.js": "^11.9.0",
     "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
     "next": "13.2.3",

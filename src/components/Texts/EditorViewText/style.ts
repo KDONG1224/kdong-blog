@@ -79,13 +79,6 @@ export const StyledEditorViewText = styled.div`
       border-left: 5px solid #ff5821;
     }
 
-    pre {
-      > code {
-        line-height: 2;
-        font-size: 0.91em;
-      }
-    }
-
     .table {
       > table {
         border: 1px double #b3b3b3;

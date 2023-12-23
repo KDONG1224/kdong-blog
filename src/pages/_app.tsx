@@ -7,13 +7,13 @@ import Head from 'next/head';
 // styles
 import '../assets/scss/index.scss';
 import 'nprogress/nprogress.css';
-import '../../node_modules/highlight.js/styles/qtcreator_dark.css';
 import 'aos/dist/aos.css';
 import 'antd/dist/reset.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'highlight.js/styles/github-dark.min.css';
 
 // modules
 import {

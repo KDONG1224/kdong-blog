@@ -1,5 +1,5 @@
 // base
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 
 // pages
@@ -17,6 +17,8 @@ import { ResponseArticleDetailResultProps, ArticleeApi } from 'modules/article';
 // utils
 import { removeHtmlTags } from 'utils';
 
+import hljs from 'highlight.js';
+
 export interface ReferenceContentPageProps {
   article: ResponseArticleDetailResultProps;
 }
@@ -24,6 +26,12 @@ export interface ReferenceContentPageProps {
 const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
   article
 }) => {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      hljs.highlightAll();
+    }
+  }, []);
+
   return (
     <>
       <CustomSeo
@@ -31,13 +39,13 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
         og={{
           title: article.currentPost.title,
           description: removeHtmlTags(article.currentPost.content),
-          url: `https://kdong.dev/reference/${article.currentPost.id}`,
-          image: article.currentPost.thumbnails[0].location
+          url: `https://kdong.dev/reference/${article.currentPost.id}`
+          // image: article.currentPost.thumbnails[0].location
         }}
         twitter={{
           title: article.currentPost.title,
-          description: removeHtmlTags(article.currentPost.content),
-          image: article.currentPost.thumbnails[0].location
+          description: removeHtmlTags(article.currentPost.content)
+          // image: article.currentPost.thumbnails[0].location
         }}
       />
       <MainLayout noFooter>
