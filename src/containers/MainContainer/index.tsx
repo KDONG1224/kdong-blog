@@ -96,7 +96,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
         </div>
         <div className="main-wrapper-recommand">
           <div className="main-wrapper-recommand-box container">
-            {recommendLists && (
+            {recommendLists && recommendLists.length > 0 && (
               <ListBox
                 headerTitle="지금 주목할 만한 인기글"
                 subHeaderTitle="조회수가 가장 높은 인기글을 둘러보세요 :)"
@@ -121,7 +121,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
         </div>
         <div className="main-wrapper-project">
           <div className="main-wrapper-project-box container">
-            {articleLists && (
+            {articleLists && articleLists.length > 0 && (
               <ListBox
                 headerTitle="다양한 Reference"
                 subHeaderTitle="다양한 레퍼런스 구경해보세요 :)"
@@ -136,7 +136,7 @@ export const MainContainer: React.FC<MainContainerProps> = ({
         </div>
         <div className="main-wrapper-algorithm">
           <div className="main-wrapper-algorithm-box container">
-            {algorithmLists && (
+            {algorithmLists && algorithmLists.length > 0 && (
               <ListBox
                 headerTitle="알고리즘 문제풀이"
                 subHeaderTitle="다양한 알고리즘 문제를 풀어보았어요 :)"
