@@ -1,5 +1,5 @@
 // base
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 // styles
 import { StyledCommentForm } from './style';

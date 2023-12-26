@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { StyledEditorViewText } from './style';
 
 // components
-import { BasicButton, BlurImage, CommentForm } from 'components';
+import { BlurImage } from 'components';
 
 // modules
 import { ArticleListsProps } from 'modules';
