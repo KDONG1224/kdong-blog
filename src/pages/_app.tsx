@@ -123,7 +123,7 @@ export default function App({ Component, pageProps }: AppProps) {
           />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <Script
+          {/* <Script
             strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID_WWW}`}
           />
@@ -140,7 +140,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 });
               `
             }}
-          />
+          /> */}
         </>
       )}
 

@@ -8,8 +8,8 @@ import CustomSeo from 'pages/seo';
 // layouts
 import { ContentLayout, MainLayout } from 'layouts';
 
-// components
-import { EditorViewText } from 'components';
+// containers
+import { ReferenceDetail } from 'containers';
 
 // modules
 import { ResponseArticleDetailResultProps, ArticleeApi } from 'modules/article';
@@ -17,6 +17,7 @@ import { ResponseArticleDetailResultProps, ArticleeApi } from 'modules/article';
 // utils
 import { removeHtmlTags } from 'utils';
 
+// libraries
 import hljs from 'highlight.js';
 
 export interface ReferenceContentPageProps {
@@ -50,11 +51,7 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
       />
       <MainLayout noFooter>
         <ContentLayout title="레퍼런스 콘텐츠" contents={article.currentPost}>
-          <EditorViewText
-            content={article.currentPost.content}
-            prevContent={article?.prevPost}
-            nextContent={article?.nextPost}
-          />
+          <ReferenceDetail article={article} />
         </ContentLayout>
       </MainLayout>
     </>

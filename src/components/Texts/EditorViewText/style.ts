@@ -112,8 +112,12 @@ export const StyledEditorViewText = styled.div`
     border-top: 2px solid #bfbfbf;
     padding-top: 4em;
 
-    &-left {
+    &-article {
       display: block;
+
+      &:hover {
+        text-decoration: underline;
+      }
 
       &:first-child {
         margin-bottom: 2em;
@@ -153,6 +157,12 @@ export const StyledEditorViewText = styled.div`
           position: relative;
         }
       }
+    }
+
+    &-comment {
+      margin-top: 4em;
+      border-top: 2px solid #bfbfbf;
+      padding-top: 4em;
     }
   }
 

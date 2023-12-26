@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { StyledEditorViewText } from './style';
 
 // components
-import { BlurImage } from 'components';
+import { BasicButton, BlurImage, CommentForm } from 'components';
 
 // modules
 import { ArticleListsProps } from 'modules';
@@ -51,22 +51,22 @@ export const EditorViewText: React.FC<EditorViewTextProps> = ({
       />
 
       <div className="view-wrapper-bottom">
-        <div className="view-wrapper-bottom-left">
+        <div className="view-wrapper-bottom-article">
           {prevContent && (
             <div
-              className="view-wrapper-bottom-left-box"
+              className="view-wrapper-bottom-article-box"
               onClick={() => onClickContent(prevContent.id)}
             >
-              <div className="view-wrapper-bottom-left-box-body">
-                <div className="view-wrapper-bottom-left-box-body-title">
+              <div className="view-wrapper-bottom-article-box-body">
+                <div className="view-wrapper-bottom-article-box-body-title">
                   <span>이전글 :</span>
                   <span>{prevContent.title}</span>
                 </div>
-                <div className="view-wrapper-bottom-left-box-body-content line-two">
+                <div className="view-wrapper-bottom-article-box-body-content line-two">
                   {removeHtmlTags(prevContent.content)}
                 </div>
               </div>
-              <div className="view-wrapper-bottom-left-box-img">
+              <div className="view-wrapper-bottom-article-box-img">
                 <BlurImage
                   src={prevContent.thumbnails[0].location}
                   alt={prevContent.title}
@@ -76,22 +76,22 @@ export const EditorViewText: React.FC<EditorViewTextProps> = ({
           )}
         </div>
 
-        <div className="view-wrapper-bottom-left">
+        <div className="view-wrapper-bottom-article">
           {nextContent && (
             <div
-              className="view-wrapper-bottom-left-box"
+              className="view-wrapper-bottom-article-box"
               onClick={() => onClickContent(nextContent.id)}
             >
-              <div className="view-wrapper-bottom-left-box-body">
-                <div className="view-wrapper-bottom-left-box-body-title">
+              <div className="view-wrapper-bottom-article-box-body">
+                <div className="view-wrapper-bottom-article-box-body-title">
                   <span>다음글 :</span>
                   <span>{nextContent.title}</span>
                 </div>
-                <div className="view-wrapper-bottom-left-box-body-content line-two">
+                <div className="view-wrapper-bottom-article-box-body-content line-two">
                   {removeHtmlTags(nextContent.content)}
                 </div>
               </div>
-              <div className="view-wrapper-bottom-left-box-img">
+              <div className="view-wrapper-bottom-article-box-img">
                 <BlurImage
                   src={nextContent.thumbnails[0].location}
                   alt={nextContent.title}

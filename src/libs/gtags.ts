@@ -35,7 +35,7 @@ export const useGtag = () => {
 
     const handleRouteChange = (url: URL) => {
       pageview(url);
-      pageviewWithW(url);
+      // pageviewWithW(url);
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);

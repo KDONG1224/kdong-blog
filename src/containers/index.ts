@@ -5,5 +5,6 @@ export * from './Instagram';
 export * from './MainContainer';
 export * from './Project';
 export * from './Reference';
+export * from './ReferenceDetail';
 export * from './Wanted';
 export * from './Guestbooks';
