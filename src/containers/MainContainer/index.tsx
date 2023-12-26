@@ -35,7 +35,8 @@ interface MainContainerProps extends HomepageProps {}
 
 export const MainContainer: React.FC<MainContainerProps> = ({
   articleLists,
-  recommendLists
+  recommendLists,
+  algorithmLists
 }) => {
   const [activeFaqKey, setActiveFaqKey] = useState<string[]>([]);
 
@@ -74,12 +75,13 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     id: string,
     type: 'recommand' | 'reference' | 'algorithm'
   ) => {
-    console.log('== type == : ', type);
-    router.push(`${ROUTE_REFERENCE}/${id}`);
+    if (type === 'reference') {
+      router.push(`${ROUTE_REFERENCE}/${id}`);
+    }
 
-    // if (type === 'reference') {
-    //   router.push(`${ROUTE_REFERENCE}/${id}`);
-    // }
+    if (type === 'algorithm') {
+      router.push(`${ROUTE_ALGORITHM}/${id}`);
+    }
   };
 
   const onChangeCollapse = (key: string | string[]) => {
@@ -134,11 +136,11 @@ export const MainContainer: React.FC<MainContainerProps> = ({
         </div>
         <div className="main-wrapper-algorithm">
           <div className="main-wrapper-algorithm-box container">
-            {articleLists && (
+            {algorithmLists && (
               <ListBox
                 headerTitle="알고리즘 문제풀이"
                 subHeaderTitle="다양한 알고리즘 문제를 풀어보았어요 :)"
-                lists={articleLists}
+                lists={algorithmLists}
                 type="image"
                 onClickMore={() => handleMove(ROUTE_ALGORITHM)}
                 onClickCard={(id: string) => onClickCard(id, 'algorithm')}

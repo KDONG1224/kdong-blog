@@ -94,13 +94,18 @@ export const Reference: React.FC<ReferenceProps> = () => {
       console.log('== key == : ', key);
 
       if (searchQuery) {
-        return await articleApi.getClientAllArticles(searchQuery);
+        return await articleApi.getClientAllArticles({
+          ...searchQuery
+          // where__category__categoryNumber: 2
+        });
       }
 
       setarticleLists([]);
       setTotalElements(0);
       onChangePageSize(0, pagination.pageSize);
-      return await articleApi.getClientAllArticles();
+      return await articleApi.getClientAllArticles({
+        // where__category__categoryNumber: 2
+      });
     },
     {
       select: (data) => {

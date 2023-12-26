@@ -16,11 +16,13 @@ import { ArticleListsProps, ArticleeApi } from 'modules/article';
 export interface HomepageProps {
   articleLists: ArticleListsProps[];
   recommendLists: ArticleListsProps[];
+  algorithmLists: ArticleListsProps[];
 }
 
 const Homepage: React.FC<HomepageProps> = ({
   articleLists,
-  recommendLists
+  recommendLists,
+  algorithmLists
 }) => {
   return (
     <>
@@ -29,6 +31,7 @@ const Homepage: React.FC<HomepageProps> = ({
         <MainContainer
           articleLists={articleLists}
           recommendLists={recommendLists}
+          algorithmLists={algorithmLists}
         />
       </MainLayout>
     </>
@@ -43,7 +46,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     return {
       props: {
         articleLists: articles.result.referenceLists,
-        recommendLists: articles.result.recommendLists
+        recommendLists: articles.result.recommendLists,
+        algorithmLists: articles.result.algorithmLists
       }
     };
   } catch (error) {
