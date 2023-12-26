@@ -15,6 +15,7 @@ import { useMedia } from 'hooks';
 
 // libraries
 import dayjs from 'dayjs';
+import { removeHtmlTags } from 'utils';
 
 interface CheckCardProps {
   data: ArticleListsProps;
@@ -121,7 +122,7 @@ export const CheckCard: React.FC<CheckCardProps> = ({
           <h2 className="line-one">{title}</h2>
           <p
             className="line-two"
-            dangerouslySetInnerHTML={{ __html: isContent }}
+            dangerouslySetInnerHTML={{ __html: removeHtmlTags(isContent) }}
           />
         </div>
 
