@@ -84,7 +84,7 @@ export const Algorithm = () => {
   );
 
   const { data: resultLists } = useQuery(
-    [QUERY_GET_ALL_ARTICLES, searchQuery, pagination.current],
+    [QUERY_GET_ALL_ARTICLES, searchQuery],
     async ({ queryKey }) => {
       const [key, searchQuery] = queryKey;
 

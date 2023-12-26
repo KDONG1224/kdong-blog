@@ -68,6 +68,10 @@ export const StyledEditorViewText = styled.div`
       }
     }
 
+    pre {
+      line-height: 1.75;
+    }
+
     blockquote {
       background: #f4f8fa;
       font-size: 0.875em;
@@ -111,6 +115,10 @@ export const StyledEditorViewText = styled.div`
     margin-top: 4em;
     border-top: 2px solid #bfbfbf;
     padding-top: 4em;
+
+    &.hidden {
+      display: none;
+    }
 
     &-article {
       display: block;

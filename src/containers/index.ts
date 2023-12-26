@@ -1,5 +1,6 @@
 export * from './About';
 export * from './Algorithm';
+export * from './AlgorithmDetail';
 export * from './Common';
 export * from './Instagram';
 export * from './MainContainer';

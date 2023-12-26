@@ -32,7 +32,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
           <div className="content-wrapper-head-left">
             <div className="content-wrapper-head-left-top">
               <h2>{contents?.title || title}</h2>
-              <div>
+              <div className="line-one">
                 {contents &&
                   contents.tags
                     .sort((a, b) => a.sequence - b.sequence)

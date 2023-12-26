@@ -17,6 +17,9 @@ import { removeHtmlTags } from 'utils';
 // consts
 import { ROUTE_REFERENCE } from 'consts';
 
+// libraries
+import hljs from 'highlight.js';
+
 interface EditorViewTextProps extends React.HTMLAttributes<HTMLDivElement> {
   content: string;
   prevContent?: ArticleListsProps;
@@ -43,6 +46,12 @@ export const EditorViewText: React.FC<EditorViewTextProps> = ({
     setIsContent(content);
   }, [content]);
 
+  useEffect(() => {
+    if (!isContent) return;
+
+    hljs.highlightAll();
+  }, [isContent]);
+
   return (
     <StyledEditorViewText {...props}>
       <div
@@ -50,7 +59,11 @@ export const EditorViewText: React.FC<EditorViewTextProps> = ({
         dangerouslySetInnerHTML={{ __html: isContent }}
       />
 
-      <div className="view-wrapper-bottom">
+      <div
+        className={`view-wrapper-bottom ${
+          nextContent && prevContent ? '' : 'hidden'
+        }`}
+      >
         <div className="view-wrapper-bottom-article">
           {prevContent && (
             <div
