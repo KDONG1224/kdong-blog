@@ -50,6 +50,29 @@ export const StyledCommentBox = styled.div`
         left: -27px;
         color: #181818;
       }
+
+      /* &:before {
+        bottom: -0.1rem;
+        content: '';
+        height: 2rem;
+        position: absolute;
+        border-bottom-right-radius: 1rem;
+        border-left: 1rem solid #181818;
+        left: -0.15rem;
+        transform: translate(4px, -0.2rem);
+      }
+
+      &::after {
+        bottom: -0.1rem;
+        content: '';
+        height: 1.2rem;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 0 0.3rem 0.5rem 0;
+        left: 25px;
+        transform: translate(-29px, -2px);
+        width: 10px;
+      } */
     }
 
     &-avatar {

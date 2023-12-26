@@ -82,6 +82,10 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     if (type === 'algorithm') {
       router.push(`${ROUTE_ALGORITHM}/${id}`);
     }
+
+    if (type === 'recommand') {
+      router.push(`${ROUTE_REFERENCE}/${id}`);
+    }
   };
 
   const onChangeCollapse = (key: string | string[]) => {
