@@ -83,6 +83,14 @@ export const StyledEditorViewText = styled.div`
       border-left: 5px solid #ff5821;
     }
 
+    figure {
+      &.image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
     .table {
       > table {
         border: 1px double #b3b3b3;
