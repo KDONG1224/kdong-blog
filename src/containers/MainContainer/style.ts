@@ -86,11 +86,33 @@ export const StyledMain = styled.div<StyledMainProps>`
       background-color: #fff;
 
       &-box {
+        padding: 20px 0;
+      }
+
+      .list-wrapper-contents {
+        height: ${({ $ismobile }) => ($ismobile ? '330px' : '560px')};
+
+        &::after {
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.95) 90%,
+            rgb(255, 255, 255) 100%
+          );
+        }
+      }
+    }
+
+    &-books {
+      width: 100%;
+      background-color: #fff;
+
+      &-box {
         padding: 60px 0;
       }
 
       .list-wrapper-contents {
-        height: ${({ $ismobile }) => ($ismobile ? '330px' : '620px')};
+        height: ${({ $ismobile }) => ($ismobile ? '330px' : '560px')};
 
         &::after {
           background: linear-gradient(

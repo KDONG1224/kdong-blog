@@ -36,7 +36,8 @@ interface MainContainerProps extends HomepageProps {}
 export const MainContainer: React.FC<MainContainerProps> = ({
   articleLists,
   recommendLists,
-  algorithmLists
+  algorithmLists,
+  bookLists
 }) => {
   const [activeFaqKey, setActiveFaqKey] = useState<string[]>([]);
 
@@ -86,6 +87,12 @@ export const MainContainer: React.FC<MainContainerProps> = ({
     if (type === 'recommand') {
       router.push(`${ROUTE_REFERENCE}/${id}`);
     }
+  };
+
+  const onClickBooks = (id: string) => {
+    window.location.href = id
+      ? `https://book.kdong.dev/viewer/${id}`
+      : `https://book.kdong.dev`;
   };
 
   const onChangeCollapse = (key: string | string[]) => {
@@ -148,6 +155,21 @@ export const MainContainer: React.FC<MainContainerProps> = ({
                 type="image"
                 onClickMore={() => handleMove(ROUTE_ALGORITHM)}
                 onClickCard={(id: string) => onClickCard(id, 'algorithm')}
+              />
+            )}
+          </div>
+        </div>
+        <div className="main-wrapper-books">
+          <div className="main-wrapper-books-box container">
+            {bookLists && bookLists.length > 0 && (
+              <ListBox
+                headerTitle="플립북"
+                subHeaderTitle="다양한 플립북을 만들어보았어요 :)"
+                lists={bookLists}
+                type="check"
+                isBooks
+                onClickMore={() => onClickBooks('')}
+                onClickCard={(id: string) => onClickBooks(id)}
               />
             )}
           </div>

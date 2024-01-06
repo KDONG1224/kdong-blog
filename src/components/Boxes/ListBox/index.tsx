@@ -5,7 +5,7 @@ import React from 'react';
 import { StyledListBox } from './style';
 
 // components
-import { BasicSwiper, CheckCard } from 'components';
+import { BasicSwiper, BookCard, CheckCard } from 'components';
 
 // modules
 import { ArticleListsProps } from 'modules';
@@ -15,11 +15,13 @@ import { useMedia } from 'hooks';
 
 // libraries
 import { SwiperSlide } from 'swiper/react';
+import { BookViewerProps } from 'modules/books';
 
 interface ListBoxProps {
   headerTitle: string;
   subHeaderTitle: string;
-  lists: ArticleListsProps[];
+  isBooks?: boolean;
+  lists: ArticleListsProps[] | BookViewerProps[];
   type?: 'check' | 'polygon' | 'image';
   delay?: number;
   onClickMore: () => void;
@@ -29,6 +31,7 @@ interface ListBoxProps {
 export const ListBox: React.FC<ListBoxProps> = ({
   headerTitle,
   subHeaderTitle,
+  isBooks = false,
   lists,
   type = 'check',
   delay = 2500,
@@ -71,11 +74,18 @@ export const ListBox: React.FC<ListBoxProps> = ({
           >
             {(lists || []).map((data, idx) => (
               <SwiperSlide key={idx}>
-                <CheckCard
-                  data={data}
-                  type={type}
-                  onClick={handleClickDetail}
-                />
+                {isBooks ? (
+                  <BookCard
+                    data={data as BookViewerProps}
+                    onClick={handleClickDetail}
+                  />
+                ) : (
+                  <CheckCard
+                    data={data as ArticleListsProps}
+                    type={type}
+                    onClick={handleClickDetail}
+                  />
+                )}
               </SwiperSlide>
             ))}
           </BasicSwiper>

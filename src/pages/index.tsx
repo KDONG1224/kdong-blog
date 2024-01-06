@@ -12,17 +12,20 @@ import { MainContainer } from 'containers';
 
 // modules
 import { ArticleListsProps, ArticleeApi } from 'modules/article';
+import { BookViewerProps, BooksApi } from 'modules/books';
 
 export interface HomepageProps {
   articleLists: ArticleListsProps[];
   recommendLists: ArticleListsProps[];
   algorithmLists: ArticleListsProps[];
+  bookLists: BookViewerProps[];
 }
 
 const Homepage: React.FC<HomepageProps> = ({
   articleLists,
   recommendLists,
-  algorithmLists
+  algorithmLists,
+  bookLists
 }) => {
   return (
     <>
@@ -32,6 +35,7 @@ const Homepage: React.FC<HomepageProps> = ({
           articleLists={articleLists}
           recommendLists={recommendLists}
           algorithmLists={algorithmLists}
+          bookLists={bookLists}
         />
       </MainLayout>
     </>
@@ -43,11 +47,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const articleApi = new ArticleeApi();
     const articles = await articleApi.getRecommendArticles();
 
+    const booksApi = new BooksApi();
+    const bookLists = await booksApi.getBookLists();
+
     return {
       props: {
         articleLists: articles.result.referenceLists,
         recommendLists: articles.result.recommendLists,
-        algorithmLists: articles.result.algorithmLists
+        algorithmLists: articles.result.algorithmLists,
+        bookLists: bookLists.result.booksLists
       }
     };
   } catch (error) {
