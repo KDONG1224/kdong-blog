@@ -11,7 +11,17 @@ import { StyledHeader } from './style';
 import { BasicDrawer, BasicImage } from 'components';
 
 // consts
-import { headerMenus, ROUTE_ROOT, commonIcons, logoIcons } from 'consts';
+import {
+  headerMenus,
+  ROUTE_ROOT,
+  commonIcons,
+  logoIcons,
+  ROUTE_ABOUT,
+  ROUTE_PROJECT,
+  ROUTE_REFERENCE,
+  ROUTE_ALGORITHM,
+  ROUTE_GUESTBOOK
+} from 'consts';
 
 // hooks
 import { useMedia, useOverlay, useScroll } from 'hooks';
@@ -38,7 +48,15 @@ export const Header = () => {
 
   const onClickMenu = (path: string) => {
     // onClickMobileMenu();
-    router.push(path.toLocaleLowerCase());
+    if (path === 'ABOUT') {
+      router.push(ROUTE_ABOUT);
+    } else if (path === 'REFERENCE') {
+      router.push(ROUTE_REFERENCE);
+    } else if (path === 'ALGORITHM') {
+      router.push(ROUTE_ALGORITHM);
+    } else {
+      router.push(ROUTE_GUESTBOOK);
+    }
   };
 
   // const onMouseOver = (name: string, type: 'hover' | 'none') => {
@@ -54,6 +72,8 @@ export const Header = () => {
     //   hidden();
     // }, 1200);
   };
+
+  console.log('== menuLists == : ', menuLists);
 
   return (
     <>
