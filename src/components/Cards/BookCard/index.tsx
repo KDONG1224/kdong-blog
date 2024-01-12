@@ -22,7 +22,7 @@ interface BookCardProps {
 }
 
 export const BookCard: React.FC<BookCardProps> = ({ data, onClick }) => {
-  const { id, title, pages } = data;
+  const { id, title, thumbnail } = data;
 
   const [isContent, setIsContent] = useState('');
 
@@ -44,10 +44,7 @@ export const BookCard: React.FC<BookCardProps> = ({ data, onClick }) => {
         <div className={`check-wrapper-top image`}>
           <div className="check-wrapper-top-img">
             <div className={`check-wrapper-top-img-box image`}>
-              <BlurImage
-                src={pages[0].location as string}
-                alt={`${title} 이미지`}
-              />
+              <BlurImage src={thumbnail as string} alt={`${title} 이미지`} />
             </div>
           </div>
         </div>

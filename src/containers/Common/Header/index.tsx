@@ -73,8 +73,6 @@ export const Header = () => {
     // }, 1200);
   };
 
-  console.log('== menuLists == : ', menuLists);
-
   return (
     <>
       <StyledHeader $ismobile={isMobile}>

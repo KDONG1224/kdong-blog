@@ -9,13 +9,13 @@ import { BasicSwiper, BookCard, CheckCard } from 'components';
 
 // modules
 import { ArticleListsProps } from 'modules';
+import { BookViewerProps } from 'modules/books';
 
 // hooks
 import { useMedia } from 'hooks';
 
 // libraries
 import { SwiperSlide } from 'swiper/react';
-import { BookViewerProps } from 'modules/books';
 
 interface ListBoxProps {
   headerTitle: string;

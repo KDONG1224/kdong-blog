@@ -42,6 +42,7 @@ export interface BookViewerProps {
   pageLength: number;
   viewerType: 'vertical' | 'horizontal';
   isCutting: boolean;
+  thumbnail: string;
   width: number;
   height: number;
   expose: boolean;
