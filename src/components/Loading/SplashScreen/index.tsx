@@ -21,7 +21,7 @@ export const SplashScreen = () => {
       </Head>
       <StyledSplashScreen
         style={{
-          position: 'absolute',
+          position: 'fixed',
           left: '50%',
           top: '50%',
           transform: 'translate(-50%, -50%)',
