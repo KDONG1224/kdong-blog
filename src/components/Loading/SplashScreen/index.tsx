@@ -29,6 +29,7 @@ export const SplashScreen = () => {
           height: '100vh',
           overflow: 'hidden',
           display: 'grid',
+          zIndex: 999999,
           placeItems: 'center',
           background: `repeating-linear-gradient(
             0deg,

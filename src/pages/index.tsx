@@ -1,5 +1,5 @@
 // base
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 
 // pages
 import CustomSeo from './seo';
@@ -42,7 +42,7 @@ const Homepage: React.FC<HomepageProps> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const articleApi = new ArticleeApi();
     const articles = await articleApi.getRecommendArticles();
@@ -56,7 +56,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
         recommendLists: articles.result.recommendLists,
         algorithmLists: articles.result.algorithmLists,
         bookLists: bookLists.result.booksLists
-      }
+      },
+      revalidate: 1000
     };
   } catch (error) {
     console.error(error);

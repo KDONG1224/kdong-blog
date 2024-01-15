@@ -1,3 +1,10 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://kdong.dev
+
+# Sitemaps
 Sitemap: https://kdong.dev/sitemap.xml
+Sitemap: http://localhost:8888/sitemap/kdong-sitemap.xml

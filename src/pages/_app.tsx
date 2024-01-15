@@ -1,7 +1,7 @@
 // base
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import type { AppContext, AppProps } from 'next/app';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import Head from 'next/head';
 
 // styles
@@ -37,6 +37,8 @@ import { MutableSnapshot, RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Script from 'next/script';
+import { SplashScreen } from 'components';
+import { ROUTE_ROOT } from 'consts';
 
 // nprogress setting
 NProgress.configure({
@@ -58,7 +60,10 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Seoul');
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [loading, setLoading] = useState(false);
+
   gtag.useGtag();
+  const router = useRouter();
 
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -93,6 +98,16 @@ export default function App({ Component, pageProps }: AppProps) {
       delay: 300
     });
   }, []);
+
+  useEffect(() => {
+    if (!pageProps.isLoading) return;
+
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, [pageProps]);
 
   return (
     <>
@@ -143,6 +158,7 @@ export default function App({ Component, pageProps }: AppProps) {
           /> */}
         </>
       )}
+      {loading && router.pathname === ROUTE_ROOT && <SplashScreen />}
 
       <ConfigProvider
         locale={ko_KR}
@@ -157,6 +173,7 @@ export default function App({ Component, pageProps }: AppProps) {
             {process.env.NODE_ENV === 'development' && (
               <ReactQueryDevtools initialIsOpen={false} />
             )}
+
             <Component {...pageProps} />
           </RecoilRoot>
         </QueryClientProvider>
@@ -186,14 +203,15 @@ App.getInitialProps = async ({ ctx }: AppContext) => {
           bannerLists: profile.result.bannerLists[0]
         }
       },
-      menuLists: categoryLists.result.categories
+      menuLists: categoryLists.result.categories,
+      isLoading: true
     };
 
     return {
       pageProps
     };
   } catch (error) {
-    pageProps = { ...pageProps, profile: null };
+    pageProps = { ...pageProps, profile: null, isLoading: true };
 
     return {
       pageProps
