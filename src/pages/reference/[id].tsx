@@ -1,6 +1,6 @@
 // base
 import React, { useEffect } from 'react';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 
 // pages
 import CustomSeo from 'pages/seo';
@@ -58,8 +58,25 @@ const ReferenceContentPage: React.FC<ReferenceContentPageProps> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { id } = query;
+export const getStaticPaths = async () => {
+  const articleApi = new ArticleeApi();
+  const articles = await articleApi.getAllArticlesXml();
+
+  const paths = articles.result.articles.map(({ id }: { id: string }) => ({
+    params: { id }
+  }));
+
+  return {
+    paths,
+    fallback: true
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  console.log('== params == : ', params);
+
+  const id = params?.id as string;
+
   if (!id || typeof id !== 'string') {
     return {
       notFound: true
@@ -78,7 +95,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       return {
         props: {
           article: article.result
-        }
+        },
+        revalidate: 1000
       };
     }
   } catch (error) {
@@ -88,5 +106,36 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     };
   }
 };
+
+// export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+//   const { id } = query;
+//   if (!id || typeof id !== 'string') {
+//     return {
+//       notFound: true
+//     };
+//   }
+
+//   try {
+//     const articleApi = new ArticleeApi();
+//     const article = await articleApi.getArticleById(id);
+
+//     if (!article || !article.result) {
+//       return {
+//         notFound: true
+//       };
+//     } else {
+//       return {
+//         props: {
+//           article: article.result
+//         }
+//       };
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     return {
+//       notFound: true
+//     };
+//   }
+// };
 
 export default ReferenceContentPage;
