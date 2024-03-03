@@ -9,12 +9,12 @@
     "build:dev": "env-cmd -f ./config/.env.development next build",
     "build:prod": "env-cmd -f ./config/.env.production next build",
     "start": "env-cmd -f ./config/.env.development next start -p 8888",
-    "prod": "env-cmd -f ./config/.env.production next start -p 8888",
     "start:dev": "env-cmd -f ./config/.env.development pm2 delete 'kdong-blog' && pm2 start npm --name 'kdong-blog' -- run start",
     "start:prod": "env-cmd -f ./config/.env.production pm2 delete 'kdong-blog' && pm2 start npm --name 'kdong-blog' -- run prod",
     "pwa": "npm run build:dev && npm run start:dev",
     "lint": "next lint",
-    "postbuild": "next-sitemap --config next-sitemap.config.js"
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
+    "prod": "npm run build:prod && npm run start:prod"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.18.1",
